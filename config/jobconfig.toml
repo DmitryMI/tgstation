@@ -103,8 +103,8 @@
 [CYBORG]
 "# Playtime Requirements" = 120
 "# Required Account Age" = 21
-"# Spawn Positions" = 0
-"# Total Positions" = 0
+"Spawn Positions" = 0
+"Total Positions" = 0
 
 [DETECTIVE]
 "# Playtime Requirements" = 300
