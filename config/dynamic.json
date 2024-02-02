@@ -171,7 +171,7 @@
 				10
 			],
 			"antag_cap": 2,
-			"minimum_players": 7,
+			"minimum_players": 12,
 			"protected_roles": [
 				"Prisoner",
 				"Security Officer",
@@ -252,13 +252,13 @@
 
 		"Blob": {
 			"weight": 1,
-			"minimum_players": 1,
+			"minimum_players": 8,
 			"cost": 30
 		},
 
 		"Blob Infection": {
 			"weight": 1,
-			"minimum_players": 1,
+			"minimum_players": 8,
 			"cost": 30
 		},
 
@@ -295,7 +295,7 @@
 		"Spiders": {
 			"weight": 1,
 			"cost": 10,
-			"minimum_players": 1
+			"minimum_players": 10
 		}
 	},
 
