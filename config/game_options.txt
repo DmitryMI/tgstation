@@ -43,8 +43,9 @@ WALK_DELAY 4
 ##MULTIPLICATIVE_MOVESPEED /mob/living/carbon/human 0
 ##MULTIPLICATIVE_MOVESPEED /mob/living/silicon/robot 0
 ##MULTIPLICATIVE_MOVESPEED /mob/living/carbon/alien 0
-##MULTIPLICATIVE_MOVESPEED /mob/living/simple_animal/slime 0
+##MULTIPLICATIVE_MOVESPEED /mob/living/basic/slime 0
 MULTIPLICATIVE_MOVESPEED /mob/living/simple_animal 0
+MULTIPLICATIVE_MOVESPEED /mob/living/basic 0
 
 
 ## NAMES ###
@@ -90,7 +91,7 @@ STATION_GOAL_BUDGET 1
 REPEATED_MODE_ADJUST 45 30 10
 
 ## The amount of time it takes for the emergency shuttle to be called, from round start.
-SHUTTLE_REFUEL_DELAY 36000
+SHUTTLE_REFUEL_DELAY 12000
 
 ## Variables calculate how number of antagonists will scale to population.
 ## Used as (Antagonists = Population / Coeff)
@@ -111,7 +112,7 @@ BROTHER_OBJECTIVES_AMOUNT 2
 
 ## Uncomment to prohibit jobs that start with loyalty
 ## implants from being most antagonists.
-# PROTECT_ROLES_FROM_ANTAGONIST
+PROTECT_ROLES_FROM_ANTAGONIST
 
 ## Uncomment to prohibit assistants from becoming most antagonists.
 #PROTECT_ASSISTANT_FROM_ANTAGONIST
@@ -146,6 +147,13 @@ EVENTS_MIN_TIME_MUL 1
 ## Set to 0 to make dangerous events avaliable for all populations.
 EVENTS_MIN_PLAYERS_MUL 1
 
+## The lower bound, in deciseconds, for how soon another random event can be scheduled.
+## Defaults to 1500 deciseconds or 2.5 minutes
+EVENTS_FREQUENCY_LOWER 1500
+
+## The upper bound, in deciseconds, for how soon another random event can be scheduled.
+## Defaults to 4200 deciseconds or 7 minutes
+EVENTS_FREQUENCY_UPPER 4200
 
 ## AI ###
 
@@ -166,7 +174,7 @@ ALLOW_AI_MULTICAM
 ## AWAY MISSIONS ###
 
 ## Uncomment to load one of the missions from awaymissionconfig.txt or away_missions/ at roundstart.
-ROUNDSTART_AWAY
+#ROUNDSTART_AWAY
 
 ## How long the delay is before the Away Mission gate opens. Default is half an hour.
 ## 600 is one minute.
@@ -264,6 +272,7 @@ RANDOM_LAWS corporate
 #RANDOM_LAWS reporter
 #RANDOM_LAWS hulkamania
 #RANDOM_LAWS ten_commandments
+#RANDOM_LAWS yesman
 
 ## Bad idea laws. Probably shouldn't enable these
 #RANDOM_LAWS syndie
@@ -351,43 +360,16 @@ ROUNDSTART_RACES moth
 #ROUNDSTART_RACES ethereal
 #ROUNDSTART_RACES jelly
 #ROUNDSTART_RACES abductor
-ROUNDSTART_RACES synth
-
-## Including all the various golem subtypes that are better than humans in some ways, but worse in others
-#ROUNDSTART_RACES iron_golem
-#ROUNDSTART_RACES adamantine_golem
-#ROUNDSTART_RACES plasma_golem
-#ROUNDSTART_RACES diamond_golem
-#ROUNDSTART_RACES gold_golem
-#ROUNDSTART_RACES silver_golem
-#ROUNDSTART_RACES uranium_golem
-#ROUNDSTART_RACES plasteel_golem
-#ROUNDSTART_RACES titanium_golem
-#ROUNDSTART_RACES plastitanium_golem
-#ROUNDSTART_RACES alloy_golem
-#ROUNDSTART_RACES wood_golem
-#ROUNDSTART_RACES sand_golem
-#ROUNDSTART_RACES glass_golem
-#ROUNDSTART_RACES bluespace_golem
-#ROUNDSTART_RACES bananium_golem
-#ROUNDSTART_RACES runic_golem
-#ROUNDSTART_RACES cloth_golem
-#ROUNDSTART_RACES plastic_golem
-#ROUNDSTART_RACES bronze_golem
-#ROUNDSTART_RACES cardboard_golem
-#ROUNDSTART_RACES leather_golem
-#ROUNDSTART_RACES durathread_golem
-#ROUNDSTART_RACES bone_golem
-#ROUNDSTART_RACES snow_golem
-#ROUNDSTART_RACES metallic_hydrogen_golem
+#ROUNDSTART_RACES snail
 
 ## Races that are straight upgrades. If these are on expect powergamers to always pick them
 #ROUNDSTART_RACES skeleton
 #ROUNDSTART_RACES zombie
-#ROUNDSTART_RACES slime
 #ROUNDSTART_RACES pod
-#ROUNDSTART_RACES military_synth
-#ROUNDSTART_RACES agent
+
+## Races that are radical departures to what a species is, so while they technically can be roundstart - it's probably not wise
+#ROUNDSTART_RACES android
+#ROUNDSTART_RACES golem
 
 ##-------------------------------------------------------------------------------------------
 
@@ -413,15 +395,12 @@ MORGUE_CADAVER_OTHER_SPECIES_PROBABILITY 50
 #MORGUE_CADAVER_OVERRIDE_SPECIES lizard
 
 
-##Overflow job. Default is assistant
+##Overflow job. Default is assistant.
+## NOTE: This will overwrite anything you put in jobconfig.toml!
 OVERFLOW_JOB Assistant
 
 ## Overflow slot cap. Set to -1 for unlimited. If limited, it will still open up if every other job is full.
 OVERFLOW_CAP -1
-
-## Starlight for exterior walls and breaches. Uncomment for starlight!
-## This is disabled by default to make testing quicker, should be enabled on production servers or testing servers messing with lighting
-STARLIGHT
 
 ## Uncomment to bring back old grey suit assistants instead of the now default rainbow colored assistants.
 #GREY_ASSISTANTS
@@ -488,20 +467,23 @@ ROUNDSTART_TRAITS
 ## Uncomment to disable human moods.
 #DISABLE_HUMAN_MOOD
 
-## Enable night shifts ##
+## Enable night shifts
 #ENABLE_NIGHT_SHIFTS
 
-## Enable randomized shift start times##
-#RANDOMIZE_SHIFT_TIME
+## The shift start hour in 24-hour (0-23) notation
+SHIFT_TIME_START_HOUR 7
 
-## Sets shift time to server time at roundstart. Overridden by RANDOMIZE_SHIFT_TIME ##
+## Sets shift time to server time at roundstart. Overrides SHIFT_TIME_START_HOUR
 #SHIFT_TIME_REALTIME
 
+## Enable randomized shift start times. Overrides SHIFT_TIME_REALTIME and SHIFT_TIME_START_HOUR
+#RANDOMIZE_SHIFT_TIME
+
 ## A cap on how many monkeys may be created via monkey cubes
-MONKEYCAP 16
+MONKEYCAP 64
 
 ## A cap on how many mice can be bred via cheese wedges
-RATCAP 16
+RATCAP 64
 
 ## Maximum fine for a citation
 MAXFINE 2000
@@ -556,3 +538,8 @@ NEGATIVE_STATION_TRAITS 3 1
 # If set to 0, then players won't be able to select any positive quirks.
 # If commented-out or undefined, the maximum default is 6.
 MAX_POSITIVE_QUIRKS 6
+
+# A config that skews with the random spawners weights
+# If the value is lower than 1, it'll tend to even out the odds
+# If higher than 1, it'll lean toward common spawns even more.
+RANDOM_LOOT_WEIGHT_MODIFIER 1

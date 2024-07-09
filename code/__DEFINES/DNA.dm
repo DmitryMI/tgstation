@@ -37,8 +37,12 @@
 #define DNA_HAIR_COLOR_BLOCK 6
 #define DNA_FACIAL_HAIRSTYLE_BLOCK 7
 #define DNA_FACIAL_HAIR_COLOR_BLOCK 8
+#define DNA_HAIRSTYLE_GRADIENT_BLOCK 9
+#define DNA_HAIR_COLOR_GRADIENT_BLOCK 10
+#define DNA_FACIAL_HAIRSTYLE_GRADIENT_BLOCK 11
+#define DNA_FACIAL_HAIR_COLOR_GRADIENT_BLOCK 12
 
-#define DNA_UNI_IDENTITY_BLOCKS 8
+#define DNA_UNI_IDENTITY_BLOCKS 12
 
 /// This number needs to equal the total number of DNA blocks
 #define DNA_MUTANT_COLOR_BLOCK 1
@@ -56,8 +60,9 @@
 #define DNA_MOTH_MARKINGS_BLOCK 13
 #define DNA_MUSHROOM_CAPS_BLOCK 14
 #define DNA_POD_HAIR_BLOCK 15
+#define DNA_MONKEY_TAIL_BLOCK 16
 
-#define DNA_FEATURE_BLOCKS 15
+#define DNA_FEATURE_BLOCKS 16
 
 #define DNA_SEQUENCE_LENGTH 4
 #define DNA_MUTATION_BLOCKS 8
@@ -81,6 +86,7 @@
 #define ORGAN_SLOT_MONSTER_CORE "monstercore"
 #define ORGAN_SLOT_RIGHT_ARM_AUG "r_arm_device"
 #define ORGAN_SLOT_LEFT_ARM_AUG "l_arm_device" //This one ignores alphabetical order cause the arms should be together
+#define ORGAN_SLOT_SPINE "spine"
 #define ORGAN_SLOT_STOMACH "stomach"
 #define ORGAN_SLOT_STOMACH_AID "stomach_aid"
 #define ORGAN_SLOT_THRUSTERS "thrusters"
@@ -96,7 +102,6 @@
 #define ORGAN_SLOT_EXTERNAL_HORNS "horns"
 #define ORGAN_SLOT_EXTERNAL_WINGS "wings"
 #define ORGAN_SLOT_EXTERNAL_ANTENNAE "antennae"
-#define ORGAN_SLOT_EXTERNAL_BODYMARKINGS "bodymarkings"
 #define ORGAN_SLOT_EXTERNAL_POD_HAIR "pod_hair"
 
 /// Xenomorph organ slots

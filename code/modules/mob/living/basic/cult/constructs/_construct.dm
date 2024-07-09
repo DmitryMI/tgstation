@@ -12,6 +12,7 @@
 	pressure_resistance = 100
 	speed = 0
 	unique_name = TRUE
+	can_buckle_to = FALSE
 	initial_language_holder = /datum/language_holder/construct
 	death_message = "collapses in a shattered heap."
 
@@ -50,10 +51,12 @@
 		THEME_CULT = list(/obj/item/ectoplasm/construct),
 		THEME_HOLY = list(/obj/item/ectoplasm/angelic),
 		THEME_WIZARD = list(/obj/item/ectoplasm/mystic),
+		THEME_HERETIC = list(/obj/item/ectoplasm/construct),
 	)
 
 /mob/living/basic/construct/Initialize(mapload)
 	. = ..()
+	throw_alert("bloodsense", /atom/movable/screen/alert/bloodsense)
 	AddElement(/datum/element/simple_flying)
 	var/list/remains = string_list(remains_by_theme[theme])
 	if(length(remains))
