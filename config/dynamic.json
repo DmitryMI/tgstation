@@ -2,40 +2,21 @@
 	"Dynamic": {
 		"pop_per_requirement": 5,
 		"low_pop_player_threshold": 20,
-		"low_pop_maximum_threat": 40,
+		"low_pop_maximum_threat": 50,
 		"midround_light_upper_bound": 9000,
 		"midround_heavy_lower_bound": 18000,
 		"midround_upper_bound": 36000
 	},
 	"Roundstart": {
 		"Traitors": {
-			"cost": 10,
-			"scaling_cost": 20,
+			"cost": 8,
 			"weight": 1,
-			"required_candidates": 1,
-			"minimum_required_age": 0,
-			"requirements": [
-				10,
-				10,
-				10
-			],
-			"antag_cap": 1,
-			"protected_roles": [
-				"Prisoner",
-				"Security Officer",
-				"Warden",
-				"Detective",
-				"Head of Security",
-				"Captain"
-			],
-			"restricted_roles": [
-				"Cyborg"
-			]
+			"antag_cap": 2
 		},
 
 		"Blood Brothers": {
-			"cost": 20,
-			"scaling_cost": 20,
+			"cost": 8,
+			"scaling_cost": 8,
 			"weight": 1,
 			"required_candidates": 2,
 			"minimum_required_age": 0,
@@ -44,124 +25,68 @@
 				10,
 				10
 			],
-			"antag_cap": 2,
-			"protected_roles": [
-				"Prisoner",
-				"Security Officer",
-				"Warden",
-				"Detective",
-				"Head of Security",
-				"Captain"
-			],
-			"restricted_roles": [
-				"Cyborg"
-			]
+			"antag_cap": 1
 		},
 
 		"Changelings": {
-			"cost": 20,
-			"scaling_cost": 20,
-			"weight": 2,
+			"cost": 16,
+			"scaling_cost": 10,
+			"weight": 1,
 			"required_candidates": 1,
-			"minimum_required_age": 0,
 			"requirements": [
 				10,
 				10,
 				10
 			],
-			"antag_cap": 1,
-			"protected_roles": [
-				"Prisoner",
-				"Security Officer",
-				"Warden",
-				"Detective",
-				"Head of Security",
-				"Captain"
-			],
-			"restricted_roles": [
-				"Cyborg"
-			]
+			"antag_cap": 1
 		},
 
 		"Heretics": {
-			"cost": 20,
-			"scaling_cost": 20,
-			"weight": 3,
+			"cost": 10,
+			"scaling_cost": 9,
+			"weight": 1,
 			"required_candidates": 1,
-			"minimum_required_age": 0,
 			"requirements": [
 				10,
 				10,
 				10
 			],
-			"antag_cap": 1,
-			"protected_roles": [
-				"Prisoner",
-				"Security Officer",
-				"Warden",
-				"Detective",
-				"Head of Security",
-				"Captain"
-			],
-			"restricted_roles": [
-				"Cyborg"
-			]
+			"antag_cap": 2
 		},
 
 		"Wizard": {
 			"cost": 20,
-			"scaling_cost": 20,
+			"scaling_cost": 10,
 			"weight": 1,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
+			"minimum_players": 8,
 			"requirements": [
 				10,
 				10,
 				10
 			],
-			"antag_cap": 1,
-			"protected_roles": [
-				"Prisoner",
-				"Security Officer",
-				"Warden",
-				"Detective",
-				"Head of Security",
-				"Captain"
-			],
-			"restricted_roles": [
-				"Cyborg"
-			]
+			"antag_cap": 1
 		},
 
 		"Blood Cult": {
-			"cost": 20,
-			"scaling_cost": 20,
-			"weight": 3,
+			"cost": 10,
+			"scaling_cost": 5,
+			"weight": 1,
 			"required_candidates": 2,
 			"minimum_required_age": 0,
-			"minimum_players": 6,
+			"minimum_players": 8,
 			"requirements": [
 				10,
 				10,
 				10
 			],
-			"antag_cap": 2,
-			"protected_roles": [
-				"Prisoner",
-				"Security Officer",
-				"Warden",
-				"Detective",
-				"Head of Security",
-				"Captain"
-			],
-			"restricted_roles": [
-				"Cyborg"
-			]
+			"antag_cap": 2
 		},
 
 		"Nuclear Emergency": {
 			"cost": 20,
-			"scaling_cost": 20,
+			"scaling_cost": 10,
 			"weight": 1,
 			"required_candidates": 2,
 			"minimum_required_age": 0,
@@ -171,24 +96,13 @@
 				10
 			],
 			"antag_cap": 2,
-			"minimum_players": 12,
-			"protected_roles": [
-				"Prisoner",
-				"Security Officer",
-				"Warden",
-				"Detective",
-				"Head of Security",
-				"Captain"
-			],
-			"restricted_roles": [
-				"Cyborg"
-			]
+			"minimum_players": 12
 		},
 
 		"Revolution": {
-			"cost": 20,
-			"scaling_cost": 20,
-			"weight": 2,
+			"cost": 10,
+			"scaling_cost": 5,
+			"weight": 1,
 			"required_candidates": 2,
 			"minimum_required_age": 0,
 			"requirements": [
@@ -196,35 +110,16 @@
 				10,
 				10
 			],
-			"antag_cap": 2,
-			"protected_roles": [
-				"Prisoner",
-				"Security Officer",
-				"Warden",
-				"Detective",
-				"Head of Security",
-				"Captain"
-			],
-			"restricted_roles": [
-				"Cyborg"
-			]
+			"antag_cap": 3
 		}
 	},
 
 	"Midround": {
 		"Syndicate Sleeper Agent": {
-			"weight": 0,
-			"protected_roles": [
-				"Prisoner",
-				"Security Officer",
-				"Warden",
-				"Detective",
-				"Head of Security",
-				"Captain"
-			],
+			"weight": 1,
 			"required_candidates": 1,
 			"minimum_players": 1,
-			"cost": 10,
+			"cost": 5,
 			"requirements": [
 				10,
 				10,
@@ -234,37 +129,39 @@
 
 		"Malfunctioning AI": {
 			"weight": 1,
-			"cost": 20,
-			"weight": 1,
-			"minimum_players": 1
+			"cost": 10,
+			"minimum_players": 8
 		},
 
 		"Wizard": {
-			"weight": 0
+			"weight": 1,
+			"cost": 10,
+			"required_candidates": 1,
+			"minimum_players": 8
 		},
 
 		"Nuclear Assault": {
 			"weight": 1,
-			"cost": 20,
+			"cost": 10,
 			"required_candidates": 2,
-			"minimum_players": 1
+			"minimum_players": 8
 		},
 
 		"Blob": {
 			"weight": 1,
-			"minimum_players": 8,
-			"cost": 30
+			"minimum_players": 1,
+			"cost": 10
 		},
 
 		"Blob Infection": {
 			"weight": 1,
-			"minimum_players": 8,
-			"cost": 30
+			"minimum_players": 1,
+			"cost": 10
 		},
 
 		"Alien Infestation": {
-			"weight": 2,
-			"cost": 30,
+			"weight": 1,
+			"cost": 10,
 			"minimum_players": 1
 		},
 
@@ -276,26 +173,56 @@
 
 		"Space Dragon": {
 			"weight": 1,
-			"cost": 20,
+			"cost": 10,
 			"minimum_players": 1
 		},
 
 		"Abductors": {
-			"weight": 2,
-			"cost": 20,
+			"weight": 1,
+			"cost": 10,
 			"minimum_players": 1
 		},
 
 		"Space Ninja": {
 			"weight": 1,
-			"cost": 30,
+			"cost": 10,
 			"minimum_players": 1
 		},
 
 		"Spiders": {
 			"weight": 1,
 			"cost": 10,
-			"minimum_players": 10
+			"minimum_players": 8
+		},
+
+		"Revenant": {
+			"weight": 1,
+			"cost": 10,
+			"minimum_players": 1
+		},
+
+		"Space Pirates": {
+			"weight": 1,
+			"cost": 10,
+			"minimum_players": 1
+		},
+
+		"Obsessed": {
+			"weight": 1,
+			"cost": 10,
+			"minimum_players": 1
+		},
+
+		"Space Changeling": {
+			"weight": 1,
+			"cost": 10,
+			"minimum_players": 1
+		},
+
+		"Paradox Clone": {
+			"weight": 1,
+			"cost": 10,
+			"minimum_players": 1
 		}
 	},
 
@@ -308,14 +235,27 @@
 
 		"Provocateur": {
 			"weight": 1,
-			"cost": 20,
+			"cost": 10,
 			"minimum_players": 1
 		},
 
 		"Heretic Smuggler": {
-			"weight": 5,
-			"cost": 20,
+			"weight": 1,
+			"cost": 10,
 			"minimum_players": 1
+		},
+
+		"Stowaway Changeling": {
+			"weight": 1,
+			"cost": 10,
+			"minimum_players": 1
+		}
+	},
+
+	"Station": {
+		"Radioactive Nebula": {
+		},
+		"Background Checks": {
 		}
 	}
 }
