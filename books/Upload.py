@@ -9,6 +9,7 @@ logging.basicConfig(format=LOG_FORMAT)
 logger = logging.getLogger("TgLibraryUploader")
 logger.setLevel("DEBUG")
 book_format_string = "&lt;font color=&#39;#000000&#39;&gt;&lt;font face=&#39;Verdana&#39;&gt;"
+uploader_ckey = "dmitriymi"
 
 
 def fix_category_name(category_code: str):
@@ -35,7 +36,6 @@ def file_name_to_book_credentials(file_name: str):
     category = fix_category_name(segments[2].strip())
     if category is None:
         return None, None, None
-    logger.info(f"Book {file_name} will have author '{author}', title '{title}' and category '{category}'")
     return author, title, category
 
 
@@ -93,7 +93,8 @@ def main():
 
         if book_exists:
             logger.info(f"Updating text of '{author_local} - {title_local} - {category_local}'...")
-            cur.execute("UPDATE ss13_library SET content=? WHERE author=? AND title=?", (book_text, author_local, title_local))
+            cur.execute("UPDATE ss13_library SET content=? WHERE author=? AND title=?",
+                        (book_text, author_local, title_local))
             logger.info(f"{cur.rowcount} rows updated")
         else:
             logger.info(f"Uploading new book: '{author_local} - {title_local} - {category_local}'...")
@@ -101,7 +102,7 @@ def main():
             now = datetime.datetime.now()
             cur.execute(
                 "INSERT INTO ss13_library (author,title,content,category,ckey,datetime,deleted,round_id_created) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
-                (author_local, title_local, book_text, category_local, "dmitriymi", now, None, 1))
+                (author_local, title_local, book_text, category_local, uploader_ckey, now, None, 1))
 
             logger.info(f"{cur.rowcount} rows inserted")
     conn.commit()
