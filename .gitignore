@@ -244,3 +244,4 @@ define_sanity_output.txt
 
 # Running OpenDream locally
 tgstation.json
+bad_sendmaps.json
