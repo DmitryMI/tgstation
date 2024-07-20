@@ -16,9 +16,9 @@
 
 		"Blood Brothers": {
 			"cost": 8,
-			"scaling_cost": 8,
+			"scaling_cost": 15,
 			"weight": 1,
-			"required_candidates": 2,
+			"required_candidates": 1,
 			"minimum_required_age": 0,
 			"requirements": [
 				10,
