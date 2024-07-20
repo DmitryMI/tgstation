@@ -1,4 +1,4 @@
-rem @echo off
+@echo off
 
 git checkout master
 git fetch upstream
