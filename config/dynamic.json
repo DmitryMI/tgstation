@@ -2,10 +2,11 @@
 	"Dynamic": {
 		"pop_per_requirement": 5,
 		"low_pop_player_threshold": 20,
-		"low_pop_maximum_threat": 50,
+		"low_pop_maximum_threat": 0,
 		"midround_light_upper_bound": 9000,
 		"midround_heavy_lower_bound": 18000,
-		"midround_upper_bound": 36000
+		"midround_upper_bound": 36000,
+		"threat_curve_width": 0.5
 	},
 	"Roundstart": {
 		"Traitors": {
@@ -17,7 +18,7 @@
 		"Blood Brothers": {
 			"cost": 8,
 			"scaling_cost": 15,
-			"weight": 1,
+			"weight": 5,
 			"required_candidates": 1,
 			"minimum_required_age": 0,
 			"requirements": [
@@ -72,7 +73,7 @@
 		"Blood Cult": {
 			"cost": 10,
 			"scaling_cost": 5,
-			"weight": 1,
+			"weight": 5,
 			"required_candidates": 2,
 			"minimum_required_age": 0,
 			"minimum_players": 8,
@@ -96,7 +97,7 @@
 				10
 			],
 			"antag_cap": 2,
-			"minimum_players": 12
+			"minimum_players": 10
 		},
 
 		"Revolution": {
@@ -111,6 +112,60 @@
 				10
 			],
 			"antag_cap": 3
+		},
+		
+		"Clown Operatives": {
+			"cost": 10,
+			"scaling_cost": 5,
+			"weight": 1,
+			"required_candidates": 2,
+			"minimum_required_age": 0,
+			"requirements": [
+				10,
+				10,
+				10
+			],
+			"antag_cap": 3,
+			"minimum_players": 10
+		},
+		
+		"Meteor": {
+			"cost": 0,
+			"scaling_cost": 5,
+			"weight": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				10,
+				10,
+				10
+			],
+			"meteordelay": 2000
+		},
+		
+		"Nations": {
+			"cost": 10,
+			"scaling_cost": 5,
+			"weight": 0,
+			"minimum_required_age": 0,
+			"requirements": [
+				10,
+				10,
+				10
+			]
+		},
+		
+		"Spies": {
+			"cost": 8,
+			"scaling_cost": 4,
+			"weight": 1,
+			"required_candidates": 3,
+			"minimum_required_age": 0,
+			"requirements": [
+				8,
+				8,
+				8
+			],
+			"minimum_players": 10
 		}
 	},
 
@@ -119,7 +174,7 @@
 			"weight": 1,
 			"required_candidates": 1,
 			"minimum_players": 1,
-			"cost": 5,
+			"cost": 1,
 			"requirements": [
 				10,
 				10,
@@ -178,7 +233,7 @@
 		},
 
 		"Abductors": {
-			"weight": 1,
+			"weight": 5,
 			"cost": 10,
 			"minimum_players": 1
 		},
@@ -190,7 +245,7 @@
 		},
 
 		"Spiders": {
-			"weight": 1,
+			"weight": 10,
 			"cost": 10,
 			"minimum_players": 8
 		},

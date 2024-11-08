@@ -22,8 +22,8 @@
 "# Playtime Requirements" = 180
 "# Required Account Age" = 30
 "# Required Character Age" = 0
-"Spawn Positions" = 1
-"Total Positions" = 1
+"Spawn Positions" = 0
+"Total Positions" = 0
 
 [ASSISTANT]
 "# Playtime Requirements" = 0
@@ -43,15 +43,15 @@
 "# Playtime Requirements" = 0
 "# Required Account Age" = 0
 "# Required Character Age" = 0
-"Spawn Positions" = 1
-"Total Positions" = 1
+"Spawn Positions" = 0
+"Total Positions" = 0
 
 [BITRUNNER]
 "# Playtime Requirements" = 0
 "# Required Account Age" = 0
 "# Required Character Age" = 0
-"Spawn Positions" = 1
-"Total Positions" = 1
+"Spawn Positions" = 0
+"Total Positions" = 0
 
 [BOTANIST]
 "# Playtime Requirements" = 0
