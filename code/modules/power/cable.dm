@@ -392,7 +392,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 	propagate_network(src, newPN)
 
 // cut the cable's powernet at this cable and updates the powergrid
-/obj/structure/cable/proc/cut_cable_from_powernet(remove = TRUE)
+/obj/structure/cable/proc/cut_cable_from_powernet(remove = TRUE, propagate_linked_cables = TRUE)
 	if(!powernet)
 		return
 
@@ -405,22 +405,25 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 		P.disconnect_from_network()
 
 	var/list/P_list = list()
-	for(var/dir_check in GLOB.cardinals)
-		if(linked_dirs & dir_check)
-			T1 = get_step(loc, dir_check)
-			P_list += locate(/obj/structure/cable) in T1
+
+	if(propagate_linked_cables)
+		for(var/dir_check in GLOB.cardinals)
+			if(linked_dirs & dir_check)
+				T1 = get_step(loc, dir_check)
+				P_list += locate(/obj/structure/cable) in T1
 
 	// remove the cut cable from its turf and powernet, so that it doesn't get count in propagate_network worklist
 	if(remove)
 		moveToNullspace()
 	powernet.remove_cable(src) //remove the cut cable from its powernet
 
-	var/first = TRUE
-	for(var/obj/O in P_list)
-		if(first)
-			first = FALSE
-			continue
-		addtimer(CALLBACK(O, PROC_REF(auto_propagate_cut_cable), O), 0) //so we don't rebuild the network X times when singulo/explosion destroys a line of X cables
+	if(propagate_linked_cables)
+		var/first = TRUE
+		for(var/obj/O in P_list)
+			if(first)
+				first = FALSE
+				continue
+			addtimer(CALLBACK(O, PROC_REF(auto_propagate_cut_cable), O), 0) //so we don't rebuild the network X times when singulo/explosion destroys a line of X cables
 
 ///////////////////////////////////////////////
 // The cable coil object, used for laying cable
