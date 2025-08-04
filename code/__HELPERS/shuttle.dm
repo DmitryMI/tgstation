@@ -347,10 +347,10 @@ GLOBAL_LIST_EMPTY(shuttle_frames_by_turf)
 		if(!checked_area.allow_shuttle_docking)
 			. |= INTERSECTS_NON_WHITELISTED_AREA
 		if(checked_area.apc)
-			var/obj/machinery/power/apc/apc = checked_area.apc
-			var/list/wallmount_comps = apc.GetComponents(/datum/component/wall_mounted)
+			var/obj/machinery/power/apc/checked_apc = checked_area.apc
+			var/list/wallmount_comps = checked_apc.GetComponents(/datum/component/wall_mounted)
 			var/datum/component/wall_mounted/wallmount_comp = length(wallmount_comps) && wallmount_comps[1]
-			if(turfs[get_turf(apc)] || (wallmount_comp && turfs[wallmount_comp.hanging_wall_turf]))
+			if(turfs[get_turf(checked_apc)] || (wallmount_comp && turfs[wallmount_comp.hanging_wall_turf]))
 				. |= CONTAINS_APC_OF_NON_CUSTOM_AREA
 		turfs -= area_turfs
 
