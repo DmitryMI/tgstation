@@ -174,9 +174,9 @@ GLOBAL_LIST_EMPTY_TYPED(air_alarms, /obj/machinery/airalarm)
 	//were already registered to an area. exit from here first before entering into an new area
 	if(!isnull(my_area))
 		return
-	. = ..()
 
 	my_area = connected_sensor ? get_area(connected_sensor) : area_to_register
+	. = ..()
 	update_appearance()
 
 /obj/machinery/airalarm/update_name(updates)
