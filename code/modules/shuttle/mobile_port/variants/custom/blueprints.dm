@@ -104,7 +104,8 @@
 		if(turf_area.allow_shuttle_docking)
 			if(!GLOB.custom_areas[turf_area] && turf_area.apc)
 				var/obj/machinery/power/apc/apc = turf_area.apc
-				var/datum/component/wall_mounted/wallmount_comp = apc.GetComponent(/datum/component/wall_mounted)
+				var/list/wallmount_comps = apc.GetComponents(/datum/component/wall_mounted)
+				var/datum/component/wall_mounted/wallmount_comp = length(wallmount_comps) && wallmount_comps[1]
 				var/turf/apc_turf = get_turf(apc)
 				if(target == apc_turf || target == wallmount_comp.hanging_wall_turf)
 					holder.image_state = "red"
