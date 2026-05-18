@@ -57,6 +57,9 @@ GLOBAL_LIST_EMPTY(shuttle_frames_by_turf)
 /datum/shuttle_frame/proc/shuttle_arrive_react(turf/source)
 	SIGNAL_HANDLER
 	var/obj/docking_port/mobile/custom/shuttle = SSshuttle.get_containing_shuttle(source)
+	if(!shuttle)
+		stack_trace("SSshuttle.get_containing_shuttle([source]) returned null!")
+
 	if(istype(shuttle))
 		start_tracking_shuttle(shuttle)
 	adjacent_shuttles[shuttle][source] = TRUE

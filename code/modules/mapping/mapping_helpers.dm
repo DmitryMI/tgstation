@@ -1524,3 +1524,33 @@ INITIALIZE_IMMEDIATE(/obj/effect/mapping_helpers/no_atoms_ontop)
 	name = "blunt impact dent"
 	icon_state = "impact1"
 	dent_type = WALL_DENT_HIT
+
+/obj/effect/mapping_helpers/make_area_custom
+	name = "make area custom"
+	var/previous_area_type = /area/space/nearstation
+
+/obj/effect/mapping_helpers/make_area_custom/Initialize(mapload)
+	. = ..()
+	if(!mapload)
+		log_mapping("[src] spawned outside of mapload!")
+		return
+
+	var/previous_area = GLOB.areas_by_type[previous_area_type]
+	if(!previous_area)
+		log_mapping("Failed to find area of type [previous_area_type]")
+		return
+
+	var/turf/turf = get_turf(src) // In case a locker ate us or something
+	var/area/area = get_area(turf)
+	if(!area)
+		log_mapping("[src] is not inside an area")
+
+	area.AddComponent(/datum/component/custom_area)
+	var/datum/component/custom_area/custom_area_component = area.GetComponent(/datum/component/custom_area)
+
+	for (var/turf/T in area)
+		custom_area_component.previous_areas[T] = previous_area
+
+	GLOB.custom_areas[area] = TRUE
+
+	return INITIALIZE_HINT_QDEL

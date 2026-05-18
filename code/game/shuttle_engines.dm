@@ -42,6 +42,9 @@
 	if(!mapload)
 		engine_state = ENGINE_UNWRENCHED
 		anchored = FALSE
+	else
+		if(!connected_ship_ref?.resolve())
+			AddElement(/datum/element/connect_loc, connections)
 
 /obj/machinery/power/shuttle_engine/on_construction(mob/user)
 	. = ..()

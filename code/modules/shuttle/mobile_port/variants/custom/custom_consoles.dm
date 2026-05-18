@@ -6,6 +6,11 @@
 	may_be_remote_controlled = TRUE
 	var/static/list/connections = list(COMSIG_TURF_ADDED_TO_SHUTTLE = PROC_REF(on_loc_added_to_shuttle))
 
+/obj/machinery/computer/shuttle/custom_shuttle/Initialize(mapload)
+	. = ..()
+	if(mapload && !shuttleId)
+		AddElement(/datum/element/connect_loc, connections)
+
 /obj/machinery/computer/shuttle/custom_shuttle/on_construction(mob/user)
 	circuit.configure_machine(src)
 	if(!shuttleId)
@@ -43,10 +48,15 @@
 /obj/machinery/computer/camera_advanced/shuttle_docker/custom
 	lock_override = NONE
 	jump_to_ports = list("whiteship_home" = 1)
-	designate_time = 100
+	designate_time = 10 // Default 100
 	circuit = /obj/item/circuitboard/computer/shuttle/docker
 	zlink_range = 1
 	var/static/list/connections = list(COMSIG_TURF_ADDED_TO_SHUTTLE = PROC_REF(on_loc_added_to_shuttle))
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/custom/Initialize(mapload)
+	. = ..()
+	if(mapload && !shuttleId)
+		AddElement(/datum/element/connect_loc, connections)
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/custom/on_construction(mob/user)
 	circuit.configure_machine(src)
@@ -70,6 +80,9 @@
 	return ..()
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/custom/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	if(!port)
+		return
+
 	if(shuttleId) //We normally should only be connecting unlinked consoles to shuttles, but just in case...
 		var/obj/docking_port/mobile/old_shuttle = SSshuttle.getShuttle(shuttleId)
 		if(old_shuttle)
