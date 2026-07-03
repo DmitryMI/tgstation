@@ -16,7 +16,7 @@ This feature is intended to be upstream-friendly by behaving as a normal space r
 
 ## Implementation Steps
 
-1. Add a generic configuration path for forcing specific space ruins to spawn at round start.
+1. ~~Add a generic configuration path for forcing specific space ruins to spawn at round start.~~
 2. Add ghost-role sleeper spawners for the expedition crew and test them on existing whiteships first.
 3. Create a new expedition ruin / shuttle template that can exist as a normal upstream space ruin after the sleeper flow is validated.
 4. Extend GPS with passive origin-z metadata recorded at spawn time.

@@ -573,6 +573,13 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 						settings["always_place"] = FALSE
 					else
 						log_world("Invalid always_place value '[value]' for ruin override '[ruin_id]' in [filename].")
+				if("allow_duplicates")
+					if(value in list("true", "yes", "1", "on"))
+						settings["allow_duplicates"] = TRUE
+					else if(value in list("false", "no", "0", "off"))
+						settings["allow_duplicates"] = FALSE
+					else
+						log_world("Invalid allow_duplicates value '[value]' for ruin override '[ruin_id]' in [filename].")
 				else
 					log_world("Unknown ruin override key '[key]' for ruin '[ruin_id]' in [filename].")
 
@@ -600,6 +607,8 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 				R.placement_weight = override["placement_weight"]
 			if(!isnull(override["always_place"]))
 				R.always_place = override["always_place"]
+			if(!isnull(override["allow_duplicates"]))
+				R.allow_duplicates = override["allow_duplicates"]
 
 		map_templates[R.name] = R
 		ruins_templates[R.name] = R
