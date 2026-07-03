@@ -29,6 +29,30 @@
 
 /obj/item/gps/spaceruin
 	gpstag = SPACE_SIGNAL_GPSTAG
+	/// The z-level this tracker originally spawned on.
+	var/origin_z
+
+/obj/item/gps/spaceruin/Initialize(mapload)
+	. = ..()
+	if(!mapload)
+		refresh_origin_z()
+
+/obj/item/gps/spaceruin/LateInitialize()
+	. = ..()
+	refresh_origin_z()
+
+/obj/item/gps/spaceruin/proc/refresh_origin_z()
+	var/turf/current_turf = get_turf(src)
+	if(current_turf?.z)
+		origin_z = current_turf.z
+	return origin_z
+
+/obj/item/gps/spaceruin/examine(mob/user)
+	. = ..()
+	if(!origin_z)
+		refresh_origin_z()
+	if(origin_z)
+		. += span_notice("Its memory banks contain saved bluespace vector.")
 
 /obj/item/gps/science
 	icon_state = "gps-s"

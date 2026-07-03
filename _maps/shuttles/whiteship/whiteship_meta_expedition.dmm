@@ -834,6 +834,11 @@
 	pixel_x = 6;
 	pixel_y = 7
 	},
+/obj/item/gps/spaceruin{
+	pixel_x = 7;
+	pixel_y = -2;
+	gpstag = "Nanotrasen Deep Space Expedition"
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/bridge)
 "cE" = (
@@ -872,7 +877,7 @@
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/replace_whiteship_navigation_with_expedition/debug,
+/obj/effect/mapping_helpers/replace_whiteship_navigation_with_expedition/gps_reader,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/bridge)
 "cH" = (
