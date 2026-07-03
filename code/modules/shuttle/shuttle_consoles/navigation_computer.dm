@@ -14,6 +14,8 @@
 	var/shuttlePortName = "custom location"
 	/// Hashset of ports to jump to and ignore for collision purposes
 	var/list/jump_to_ports = list()
+	/// The jump action type used by this console.
+	var/camera_jump_action_type = /datum/action/innate/camera_jump/shuttle_docker
 	/// The custom docking port placed by this console
 	var/obj/docking_port/stationary/my_port
 	/// The mobile docking port of the connected shuttle
@@ -44,12 +46,11 @@
 			if(port.shuttle_id == shuttleId)
 				add_jumpable_port(port.shuttle_id)
 
-	for(var/obj/docking_port/stationary/port as anything in SSshuttle.stationary_docking_ports)
-		if(!port)
-			continue
-		if(jump_to_ports[port.shuttle_id])
-			z_lock |= port.z
 	whitelist_turfs = typecacheof(whitelist_turfs)
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/post_machine_initialize()
+	. = ..()
+	rebuild_z_lock()
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/Destroy()
 	. = ..()
@@ -84,15 +85,55 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/proc/add_jumpable_port(port_id)
 	if(!length(jump_to_ports))
-		actions += new /datum/action/innate/camera_jump/shuttle_docker(src)
+		actions += new camera_jump_action_type(src)
 	jump_to_ports[port_id] = TRUE
+	rebuild_z_lock()
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/proc/remove_jumpable_port(port_id)
 	jump_to_ports -= port_id
 	if(!length(jump_to_ports))
-		var/datum/action/to_remove = locate(/datum/action/innate/camera_jump/shuttle_docker) in actions
+		var/datum/action/to_remove = locate(camera_jump_action_type) in actions
 		actions -= to_remove
 		qdel(to_remove)
+	rebuild_z_lock()
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/proc/rebuild_z_lock()
+	z_lock = list()
+	for(var/obj/docking_port/stationary/port as anything in SSshuttle.stationary_docking_ports)
+		if(!port)
+			continue
+		if(isnull(port.z))
+			continue
+		if(jump_to_ports[port.shuttle_id])
+			z_lock |= port.z
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/proc/get_jump_targets()
+	var/list/targets = list()
+	var/entry_number = 0
+
+	for(var/obj/docking_port/stationary/port as anything in SSshuttle.stationary_docking_ports)
+		if(!port)
+			stack_trace("SSshuttle.stationary_docking_ports have null entry!")
+			continue
+		if(z_lock.len && !(port.z in z_lock))
+			continue
+		if(jump_to_ports[port.shuttle_id])
+			entry_number += 1
+			targets["([entry_number]) [port.name]"] = port
+
+	for(var/obj/machinery/spaceship_navigation_beacon/nav_beacon as anything in SSshuttle.beacon_list)
+		if(!nav_beacon)
+			stack_trace("SSshuttle.beacon_list have null entry!")
+			continue
+		if(!nav_beacon.z || SSmapping.level_has_any_trait(nav_beacon.z, locked_traits))
+			continue
+		entry_number += 1
+		if(!nav_beacon.locked)
+			targets["([entry_number]) [nav_beacon.name] located: [nav_beacon.x] [nav_beacon.y] [nav_beacon.z]"] = nav_beacon
+		else
+			targets["([entry_number]) [nav_beacon.name] locked"] = null
+
+	return targets
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/attack_hand(mob/user, list/modifiers)
 	if(jammed)
@@ -443,28 +484,7 @@
 
 	playsound(console, 'sound/machines/terminal/terminal_prompt_deny.ogg', 25, FALSE)
 
-	var/list/L = list()
-	for(var/V in SSshuttle.stationary_docking_ports)
-		if(!V)
-			stack_trace("SSshuttle.stationary_docking_ports have null entry!")
-			continue
-		var/obj/docking_port/stationary/S = V
-		if(console.z_lock.len && !(S.z in console.z_lock))
-			continue
-		if(console.jump_to_ports[S.shuttle_id])
-			L["([L.len])[S.name]"] = S
-
-	for(var/V in SSshuttle.beacon_list)
-		if(!V)
-			stack_trace("SSshuttle.beacon_list have null entry!")
-			continue
-		var/obj/machinery/spaceship_navigation_beacon/nav_beacon = V
-		if(!nav_beacon.z || SSmapping.level_has_any_trait(nav_beacon.z, console.locked_traits))
-			break
-		if(!nav_beacon.locked)
-			L["([L.len]) [nav_beacon.name] located: [nav_beacon.x] [nav_beacon.y] [nav_beacon.z]"] = nav_beacon
-		else
-			L["([L.len]) [nav_beacon.name] locked"] = null
+	var/list/L = console.get_jump_targets()
 
 	playsound(console, 'sound/machines/terminal/terminal_prompt.ogg', 25, FALSE)
 	var/selected = tgui_input_list(usr, "Choose location to jump to", "Locations", sort_list(L))
