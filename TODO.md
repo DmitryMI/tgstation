@@ -25,8 +25,10 @@ This feature is intended to be upstream-friendly by behaving as a normal space r
    - tracks which source z-levels were already consumed
    - unlocks new eligible z-levels
    - unlocks the station after all eligible ruin z-levels are exhausted
+   - make the computer dis/re-assemblable with its own circuit board.
 5. Extend GPS with passive origin-z metadata recorded at spawn time.
 6. Create a new expedition ruin / shuttle template that can exist as a normal upstream space ruin after the sleeper flow is validated.
+7. Remove "Z-level" terminology from in-game messages.
 
 ## Constraints
 

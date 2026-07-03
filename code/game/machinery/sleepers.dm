@@ -71,8 +71,9 @@
 	min_health = initial(min_health) * matterbin_rating
 
 	available_chems.Cut()
+	var/max_chem_tiers = length(possible_chems)
 	for(var/datum/stock_part/servo/servos in component_parts)
-		for(var/i in 1 to servos.tier)
+		for(var/i in 1 to min(servos.tier, max_chem_tiers))
 			available_chems |= possible_chems[i]
 
 	reset_chem_buttons()

@@ -875,7 +875,7 @@
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/replace_whiteship_navigation_with_expedition,
+/obj/effect/mapping_helpers/replace_whiteship_navigation_with_expedition/debug,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/bridge)
 "cH" = (
@@ -1448,9 +1448,6 @@
 /obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/admin{
-	dir = 4
-	},
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/crew)
 "gs" = (
@@ -1524,9 +1521,6 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood/gibs/old,
-/mob/living/basic/trooper/syndicate/melee{
-	environment_smash = 0
-	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/bridge)
@@ -1658,6 +1652,9 @@
 /obj/machinery/airalarm/directional/north,
 /obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/admin{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/bridge)
 "xK" = (
