@@ -1,0 +1,13 @@
+[
+  {
+    "weights": {
+      "whiteship_kilo": 0.5
+    }
+  },
+  {
+    "map": "MetaStation",
+    "weights": {
+      "whiteship_meta": 1.0
+    }
+  }
+]

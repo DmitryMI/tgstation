@@ -518,9 +518,68 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	preloadShelterTemplates()
 	preloadHolodeckTemplates()
 
+/datum/controller/subsystem/mapping/proc/load_ruin_template_overrides(filename = "ruinoverrides.txt")
+	. = list()
+	filename = "[global.config.directory]/[SANITIZE_FILENAME(filename)]"
+	var/list/lines = world.file2list(filename)
+
+	if(!lines.len)
+		return
+
+	for(var/raw_line in lines)
+		if(!raw_line)
+			continue
+
+		var/line = trim(raw_line)
+		if(!length(line) || line[1] == "#")
+			continue
+
+		var/list/entries = splittext(line, " ")
+		var/ruin_id
+		var/list/settings
+
+		for(var/entry in entries)
+			entry = trim(entry)
+			if(!length(entry))
+				continue
+
+			if(isnull(ruin_id))
+				ruin_id = LOWER_TEXT(entry)
+				settings = .[ruin_id]
+				if(!islist(settings))
+					settings = list()
+					.[ruin_id] = settings
+				continue
+
+			var/separator_index = findtext(entry, "=")
+			if(!separator_index)
+				log_world("Invalid ruin override entry '[entry]' in [filename]. Expected key=value.")
+				continue
+
+			var/key = LOWER_TEXT(copytext(entry, 1, separator_index))
+			var/value = LOWER_TEXT(copytext(entry, separator_index + 1))
+
+			switch(key)
+				if("placement_weight", "weight")
+					var/weight = text2num(value)
+					if(isnull(weight) || weight < 0)
+						log_world("Invalid placement weight '[value]' for ruin override '[ruin_id]' in [filename].")
+						continue
+					settings["placement_weight"] = weight
+				if("always_place")
+					if(value in list("true", "yes", "1", "on"))
+						settings["always_place"] = TRUE
+					else if(value in list("false", "no", "0", "off"))
+						settings["always_place"] = FALSE
+					else
+						log_world("Invalid always_place value '[value]' for ruin override '[ruin_id]' in [filename].")
+				else
+					log_world("Unknown ruin override key '[key]' for ruin '[ruin_id]' in [filename].")
+
 /datum/controller/subsystem/mapping/proc/preloadRuinTemplates()
 	// Still supporting bans by filename
 	var/list/banned = generateMapList("spaceruinblacklist.txt")
+	var/list/ruin_overrides = load_ruin_template_overrides()
 	if(current_map.minetype == MINETYPE_LAVALAND)
 		banned += generateMapList("lavaruinblacklist.txt")
 	else if(current_map.blacklist_file)
@@ -535,6 +594,12 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 		if(banned.Find(R.mappath))
 			continue
+		var/list/override = ruin_overrides[LOWER_TEXT(R.id)]
+		if(islist(override))
+			if(!isnull(override["placement_weight"]))
+				R.placement_weight = override["placement_weight"]
+			if(!isnull(override["always_place"]))
+				R.always_place = override["always_place"]
 
 		map_templates[R.name] = R
 		ruins_templates[R.name] = R

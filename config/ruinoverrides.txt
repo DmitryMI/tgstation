@@ -1,0 +1,15 @@
+# Optional ruin overrides.
+# Format:
+#   <ruin_id> placement_weight=<number> always_place=<true|false>
+#
+# Notes:
+# - Overrides are matched by ruin id, case-insensitively.
+# - Omit any setting you do not want to override.
+# - placement_weight must be 0 or greater.
+# - always_place forces the ruin into the mandatory placement list for its ruin type.
+#
+# Examples:
+# oldAIsat placement_weight=5
+# djstation placement_weight=10 always_place=true
+
+whiteshipdock always_place=true

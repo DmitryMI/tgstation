@@ -68,12 +68,115 @@
 	///Holds a list of map name strings for the port to pick from
 	var/list/shuttlekeys
 
+/proc/get_deepspace_whiteship_spawn_weight_entries()
+	var/static/list/cached_entries
+	var/static/cache_loaded = FALSE
+
+	if(cache_loaded)
+		return cached_entries
+
+	cache_loaded = TRUE
+	cached_entries = list()
+
+	var/filename = "[global.config.directory]/whiteship_spawn_weights.json"
+	if(!fexists(filename))
+		return cached_entries
+
+	var/raw_json = file2text(filename)
+	if(!raw_json)
+		log_world("Unable to read whiteship spawn weights config: [filename]")
+		return cached_entries
+
+	var/list/decoded = safe_json_decode(raw_json)
+	if(!islist(decoded))
+		log_world("Invalid whiteship spawn weights config: [filename] must contain a JSON list.")
+		return cached_entries
+
+	for(var/entry in decoded)
+		if(!islist(entry))
+			log_world("Ignoring malformed whiteship spawn weights entry in [filename]: expected object.")
+			continue
+		cached_entries += list(entry)
+
+	return cached_entries
+
+/proc/get_deepspace_whiteship_weights_for_map(map_name, list/eligible_whiteships)
+	var/list/entries = get_deepspace_whiteship_spawn_weight_entries()
+	if(!length(entries) || !length(eligible_whiteships))
+		return
+
+	var/list/global_entry
+	var/list/map_entry
+	var/lower_map_name = LOWER_TEXT("[map_name]")
+
+	for(var/list/entry as anything in entries)
+		var/entry_map = entry["map"]
+		if(istext(entry_map))
+			if(LOWER_TEXT(entry_map) == lower_map_name)
+				map_entry = entry
+		else if(isnull(entry_map) && !global_entry)
+			global_entry = entry
+
+	var/list/selected_entry = map_entry || global_entry
+	if(!islist(selected_entry))
+		return
+
+	var/list/weights = selected_entry["weights"]
+	if(!islist(weights))
+		log_world("Ignoring whiteship spawn weights entry for [map_name || "global"] because it has no valid weights object.")
+		return
+
+	var/list/eligible_lookup = list()
+	for(var/whiteship_id in eligible_whiteships)
+		eligible_lookup[LOWER_TEXT("[whiteship_id]")] = whiteship_id
+
+	var/list/final_weights = list()
+	var/explicit_total = 0
+	var/valid_explicit_entries = 0
+
+	for(var/raw_id in weights)
+		var/normalized_id = LOWER_TEXT("[raw_id]")
+		var/actual_id = eligible_lookup[normalized_id]
+		if(isnull(actual_id))
+			log_world("Ignoring unknown deep-space whiteship id '[raw_id]' in whiteship spawn weights for [map_name || "global"].")
+			continue
+
+		var/value = weights[raw_id]
+		if(!isnum(value) || value < 0 || value > 1)
+			log_world("Ignoring invalid whiteship spawn weight '[value]' for '[raw_id]' in [map_name || "global"]. Expected a number between 0 and 1.")
+			continue
+
+		final_weights[actual_id] = value
+		explicit_total += value
+		valid_explicit_entries++
+
+	if(explicit_total > 1)
+		log_world("Ignoring whiteship spawn weights for [map_name || "global"] because explicit weights sum to more than 1.")
+		return
+
+	if(!valid_explicit_entries)
+		return
+
+	var/list/unspecified = list()
+	for(var/whiteship_id in eligible_whiteships)
+		if(isnull(final_weights[whiteship_id]))
+			unspecified += whiteship_id
+
+	if(length(unspecified))
+		var/remaining_weight = 1 - explicit_total
+		var/distributed_weight = remaining_weight / length(unspecified)
+		for(var/whiteship_id in unspecified)
+			final_weights[whiteship_id] = distributed_weight
+
+	return final_weights
+
 /obj/docking_port/stationary/picked/Initialize(mapload)
 	. = ..()
 	if(!LAZYLEN(shuttlekeys))
 		WARNING("Random docking port [shuttle_id] loaded with no shuttle keys")
 		return
-	var/selectedid = pick(shuttlekeys)
+	var/list/weighted_whiteships = get_deepspace_whiteship_weights_for_map(SSmapping.current_map?.map_name, shuttlekeys)
+	var/selectedid = length(weighted_whiteships) ? pick_weight(weighted_whiteships) : pick(shuttlekeys)
 	roundstart_template = SSmapping.shuttle_templates[selectedid]
 
 /obj/docking_port/stationary/picked/whiteship
@@ -97,4 +200,3 @@
 		"whiteship_obelisk",
 		"whiteship_birdshot",
 	)
-
