@@ -10,7 +10,7 @@
 	spawner_job_path = /datum/job/ghost_role
 	allow_custom_character = GHOSTROLE_TAKE_PREFS_APPEARANCE
 	/// The sleeper type that replaces this spawner after a ghost claims it.
-	var/unlocked_sleeper_type = /obj/machinery/sleeper
+	var/unlocked_sleeper_type = /obj/machinery/sleeper/expedition
 
 /obj/effect/mob_spawn/ghost_role/human/usable_sleeper/create(mob/mob_possessor, newname, apply_prefs)
 	var/mob/living/carbon/human/spawned_human = ..()
@@ -28,3 +28,8 @@
 	if(spawned_human.stat != DEAD)
 		to_chat(spawned_human, unlocked_sleeper.enter_message)
 	return spawned_human
+
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/admin
+	name = "administrative cryogenic sleeper"
+	prompt_name = "an expedition administrator"
+	outfit = /datum/outfit/admin

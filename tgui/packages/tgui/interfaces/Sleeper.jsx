@@ -43,19 +43,31 @@ export const Sleeper = (props) => {
     }
     return 0;
   });
+  const hasChems = chems.length > 0;
+  const doorButton = (
+    <Button
+      icon={open ? 'door-open' : 'door-closed'}
+      content={open ? 'Open' : 'Closed'}
+      onClick={() => act('door')}
+    />
+  );
+
   return (
-    <Window width={310} height={465}>
+    <Window width={310} height={hasChems ? 465 : 255}>
       <Window.Content>
         <Section
           title={occupant.name ? occupant.name : 'No Occupant'}
           minHeight="210px"
-          buttons={
+          buttons={[
             !!occupant.stat && (
-              <Box inline bold color={occupant.statstate}>
+              <Box key="occupant-status" inline bold color={occupant.statstate}>
                 {occupant.stat}
               </Box>
-            )
-          }
+            ),
+            <Box key="door-button" inline>
+              {doorButton}
+            </Box>,
+          ]}
         >
           {!!occupied && (
             <>
@@ -91,32 +103,24 @@ export const Sleeper = (props) => {
             </>
           )}
         </Section>
-        <Section
-          title="Medicines"
-          minHeight="205px"
-          buttons={
-            <Button
-              icon={open ? 'door-open' : 'door-closed'}
-              content={open ? 'Open' : 'Closed'}
-              onClick={() => act('door')}
-            />
-          }
-        >
-          {chems.map((chem) => (
-            <Button
-              key={chem.name}
-              icon="flask"
-              content={chem.name}
-              disabled={!occupied || !chem.allowed}
-              width="140px"
-              onClick={() =>
-                act('inject', {
-                  chem: chem.id,
-                })
-              }
-            />
-          ))}
-        </Section>
+        {hasChems && (
+          <Section title="Medicines" minHeight="205px">
+            {chems.map((chem) => (
+              <Button
+                key={chem.name}
+                icon="flask"
+                content={chem.name}
+                disabled={!occupied || !chem.allowed}
+                width="140px"
+                onClick={() =>
+                  act('inject', {
+                    chem: chem.id,
+                  })
+                }
+              />
+            ))}
+          </Section>
+        )}
       </Window.Content>
     </Window>
   );

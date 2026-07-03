@@ -331,8 +331,10 @@
 "bf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster/contraband/random/directional/east,
-/obj/structure/closet/wardrobe/black,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/sleeper{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/shuttle/abandoned/crew)
 "bg" = (
@@ -1445,7 +1447,7 @@
 /obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper{
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/admin{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
