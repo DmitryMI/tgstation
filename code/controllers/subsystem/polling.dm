@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(polling)
 	name = "Polling"
-	flags = SS_BACKGROUND | SS_NO_INIT
+	ss_flags = SS_BACKGROUND | SS_NO_INIT
 	wait = 1 SECONDS
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	/// List of polls currently ongoing, to be checked on next fire()
@@ -328,7 +328,7 @@ SUBSYSTEM_DEF(polling)
 	QDEL_IN(finishing_poll, 0.5 SECONDS)
 
 /datum/controller/subsystem/polling/stat_entry(msg)
-	msg += "Active: [length(currently_polling)] | Total: [total_polls]"
+	msg = "\n  Active: [length(currently_polling)] | Total: [total_polls]"
 	var/datum/candidate_poll/soonest_to_complete = get_next_poll_to_finish()
 	if(soonest_to_complete)
 		msg += " | Next: [DisplayTimeText(soonest_to_complete.time_left())] ([length(soonest_to_complete.signed_up)] candidates)"

@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(ipintel)
 	name = "XKeyScore"
-	flags = SS_NO_INIT|SS_NO_FIRE
+	ss_flags = SS_NO_INIT|SS_NO_FIRE
 	/// The threshold for probability to be considered a VPN and/or bad IP
 	var/probability_threshold
 
@@ -41,7 +41,8 @@ SUBSYSTEM_DEF(ipintel)
 		))
 
 /datum/controller/subsystem/ipintel/stat_entry(msg)
-	return "[..()] | M: [CONFIG_GET(number/ipintel_rate_minute) - rate_limit_minute]"
+	msg = "M:[CONFIG_GET(number/ipintel_rate_minute) - rate_limit_minute]"
+	return ..()
 
 
 /datum/controller/subsystem/ipintel/proc/is_enabled()

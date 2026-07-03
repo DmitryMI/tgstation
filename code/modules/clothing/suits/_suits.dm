@@ -3,13 +3,14 @@
 	icon = 'icons/obj/clothing/suits/default.dmi'
 	lefthand_file = 'icons/mob/inhands/clothing/suits_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/clothing/suits_righthand.dmi'
+	abstract_type = /obj/item/clothing/suit
 	var/fire_resist = T0C+100
 	allowed = list(
 		/obj/item/tank/internals/emergency_oxygen,
 		/obj/item/tank/internals/plasmaman,
-		/obj/item/tank/jetpack/oxygen/captain,
+		/obj/item/tank/jetpack/captain,
 		/obj/item/storage/belt/holster,
-		)
+	)
 	armor_type = /datum/armor/none
 	drop_sound = 'sound/items/handling/cloth/cloth_drop1.ogg'
 	pickup_sound = 'sound/items/handling/cloth/cloth_pickup1.ogg'
@@ -17,7 +18,7 @@
 	var/blood_overlay_type = "suit"
 	limb_integrity = 0 // disabled for most exo-suits
 
-/obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
+/obj/item/clothing/suit/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file, bodyshape = NONE)
 	. = ..()
 	if(isinhands)
 		return
@@ -33,14 +34,14 @@
 		return
 
 	var/obj/item/clothing/accessory/displayed = undershirt.attached_accessories[1]
-	if(displayed.above_suit)
+	if(displayed.above_suit && undershirt.accessory_overlay)
 		. += undershirt.accessory_overlay
 
-/obj/item/clothing/suit/separate_worn_overlays(mutable_appearance/standing, mutable_appearance/draw_target, isinhands = FALSE, icon_file)
+/obj/item/clothing/suit/separate_worn_overlays(mutable_appearance/standing, mutable_appearance/draw_target, isinhands = FALSE, icon_file, bodyshape = NONE)
 	. = ..()
 	if (isinhands)
 		return
-	var/blood_overlay = get_blood_overlay(blood_overlay_type)
+	var/blood_overlay = get_blood_overlay(blood_overlay_type, bodyshape)
 	if (blood_overlay)
 		. += blood_overlay
 
