@@ -124,7 +124,7 @@
 
 	sorted_levels.Insert(insert_at, z_level)
 
-/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/allow_next_z_levels(levels_to_unlock_count)
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/allow_next_z_levels(levels_to_unlock_count, datum/callback/free_unlock_check)
 	if(!isnum(levels_to_unlock_count) || levels_to_unlock_count <= 0)
 		return 0
 
@@ -134,7 +134,10 @@
 	for(var/z_level in sorted_levels)
 		if(z_level in allowed_z_levels)
 			continue
+		var/is_free_unlock = !!free_unlock_check?.Invoke(src, z_level)
 		if(!unlock_z_level(z_level))
+			continue
+		if(is_free_unlock)
 			continue
 		unlocked_count += 1
 		if(unlocked_count >= levels_to_unlock_count)
