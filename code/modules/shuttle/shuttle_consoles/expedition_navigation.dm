@@ -1,7 +1,7 @@
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition
 	name = "Expedition Navigation Computer"
 	desc = "Used to designate a precise transit location for an expedition vessel."
-	jump_to_ports = list("whiteship_away" = 1, "whiteship_home" = 0)
+	jump_to_ports = list("whiteship_away" = 1)
 	/// Z-levels that this expedition computer may jump to directly.
 	var/list/allowed_z_levels = list()
 	/// Optional override for the shuttle's transit time in deciseconds.
