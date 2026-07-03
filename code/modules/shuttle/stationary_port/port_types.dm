@@ -189,6 +189,7 @@
 	dir = 2
 	shuttlekeys = list(
 		"whiteship_meta",
+		"whiteship_meta_expedition",
 		"whiteship_pubby",
 		"whiteship_box",
 		"whiteship_cere",

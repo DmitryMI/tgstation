@@ -12,6 +12,11 @@
 	name = "Salvage Ship"
 	description = "Whiteship that focuses on a large cargo bay that players can build in. Spawns with Syndicate mobs who do not drop corpses and are highly aggressive."
 
+/datum/map_template/shuttle/whiteship/meta_expedition
+	suffix = "meta_expedition"
+	name = "Salvage Ship (Expedition)"
+	description = "An expedition-focused copy of the Salvage Ship for testing alternate ghost-role sleeper starts."
+
 /datum/map_template/shuttle/whiteship/pubby
 	suffix = "pubby"
 	name = "NT Science Vessel"
