@@ -189,6 +189,8 @@
 	desc = "Used to designate a precise transit location for the Ship. It has a digital interface to connect the console to GPS tracking devices."
 	/// Spaceruin GPS devices whose saved coordinates this computer has already extracted.
 	var/list/scanned_gps_refs = list()
+	/// Assoc list of GPS ref -> z-level where this computer first scanned that tracker.
+	var/list/scanned_gps_contexts = list()
 	/// Assoc list of context z-level string -> TRUE once a newly scanned local GPS was processed in that context.
 	var/list/context_has_new_local_scan = list()
 	/// How many counted z-levels a completed source layer scan should unlock.
@@ -202,6 +204,9 @@
 	. += span_notice(get_current_context_screen_message())
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/attackby(obj/item/weapon, mob/user, list/modifiers, list/attack_modifiers)
+	if(istype(weapon, /obj/item/card/id/advanced/debug))
+		try_admin_scan_current_level(user, weapon)
+		return TRUE
 	if(!istype(weapon, /obj/item/gps))
 		return ..()
 	if(!istype(weapon, /obj/item/gps/spaceruin))
@@ -226,7 +231,7 @@
 	var/list/newly_unlocked_levels = list()
 	var/is_new_scan = !has_scanned_gps(scanned_gps)
 	if(is_new_scan)
-		mark_gps_scanned(scanned_gps)
+		mark_gps_scanned(scanned_gps, current_context_z)
 		context_has_new_local_scan["[current_context_z]"] = TRUE
 
 	var/list/already_unlocked_from_context = resolved_context_destinations["[current_context_z]"]
@@ -237,6 +242,30 @@
 
 	log_gps_scan_admin_details(user, scanned_gps, current_context_z, newly_unlocked_levels)
 	say("[get_scan_result_message(is_new_scan)] [get_resolution_status_message(current_context_z)]")
+	return TRUE
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/try_admin_scan_current_level(mob/user, obj/item/card/id/advanced/debug/admin_id)
+	var/turf/computer_turf = get_turf(src)
+	var/current_context_z = computer_turf?.z
+	if(!isnum(current_context_z) || current_context_z <= 0)
+		say("Unable to establish current bluespace context.")
+		return FALSE
+
+	var/list/gps_to_scan = get_unscanned_spaceruin_gps_on_z(current_context_z)
+	var/list/newly_unlocked_levels = list()
+	if(length(gps_to_scan))
+		context_has_new_local_scan["[current_context_z]"] = TRUE
+		for(var/obj/item/gps/spaceruin/scanned_gps as anything in gps_to_scan)
+			mark_gps_scanned(scanned_gps, current_context_z)
+
+	var/list/already_unlocked_from_context = resolved_context_destinations["[current_context_z]"]
+	if(context_has_new_local_scan["[current_context_z]"] && !length(already_unlocked_from_context) && !length(get_unscanned_spaceruin_gps_on_z(current_context_z)))
+		allow_next_z_levels(levels_to_unlock_per_scan, CALLBACK(src, PROC_REF(should_free_unlock_z_level_for_gps_progression)), newly_unlocked_levels)
+		if(length(newly_unlocked_levels))
+			resolved_context_destinations["[current_context_z]"] = newly_unlocked_levels.Copy()
+
+	log_admin("[key_name(user)] used [admin_id] to force-scan expedition GPS context [current_context_z] on [src] at [AREACOORD(src)].")
+	say("[get_scan_result_message(length(gps_to_scan) > 0)] [get_resolution_status_message(current_context_z)]")
 	return TRUE
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/get_scan_result_message(is_new_scan)
@@ -264,17 +293,19 @@
 		return "Bluespace vector resolved for current context. Available destinations: [english_list(get_sorted_player_facing_z_level_names(unlocked_from_context))]."
 
 	var/total_gps = length(get_spaceruin_gps_on_z(current_context_z))
-	var/unscanned_gps = length(get_unscanned_spaceruin_gps_on_z(current_context_z))
-	var/scanned_percentage = total_gps ? round(((total_gps - unscanned_gps) / total_gps) * 100) : 100
+	var/scanned_gps = length(get_spaceruin_gps_scanned_on_z(current_context_z))
+	var/scanned_percentage = total_gps ? round((scanned_gps / total_gps) * 100) : 100
 	return "Bluespace vector resolution for current context: [scanned_percentage]%"
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/has_scanned_gps(obj/item/gps/spaceruin/scanned_gps)
 	return REF(scanned_gps) in scanned_gps_refs
 
-/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/mark_gps_scanned(obj/item/gps/spaceruin/scanned_gps)
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/mark_gps_scanned(obj/item/gps/spaceruin/scanned_gps, scanned_context_z)
 	var/gps_ref = REF(scanned_gps)
 	if(!(gps_ref in scanned_gps_refs))
 		scanned_gps_refs += gps_ref
+	if(isnum(scanned_context_z) && scanned_context_z > 0 && isnull(scanned_gps_contexts[gps_ref]))
+		scanned_gps_contexts[gps_ref] = scanned_context_z
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/get_spaceruin_gps_on_z(z_level)
 	var/list/gps_on_level = list()
@@ -297,6 +328,16 @@
 		unscanned_gps += candidate_gps
 
 	return unscanned_gps
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/get_spaceruin_gps_scanned_on_z(z_level)
+	var/list/scanned_gps = list()
+	for(var/obj/item/gps/spaceruin/candidate_gps as anything in get_spaceruin_gps_on_z(z_level))
+		var/gps_ref = REF(candidate_gps)
+		if(scanned_gps_contexts[gps_ref] != z_level)
+			continue
+		scanned_gps += candidate_gps
+
+	return scanned_gps
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/get_player_facing_z_level_names(list/z_levels)
 	var/list/z_level_names = list()
