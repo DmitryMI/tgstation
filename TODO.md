@@ -45,3 +45,8 @@ This feature is intended to be upstream-friendly by behaving as a normal space r
 - Add lore and presentation for the expedition start.
 - Add more expedition-compatible shuttle or whiteship variants.
 - Add more space ruins or progression flavor tailored for small crews.
+
+## Known issues
+
+- Bluespace vector resolution percentage takes GPS devices from previous levels into calculation.
+- APCs are rotated wrong on whiteship rotations. But AFAIR this did not happen with custom shuttles.
