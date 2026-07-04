@@ -291,7 +291,7 @@
 	if(islist(unlocked_from_context))
 		return "Bluespace vector resolved for current context. Available destinations: [english_list(get_sorted_player_facing_z_level_names(unlocked_from_context))]."
 
-	var/total_gps = length(get_spaceruin_gps_on_z(current_context_z))
+	var/total_gps = length(get_spaceruin_gps_relevant_to_z(current_context_z))
 	var/scanned_gps = length(get_spaceruin_gps_scanned_on_z(current_context_z))
 	var/scanned_percentage = total_gps ? round((scanned_gps / total_gps) * 100) : 100
 	return "Bluespace vector resolution for current context: [scanned_percentage]%"
@@ -337,6 +337,13 @@
 		scanned_gps += candidate_gps
 
 	return scanned_gps
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/get_spaceruin_gps_relevant_to_z(z_level)
+	var/list/relevant_gps = get_unscanned_spaceruin_gps_on_z(z_level)
+	for(var/obj/item/gps/spaceruin/candidate_gps as anything in get_spaceruin_gps_scanned_on_z(z_level))
+		relevant_gps |= candidate_gps
+
+	return relevant_gps
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/get_player_facing_z_level_names(list/z_levels)
 	var/list/z_level_names = list()
