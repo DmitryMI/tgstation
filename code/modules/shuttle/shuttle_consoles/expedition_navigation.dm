@@ -19,7 +19,6 @@
 	var/obj/docking_port/mobile/current_shuttle = SSshuttle.getShuttle(shuttleId)
 	if(current_shuttle?.z)
 		unlock_z_level(current_shuttle.z)
-	apply_shuttle_timing_overrides(current_shuttle)
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/post_machine_initialize()
 	. = ..()
@@ -27,12 +26,6 @@
 	var/obj/docking_port/mobile/current_shuttle = SSshuttle.getShuttle(shuttleId)
 	if(current_shuttle?.z)
 		unlock_z_level(current_shuttle.z)
-	apply_shuttle_timing_overrides(current_shuttle)
-
-/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/vv_edit_var(vname, vval)
-	. = ..()
-	if(vname in list(NAMEOF(src, call_time_override), NAMEOF(src, ignition_time_override)))
-		apply_shuttle_timing_overrides()
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/apply_shuttle_timing_overrides(obj/docking_port/mobile/current_shuttle)
 	current_shuttle ||= SSshuttle.getShuttle(shuttleId)
@@ -83,6 +76,21 @@
 			unlocked_groups += port_destination_group
 
 	return unlocked_groups
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/get_z_levels_sorted_by_index_asc(list/z_levels)
+	var/list/sorted_levels = list()
+
+	for(var/z_level in z_levels)
+		if(!isnum(z_level))
+			continue
+		var/insert_at = length(sorted_levels) + 1
+		for(var/index in 1 to length(sorted_levels))
+			if(z_level < sorted_levels[index])
+				insert_at = index
+				break
+		sorted_levels.Insert(insert_at, z_level)
+
+	return sorted_levels
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/get_space_graph_hop_counts_from_station()
 	var/list/station_levels = SSmapping.levels_by_trait(ZTRAIT_STATION)
@@ -293,7 +301,7 @@
 
 	var/list/unlocked_from_context = resolved_context_destinations["[current_context_z]"]
 	if(islist(unlocked_from_context))
-		return "Bluespace vector resolved for current context. Available destinations: [english_list(get_sorted_player_facing_z_level_names(unlocked_from_context))]."
+		return "Bluespace vector resolved for current context. Available destinations: [english_list(get_player_facing_z_level_names(unlocked_from_context))]."
 
 	var/total_gps = length(get_spaceruin_gps_relevant_to_z(current_context_z))
 	var/scanned_gps = length(get_spaceruin_gps_scanned_on_z(current_context_z))
@@ -351,13 +359,10 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/get_player_facing_z_level_names(list/z_levels)
 	var/list/z_level_names = list()
-	for(var/z_level in z_levels)
+	for(var/z_level in get_z_levels_sorted_by_index_asc(z_levels))
 		z_level_names += get_player_facing_z_level_name(z_level)
 
 	return z_level_names
-
-/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/get_sorted_player_facing_z_level_names(list/z_levels)
-	return sort_list(get_player_facing_z_level_names(z_levels))
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/log_gps_scan_admin_details(mob/user, obj/item/gps/spaceruin/scanned_gps, current_context_z, list/newly_unlocked_levels)
 	var/list/log_lines = list()
@@ -408,6 +413,12 @@
 
 	return navigation_console.get_unlocked_port_destination_groups()
 
+/obj/machinery/computer/shuttle/white_ship/bridge/expedition/send_shuttle(dest_id, mob/user)
+	var/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/navigation_console = get_expedition_navigation_console()
+	if(navigation_console)
+		navigation_console.apply_shuttle_timing_overrides()
+	return ..()
+
 /obj/machinery/computer/shuttle/white_ship/bridge/expedition/get_valid_destinations()
 	var/list/unlocked_destination_groups = get_unlocked_port_destination_groups()
 	if(!length(unlocked_destination_groups))
@@ -452,8 +463,6 @@
 	var/list/targets = list()
 	var/entry_number = 0
 	var/list/unlocked_destination_groups = get_unlocked_port_destination_groups()
-	var/list/sorted_target_labels = list()
-	var/list/target_turfs_by_label = list()
 
 	for(var/obj/docking_port/stationary/port as anything in SSshuttle.stationary_docking_ports)
 		if(!port)
@@ -478,20 +487,14 @@
 		else
 			targets["([entry_number]) [nav_beacon.name] locked"] = null
 
-	for(var/z_level in allowed_z_levels)
+	for(var/z_level in get_z_levels_sorted_by_index_asc(allowed_z_levels))
 		if(!isnum(z_level) || SSmapping.level_has_any_trait(z_level, locked_traits))
 			continue
 		var/turf/target_turf = get_z_level_jump_target(z_level)
 		if(!target_turf)
 			continue
-		var/target_label = "[get_player_facing_z_level_name(z_level)] Center"
-		sorted_target_labels += target_label
-		target_turfs_by_label[target_label] = target_turf
-
-	sorted_target_labels = sort_list(sorted_target_labels)
-	for(var/target_label in sorted_target_labels)
 		entry_number += 1
-		targets["([entry_number]) [target_label]"] = target_turfs_by_label[target_label]
+		targets["([entry_number]) [get_player_facing_z_level_name(z_level)] Center"] = target_turf
 
 	return targets
 
