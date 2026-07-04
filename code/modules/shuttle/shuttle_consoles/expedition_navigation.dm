@@ -245,8 +245,12 @@
 	var/turf/gps_turf = get_turf(scanned_gps)
 	var/current_context_z = computer_turf?.z
 	var/current_gps_z = gps_turf?.z
+	var/obj/docking_port/mobile/current_shuttle = SSshuttle.getShuttle(shuttleId)
 	if(!isnum(current_context_z) || current_context_z <= 0)
 		say("Unable to establish current bluespace context.")
+		return FALSE
+	if(current_shuttle && current_shuttle.mode != SHUTTLE_IDLE && current_shuttle.mode != SHUTTLE_RECHARGING)
+		say("Unable to decode bluespace vectors while in transit.")
 		return FALSE
 	if(current_gps_z != current_context_z)
 		say("Failed to decode bluespace vector in current context.")
