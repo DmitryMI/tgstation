@@ -26,7 +26,7 @@ This feature is intended to be upstream-friendly by behaving as a normal space r
    - ~~unlocks new eligible z-levels~~
    - ~~unlocks the station after all eligible ruin z-levels are exhausted~~
    - make the computer dis/re-assemblable with its own circuit board.
-5. Create a new expedition ruin / shuttle template that can exist as a normal upstream space ruin after the sleeper flow is validated.
+5. Create a new expedition ruin / shuttle template
 6. ~~Remove "Z-level" terminology from in-game messages.~~
 
 ## Constraints
@@ -47,8 +47,8 @@ This feature is intended to be upstream-friendly by behaving as a normal space r
 
 ## Known issues
 
-- [TEST NEEDED] Bluespace vector resolution percentage takes GPS devices from previous levels into calculation.
+- ~~Bluespace vector resolution percentage takes GPS devices from previous levels into calculation.~~
 - APCs are rotated wrong on whiteship rotations. But AFAIR this did not happen with custom shuttles.
 - [TEST NEEDED] GPS scanning should be disabled in hyperspace
-- Shuttle timing overrides are not working
-- Sort Sectors by Z-level index, not alphabetically
+- ~~Shuttle timing overrides are not working~~
+- ~~Sort Sectors by Z-level index, not alphabetically~~
