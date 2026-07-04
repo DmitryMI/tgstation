@@ -205,10 +205,33 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/attackby(obj/item/weapon, mob/user, list/modifiers, list/attack_modifiers)
 	if(istype(weapon, /obj/item/card/id/advanced/debug))
-		try_admin_scan_current_level(user, weapon)
+		var/turf/computer_turf = get_turf(src)
+		var/current_context_z = computer_turf?.z
+		if(!isnum(current_context_z) || current_context_z <= 0)
+			say("Unable to establish current bluespace context.")
+			return TRUE
+
+		var/list/gps_on_level = get_spaceruin_gps_on_z(current_context_z)
+		var/obj/item/gps/spaceruin/scanned_gps = null
+		for(var/obj/item/gps/spaceruin/candidate_gps as anything in gps_on_level)
+			if(has_scanned_gps(candidate_gps))
+				continue
+			scanned_gps = candidate_gps
+			break
+		if(!scanned_gps && length(gps_on_level))
+			scanned_gps = gps_on_level[1]
+
+		log_admin("[key_name(user)] used [weapon] to emulate an expedition GPS scan for context [current_context_z] on [src] at [AREACOORD(src)][scanned_gps ? ", selecting [scanned_gps] at [AREACOORD(scanned_gps)]" : ", with no local GPS available"].")
+		if(!scanned_gps)
+			say("No saved coordinates found in current context.")
+			return TRUE
+
+		try_scan_spaceruin_gps(scanned_gps, user)
 		return TRUE
+
 	if(!istype(weapon, /obj/item/gps))
 		return ..()
+
 	if(!istype(weapon, /obj/item/gps/spaceruin))
 		say("No saved coordinates found in [weapon].")
 		return TRUE
@@ -242,30 +265,6 @@
 
 	log_gps_scan_admin_details(user, scanned_gps, current_context_z, newly_unlocked_levels)
 	say("[get_scan_result_message(is_new_scan)] [get_resolution_status_message(current_context_z)]")
-	return TRUE
-
-/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/try_admin_scan_current_level(mob/user, obj/item/card/id/advanced/debug/admin_id)
-	var/turf/computer_turf = get_turf(src)
-	var/current_context_z = computer_turf?.z
-	if(!isnum(current_context_z) || current_context_z <= 0)
-		say("Unable to establish current bluespace context.")
-		return FALSE
-
-	var/list/gps_to_scan = get_unscanned_spaceruin_gps_on_z(current_context_z)
-	var/list/newly_unlocked_levels = list()
-	if(length(gps_to_scan))
-		context_has_new_local_scan["[current_context_z]"] = TRUE
-		for(var/obj/item/gps/spaceruin/scanned_gps as anything in gps_to_scan)
-			mark_gps_scanned(scanned_gps, current_context_z)
-
-	var/list/already_unlocked_from_context = resolved_context_destinations["[current_context_z]"]
-	if(context_has_new_local_scan["[current_context_z]"] && !length(already_unlocked_from_context) && !length(get_unscanned_spaceruin_gps_on_z(current_context_z)))
-		allow_next_z_levels(levels_to_unlock_per_scan, CALLBACK(src, PROC_REF(should_free_unlock_z_level_for_gps_progression)), newly_unlocked_levels)
-		if(length(newly_unlocked_levels))
-			resolved_context_destinations["[current_context_z]"] = newly_unlocked_levels.Copy()
-
-	log_admin("[key_name(user)] used [admin_id] to force-scan expedition GPS context [current_context_z] on [src] at [AREACOORD(src)].")
-	say("[get_scan_result_message(length(gps_to_scan) > 0)] [get_resolution_status_message(current_context_z)]")
 	return TRUE
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/get_scan_result_message(is_new_scan)
