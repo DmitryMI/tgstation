@@ -314,10 +314,10 @@
 	},
 /obj/structure/table/glass,
 /obj/item/storage/belt/medical,
+/obj/effect/spawner/random/medical/minor_healing,
 /turf/open/floor/iron/white,
 /area/shuttle/abandoned/medbay)
 "be" = (
-/obj/machinery/light/small/empty/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -339,6 +339,8 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
 	},
+/obj/effect/spawner/random/medical/organs,
+/obj/effect/decal/cleanable/blood/bubblegum,
 /turf/open/floor/iron/white,
 /area/shuttle/abandoned/medbay)
 "bg" = (
@@ -422,6 +424,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 3
 	},
+/obj/effect/spawner/random/medical/medkit,
 /turf/open/floor/iron/white,
 /area/shuttle/abandoned/medbay)
 "bv" = (
@@ -829,9 +832,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/firealarm/directional/east,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/shower/directional/west,
 /obj/structure/curtain,
 /obj/item/soap,
+/obj/structure/window/spawner/directional/north,
+/obj/machinery/shower/directional/north,
 /turf/open/floor/iron/freezer,
 /area/shuttle/abandoned/bar)
 "cD" = (
@@ -1126,6 +1130,7 @@
 "dr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/basic/trooper/pirate,
 /turf/open/floor/plating,
 /area/shuttle/abandoned/engine)
 "ds" = (
@@ -1459,21 +1464,10 @@
 /obj/machinery/airalarm/directional/north,
 /obj/effect/mapping_helpers/airalarm/all_access,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper,
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/research_physician,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
 	},
-/turf/open/floor/iron/white,
-/area/shuttle/abandoned/medbay)
-"fy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/neutral/half/contrasted{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/trimline/blue/filled/corner,
 /turf/open/floor/iron/white,
 /area/shuttle/abandoned/medbay)
 "gs" = (
@@ -1494,14 +1488,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/bar)
-"gY" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/computer/operating,
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 5
-	},
-/turf/open/floor/iron/white,
-/area/shuttle/abandoned/medbay)
 "he" = (
 /obj/machinery/light/empty/directional/west,
 /obj/effect/decal/cleanable/dirt,
@@ -1529,8 +1515,15 @@
 	},
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/mob/living/basic/trooper/pirate,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/engine)
+"ij" = (
+/obj/structure/sink/directional/west{
+	dir = 4
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/abandoned/medbay)
 "iK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -1549,13 +1542,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/crew)
-"jR" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/trimline/blue/filled/corner{
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/shuttle/abandoned/medbay)
 "kz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -1565,6 +1551,15 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/bridge)
+"nd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/marine,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/abandoned/medbay)
 "ni" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
@@ -1606,8 +1601,19 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/bar)
+"pB" = (
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/marine,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/white,
+/area/shuttle/abandoned/medbay)
 "pS" = (
-/turf/closed/wall/mineral/titanium,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/white,
 /area/shuttle/abandoned/medbay)
 "qc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1624,6 +1630,13 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/cargo)
+"qZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/abandoned/medbay)
 "ss" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/medical,
@@ -1642,6 +1655,14 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/abandoned/bar)
+"tw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/firealarm/directional/west,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/abandoned/medbay)
 "uS" = (
 /obj/machinery/light/empty/directional/east,
 /obj/effect/decal/cleanable/dirt,
@@ -1649,12 +1670,6 @@
 /obj/effect/mapping_helpers/airalarm/all_access,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/cargo)
-"vW" = (
-/obj/structure/sink/directional/west{
-	dir = 4
-	},
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/abandoned/medbay)
 "wm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -1709,7 +1724,8 @@
 /obj/structure/sign/poster/contraband/random/directional/east,
 /obj/structure/curtain,
 /obj/machinery/shower/directional/west,
-/obj/item/soap,
+/obj/machinery/shower/directional/north,
+/obj/structure/window/spawner/directional/north,
 /turf/open/floor/iron/freezer,
 /area/shuttle/abandoned/bar)
 "Aq" = (
@@ -1737,9 +1753,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/cargo)
-"AL" = (
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/abandoned/medbay)
 "AR" = (
 /obj/machinery/door/firedoor,
 /obj/effect/decal/cleanable/dirt,
@@ -1757,7 +1770,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper,
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/commander,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 5
 	},
@@ -1788,6 +1801,13 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/cargo)
+"DF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/abandoned/medbay)
 "DL" = (
 /obj/effect/turf_decal/box/white/corners,
 /obj/effect/decal/cleanable/dirt,
@@ -1795,6 +1815,10 @@
 /obj/effect/spawner/random/maintenance/three,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/cargo)
+"Ev" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/white,
+/area/shuttle/abandoned/medbay)
 "EU" = (
 /obj/machinery/door/airlock/external/ruin,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -1834,9 +1858,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/crew)
 "FH" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/white,
+/turf/closed/wall/mineral/titanium,
 /area/shuttle/abandoned/medbay)
 "FM" = (
 /obj/effect/turf_decal/bot_white,
@@ -1884,14 +1906,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/bridge)
-"Ht" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/firealarm/directional/west,
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 8
-	},
-/turf/open/floor/iron/white,
-/area/shuttle/abandoned/medbay)
 "HJ" = (
 /obj/machinery/light/small/empty/directional/east,
 /obj/effect/decal/cleanable/dirt,
@@ -2014,9 +2028,17 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/engine)
-"Ri" = (
+"Qe" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/white,
+/mob/living/basic/trooper/pirate,
+/turf/open/floor/iron/dark,
+/area/shuttle/abandoned/cargo)
+"QU" = (
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor/shutters{
+	id = "whiteship_windows"
+	},
+/turf/open/floor/plating,
 /area/shuttle/abandoned/medbay)
 "Rs" = (
 /obj/machinery/door/firedoor,
@@ -2059,13 +2081,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/cargo)
 "Sv" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper,
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 1
-	},
-/turf/open/floor/iron/white,
+/turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/abandoned/medbay)
 "SD" = (
 /obj/effect/turf_decal/bot_white,
@@ -2076,8 +2092,10 @@
 /area/shuttle/abandoned/cargo)
 "SG" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/engineer,
 /obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/abandoned/medbay)
@@ -2099,6 +2117,17 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/cargo)
+"UW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/blue/filled/corner,
+/turf/open/floor/iron/white,
+/area/shuttle/abandoned/medbay)
 "VG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -2110,15 +2139,7 @@
 	dir = 1
 	},
 /obj/structure/table/glass,
-/obj/item/storage/medkit/brute{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/storage/medkit/fire,
-/obj/item/storage/medkit/toxin{
-	pixel_x = 3;
-	pixel_y = 3
-	},
+/obj/effect/spawner/random/medical/medkit_rare,
 /turf/open/floor/iron/white,
 /area/shuttle/abandoned/medbay)
 "VL" = (
@@ -2148,20 +2169,13 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/shuttle/abandoned/crew)
-"VR" = (
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper,
+"WD" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/computer/operating,
 /obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 1
+	dir = 5
 	},
 /turf/open/floor/iron/white,
-/area/shuttle/abandoned/medbay)
-"WD" = (
-/obj/effect/spawner/structure/window/reinforced/shuttle,
-/obj/machinery/door/poddoor/shutters{
-	id = "whiteship_windows"
-	},
-/turf/open/floor/plating,
 /area/shuttle/abandoned/medbay)
 "XR" = (
 /obj/machinery/door/firedoor,
@@ -2358,7 +2372,7 @@ ap
 aF
 iK
 bo
-ap
+Qe
 cQ
 dc
 ni
@@ -2519,12 +2533,12 @@ ec
 ej
 "}
 (19,1,1) = {"
-AL
-AL
-AL
+Sv
+Sv
+Sv
 Aq
-vW
-AL
+ij
+Sv
 bQ
 bQ
 AR
@@ -2538,11 +2552,11 @@ bD
 bD
 "}
 (20,1,1) = {"
-AL
+Sv
 fo
-Ht
+tw
 ba
-SG
+DF
 bF
 bQ
 cd
@@ -2557,9 +2571,9 @@ ed
 bD
 "}
 (21,1,1) = {"
-WD
-Sv
-FH
+QU
+nd
+pS
 bb
 bt
 bG
@@ -2576,12 +2590,12 @@ ee
 eb
 "}
 (22,1,1) = {"
-AL
-VR
-Ri
+Sv
+pB
+Ev
 VG
 bu
-AL
+Sv
 bQ
 cf
 KK
@@ -2595,12 +2609,12 @@ bD
 bD
 "}
 (23,1,1) = {"
-WD
-Sv
-FH
-fy
+QU
+SG
+pS
+UW
 bv
-AL
+Sv
 bR
 cg
 cv
@@ -2614,12 +2628,12 @@ ef
 eb
 "}
 (24,1,1) = {"
-AL
+Sv
 Bg
-jR
+qZ
 be
 bw
-AL
+Sv
 bR
 bR
 bR
@@ -2633,12 +2647,12 @@ tq
 bD
 "}
 (25,1,1) = {"
-pS
-AL
-gY
+FH
+Sv
+WD
 bf
-AL
-pS
+Sv
+FH
 aa
 aa
 aa
@@ -2653,9 +2667,9 @@ cW
 "}
 (26,1,1) = {"
 aa
-pS
-AL
-AL
+FH
+Sv
+Sv
 bx
 aa
 aa
