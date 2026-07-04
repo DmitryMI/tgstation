@@ -221,7 +221,7 @@
 		if(!scanned_gps && length(gps_on_level))
 			scanned_gps = gps_on_level[1]
 
-		log_admin("[key_name(user)] used [weapon] to emulate an expedition GPS scan for context [current_context_z] on [src] at [AREACOORD(src)][scanned_gps ? ", selecting [scanned_gps] at [AREACOORD(scanned_gps)]" : ", with no local GPS available"].")
+		message_admins("[key_name_admin(user)] used [weapon] to emulate an expedition GPS scan for context [current_context_z] on [src] at [AREACOORD(src)][scanned_gps ? ", selecting [scanned_gps] at [AREACOORD(scanned_gps)]" : ", with no local GPS available"].")
 		if(!scanned_gps)
 			say("No saved coordinates found in current context.")
 			return TRUE
@@ -379,7 +379,7 @@
 			var/remaining_on_level = length(get_unscanned_spaceruin_gps_on_z(z_level))
 			log_lines += "- z-level [z_level]: [remaining_on_level] unscanned spaceruin GPS tracker(s)"
 
-	log_admin(log_lines.Join("\n"))
+	message_admins(log_lines.Join("\n"))
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/gps_reader/proc/has_unscanned_spaceruin_gps_on_z(z_level)
 	return !!length(get_unscanned_spaceruin_gps_on_z(z_level))

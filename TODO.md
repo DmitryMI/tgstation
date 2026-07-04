@@ -50,3 +50,5 @@ This feature is intended to be upstream-friendly by behaving as a normal space r
 - [TEST NEEDED] Bluespace vector resolution percentage takes GPS devices from previous levels into calculation.
 - APCs are rotated wrong on whiteship rotations. But AFAIR this did not happen with custom shuttles.
 - [TEST NEEDED] GPS scanning should be disabled in hyperspace
+- Shuttle timing overrides are not working
+- Sort Sectors by Z-level index, not alphabetically
