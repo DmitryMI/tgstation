@@ -131,6 +131,9 @@
 /area/shuttle/expedition/engineering
 	name = "Expedition Ship Engineering"
 
+/area/shuttle/expedition/armory
+	name = "Expedition Ship Armory"
+
 /area/shuttle/expedition/cargo
 	name = "Expedition Ship Cargo Bay"
 
