@@ -101,6 +101,10 @@
 /datum/id_trim/expedition
 	assignment = "Expedition Crew"
 	trim_state = "trim_assistant"
+	access = list(
+		ACCESS_BAR,
+		ACCESS_KITCHEN,
+	)
 
 /datum/id_trim/expedition/research_physician
 	assignment = "Expedition Research Physician"
@@ -109,6 +113,8 @@
 	subdepartment_color = COLOR_SCIENCE_PINK
 	sechud_icon_state = SECHUD_MEDICAL_DOCTOR
 	access = list(
+		ACCESS_BAR,
+		ACCESS_KITCHEN,
 		ACCESS_MEDICAL,
 		ACCESS_MORGUE,
 		ACCESS_PARAMEDIC,
@@ -127,6 +133,8 @@
 	subdepartment_color = COLOR_ENGINEERING_ORANGE
 	sechud_icon_state = SECHUD_STATION_ENGINEER
 	access = list(
+		ACCESS_BAR,
+		ACCESS_KITCHEN,
 		ACCESS_ATMOSPHERICS,
 		ACCESS_CONSTRUCTION,
 		ACCESS_ENGINEERING,
@@ -143,6 +151,8 @@
 	subdepartment_color = COLOR_SECURITY_RED
 	sechud_icon_state = SECHUD_SECURITY_OFFICER
 	access = list(
+		ACCESS_BAR,
+		ACCESS_KITCHEN,
 		ACCESS_BRIG,
 		ACCESS_BRIG_ENTRANCE,
 		ACCESS_COURT,
