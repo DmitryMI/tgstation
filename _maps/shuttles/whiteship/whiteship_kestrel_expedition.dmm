@@ -6,27 +6,126 @@
 	dir = 1
 	},
 /obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/abandoned/engine)
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"aG" = (
+/obj/structure/table,
+/obj/machinery/processor{
+	pixel_y = 7;
+	pixel_x = -7
+	},
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/reagentgrinder{
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
 "aV" = (
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/cargo)
+/area/shuttle/expedition/cargo)
+"aX" = (
+/obj/structure/table,
+/obj/item/storage/bag/plants/portaseeder,
+/obj/item/shovel/spade,
+/obj/item/cultivator,
+/obj/item/plant_analyzer,
+/obj/item/reagent_containers/cup/watering_can,
+/obj/machinery/light,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
+"bD" = (
+/turf/closed/wall/mineral/titanium,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"bJ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/meter/layer4,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
 "bO" = (
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor/airless,
-/area/shuttle/abandoned/crew)
+/area/shuttle/expedition/crew)
 "ca" = (
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
 "cy" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/expedition/medbay)
+"cA" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"cQ" = (
+/turf/open/floor/plating,
+/area/shuttle/expedition/crew)
+"di" = (
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/machinery/power/terminal{
 	dir = 4
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/crew)
+/area/shuttle/expedition/cargo)
+"dO" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"ec" = (
+/obj/structure/cable,
+/obj/structure/chair,
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"ej" = (
+/obj/structure/cable,
+/obj/machinery/power/solar{
+	id = "foreport";
+	name = "Fore-Port Solar Array"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/engineering)
+"el" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/medbay)
+"em" = (
+/turf/closed/wall/mineral/titanium,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/hydroponics)
+"eN" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/expedition/engineering)
+"eP" = (
+/obj/structure/cable,
+/obj/structure/bookcase/random,
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"eR" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/binary/pump/layer4{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
 "fp" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/machinery/atmos_shield_gen/active{
@@ -44,7 +143,7 @@
 	preferred_direction = 8
 	},
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/cargo)
+/area/shuttle/expedition/cargo)
 "fq" = (
 /obj/structure/cable,
 /obj/machinery/power/solar{
@@ -56,7 +155,7 @@
 	name = "Fore-Port Solar Array"
 	},
 /turf/open/floor/catwalk_floor/airless,
-/area/shuttle/abandoned/crew)
+/area/shuttle/expedition/medbay)
 "fF" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
@@ -65,23 +164,83 @@
 	dir = 1
 	},
 /obj/machinery/light,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
+"fG" = (
+/obj/structure/bodycontainer/morgue{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "fI" = (
 /obj/machinery/power/smes,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
+"fN" = (
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/airalarm/directional/east,
+/obj/effect/mapping_helpers/airalarm/all_access,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
+"gk" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"gV" = (
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/medbay)
+"hb" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"hr" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
 "hs" = (
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
+"hS" = (
+/obj/machinery/computer/rdconsole/unlocked{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "iq" = (
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/commander,
+/obj/structure/table,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
+"it" = (
+/obj/machinery/chem_heater/withbuffer,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "iF" = (
 /turf/template_noop,
 /area/template_noop)
+"iG" = (
+/obj/structure/table/glass,
+/obj/effect/spawner/surgery_tray/full,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"iM" = (
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"iP" = (
+/obj/structure/cable,
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
 "iS" = (
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
 	dir = 4;
@@ -91,72 +250,265 @@
 	},
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
+"jn" = (
+/obj/structure/closet/secure_closet/medical1,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"jo" = (
+/obj/machinery/door/airlock/medical/glass{
+	id_tag = "MedbayFoyer";
+	name = "Medbay Clinic"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/medbay)
+"jY" = (
+/obj/structure/closet/crate/freezer/blood,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "kc" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
+"ki" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"kq" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/expedition/medbay)
+"kt" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"kB" = (
+/obj/machinery/door/airlock/hydroponics/glass{
+	name = "Hydroponics"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
+"kD" = (
+/obj/structure/cable,
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
 "ld" = (
 /obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/abandoned/crew)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "le" = (
-/turf/open/floor/iron/dark,
-/area/shuttle/abandoned/engine)
+/obj/structure/closet/secure_closet/engineering_electrical,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
 "lp" = (
 /obj/effect/mapping_helpers/airalarm/all_access,
 /obj/machinery/airalarm/directional/east,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"lr" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/expedition/kitchen)
+"lx" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/meter/layer2,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"lz" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/crew)
+/area/shuttle/expedition/medbay)
+"lG" = (
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/marine{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/medbay)
+"lH" = (
+/obj/structure/cable,
+/obj/machinery/power/tracker,
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/crew)
 "lO" = (
 /obj/machinery/door/airlock/engineering/glass,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
+"lV" = (
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"mC" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"mJ" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/expedition/crew)
+"mK" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"nw" = (
+/obj/structure/cable,
+/obj/machinery/power/solar{
+	id = "foreport";
+	name = "Fore-Port Solar Array"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/kitchen)
+"nX" = (
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/research_physician{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/medbay)
+"nZ" = (
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"oD" = (
+/obj/machinery/door/airlock/external/glass,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/crew)
 "oH" = (
 /obj/structure/cable,
 /obj/machinery/power/tracker,
 /turf/open/floor/catwalk_floor/airless,
-/area/shuttle/abandoned/crew)
+/area/shuttle/expedition/medbay)
+"pb" = (
+/obj/structure/table,
+/obj/structure/cable,
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
 "pw" = (
-/obj/effect/spawner/structure/window/reinforced,
+/turf/closed/wall/mineral/titanium,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/crew)
+/area/shuttle/expedition/medbay)
 "pZ" = (
 /obj/structure/cable,
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 10
 	},
 /turf/open/floor/plating,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
+"qT" = (
+/obj/machinery/smartfridge,
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
+"rd" = (
+/obj/machinery/computer/rdservercontrol{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "rE" = (
 /obj/structure/cable,
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
+"rL" = (
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/engineer{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/medbay)
+"rN" = (
+/turf/open/floor/iron/freezer,
+/area/shuttle/expedition/crew)
 "rO" = (
 /obj/machinery/power/terminal{
 	dir = 4
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/shuttle/abandoned/engine)
-"tk" = (
-/obj/machinery/door/airlock/external/glass,
+/area/shuttle/expedition/engineering)
+"sb" = (
+/obj/machinery/door/airlock/multi_tile/public/glass,
 /obj/structure/cable,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/crew)
+/area/shuttle/expedition/crew)
+"ss" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/cargo)
+"sD" = (
+/obj/machinery/chem_master,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"sV" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"tk" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/external/glass,
+/turf/open/floor/plating,
+/area/shuttle/expedition/medbay)
+"tU" = (
+/obj/machinery/stasis,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "uj" = (
 /obj/structure/cable,
-/obj/machinery/power/solar{
-	id = "foreport";
-	name = "Fore-Port Solar Array"
-	},
-/obj/machinery/power/solar{
-	id = "foreport";
-	name = "Fore-Port Solar Array"
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 8
 	},
 /turf/open/floor/catwalk_floor/airless,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
+"ul" = (
+/obj/machinery/rnd/production/circuit_imprinter,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"uz" = (
+/obj/machinery/door/airlock/multi_tile/public/glass{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"uI" = (
+/obj/machinery/griddle,
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
+"uJ" = (
+/obj/machinery/airalarm/directional/east,
+/obj/effect/mapping_helpers/airalarm/all_access,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/cargo)
 "uZ" = (
 /obj/structure/cable,
 /obj/machinery/power/solar{
@@ -164,27 +516,50 @@
 	name = "Fore-Port Solar Array"
 	},
 /turf/open/floor/catwalk_floor/airless,
-/area/shuttle/abandoned/crew)
+/area/shuttle/expedition/medbay)
 "vc" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
 "vd" = (
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
 "vl" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/command/glass,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
 "vn" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
+"vP" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/expedition/hydroponics)
+"vY" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/expedition/crew)
+"wb" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"wd" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/kitchen)
 "wn" = (
 /obj/structure/cable,
 /obj/machinery/power/solar{
@@ -192,54 +567,285 @@
 	name = "Fore-Port Solar Array"
 	},
 /turf/open/floor/catwalk_floor/airless,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
+"wv" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"wP" = (
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/hydroponics/constructable,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
+"wR" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/structure/chair/comfy/brown{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"xa" = (
+/obj/structure/chair,
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"xi" = (
+/obj/effect/spawner/random/structure/crate,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/cargo)
+"xs" = (
+/obj/structure/bed/medical/emergency,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"xV" = (
+/obj/structure/chair/office/light,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "yf" = (
 /obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/abandoned/engine)
-"Ag" = (
-/obj/machinery/door/airlock/external/glass,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"yk" = (
+/obj/machinery/rnd/production/protolathe,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"yl" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"yH" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"zK" = (
 /obj/structure/cable,
-/turf/open/space/basic,
-/area/shuttle/abandoned/crew)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"Ag" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/external/glass,
+/turf/open/floor/plating,
+/area/shuttle/expedition/crew)
 "Ak" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
 "AX" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/machinery/atmos_shield_gen/active{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/cargo)
+/area/shuttle/expedition/cargo)
+"Bs" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/hydroponics)
+"BF" = (
+/obj/machinery/atmospherics/components/binary/pump/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"BM" = (
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
+"BV" = (
+/obj/machinery/hydroponics/constructable,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
 "Cb" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
+"Cn" = (
+/obj/structure/closet/secure_closet/medical2,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"Cp" = (
+/obj/machinery/rnd/destructive_analyzer,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "CR" = (
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/machinery/airalarm/directional/east,
 /obj/effect/mapping_helpers/airalarm/all_access,
 /obj/machinery/power/terminal,
 /obj/structure/cable,
+/obj/structure/table,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
+"Dd" = (
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
+"DJ" = (
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
+"DN" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"DU" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"En" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "Eu" = (
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/cargo)
+/area/shuttle/expedition/cargo)
+"Ew" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"EM" = (
+/obj/machinery/oven/range,
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
+"ER" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/obj/structure/bodycontainer/morgue{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"Fj" = (
+/obj/machinery/light,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"GC" = (
+/obj/structure/cable,
+/obj/machinery/power/solar{
+	id = "foreport";
+	name = "Fore-Port Solar Array"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/hydroponics)
+"GG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"GR" = (
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/engineer{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/medbay)
+"Ho" = (
+/obj/machinery/shower/directional/east{
+	dir = 2;
+	pixel_x = 0;
+	pixel_y = 20
+	},
+/turf/open/floor/iron/freezer,
+/area/shuttle/expedition/crew)
 "Iu" = (
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 10
 	},
 /turf/open/floor/plating,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
+"II" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/iron/dark,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/medbay)
+"IU" = (
+/obj/machinery/mecha_part_fabricator{
+	drop_direction = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"IZ" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"Ja" = (
+/obj/structure/cable,
+/obj/structure/table/wood,
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"Jd" = (
+/obj/structure/closet/secure_closet/hydroponics,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
+"Je" = (
+/obj/machinery/airalarm/directional/east,
+/obj/effect/mapping_helpers/airalarm/all_access,
+/obj/structure/bookcase/random,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"JN" = (
+/obj/structure/table,
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
 "JT" = (
 /turf/open/floor/plating,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
+"Kd" = (
+/obj/structure/cable,
+/obj/machinery/power/solar{
+	id = "foreport";
+	name = "Fore-Port Solar Array"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/crew)
+"Kp" = (
+/obj/machinery/smartfridge/organ,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "KG" = (
 /obj/structure/cable,
 /obj/machinery/power/solar{
@@ -247,7 +853,7 @@
 	name = "Fore-Port Solar Array"
 	},
 /turf/open/floor/catwalk_floor/airless,
-/area/shuttle/abandoned/cargo)
+/area/shuttle/expedition/cargo)
 "KJ" = (
 /obj/machinery/power/shuttle_engine/propulsion{
 	dir = 4
@@ -256,47 +862,163 @@
 	dir = 4
 	},
 /turf/open/floor/catwalk_floor/airless,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
 "KL" = (
 /obj/structure/cable,
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
+"KR" = (
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/commander{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/medbay)
+"KU" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/machinery/light,
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"Li" = (
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/medbay)
+"Lv" = (
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/research_physician{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/medbay)
 "LA" = (
 /obj/machinery/power/shuttle_engine/propulsion{
 	dir = 4
 	},
 /turf/open/floor/catwalk_floor/airless,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
+"LE" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/structure/cable,
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
 "LV" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/crew)
+"Mg" = (
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/obj/machinery/airalarm/directional/east,
+/obj/effect/mapping_helpers/airalarm/all_access,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
+"MH" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"ML" = (
+/obj/structure/cable,
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/abandoned/crew)
+/area/shuttle/expedition/hydroponics)
 "Ne" = (
 /obj/machinery/door/airlock/external/glass,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/crew)
+/area/shuttle/expedition/medbay)
+"NB" = (
+/obj/structure/table/optable,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"NL" = (
+/obj/structure/table/glass,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "NT" = (
 /obj/machinery/airalarm/directional/west,
 /obj/effect/mapping_helpers/airalarm/all_access,
-/turf/open/floor/iron/dark,
-/area/shuttle/abandoned/engine)
-"OY" = (
-/turf/open/floor/iron/dark,
-/area/shuttle/abandoned/crew)
-"Pv" = (
-/obj/machinery/door/airlock/shuttle/glass,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"Oo" = (
+/obj/machinery/computer/operating{
+	dir = 8
+	},
+/obj/machinery/light,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"Op" = (
+/obj/structure/urinal/directional/north,
+/turf/open/floor/iron/freezer,
+/area/shuttle/expedition/crew)
+"Ow" = (
 /obj/structure/cable,
+/obj/machinery/light,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
+"OU" = (
+/obj/machinery/chem_mass_spec,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"OY" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/crew)
+/area/shuttle/expedition/crew)
+"Pv" = (
+/obj/machinery/door/airlock/medical/glass{
+	id_tag = "MedbayFoyer";
+	name = "Medbay Clinic"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "PE" = (
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/engineering)
+"PV" = (
+/obj/machinery/smartfridge/food,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/kitchen)
+"Qg" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/bodycontainer/morgue{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "Qm" = (
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/abandoned/cargo)
+/area/shuttle/expedition/cargo)
+"Qn" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/crew)
+"Qx" = (
+/obj/machinery/rnd/server/master,
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 1;
+	name = "server vent"
+	},
+/turf/open/floor/circuit/telecomms/server,
+/area/shuttle/expedition/medbay)
+"QD" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
 "QV" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
@@ -307,20 +1029,112 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
+"RB" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"RP" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"RW" = (
+/obj/structure/closet/secure_closet/hydroponics,
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
+"Sq" = (
+/turf/open/floor/plating,
+/area/shuttle/expedition/medbay)
+"Su" = (
+/obj/machinery/smartfridge/drying,
+/obj/structure/cable,
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
+"Sy" = (
+/obj/structure/table/reinforced,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"SG" = (
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
 "Tc" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/crew)
+/area/shuttle/expedition/medbay)
+"Tr" = (
+/obj/machinery/iv_drip,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"Tx" = (
+/obj/structure/cable,
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
 "TE" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/machinery/atmos_shield_gen/active{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/cargo)
+/area/shuttle/expedition/cargo)
+"TN" = (
+/obj/machinery/door/airlock/command/glass,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/circuit/telecomms/server,
+/area/shuttle/expedition/medbay)
+"TP" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/multi_tile/public/glass,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
+"TT" = (
+/obj/machinery/deepfryer,
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
+"Uc" = (
+/turf/closed/wall/mineral/titanium,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/engineering)
+"Uw" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"UD" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"UT" = (
+/obj/structure/cable,
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/admin,
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
+"Va" = (
+/obj/structure/table/reinforced,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"Vb" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
+"Vl" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "Vw" = (
 /obj/machinery/computer/shuttle/white_ship/bridge{
 	dir = 4
@@ -329,29 +1143,105 @@
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/bridge)
+/area/shuttle/expedition/bridge)
+"VK" = (
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/marine{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/medbay)
+"Ww" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"Wy" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
+"WC" = (
+/obj/structure/closet/secure_closet/atmospherics,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"WI" = (
+/obj/machinery/computer/operating{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "WS" = (
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/machinery/power/terminal{
 	dir = 8
 	},
 /obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
+"XA" = (
+/obj/machinery/door/airlock/medical/glass{
+	id_tag = "MedbayFoyer";
+	name = "Medbay Clinic"
+	},
 /turf/open/floor/iron/dark,
-/area/shuttle/abandoned/engine)
+/area/shuttle/expedition/medbay)
 "XQ" = (
 /obj/structure/cable,
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/abandoned/cargo)
+/area/shuttle/expedition/cargo)
+"Yc" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/medbay)
+"Yk" = (
+/obj/machinery/smartfridge/chemistry/preloaded,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"Yx" = (
+/obj/machinery/chem_dispenser,
+/obj/machinery/light,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"YC" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/cargo)
+"YL" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/cargo)
+"Zh" = (
+/obj/structure/cable,
+/obj/machinery/light,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/expedition/kitchen)
+"Zi" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/shuttle/expedition/hydroponics)
 
 (1,1,1) = {"
 iF
 iF
 iF
 iF
-oH
-LV
-Tc
-Tc
+lH
+mJ
+Qn
+Qn
 KL
 vn
 vn
@@ -359,7 +1249,7 @@ vn
 KL
 Tc
 Tc
-LV
+cy
 oH
 iF
 iF
@@ -373,485 +1263,486 @@ bO
 bO
 bO
 Ag
-ld
-OY
+vY
+cQ
 ca
 Vw
 Cb
 iS
 ca
-OY
-ld
+Sq
+kq
 tk
-bO
-bO
-bO
+gV
+gV
+gV
 iF
 iF
 "}
 (3,1,1) = {"
 iF
-uZ
-uZ
-LV
-LV
-LV
-Ne
-LV
+Kd
+Kd
+mJ
+mJ
+mJ
+oD
+mJ
 ca
 QV
 vc
 fF
 ca
-LV
+cy
 Ne
-LV
-LV
-LV
+cy
+cy
+cy
 uZ
 uZ
 iF
 "}
 (4,1,1) = {"
-uZ
-uZ
-LV
-LV
-OY
-OY
-OY
-OY
+Kd
+Kd
+mJ
+mJ
+Op
+lV
+lV
+DN
 ca
 iq
 vd
 CR
 ca
-OY
-OY
-OY
-OY
-LV
-LV
+UD
+iM
+NL
+NL
+cy
+cy
 fq
 uZ
 "}
 (5,1,1) = {"
-uZ
-LV
-LV
-OY
-OY
-OY
-OY
-OY
+Kd
+mJ
+mJ
+Ho
+rN
+lV
+lV
+Uw
 ca
 ca
 vl
 ca
 ca
-OY
-OY
-OY
-OY
-OY
-LV
-LV
+Cp
+iM
+iM
+NL
+it
+cy
+cy
 uZ
 "}
 (6,1,1) = {"
-uZ
-LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+Kd
+mJ
+wR
+lV
+lV
+lV
+lV
+Uw
+mJ
+ul
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+yk
+IU
+hS
+iM
+iM
+Yk
+xV
+Yx
+cy
 uZ
 "}
 (7,1,1) = {"
-uZ
+Kd
 LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+Tx
+lV
+lV
+lV
+lV
+Uw
+mJ
+iM
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+iM
+Ew
+nZ
+iM
+iM
+iM
+iM
+sD
+Yc
 uZ
 "}
 (8,1,1) = {"
-uZ
+Kd
 LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+iP
+lV
+lV
+lV
+lV
+Uw
+mJ
+iM
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+iM
+iM
+iM
+iM
+iM
+NL
+xV
+OU
+Yc
 uZ
 "}
 (9,1,1) = {"
-uZ
+Kd
 LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+UT
+lV
+lV
+lV
+lV
+Uw
+mJ
+iM
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+iM
+jn
+jn
+iM
+iM
+NL
+NL
+NL
+Yc
 uZ
 "}
 (10,1,1) = {"
-uZ
+Kd
 LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+eP
+ec
+Ja
+Ja
+kD
+RB
+sb
+wv
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+iM
+UD
+fG
+iM
+iM
+iM
+iM
+rd
+pw
 uZ
 "}
 (11,1,1) = {"
-uZ
-LV
+Kd
+mJ
+gk
+xa
+hb
+hb
+wb
+GG
 OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+Ww
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+iM
+Sy
+ER
+iM
+iM
+En
+cy
+cy
+cy
 uZ
 "}
 (12,1,1) = {"
-uZ
-LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+Kd
+mJ
+Je
+xa
+hb
+hb
+wb
+KU
+mJ
+iM
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+kt
+Va
+Qg
+iM
+iM
+yl
+TN
+Qx
+cy
 uZ
 "}
 (13,1,1) = {"
-uZ
-LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+nw
+lr
+lr
+wd
+wd
+wd
+wd
+PV
+lr
+cA
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+iM
+Cn
+Cn
+iM
+Fj
+cy
+cy
+cy
+cy
 uZ
 "}
 (14,1,1) = {"
-uZ
-LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+nw
+lr
+aG
+Su
+pb
+pb
+LE
+Zh
+lr
+iM
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+iM
+NL
+NL
+kt
+kt
+jo
+el
+KR
+cy
 uZ
 "}
 (15,1,1) = {"
-uZ
-LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+nw
+wd
+TT
+SG
+SG
+SG
+SG
+hr
+TP
+wv
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+iM
+NL
+NL
+kt
+tU
+bD
+el
+lG
+Yc
 uZ
 "}
 (16,1,1) = {"
-uZ
-LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+nw
+wd
+uI
+SG
+SG
+SG
+SG
+QD
+QD
+Ww
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+iM
+xs
+xs
+kt
+Tr
+Vl
+el
+lG
+Yc
 uZ
 "}
 (17,1,1) = {"
-uZ
-LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+nw
+lr
+Mg
+EM
+JN
+JN
+Vb
+Wy
+lr
+iM
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+kt
+kt
+kt
+kt
+yk
+cy
+el
+VK
+cy
 uZ
 "}
 (18,1,1) = {"
-uZ
-LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+GC
+vP
+vP
+Bs
+Bs
+Bs
+Bs
+qT
+vP
+iM
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+cy
+Kp
+Ww
+uz
+cy
+cy
+lz
+GR
+cy
 uZ
 "}
 (19,1,1) = {"
-uZ
-LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+GC
+vP
+Dd
+wP
+BV
+BV
+Jd
+Ow
+vP
+iM
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+Vl
+mC
+Ww
+yH
+jY
+bD
+Li
+rL
+cy
 uZ
 "}
 (20,1,1) = {"
-uZ
-LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+GC
+Bs
+DJ
+DJ
+DJ
+DJ
+DJ
+Zi
+kB
 ld
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+ld
+Vl
+NB
+iM
+iM
+NB
+Vl
+Li
+nX
+Yc
 uZ
 "}
 (21,1,1) = {"
-uZ
-LV
-OY
-OY
-OY
-OY
-OY
-OY
-OY
+GC
+vP
+fN
+BM
+BM
+BM
+RW
+aX
+ML
 lp
 ld
 cy
-OY
-OY
-OY
-OY
-OY
-OY
-OY
-LV
+WI
+iG
+iG
+Oo
+cy
+Li
+Lv
+cy
 uZ
 "}
 (22,1,1) = {"
-uZ
-LV
-LV
-LV
-LV
-LV
-pw
-pw
-pw
-LV
+GC
+vP
+vP
+Bs
+Bs
+Bs
+Bs
+em
+em
+cy
 Pv
-LV
+cy
 pw
+II
+Yc
 pw
-pw
-LV
-LV
-LV
-LV
-LV
+cy
+XA
+cy
+cy
 uZ
 "}
 (23,1,1) = {"
 KG
 Qm
+xi
 Eu
 Eu
 Eu
@@ -859,8 +1750,7 @@ Eu
 Eu
 Eu
 Eu
-Eu
-aV
+YC
 Eu
 Eu
 Eu
@@ -875,6 +1765,7 @@ KG
 (24,1,1) = {"
 KG
 Qm
+xi
 Eu
 Eu
 Eu
@@ -882,8 +1773,7 @@ Eu
 Eu
 Eu
 Eu
-Eu
-aV
+YC
 Eu
 Eu
 Eu
@@ -898,6 +1788,7 @@ KG
 (25,1,1) = {"
 Qm
 Qm
+xi
 Eu
 Eu
 Eu
@@ -905,8 +1796,7 @@ Eu
 Eu
 Eu
 Eu
-Eu
-aV
+YC
 Eu
 Eu
 Eu
@@ -929,7 +1819,7 @@ Eu
 Eu
 Eu
 Eu
-aV
+YC
 Eu
 Eu
 Eu
@@ -952,7 +1842,7 @@ Eu
 Eu
 Eu
 Eu
-aV
+YC
 Eu
 Eu
 Eu
@@ -974,9 +1864,9 @@ Eu
 Eu
 Eu
 Eu
-Eu
-aV
-Eu
+ss
+YC
+YL
 Eu
 Eu
 Eu
@@ -998,7 +1888,7 @@ Eu
 Eu
 Eu
 Eu
-aV
+YC
 Eu
 Eu
 Eu
@@ -1021,7 +1911,7 @@ Eu
 Eu
 Eu
 Eu
-aV
+YC
 Eu
 Eu
 Eu
@@ -1044,7 +1934,7 @@ Eu
 Eu
 Eu
 Eu
-aV
+YC
 Eu
 Eu
 Eu
@@ -1066,9 +1956,9 @@ Eu
 Eu
 Eu
 Eu
-Eu
-aV
-Eu
+uJ
+YC
+di
 Eu
 Eu
 Eu
@@ -1084,11 +1974,11 @@ wn
 hs
 hs
 hs
-hs
-hs
 Ak
 Ak
 Ak
+Uc
+Uc
 hs
 lO
 hs
@@ -1105,45 +1995,45 @@ wn
 (34,1,1) = {"
 wn
 hs
-le
-le
-le
-le
-le
-le
-le
+sV
+sV
+JT
+JT
+JT
+JT
+JT
 NT
-yf
+zK
 WS
+WC
 le
 le
-le
-le
-le
-le
-yf
+JT
+JT
+JT
+kc
 hs
 wn
 "}
 (35,1,1) = {"
 wn
 hs
-le
-le
-le
-le
-le
-le
-le
-le
-yf
-le
-le
-le
-le
-le
-le
-le
+sV
+sV
+JT
+JT
+JT
+JT
+JT
+IZ
+zK
+mK
+JT
+JT
+JT
+JT
+JT
+JT
 aB
 rE
 wn
@@ -1152,21 +2042,21 @@ wn
 wn
 hs
 hs
-le
-le
-le
-le
+sV
+MH
+MH
+MH
+lx
+bJ
 yf
 yf
-yf
-yf
-le
-le
-le
-le
-le
-le
-le
+JT
+JT
+JT
+JT
+JT
+JT
+JT
 hs
 hs
 wn
@@ -1176,10 +2066,10 @@ wn
 wn
 hs
 hs
+BF
 JT
 JT
-JT
-kc
+eR
 JT
 JT
 JT
@@ -1199,10 +2089,10 @@ iF
 wn
 wn
 hs
-JT
-JT
-JT
-kc
+MH
+dO
+dO
+ki
 JT
 rO
 rO
@@ -1220,12 +2110,12 @@ iF
 (39,1,1) = {"
 iF
 iF
-wn
-hs
-kc
-kc
-kc
-kc
+ej
+eN
+RP
+DU
+DU
+DU
 kc
 fI
 fI
