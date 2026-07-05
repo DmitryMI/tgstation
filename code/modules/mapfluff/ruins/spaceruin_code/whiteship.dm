@@ -22,3 +22,39 @@
 	name = "firelock circuitry malfunctions"
 	desc = "Looks like whoever was writing this got interrupted by something bloody."
 	default_raw_text = "Due to ongoing issues with the firedoor circuitry, only the Bar has firedoors to preve-"
+
+/// Shared techweb used by the Kestrel expedition shuttle's science wing.
+/datum/techweb/kestrel_expedition
+	id = "KESTREL"
+	organization = "Nanotrasen"
+	should_generate_points = TRUE
+
+/proc/get_kestrel_expedition_techweb()
+	var/datum/techweb/kestrel_expedition/web = locate(/datum/techweb/kestrel_expedition) in SSresearch.techwebs
+	if(!web)
+		web = new /datum/techweb/kestrel_expedition
+	return web
+
+/obj/machinery/rnd/server/master/kestrel_expedition/Initialize(mapload)
+	stored_research = get_kestrel_expedition_techweb()
+	return ..()
+
+/obj/machinery/computer/rdconsole/unlocked/kestrel_expedition/Initialize(mapload)
+	stored_research = get_kestrel_expedition_techweb()
+	return ..()
+
+/obj/machinery/computer/rdservercontrol/kestrel_expedition/Initialize(mapload)
+	stored_research = get_kestrel_expedition_techweb()
+	return ..()
+
+/obj/machinery/rnd/production/circuit_imprinter/kestrel_expedition/Initialize(mapload)
+	stored_research = get_kestrel_expedition_techweb()
+	return ..()
+
+/obj/machinery/rnd/production/protolathe/kestrel_expedition/Initialize(mapload)
+	stored_research = get_kestrel_expedition_techweb()
+	return ..()
+
+/obj/machinery/rnd/destructive_analyzer/kestrel_expedition/Initialize(mapload)
+	stored_research = get_kestrel_expedition_techweb()
+	return ..()
