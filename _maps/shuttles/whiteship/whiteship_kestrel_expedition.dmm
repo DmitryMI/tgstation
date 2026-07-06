@@ -324,7 +324,7 @@
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
 "fN" = (
-/obj/machinery/seed_extractor,
+/obj/machinery/biogenerator,
 /obj/machinery/airalarm/directional/east,
 /obj/effect/mapping_helpers/airalarm/all_access,
 /obj/machinery/light{
@@ -585,11 +585,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/armory)
-"lk" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/trinary/mixer/airmix,
-/turf/open/floor/iron/dark,
-/area/shuttle/expedition/cargo)
 "lp" = (
 /obj/effect/mapping_helpers/airalarm/all_access,
 /obj/machinery/airalarm/directional/east,
@@ -724,11 +719,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/armory)
-"ov" = (
-/obj/machinery/firealarm/directional/west,
-/turf/closed/wall/mineral/titanium,
-/turf/open/floor/iron/dark,
-/area/shuttle/expedition/engineering)
 "oD" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
@@ -1145,12 +1135,6 @@
 /obj/machinery/iv_drip,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
-"wP" = (
-/obj/machinery/hydroponics/constructable,
-/obj/machinery/hydroponics/constructable,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/shuttle/expedition/hydroponics)
 "wR" = (
 /obj/structure/chair/comfy/brown{
 	dir = 4
@@ -1644,6 +1628,9 @@
 /obj/structure/closet/secure_closet/hydroponics,
 /obj/structure/cable,
 /obj/effect/spawner/random/food_or_drink/seed,
+/obj/effect/spawner/random/food_or_drink/seed,
+/obj/effect/spawner/random/food_or_drink/seed,
+/obj/item/seeds/wheat,
 /turf/open/floor/iron,
 /area/shuttle/expedition/hydroponics)
 "Je" = (
@@ -2033,6 +2020,7 @@
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/red/filled/corner,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/cargo)
 "Qm" = (
@@ -2116,6 +2104,10 @@
 "RW" = (
 /obj/structure/closet/secure_closet/hydroponics,
 /obj/effect/spawner/random/food_or_drink/seed,
+/obj/effect/spawner/random/food_or_drink/seed_rare,
+/obj/effect/spawner/random/food_or_drink/seed,
+/obj/effect/spawner/random/food_or_drink/seed,
+/obj/item/seeds/wheat,
 /turf/open/floor/iron,
 /area/shuttle/expedition/hydroponics)
 "RX" = (
@@ -2905,7 +2897,7 @@ uZ
 GC
 vP
 Dd
-wP
+BV
 BV
 BV
 Jd
@@ -3134,7 +3126,7 @@ AX
 (29,1,1) = {"
 Qm
 MH
-lk
+aV
 Kw
 Eu
 fT
@@ -3231,7 +3223,7 @@ hs
 Ak
 Ak
 Ak
-ov
+Uc
 Uc
 hs
 lO
