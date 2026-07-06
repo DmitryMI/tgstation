@@ -48,6 +48,7 @@
 	pixel_y = 12;
 	pixel_x = 7
 	},
+/obj/item/gps/spaceruin,
 /turf/open/floor/mineral/titanium,
 /area/ruin/powered/golem_ship)
 "cp" = (
