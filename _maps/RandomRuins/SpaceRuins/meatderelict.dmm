@@ -705,6 +705,7 @@
 	},
 /obj/item/storage/fancy/cigarettes/cigpack_mindbreaker,
 /obj/machinery/light/directional/east,
+/obj/item/gps/spaceruin,
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/powered/biooutpost)
 "oj" = (
@@ -2634,10 +2635,6 @@
 	},
 /turf/open/indestructible/white,
 /area/ruin/space/has_grav/powered/biooutpost)
-"Zr" = (
-/obj/item/gps/spaceruin,
-/turf/open/floor/plating/airless,
-/area/ruin/space)
 "Zs" = (
 /obj/structure/door_assembly/door_assembly_science,
 /obj/effect/mapping_helpers/broken_floor,
@@ -3675,7 +3672,7 @@ Jh
 Jh
 ij
 ij
-Zr
+ML
 sL
 Gj
 Gj
