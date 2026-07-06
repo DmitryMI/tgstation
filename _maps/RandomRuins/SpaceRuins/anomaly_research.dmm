@@ -37,6 +37,7 @@
 "bP" = (
 /obj/structure/table/wood,
 /obj/item/toy/plush/slimeplushie,
+/obj/item/gps/spaceruin,
 /turf/open/floor/wood,
 /area/misc/anomaly_research)
 "cr" = (
