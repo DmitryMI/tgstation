@@ -16,3 +16,4 @@
 # djstation placement_weight=10 always_place=true
 
 whiteshipdock always_place=true
+originalcontent placement_weight=0
