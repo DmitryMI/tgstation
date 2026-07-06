@@ -19,10 +19,10 @@ whiteshipdock always_place=true
 asteroid5 always_place=true
 asteroid7 always_place=true
 
-originalcontent placement_weight=0
+paperwizard placement_weight=0
 space_billboard placement_weight=0
-emptyshell placement_weight=0
-phonebooth placement_weight=0
-shuttlerelic placement_weight=0
-intactemptyship placement_weight=0
+empty-shell placement_weight=0
+space_phonebooth placement_weight=0
+spaceman-origins placement_weight=0
+intact-empty-ship placement_weight=0
 bus placement_weight=0

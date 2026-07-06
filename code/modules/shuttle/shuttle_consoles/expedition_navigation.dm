@@ -12,7 +12,7 @@
 	var/call_time_override = 10
 	/// Optional override for the shuttle's ignition time in deciseconds.
 	var/ignition_time_override = 10
-	designate_time = 10
+	designate_time = 5
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/Initialize(mapload)
 	. = ..()

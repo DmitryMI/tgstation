@@ -100,10 +100,6 @@
 	},
 /turf/open/floor/carpet,
 /area/shuttle/expedition/crew)
-"bO" = (
-/obj/structure/cable,
-/turf/open/floor/catwalk_floor/airless,
-/area/shuttle/expedition/solar)
 "bT" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer4,
@@ -266,14 +262,6 @@
 /area/shuttle/expedition/cargo)
 "fq" = (
 /obj/structure/cable,
-/obj/machinery/power/solar{
-	id = "foreport";
-	name = "Fore-Port Solar Array"
-	},
-/obj/machinery/power/solar{
-	id = "foreport";
-	name = "Fore-Port Solar Array"
-	},
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/solar)
 "fD" = (
@@ -618,7 +606,7 @@
 /area/shuttle/expedition/medbay)
 "lH" = (
 /obj/structure/cable,
-/obj/machinery/power/tracker,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/solar)
 "lK" = (
@@ -713,6 +701,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/crew)
+"oH" = (
+/obj/structure/cable,
+/obj/machinery/power/tracker,
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/solar)
 "pb" = (
 /obj/effect/turf_decal/trimline/red/filled/corner,
 /turf/open/floor/iron/dark,
@@ -955,13 +948,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
-"uj" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/passive_vent{
-	dir = 8
-	},
-/turf/open/floor/catwalk_floor/airless,
-/area/shuttle/expedition/solar)
 "ur" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible/layer2{
 	dir = 8
@@ -993,7 +979,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/admin,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
 "ve" = (
@@ -1090,6 +1075,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
+"wn" = (
+/obj/structure/cable,
+/obj/machinery/power/solar{
+	id = "foreport";
+	name = "Fore-Port Solar Array"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/solar)
 "wp" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/layer_manifold/cyan/visible/layer4{
@@ -1622,10 +1615,8 @@
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
 "Kd" = (
-/obj/structure/cable,
-/obj/machinery/power/solar{
-	id = "foreport";
-	name = "Fore-Port Solar Array"
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 8
 	},
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/solar)
@@ -2425,7 +2416,7 @@ iF
 iF
 iF
 iF
-lH
+oH
 mJ
 Qn
 Qn
@@ -2437,7 +2428,7 @@ KL
 Tc
 Tc
 cy
-lH
+oH
 iF
 iF
 iF
@@ -2446,9 +2437,9 @@ iF
 (2,1,1) = {"
 iF
 iF
-bO
-bO
-bO
+fq
+fq
+fq
 Ag
 vY
 cQ
@@ -2460,16 +2451,16 @@ ca
 Sq
 kq
 tk
-bO
-bO
-bO
+fq
+fq
+fq
 iF
 iF
 "}
 (3,1,1) = {"
 iF
-Kd
-Kd
+fq
+fq
 mJ
 mJ
 mJ
@@ -2485,13 +2476,13 @@ Ne
 cy
 cy
 cy
-Kd
-Kd
+fq
+fq
 iF
 "}
 (4,1,1) = {"
-Kd
-Kd
+fq
+fq
 mJ
 mJ
 eQ
@@ -2510,10 +2501,10 @@ ea
 cy
 cy
 fq
-Kd
+fq
 "}
 (5,1,1) = {"
-Kd
+wn
 mJ
 mJ
 sX
@@ -2533,10 +2524,10 @@ BW
 it
 cy
 cy
-Kd
+wn
 "}
 (6,1,1) = {"
-Kd
+wn
 mJ
 wR
 xa
@@ -2556,10 +2547,10 @@ Yk
 ED
 Yx
 cy
-Kd
+wn
 "}
 (7,1,1) = {"
-Kd
+wn
 LV
 CQ
 xa
@@ -2579,10 +2570,10 @@ iM
 iM
 sD
 jI
-Kd
+wn
 "}
 (8,1,1) = {"
-Kd
+wn
 LV
 bK
 xa
@@ -2602,10 +2593,10 @@ vz
 xV
 OU
 jI
-Kd
+wn
 "}
 (9,1,1) = {"
-Kd
+wn
 LV
 OG
 xa
@@ -2625,10 +2616,10 @@ NL
 zo
 lu
 jI
-Kd
+wn
 "}
 (10,1,1) = {"
-Kd
+wn
 LV
 FB
 aU
@@ -2648,10 +2639,10 @@ Gr
 nR
 rd
 pw
-Kd
+wn
 "}
 (11,1,1) = {"
-Kd
+wn
 mJ
 FB
 aU
@@ -2671,10 +2662,10 @@ En
 cy
 cy
 cy
-Kd
+wn
 "}
 (12,1,1) = {"
-Kd
+wn
 mJ
 Je
 xa
@@ -2694,10 +2685,10 @@ Ti
 TN
 Qx
 cy
-Kd
+wn
 "}
 (13,1,1) = {"
-Kd
+wn
 lr
 lr
 wd
@@ -2717,10 +2708,10 @@ cy
 cy
 cy
 cy
-Kd
+wn
 "}
 (14,1,1) = {"
-Kd
+wn
 lr
 aG
 Su
@@ -2740,10 +2731,10 @@ cy
 el
 KR
 cy
-Kd
+wn
 "}
 (15,1,1) = {"
-Kd
+wn
 nJ
 TT
 SG
@@ -2763,10 +2754,10 @@ wg
 sN
 lG
 jI
-Kd
+wn
 "}
 (16,1,1) = {"
-Kd
+wn
 nJ
 uI
 SG
@@ -2786,10 +2777,10 @@ cy
 RD
 lG
 jI
-Kd
+wn
 "}
 (17,1,1) = {"
-Kd
+wn
 lr
 Mg
 EM
@@ -2809,10 +2800,10 @@ cy
 RD
 Wo
 cy
-Kd
+wn
 "}
 (18,1,1) = {"
-Kd
+wn
 vP
 vP
 Gy
@@ -2832,10 +2823,10 @@ cy
 qw
 AN
 cy
-Kd
+wn
 "}
 (19,1,1) = {"
-Kd
+wn
 vP
 Dd
 BV
@@ -2855,10 +2846,10 @@ sr
 Pc
 rL
 cy
-Kd
+wn
 "}
 (20,1,1) = {"
-Kd
+wn
 qi
 DJ
 DJ
@@ -2878,10 +2869,10 @@ Vl
 Pc
 nX
 jI
-Kd
+wn
 "}
 (21,1,1) = {"
-Kd
+wn
 vP
 fN
 BM
@@ -2901,10 +2892,10 @@ cy
 Li
 bs
 cy
-Kd
+wn
 "}
 (22,1,1) = {"
-Kd
+wn
 vP
 vP
 Bs
@@ -2924,10 +2915,10 @@ cy
 XA
 cy
 cy
-Kd
+wn
 "}
 (23,1,1) = {"
-Kd
+wn
 Qm
 UN
 Eu
@@ -2947,10 +2938,10 @@ Eu
 Eu
 UN
 Qm
-Kd
+wn
 "}
 (24,1,1) = {"
-Kd
+wn
 XQ
 aV
 xJ
@@ -2970,7 +2961,7 @@ Eu
 Eu
 aV
 XQ
-Kd
+wn
 "}
 (25,1,1) = {"
 Qm
@@ -3111,7 +3102,7 @@ Qm
 Qm
 "}
 (31,1,1) = {"
-Kd
+wn
 XQ
 aV
 fk
@@ -3131,10 +3122,10 @@ Ab
 OV
 RX
 Qm
-Kd
+wn
 "}
 (32,1,1) = {"
-Kd
+wn
 Qm
 nj
 Eu
@@ -3154,10 +3145,10 @@ Io
 Nm
 vw
 Qm
-Kd
+wn
 "}
 (33,1,1) = {"
-Kd
+wn
 hs
 hs
 hs
@@ -3177,7 +3168,7 @@ Zm
 Zm
 rE
 Zm
-Kd
+wn
 "}
 (34,1,1) = {"
 II
@@ -3200,7 +3191,7 @@ lK
 og
 kc
 Zm
-Kd
+wn
 "}
 (35,1,1) = {"
 II
@@ -3223,7 +3214,7 @@ xl
 hJ
 aB
 rE
-Kd
+wn
 "}
 (36,1,1) = {"
 II
@@ -3246,11 +3237,11 @@ dQ
 GX
 Zm
 Zm
-Kd
+wn
 "}
 (37,1,1) = {"
-II
-II
+lH
+lH
 hs
 hs
 bT
@@ -3268,13 +3259,13 @@ fc
 GX
 Zm
 Zm
-Kd
-Kd
+fq
+fq
 "}
 (38,1,1) = {"
 iF
-II
-II
+lH
+lH
 hs
 ey
 JT
@@ -3290,14 +3281,14 @@ pZ
 Hz
 Iu
 rE
-Kd
-Kd
+fq
+fq
 iF
 "}
 (39,1,1) = {"
 iF
 iF
-II
+Kd
 hs
 qs
 LQ
@@ -3313,14 +3304,14 @@ pO
 dk
 PE
 Zm
-Kd
+fq
 iF
 iF
 "}
 (40,1,1) = {"
 iF
 iF
-uj
+iF
 hs
 LA
 LA
@@ -3336,7 +3327,7 @@ dl
 dl
 dl
 Zm
-Kd
+iF
 iF
 iF
 "}

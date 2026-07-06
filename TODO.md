@@ -26,7 +26,7 @@ This feature is intended to be upstream-friendly by behaving as a normal space r
    - ~~unlocks new eligible z-levels~~
    - ~~unlocks the station after all eligible ruin z-levels are exhausted~~
    - make the computer dis/re-assemblable with its own circuit board.
-5. Create a new expedition ruin / shuttle template
+5. ~~Create a new expedition ruin / shuttle template~~
 6. ~~Remove "Z-level" terminology from in-game messages.~~
 
 ## Constraints
@@ -41,6 +41,8 @@ This feature is intended to be upstream-friendly by behaving as a normal space r
 
 ## Follow-Ups
 
+- Add bolting buttons for main airlocks
+- Add laser pistols to tactical lockers
 - Add lore and presentation for the expedition start.
 - Add more expedition-compatible shuttle or whiteship variants.
 - Add more space ruins or progression flavor tailored for small crews.
@@ -52,3 +54,5 @@ This feature is intended to be upstream-friendly by behaving as a normal space r
 - [TEST NEEDED] GPS scanning should be disabled in hyperspace
 - ~~Shuttle timing overrides are not working~~
 - ~~Sort Sectors by Z-level index, not alphabetically~~
+- [13:13:09] Runtime in code/modules/jobs/job_types/\_job.dm,425: pda_slot was set but we couldn't find a PDA! when spawning as Expedition Marine.
+- ~~Space ruin budget is not applied correctly.~~
