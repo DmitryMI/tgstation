@@ -560,6 +560,12 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			var/value = LOWER_TEXT(copytext(entry, separator_index + 1))
 
 			switch(key)
+				if("cost")
+					var/cost = text2num(value)
+					if(isnull(cost) || cost < 0)
+						log_world("Invalid cost '[value]' for ruin override '[ruin_id]' in [filename].")
+						continue
+					settings["cost"] = cost
 				if("placement_weight", "weight")
 					var/weight = text2num(value)
 					if(isnull(weight) || weight < 0)
@@ -603,6 +609,8 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			continue
 		var/list/override = ruin_overrides[LOWER_TEXT(R.id)]
 		if(islist(override))
+			if(!isnull(override["cost"]))
+				R.cost = override["cost"]
 			if(!isnull(override["placement_weight"]))
 				R.placement_weight = override["placement_weight"]
 			if(!isnull(override["always_place"]))

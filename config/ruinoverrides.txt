@@ -1,15 +1,17 @@
 # Optional ruin overrides.
 # Format:
-#   <ruin_id> placement_weight=<number> always_place=<true|false> allow_duplicates=<true|false>
+#   <ruin_id> cost=<number> placement_weight=<number> always_place=<true|false> allow_duplicates=<true|false>
 #
 # Notes:
 # - Overrides are matched by ruin id, case-insensitively.
 # - Omit any setting you do not want to override.
+# - cost must be 0 or greater.
 # - placement_weight must be 0 or greater.
 # - always_place forces the ruin into the mandatory placement list for its ruin type.
 # - allow_duplicates controls whether the ruin stays in the random pool after spawning.
 #
 # Examples:
+# oldAIsat cost=2 placement_weight=5
 # oldAIsat placement_weight=5
 # djstation placement_weight=10 always_place=true
 
