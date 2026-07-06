@@ -4,6 +4,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
+/obj/item/storage/box/syringes,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "as" = (
@@ -138,7 +139,6 @@
 /obj/structure/cable,
 /obj/structure/rack,
 /obj/effect/spawner/random/armory/laser_carbine,
-/obj/effect/spawner/random/armory/laser_carbine,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/armory)
 "dl" = (
@@ -184,6 +184,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 10
 	},
+/obj/item/storage/box/beakers,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "ec" = (
@@ -440,7 +441,6 @@
 /area/shuttle/expedition/bridge)
 "it" = (
 /obj/machinery/chem_heater/withbuffer,
-/obj/structure/extinguisher_cabinet/directional/south,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 10
 	},
@@ -482,6 +482,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer4,
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
+"jf" = (
+/obj/structure/table/glass,
+/obj/item/stack/sheet/mineral/plasma{
+	pixel_y = 4
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "jn" = (
 /obj/structure/closet/secure_closet/medical1,
 /turf/open/floor/iron/white,
@@ -617,6 +624,9 @@
 /obj/structure/table/glass,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 3
+	},
+/obj/machinery/reagentgrinder{
+	pixel_y = 7
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
@@ -891,7 +901,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/firedoor,
-/turf/open/floor/iron/dark,
+/turf/open/floor/carpet,
 /area/shuttle/expedition/crew)
 "sr" = (
 /turf/closed/wall/mineral/titanium,
@@ -947,6 +957,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 3
 	},
+/obj/item/clothing/gloves/latex/nitrile,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "tD" = (
@@ -1071,6 +1082,11 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
+/obj/item/storage/box/gloves{
+	pixel_y = 3;
+	pixel_x = 3
+	},
+/obj/item/clothing/gloves/latex,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "vY" = (
@@ -1223,6 +1239,25 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
+"zf" = (
+/obj/structure/table/glass,
+/obj/item/grenade/chem_grenade{
+	pixel_x = 6
+	},
+/obj/item/assembly/signaler{
+	pixel_x = 6pixel_y=-4;
+	pixel_y = 6
+	},
+/obj/item/assembly/timer{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/assembly/igniter{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "zm" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/open/floor/iron/cafeteria,
@@ -1336,6 +1371,16 @@
 /area/shuttle/expedition/hydroponics)
 "BW" = (
 /obj/structure/table/glass,
+/obj/item/reagent_containers/cup/beaker,
+/obj/item/reagent_containers/cup/beaker/large{
+	pixel_x = 6pixel_y=4
+	},
+/obj/item/reagent_containers/dropper{
+	pixel_x = -4pixel_y=8
+	},
+/obj/item/reagent_containers/syringe{
+	pixel_x = 8pixel_y=-2
+	},
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 8
 	},
@@ -1456,6 +1501,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/cargo)
+"Fe" = (
+/obj/structure/table/glass,
+/obj/effect/spawner/random/medical/medkit,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "FB" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/carpet,
@@ -1666,6 +1716,9 @@
 /obj/structure/table/reinforced,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/item/storage/box/masks{
+	pixel_y = 4
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "KG" = (
@@ -1833,6 +1886,7 @@
 /area/shuttle/expedition/medbay)
 "NL" = (
 /obj/structure/table/glass,
+/obj/effect/spawner/random/medical/medkit_rare,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "NR" = (
@@ -1859,6 +1913,15 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
+"Op" = (
+/obj/structure/table/glass,
+/obj/item/clothing/glasses/science,
+/obj/item/clothing/glasses/science{
+	pixel_y = 4;
+	pixel_x = 5
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "Ow" = (
 /obj/structure/cable,
 /obj/machinery/light,
@@ -2031,7 +2094,7 @@
 "Rf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor,
-/turf/open/floor/iron/dark,
+/turf/open/floor/carpet,
 /area/shuttle/expedition/crew)
 "Rl" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
@@ -2151,6 +2214,10 @@
 /area/shuttle/expedition/medbay)
 "UD" = (
 /obj/structure/table/reinforced,
+/obj/item/storage/box/bodybags{
+	pixel_x = -4;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "UF" = (
@@ -2379,6 +2446,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 10
 	},
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "Zh" = (
@@ -2596,7 +2664,7 @@ iM
 iM
 iM
 iM
-NL
+Op
 xV
 OU
 jI
@@ -2619,8 +2687,8 @@ jn
 jn
 iM
 iM
-NL
-NL
+zf
+jf
 lu
 jI
 uZ
@@ -2730,8 +2798,8 @@ lr
 HO
 ld
 ec
-NL
-NL
+Fe
+Fe
 OZ
 Iz
 cy
@@ -2754,7 +2822,7 @@ ZE
 ld
 ec
 NL
-NL
+Fe
 OZ
 Kz
 wg

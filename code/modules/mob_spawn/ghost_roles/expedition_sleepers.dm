@@ -153,6 +153,7 @@
 	access = list(
 		ACCESS_BAR,
 		ACCESS_KITCHEN,
+		ACCESS_ARMORY,
 		ACCESS_BRIG,
 		ACCESS_BRIG_ENTRANCE,
 		ACCESS_COURT,
@@ -271,7 +272,7 @@
 	uniform = /obj/item/clothing/under/rank/security/officer
 	suit = /obj/item/clothing/suit/armor/vest/marine/security
 	suit_store = /obj/item/gun/energy/laser/carbine
-	belt = /obj/item/storage/belt/holster/detective/full/ert
+	belt = /obj/item/storage/belt/holster/energy/laser_pistol
 	ears = /obj/item/radio/headset/headset_sec/alt
 	gloves = /obj/item/clothing/gloves/tackler/combat
 	head = /obj/item/clothing/head/helmet/marine/security
