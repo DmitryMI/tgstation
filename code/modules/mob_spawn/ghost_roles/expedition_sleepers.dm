@@ -270,14 +270,14 @@
 	id_trim = /datum/id_trim/expedition/marine
 	uniform = /obj/item/clothing/under/rank/security/officer
 	suit = /obj/item/clothing/suit/armor/vest/marine/security
-	suit_store = /obj/item/gun/ballistic/automatic/wt550
+	suit_store = /obj/item/gun/energy/laser/carbine
 	belt = /obj/item/storage/belt/holster/detective/full/ert
 	ears = /obj/item/radio/headset/headset_sec/alt
 	gloves = /obj/item/clothing/gloves/tackler/combat
 	head = /obj/item/clothing/head/helmet/marine/security
 	shoes = /obj/item/clothing/shoes/combat/swat
 	l_pocket = /obj/item/restraints/handcuffs
-	r_pocket = /obj/item/assembly/flash/handheld
+	r_pocket = /obj/item/knife/combat
 
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
@@ -285,8 +285,8 @@
 	messenger = /obj/item/storage/backpack/messenger/sec
 
 	backpack_contents = list(
-		/obj/item/ammo_box/magazine/wt550m9 = 2,
-		/obj/item/evidencebag = 1,
+		/obj/item/grenade/flashbang = 1,
+		/obj/item/grenade/stingbang = 1,
 	)
 
 	box = /obj/item/storage/box/survival/security

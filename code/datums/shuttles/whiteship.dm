@@ -19,8 +19,8 @@
 
 /datum/map_template/shuttle/whiteship/kestrel_expedition
 	suffix = "kestrel_expedition"
-	name = "Kestrel Expedition"
-	description = "A blank whiteship template for building out the Kestrel expedition layout."
+	name = "Expeditionary Whiteship"
+	description = "A blank whiteship template for building out an expeditionary layout."
 
 /datum/map_template/shuttle/whiteship/pubby
 	suffix = "pubby"

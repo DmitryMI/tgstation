@@ -23,38 +23,42 @@
 	desc = "Looks like whoever was writing this got interrupted by something bloody."
 	default_raw_text = "Due to ongoing issues with the firedoor circuitry, only the Bar has firedoors to preve-"
 
-/// Shared techweb used by the Kestrel expedition shuttle's science wing.
-/datum/techweb/kestrel_expedition
-	id = "KESTREL"
+/// Shared techweb used by expeditionary whiteship science wings.
+/datum/techweb/expeditionary
+	id = "EXPEDITIONARY"
 	organization = "Nanotrasen"
 	should_generate_points = TRUE
 
-/proc/get_kestrel_expedition_techweb()
-	var/datum/techweb/kestrel_expedition/web = locate(/datum/techweb/kestrel_expedition) in SSresearch.techwebs
+/datum/techweb/expeditionary/New()
+	. = ..()
+	hidden_nodes[TECHWEB_NODE_SHUTTLE_ENG] = TRUE
+
+/proc/get_expeditionary_techweb()
+	var/datum/techweb/expeditionary/web = locate(/datum/techweb/expeditionary) in SSresearch.techwebs
 	if(!web)
-		web = new /datum/techweb/kestrel_expedition
+		web = new /datum/techweb/expeditionary
 	return web
 
-/obj/machinery/rnd/server/master/kestrel_expedition/Initialize(mapload)
-	stored_research = get_kestrel_expedition_techweb()
+/obj/machinery/rnd/server/master/expeditionary/Initialize(mapload)
+	stored_research = get_expeditionary_techweb()
 	return ..()
 
-/obj/machinery/computer/rdconsole/unlocked/kestrel_expedition/Initialize(mapload)
-	stored_research = get_kestrel_expedition_techweb()
+/obj/machinery/computer/rdconsole/unlocked/expeditionary/Initialize(mapload)
+	stored_research = get_expeditionary_techweb()
 	return ..()
 
-/obj/machinery/computer/rdservercontrol/kestrel_expedition/Initialize(mapload)
-	stored_research = get_kestrel_expedition_techweb()
+/obj/machinery/computer/rdservercontrol/expeditionary/Initialize(mapload)
+	stored_research = get_expeditionary_techweb()
 	return ..()
 
-/obj/machinery/rnd/production/circuit_imprinter/kestrel_expedition/Initialize(mapload)
-	stored_research = get_kestrel_expedition_techweb()
+/obj/machinery/rnd/production/techfab/expeditionary
+	name = "expeditionary techfab"
+	desc = "A special expeditionary technology fabricator that produces researched prototypes with raw materials and energy. It is more capable than the models commonly used on Nanotrasen stations."
+
+/obj/machinery/rnd/production/techfab/expeditionary/Initialize(mapload)
+	stored_research = get_expeditionary_techweb()
 	return ..()
 
-/obj/machinery/rnd/production/protolathe/kestrel_expedition/Initialize(mapload)
-	stored_research = get_kestrel_expedition_techweb()
-	return ..()
-
-/obj/machinery/rnd/destructive_analyzer/kestrel_expedition/Initialize(mapload)
-	stored_research = get_kestrel_expedition_techweb()
+/obj/machinery/rnd/destructive_analyzer/expeditionary/Initialize(mapload)
+	stored_research = get_expeditionary_techweb()
 	return ..()
