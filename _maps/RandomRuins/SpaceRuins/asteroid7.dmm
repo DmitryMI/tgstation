@@ -17,11 +17,11 @@
 /turf/open/misc/asteroid/airless,
 /area/ruin/space)
 "f" = (
-/mob/living/basic/bat,
+/mob/living/basic/carp,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space)
 "g" = (
-/mob/living/basic/snake/banded,
+/mob/living/basic/carp,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space)
 
