@@ -312,6 +312,10 @@
 /obj/structure/girder/reinforced,
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/derelictconstruction)
+"HS" = (
+/obj/item/gps/spaceruin,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/derelictconstruction)
 "Ik" = (
 /obj/structure/foamedmetal,
 /turf/open/floor/plating/foam,
@@ -698,7 +702,7 @@ sw
 Cl
 Cl
 xT
-mD
+HS
 OQ
 bY
 bY
