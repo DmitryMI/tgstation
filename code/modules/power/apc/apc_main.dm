@@ -258,19 +258,26 @@
 
 /obj/machinery/power/apc/setDir(newdir)
 	. = ..()
+	var/old_pixel_x = pixel_x
+	var/old_pixel_y = pixel_y
+
+	// APCs are wall-mounted using directional pixel offsets. Clear the old axis
+	// before applying the new direction so shuttle rotations don't leave a stale offset behind.
+	pixel_x = 0
+	pixel_y = 0
 
 	switch(newdir)
 		if(NORTH)
-			offset_old = pixel_y
+			offset_old = old_pixel_y
 			pixel_y = APC_PIXEL_OFFSET
 		if(SOUTH)
-			offset_old = pixel_y
+			offset_old = old_pixel_y
 			pixel_y = -APC_PIXEL_OFFSET
 		if(EAST)
-			offset_old = pixel_x
+			offset_old = old_pixel_x
 			pixel_x = APC_PIXEL_OFFSET
 		if(WEST)
-			offset_old = pixel_x
+			offset_old = old_pixel_x
 			pixel_x = -APC_PIXEL_OFFSET
 
 	var/image/hud_image = image(icon = 'icons/mob/huds/hud.dmi', icon_state = "apc_hacked")
@@ -279,6 +286,11 @@
 	hud_list = list(
 		MALF_APC_HUD = hud_image
 	)
+
+/obj/machinery/power/apc/shuttleRotate(rotation, params)
+	// APC wall offsets are recomputed in setDir(); don't rotate the pixel offset a second time.
+	params &= ~ROTATE_OFFSET
+	return ..()
 
 /obj/machinery/power/apc/on_saboteur(datum/source, disrupt_duration)
 	. = ..()
