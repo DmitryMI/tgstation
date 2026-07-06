@@ -131,6 +131,9 @@
 /area/shuttle/expedition/engineering
 	name = "Expedition Ship Engineering"
 
+/area/shuttle/expedition/solar
+	name = "Expedition Ship Solar Array"
+
 /area/shuttle/expedition/armory
 	name = "Expedition Ship Armory"
 
