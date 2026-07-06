@@ -425,6 +425,12 @@
 	var/azimuth_rate = 1 ///degree change per minute
 
 	var/track = SOLAR_TRACK_OFF ///SOLAR_TRACK_OFF, SOLAR_TRACK_TIMED, SOLAR_TRACK_AUTO
+	/// Tracking mode saved before shuttle movement so temporary unlinking does not clear the user's selection.
+	var/shuttle_saved_track_mode = SOLAR_TRACK_OFF
+	/// Number of connected panels before shuttle movement; used to decide whether recovery is needed.
+	var/shuttle_saved_panel_count = 0
+	/// Whether a tracker was connected before shuttle movement.
+	var/shuttle_saved_had_tracker = FALSE
 
 	var/obj/machinery/power/tracker/connected_tracker = null
 	var/list/connected_panels = list()
@@ -476,6 +482,54 @@
 					var/obj/machinery/power/tracker/T = M
 					if(!T.control) //i.e unconnected
 						T.set_control(src)
+
+/obj/machinery/power/solar_control/proc/reset_connections()
+	for(var/obj/machinery/power/solar/panel in connected_panels.Copy())
+		panel.unset_control()
+	if(connected_tracker)
+		connected_tracker.unset_control()
+	connected_panels.Cut()
+	connected_tracker = null
+	total_capacity = 0
+
+/obj/machinery/power/solar_control/proc/rebuild_connections()
+	reset_connections()
+	search_for_connected()
+	if(track == SOLAR_TRACK_AUTO)
+		if(connected_tracker)
+			connected_tracker.sun_update(SSsun, SSsun.azimuth)
+		else
+			track = SOLAR_TRACK_OFF
+	else
+		set_panels(azimuth_target)
+
+/obj/machinery/power/solar_control/proc/recover_after_shuttle_move()
+	if(shuttle_saved_panel_count <= 0)
+		shuttle_saved_track_mode = SOLAR_TRACK_OFF
+		shuttle_saved_had_tracker = FALSE
+		return
+
+	var/saved_track_mode = shuttle_saved_track_mode
+	var/saved_panel_count = shuttle_saved_panel_count
+	var/saved_had_tracker = shuttle_saved_had_tracker
+
+	rebuild_connections()
+
+	if(connected_panels.len != saved_panel_count || !!connected_tracker != saved_had_tracker)
+		message_admins("Solar controller [src] [ADMIN_VERBOSEJMP(src)] recovered different hardware after shuttle travel: panels [saved_panel_count] -> [connected_panels.len], tracker [saved_had_tracker] -> [!!connected_tracker].")
+
+	track = saved_track_mode
+	if(track == SOLAR_TRACK_AUTO)
+		if(connected_tracker)
+			connected_tracker.sun_update(SSsun, SSsun.azimuth)
+		else
+			track = SOLAR_TRACK_OFF
+	else
+		set_panels(azimuth_target)
+
+	shuttle_saved_track_mode = SOLAR_TRACK_OFF
+	shuttle_saved_panel_count = 0
+	shuttle_saved_had_tracker = FALSE
 
 ///Record the generated power supply and capacity for history
 /obj/machinery/power/solar_control/proc/record()
@@ -560,7 +614,7 @@
 				track = SOLAR_TRACK_OFF
 		return TRUE
 	if(action == "refresh")
-		search_for_connected()
+		rebuild_connections()
 		return TRUE
 	return FALSE
 
@@ -611,6 +665,16 @@
 	if(connected_tracker && (!powernet || connected_tracker.powernet != powernet))
 		connected_tracker.unset_control()
 	record()
+
+/obj/machinery/power/solar_control/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
+	. = ..()
+	shuttle_saved_track_mode = track
+	shuttle_saved_panel_count = connected_panels.len
+	shuttle_saved_had_tracker = !!connected_tracker
+
+/obj/machinery/power/solar_control/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	. = ..()
+	addtimer(CALLBACK(src, PROC_REF(recover_after_shuttle_move)), 1)
 
 ///Ran every time the sun updates.
 /obj/machinery/power/solar_control/proc/timed_track()

@@ -381,6 +381,13 @@ All ShuttleMove procs go here
 	connect_cable(TRUE)
 	propagate_if_no_network()
 
+/obj/structure/cable/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	. = ..()
+	propagate_if_no_network()
+	for(var/dir_check in GLOB.cardinals)
+		mergeConnectedNetworks(dir_check)
+	mergeConnectedNetworksOnTurf()
+
 /obj/machinery/power/shuttle_engine/hypotheticalShuttleMove(move_mode)
 	. = ..()
 	if(. & MOVE_AREA)
