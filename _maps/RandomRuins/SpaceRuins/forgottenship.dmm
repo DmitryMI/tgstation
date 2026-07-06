@@ -541,6 +541,7 @@
 	req_access = list("syndicate");
 	secure = 1
 	},
+/obj/item/gps/spaceruin,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ch" = (
