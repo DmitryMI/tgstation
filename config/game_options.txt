@@ -86,6 +86,9 @@ ALERT_DELTA Destruction of the station is imminent. All crew are instructed to o
 ## The total weight of station goals possible for a round (allows multiple goals)
 STATION_GOAL_BUDGET 1
 
+## Total budget used for space ruins. This is scaled by the number of active space ruin z-levels.
+SPACE_BUDGET 32
+
 ## If TRUE / 1, station is raised to blue alert at roundstart.
 ## If FALSE / 0, station remains at green alert.
 ## Roundstart command report and greendshift announcements are unaffected.

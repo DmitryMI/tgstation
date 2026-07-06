@@ -24,3 +24,5 @@ space_billboard placement_weight=0
 emptyshell placement_weight=0
 phonebooth placement_weight=0
 shuttlerelic placement_weight=0
+intactemptyship placement_weight=0
+bus placement_weight=0
