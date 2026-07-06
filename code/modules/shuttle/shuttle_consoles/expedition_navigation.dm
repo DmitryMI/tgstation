@@ -395,6 +395,21 @@
 /obj/machinery/computer/shuttle/white_ship/bridge/expedition
 	name = "Expedition Bridge Console"
 	desc = "Used to control an expedition vessel."
+	var/bridge_gps_tag = "Deep Space Research Vessel"
+
+/obj/machinery/computer/shuttle/white_ship/bridge/expedition/Initialize(mapload, obj/item/circuitboard/C)
+	. = ..()
+	set_bridge_gps_tag(bridge_gps_tag)
+
+/obj/machinery/computer/shuttle/white_ship/bridge/expedition/proc/set_bridge_gps_tag(new_gps_tag)
+	if(!length(new_gps_tag))
+		return
+	bridge_gps_tag = new_gps_tag
+	var/datum/component/gps/tracker = GetComponent(/datum/component/gps)
+	if(tracker)
+		tracker.gpstag = new_gps_tag
+		return
+	AddComponent(/datum/component/gps, new_gps_tag)
 
 /obj/machinery/computer/shuttle/white_ship/bridge/expedition/proc/get_expedition_navigation_console()
 	var/area/console_area = get_area(src)
@@ -502,6 +517,7 @@
 	late = TRUE
 	var/default_replacement_type = /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition
 	var/bridge_replacement_type = /obj/machinery/computer/shuttle/white_ship/bridge/expedition
+	var/bridge_gps_tag_override = null
 
 /obj/effect/mapping_helpers/replace_whiteship_navigation_with_expedition/LateInitialize()
 	var/area/target_area = get_area(src)
@@ -518,6 +534,9 @@
 		var/obj/machinery/computer/shuttle/white_ship/bridge/replacement = new bridge_replacement_type(console.loc)
 		replacement.setDir(console.dir)
 		replacement.shuttleId = console.shuttleId
+		if(bridge_gps_tag_override && istype(replacement, /obj/machinery/computer/shuttle/white_ship/bridge/expedition))
+			var/obj/machinery/computer/shuttle/white_ship/bridge/expedition/expedition_bridge = replacement
+			expedition_bridge.set_bridge_gps_tag(bridge_gps_tag_override)
 		qdel(console)
 	qdel(src)
 

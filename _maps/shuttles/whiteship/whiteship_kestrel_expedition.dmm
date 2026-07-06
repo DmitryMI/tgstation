@@ -224,10 +224,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/cargo)
-"eP" = (
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/admin,
-/turf/open/floor/carpet,
-/area/shuttle/expedition/crew)
 "eQ" = (
 /obj/structure/urinal/directional/north,
 /obj/structure/window/spawner/directional/south,
@@ -1392,6 +1388,9 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 4
 	},
+/obj/item/gps/spaceruin{
+	gpstag = "Kestrel Expedition Commander"
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
 "Cn" = (
@@ -2258,7 +2257,9 @@
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/replace_whiteship_navigation_with_expedition/gps_reader,
+/obj/effect/mapping_helpers/replace_whiteship_navigation_with_expedition/gps_reader{
+	bridge_gps_tag_override = "Kestrel Deep Space Research Vessel"
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
 "Vy" = (
@@ -2675,7 +2676,7 @@ Kd
 LV
 OG
 xa
-eP
+xa
 hC
 xa
 dN
