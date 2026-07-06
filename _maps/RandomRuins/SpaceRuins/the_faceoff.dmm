@@ -389,6 +389,7 @@
 	pixel_y = -2
 	},
 /obj/item/clothing/mask/gas/syndicate,
+/obj/item/gps/spaceruin,
 /turf/open/floor/iron/dark/airless,
 /area/ruin/space)
 "pl" = (
