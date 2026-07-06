@@ -88,6 +88,7 @@
 	pixel_y = 9
 	},
 /obj/effect/turf_decal/siding/wideplating_new,
+/obj/item/gps/spaceruin,
 /turf/open/floor/mineral/titanium/blue/airless,
 /area/ruin/space/has_grav/powered/mechtransport)
 "kY" = (
