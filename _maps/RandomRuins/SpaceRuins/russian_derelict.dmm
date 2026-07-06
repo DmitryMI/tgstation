@@ -405,6 +405,7 @@
 /obj/item/clothing/head/wizard/fake,
 /obj/item/clothing/head/wizard/santa,
 /obj/item/clothing/head/costume/xenos,
+/obj/item/gps/spaceruin,
 /turf/open/floor/iron/airless,
 /area/ruin/space/ks13/ai/vault)
 "dO" = (
