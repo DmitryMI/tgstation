@@ -51,6 +51,12 @@
 	name = "Space-Ruin Asteroid 6"
 	description = "This asteroid has brittle bone disease, so it is fortunate asteroids don't have bones."
 
+/datum/map_template/ruin/space/asteroid7
+	id = "asteroid7"
+	suffix = "asteroid7.dmm"
+	name = "Space-Ruin Asteroid 7"
+	description = "This asteroid's tunnels have all the charm of a pickaxe argument settled badly."
+
 /datum/map_template/ruin/space/deep_storage
 	id = "deep-storage"
 	suffix = "deepstorage.dmm"

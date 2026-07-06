@@ -17,15 +17,6 @@
 "aB" = (
 /obj/structure/cable,
 /obj/structure/table/reinforced,
-/obj/item/storage/toolbox/ammobox/wt550m9,
-/obj/item/storage/toolbox/ammobox/wt550m9{
-	pixel_y = 4;
-	pixel_x = 4
-	},
-/obj/item/storage/toolbox/ammobox/wt550m9{
-	pixel_y = 9;
-	pixel_x = -3
-	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/armory)
 "aF" = (
@@ -239,6 +230,7 @@
 /area/shuttle/expedition/crew)
 "eQ" = (
 /obj/structure/urinal/directional/north,
+/obj/structure/window/spawner/directional/south,
 /turf/open/floor/iron/freezer,
 /area/shuttle/expedition/crew)
 "fc" = (
@@ -482,13 +474,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer4,
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
-"jf" = (
-/obj/structure/table/glass,
-/obj/item/stack/sheet/mineral/plasma{
-	pixel_y = 4
-	},
-/turf/open/floor/iron/white,
-/area/shuttle/expedition/medbay)
 "jn" = (
 /obj/structure/closet/secure_closet/medical1,
 /turf/open/floor/iron/white,
@@ -544,6 +529,14 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/expedition/medbay)
+"kr" = (
+/obj/structure/table/wood,
+/obj/effect/spawner/random/entertainment/gambling{
+	pixel_y = 6;
+	pixel_x = 5
+	},
+/turf/open/floor/carpet,
+/area/shuttle/expedition/crew)
 "ks" = (
 /obj/machinery/suit_storage_unit/open,
 /obj/effect/turf_decal/bot,
@@ -939,6 +932,7 @@
 	},
 /obj/structure/curtain,
 /obj/item/soap,
+/obj/structure/window/spawner/directional/east,
 /turf/open/floor/iron/freezer,
 /area/shuttle/expedition/crew)
 "tk" = (
@@ -1041,6 +1035,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
+"ve" = (
+/obj/structure/table/glass,
+/obj/effect/spawner/random/medical/medkit_rare,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
+"vj" = (
+/obj/structure/table/glass,
+/obj/effect/spawner/random/medical/medkit,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "vl" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/command/glass,
@@ -1074,6 +1078,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/cargo)
+"vz" = (
+/obj/structure/table/glass,
+/obj/item/clothing/glasses/science,
+/obj/item/clothing/glasses/science{
+	pixel_y = 4;
+	pixel_x = 5
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "vP" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/expedition/hydroponics)
@@ -1239,29 +1252,17 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
-"zf" = (
-/obj/structure/table/glass,
-/obj/item/grenade/chem_grenade{
-	pixel_x = 6
-	},
-/obj/item/assembly/signaler{
-	pixel_x = 6pixel_y=-4;
-	pixel_y = 6
-	},
-/obj/item/assembly/timer{
-	pixel_x = -5;
-	pixel_y = -3
-	},
-/obj/item/assembly/igniter{
-	pixel_x = 4;
-	pixel_y = 5
-	},
-/turf/open/floor/iron/white,
-/area/shuttle/expedition/medbay)
 "zm" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/open/floor/iron/cafeteria,
 /area/shuttle/expedition/kitchen)
+"zo" = (
+/obj/structure/table/glass,
+/obj/item/stack/sheet/mineral/plasma{
+	pixel_y = 4
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "zL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1501,11 +1502,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/cargo)
-"Fe" = (
-/obj/structure/table/glass,
-/obj/effect/spawner/random/medical/medkit,
-/turf/open/floor/iron/white,
-/area/shuttle/expedition/medbay)
 "FB" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/carpet,
@@ -1812,6 +1808,8 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/crew)
 "Mf" = (
+/obj/structure/window/spawner/directional/east,
+/obj/machinery/door/window,
 /turf/open/floor/iron/freezer,
 /area/shuttle/expedition/crew)
 "Mg" = (
@@ -1886,7 +1884,21 @@
 /area/shuttle/expedition/medbay)
 "NL" = (
 /obj/structure/table/glass,
-/obj/effect/spawner/random/medical/medkit_rare,
+/obj/item/grenade/chem_grenade{
+	pixel_x = 6
+	},
+/obj/item/assembly/signaler{
+	pixel_x = 6pixel_y=-4;
+	pixel_y = 6
+	},
+/obj/item/assembly/timer{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/assembly/igniter{
+	pixel_x = 4;
+	pixel_y = 5
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "NR" = (
@@ -1913,15 +1925,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
-"Op" = (
-/obj/structure/table/glass,
-/obj/item/clothing/glasses/science,
-/obj/item/clothing/glasses/science{
-	pixel_y = 4;
-	pixel_x = 5
-	},
-/turf/open/floor/iron/white,
-/area/shuttle/expedition/medbay)
 "Ow" = (
 /obj/structure/cable,
 /obj/machinery/light,
@@ -1949,10 +1952,6 @@
 "OQ" = (
 /obj/structure/table/wood/poker,
 /obj/effect/spawner/random/entertainment/deck,
-/obj/effect/spawner/random/entertainment/gambling{
-	pixel_y = 6;
-	pixel_x = 5
-	},
 /turf/open/floor/carpet,
 /area/shuttle/expedition/crew)
 "OU" = (
@@ -2259,6 +2258,7 @@
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/replace_whiteship_navigation_with_expedition/gps_reader,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
 "Vy" = (
@@ -2664,7 +2664,7 @@ iM
 iM
 iM
 iM
-Op
+vz
 xV
 OU
 jI
@@ -2687,8 +2687,8 @@ jn
 jn
 iM
 iM
-zf
-jf
+NL
+zo
 lu
 jI
 uZ
@@ -2698,7 +2698,7 @@ Kd
 LV
 FB
 aU
-hb
+kr
 Ja
 kD
 PX
@@ -2798,8 +2798,8 @@ lr
 HO
 ld
 ec
-Fe
-Fe
+vj
+vj
 OZ
 Iz
 cy
@@ -2821,8 +2821,8 @@ TP
 ZE
 ld
 ec
-NL
-Fe
+ve
+vj
 OZ
 Kz
 wg

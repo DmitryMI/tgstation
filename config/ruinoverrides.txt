@@ -16,4 +16,11 @@
 # djstation placement_weight=10 always_place=true
 
 whiteshipdock always_place=true
+asteroid5 always_place=true
+asteroid7 always_place=true
+
 originalcontent placement_weight=0
+space_billboard placement_weight=0
+emptyshell placement_weight=0
+phonebooth placement_weight=0
+shuttlerelic placement_weight=0
