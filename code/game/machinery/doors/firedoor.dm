@@ -58,6 +58,8 @@
 	var/datum/looping_sound/firealarm/soundloop
 	///Keeps track of if we're playing the alarm sound loop (as only one firelock per group should be). Used during power changes.
 	var/is_playing_alarm = FALSE
+	///Suppresses the normal Moved() adjacent turf recalculation while the firelock is being relocated by shuttle movement.
+	var/suppress_adjacent_recalc = FALSE
 
 	var/knock_sound = 'sound/effects/glass/glassknock.ogg'
 	var/bash_sound = 'sound/effects/glass/glassbash.ogg'
@@ -718,8 +720,20 @@
 
 /obj/machinery/door/firedoor/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
+	if(suppress_adjacent_recalc)
+		return
 	unregister_adjacent_turfs(old_loc)
 	register_adjacent_turfs()
+
+/obj/machinery/door/firedoor/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
+	unregister_adjacent_turfs(oldT)
+	suppress_adjacent_recalc = TRUE
+	return ..()
+
+/obj/machinery/door/firedoor/lateShuttleMove(turf/oldT, list/movement_force, move_dir)
+	register_adjacent_turfs()
+	suppress_adjacent_recalc = FALSE
+	return ..()
 
 /obj/machinery/door/firedoor/closed
 	icon_state = "door_closed"
