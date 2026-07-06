@@ -3012,6 +3012,7 @@
 /obj/item/clothing/mask/facehugger/impregnated,
 /obj/structure/cable,
 /obj/effect/spawner/random/exotic/antag_gear,
+/obj/item/gps/spaceruin,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/infested_frigate)
 "Xm" = (
