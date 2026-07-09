@@ -56,3 +56,8 @@ This feature is intended to be upstream-friendly by behaving as a normal space r
 - ~~Sort Sectors by Z-level index, not alphabetically~~
 - [13:13:09] Runtime in code/modules/jobs/job_types/\_job.dm,425: pda_slot was set but we couldn't find a PDA! when spawning as Expedition Marine.
 - ~~Space ruin budget is not applied correctly.~~
+- Publishing papers?
+- No NT BR guns
+- No Laser guns
+- Solar tracker looses mode
+- Kitchen and Dorm double doors are rotated incorrectly
