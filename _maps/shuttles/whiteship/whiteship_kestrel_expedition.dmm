@@ -649,7 +649,9 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/armory)
 "lO" = (
-/obj/machinery/door/airlock/engineering/glass,
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Engineering Bay"
+	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -882,7 +884,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
-	name = "Starboard Primary Hallway"
+	name = "Crew Quarters Access"
 	},
 /turf/open/floor/carpet,
 /area/shuttle/expedition/crew)
@@ -985,8 +987,8 @@
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
 "uz" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Starboard Primary Hallway"
+/obj/machinery/door/airlock/medical{
+	name = "Primary Surgical Theatre"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/firedoor,
@@ -1022,7 +1024,9 @@
 /area/shuttle/expedition/medbay)
 "vl" = (
 /obj/structure/cable,
-/obj/machinery/door/airlock/command/glass,
+/obj/machinery/door/airlock/command/glass{
+	name = "Cockpit"
+	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor,
@@ -1097,7 +1101,7 @@
 "wg" = (
 /obj/machinery/door/airlock/medical/glass{
 	id_tag = "MedbayFoyer";
-	name = "Medbay Clinic"
+	name = "Crew Sleepers"
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1122,6 +1126,7 @@
 "wH" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/iv_drip,
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "wR" = (
@@ -1310,7 +1315,9 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/cargo)
 "Ba" = (
-/obj/machinery/door/airlock/highsecurity,
+/obj/machinery/door/airlock/highsecurity{
+	name = "Armory"
+	},
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/dark_red/filled/warning{
 	dir = 1
@@ -1597,7 +1604,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/trimline/blue/filled/line,
-/obj/machinery/firealarm/directional/south,
 /obj/machinery/light,
 /obj/machinery/stasis,
 /turf/open/floor/iron/white,
@@ -1840,8 +1846,8 @@
 "NC" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Starboard Primary Hallway"
+/obj/machinery/door/airlock/medical{
+	name = "Primary Surgical Theatre"
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
@@ -1999,8 +2005,8 @@
 "PZ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Starboard Primary Hallway"
+/obj/machinery/door/airlock/public{
+	name = "Kitchen"
 	},
 /turf/open/floor/iron/cafeteria,
 /area/shuttle/expedition/kitchen)
@@ -2069,7 +2075,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
-	name = "Starboard Primary Hallway"
+	name = "Crew Quarters Access"
 	},
 /turf/open/floor/carpet,
 /area/shuttle/expedition/crew)
@@ -2173,8 +2179,8 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Starboard Primary Hallway"
+/obj/machinery/door/airlock/public{
+	name = "Kitchen"
 	},
 /turf/open/floor/iron/cafeteria,
 /area/shuttle/expedition/kitchen)
