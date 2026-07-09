@@ -512,7 +512,6 @@
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "jY" = (
-/obj/structure/closet/crate/freezer/blood,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
@@ -521,6 +520,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 10
 	},
+/obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "kc" = (
@@ -973,10 +973,10 @@
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
 "tU" = (
-/obj/machinery/stasis,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
 	},
+/obj/machinery/iv_drip,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "ur" = (
@@ -992,6 +992,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "uI" = (
@@ -1013,14 +1014,13 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
 "ve" = (
-/obj/structure/table/glass,
-/obj/effect/spawner/random/medical/medkit_rare,
-/turf/open/floor/iron/white,
-/area/shuttle/expedition/medbay)
-"vj" = (
-/obj/structure/table/glass,
-/obj/effect/spawner/random/medical/medkit,
-/turf/open/floor/iron/white,
+/obj/structure/window/spawner/directional/east,
+/obj/structure/bodycontainer/morgue{
+	dir = 2
+	},
+/obj/structure/window/spawner/directional/north,
+/obj/effect/turf_decal/stripes/red/line,
+/turf/open/floor/iron/dark,
 /area/shuttle/expedition/medbay)
 "vl" = (
 /obj/structure/cable,
@@ -1078,7 +1078,6 @@
 	pixel_y = 3;
 	pixel_x = 3
 	},
-/obj/item/clothing/gloves/latex,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "vY" = (
@@ -1125,7 +1124,6 @@
 /area/shuttle/expedition/engineering)
 "wH" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
-/obj/machinery/iv_drip,
 /obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
@@ -1171,6 +1169,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "xJ" = (
@@ -1239,6 +1238,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
+/obj/machinery/stasis,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "Ab" = (
@@ -1374,7 +1374,21 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
 "Cn" = (
-/obj/structure/closet/secure_closet/medical2,
+/obj/structure/table/reinforced,
+/obj/effect/spawner/random/medical/medkit,
+/obj/effect/spawner/random/medical/medkit_rare{
+	pixel_y = 2;
+	pixel_x = 2
+	},
+/obj/item/clothing/gloves/latex,
+/obj/effect/spawner/random/medical/medkit{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/spawner/random/medical/medkit{
+	pixel_x = 6;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "Co" = (
@@ -1605,7 +1619,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/light,
-/obj/machinery/stasis,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "II" = (
@@ -1844,11 +1857,10 @@
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "NC" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/medical{
-	name = "Primary Surgical Theatre"
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 1
 	},
+/obj/structure/bed/medical/emergency,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "NH" = (
@@ -2153,8 +2165,8 @@
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "Tr" = (
-/obj/machinery/iv_drip,
 /obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/machinery/iv_drip,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "TE" = (
@@ -2292,6 +2304,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
 	},
+/obj/structure/closet/secure_closet/medical2,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "Wo" = (
@@ -2310,7 +2323,6 @@
 	dir = 2
 	},
 /obj/structure/window/spawner/directional/north,
-/obj/structure/window/spawner/directional/east,
 /obj/effect/turf_decal/stripes/red/line,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/medbay)
@@ -2443,6 +2455,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 5
 	},
+/obj/machinery/stasis,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "Yk" = (
@@ -2783,10 +2796,10 @@ PV
 lr
 OM
 ld
-ec
+NC
 Cn
-Cn
-iM
+ve
+qZ
 wH
 cy
 cy
@@ -2807,8 +2820,8 @@ lr
 HO
 ld
 ec
-vj
-vj
+iM
+iM
 OZ
 Iz
 cy
@@ -2830,8 +2843,8 @@ TP
 ZE
 ld
 ec
-ve
-vj
+iM
+iM
 OZ
 Kz
 wg
@@ -2899,8 +2912,8 @@ vP
 HO
 Un
 cy
+cy
 Kp
-NC
 uz
 cy
 cy
