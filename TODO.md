@@ -50,14 +50,15 @@ This feature is intended to be upstream-friendly by behaving as a normal space r
 ## Known issues
 
 - ~~Bluespace vector resolution percentage takes GPS devices from previous levels into calculation.~~
-- APCs are rotated wrong on whiteship rotations. But AFAIR this did not happen with custom shuttles.
+- ~~APCs are rotated wrong on whiteship rotations. But AFAIR this did not happen with custom shuttles.~~
 - [TEST NEEDED] GPS scanning should be disabled in hyperspace
 - ~~Shuttle timing overrides are not working~~
 - ~~Sort Sectors by Z-level index, not alphabetically~~
 - [13:13:09] Runtime in code/modules/jobs/job_types/\_job.dm,425: pda_slot was set but we couldn't find a PDA! when spawning as Expedition Marine.
 - ~~Space ruin budget is not applied correctly.~~
 - Publishing papers?
-- No NT BR guns
+- ~~No NT BR guns~~
 - No Laser guns
 - Solar tracker looses mode
-- Kitchen and Dorm double doors are rotated incorrectly
+- ~~Kitchen and Dorm double doors are rotated incorrectly~~
+- Expedition Commander is trackable on Crew Monitor
