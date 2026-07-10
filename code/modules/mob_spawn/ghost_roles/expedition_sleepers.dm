@@ -268,6 +268,7 @@
 /datum/outfit/job/expedition/marine
 	name = "Expedition Marine"
 	jobtype = /datum/job/expedition_marine
+	pda_slot = null
 
 	id_trim = /datum/id_trim/expedition/marine
 	uniform = /obj/item/clothing/under/rank/security/officer

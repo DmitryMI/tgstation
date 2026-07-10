@@ -110,6 +110,43 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SECURITY)
 
+/datum/techweb_node/exp_laser_pistols
+	id = TECHWEB_NODE_EXP_LASER_PISTOLS
+	display_name = "Compact Heat Delivery Systems"
+	description = "Miniaturized emitter housings, shortened heat sinks, and field-conversion standards for the Type 5 platform."
+	prereq_ids = list(TECHWEB_NODE_ELECTRIC_WEAPONS)
+	design_ids = list(
+		"type5_pistol",
+		"type5_standard",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
+	hidden = TRUE
+	announce_channels = list(RADIO_CHANNEL_SECURITY)
+
+/datum/techweb_node/exp_laser_carbines
+	id = TECHWEB_NODE_EXP_LASER_CARBINES
+	display_name = "Rapid Heat Delivery Systems"
+	description = "Refined focusing arrays and cycling assemblies for sustained burst output on the Type 5 platform."
+	prereq_ids = list(TECHWEB_NODE_EXP_LASER_PISTOLS)
+	design_ids = list(
+		"type5_carbine",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
+	hidden = TRUE
+	announce_channels = list(RADIO_CHANNEL_SECURITY)
+
+/datum/techweb_node/exp_laser_rifles
+	id = TECHWEB_NODE_EXP_LASER_RIFLES
+	display_name = "Assault Heat Delivery Systems"
+	description = "Reinforced capacitor rails and hardened emitter shrouds for high-tempo combat use on the Type 5 platform."
+	prereq_ids = list(TECHWEB_NODE_EXP_LASER_CARBINES)
+	design_ids = list(
+		"type5_assault",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
+	hidden = TRUE
+	announce_channels = list(RADIO_CHANNEL_SECURITY)
+
 /datum/techweb_node/beam_weapons
 	id = TECHWEB_NODE_BEAM_WEAPONS
 	display_name = "Advanced Beam Weaponry"

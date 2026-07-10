@@ -32,6 +32,9 @@
 /datum/techweb/expeditionary/New()
 	. = ..()
 	hidden_nodes[TECHWEB_NODE_SHUTTLE_ENG] = TRUE
+	hidden_nodes -= TECHWEB_NODE_EXP_LASER_PISTOLS
+	hidden_nodes -= TECHWEB_NODE_EXP_LASER_CARBINES
+	hidden_nodes -= TECHWEB_NODE_EXP_LASER_RIFLES
 
 /proc/get_expeditionary_techweb()
 	var/datum/techweb/expeditionary/web = locate(/datum/techweb/expeditionary) in SSresearch.techwebs

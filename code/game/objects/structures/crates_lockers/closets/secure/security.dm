@@ -337,8 +337,6 @@
 	name = "expeditionary tac locker"
 
 /obj/structure/closet/secure_closet/tac/expeditionary/PopulateContents()
-	new /obj/item/gun/energy/laser/assault(src)
-	new /obj/item/gun/energy/laser/pistol(src)
 	new /obj/item/storage/belt/holster/energy(src)
 	new /obj/item/knife/combat(src)
 	new /obj/item/clothing/head/helmet/alt(src)

@@ -11,10 +11,34 @@
 
 /obj/item/gun/energy/laser/Initialize(mapload)
 	. = ..()
-	// Only regular lasguns can be slapcrafted
-	if(type != /obj/item/gun/energy/laser)
+	var/static/list/type5_conversion_recipes = list(
+		/obj/item/gun/energy/laser = list(
+			/datum/crafting_recipe/type5_laser/pistol,
+			/datum/crafting_recipe/type5_laser/carbine,
+			/datum/crafting_recipe/type5_laser/assault,
+			/datum/crafting_recipe/laser/xraylaser,
+			/datum/crafting_recipe/laser/hellgun,
+			/datum/crafting_recipe/laser/ioncarbine,
+		),
+		/obj/item/gun/energy/laser/pistol = list(
+			/datum/crafting_recipe/type5_laser/base,
+			/datum/crafting_recipe/type5_laser/carbine,
+			/datum/crafting_recipe/type5_laser/assault,
+		),
+		/obj/item/gun/energy/laser/carbine = list(
+			/datum/crafting_recipe/type5_laser/base,
+			/datum/crafting_recipe/type5_laser/pistol,
+			/datum/crafting_recipe/type5_laser/assault,
+		),
+		/obj/item/gun/energy/laser/assault = list(
+			/datum/crafting_recipe/type5_laser/base,
+			/datum/crafting_recipe/type5_laser/pistol,
+			/datum/crafting_recipe/type5_laser/carbine,
+		),
+	)
+	var/list/slapcraft_recipe_list = type5_conversion_recipes[type]
+	if(!slapcraft_recipe_list)
 		return
-	var/static/list/slapcraft_recipe_list = list(/datum/crafting_recipe/laser/xraylaser, /datum/crafting_recipe/laser/hellgun, /datum/crafting_recipe/laser/ioncarbine)
 	AddElement(
 		/datum/element/slapcrafting,\
 		slapcraft_recipes = slapcraft_recipe_list,\

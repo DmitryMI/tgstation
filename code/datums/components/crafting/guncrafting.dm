@@ -98,6 +98,42 @@
 	desc = "A suitcase containing the necessary gun parts to transform a standard laser gun into a ion carbine. Perfect against lockers you don't have access to."
 	custom_materials = list(/datum/material/silver = SHEET_MATERIAL_AMOUNT * 3, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 4, /datum/material/uranium = SHEET_MATERIAL_AMOUNT)
 
+/obj/item/weaponcrafting/gunkit/type5
+	name = "Type 5 standardization retrofit kit (lethal)"
+	desc = "A suitcase containing the standardized housings and emitter brackets needed to return a compatible Type 5 heat delivery system to its baseline rifle pattern."
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+	)
+
+/obj/item/weaponcrafting/gunkit/type5/pistol
+	name = "Type 5/C laser pistol conversion kit (lethal)"
+	desc = "A suitcase containing the compact housings, shortened heat sinks, and control assemblies needed to refit a compatible Type 5 laser weapon into a pistol."
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT,
+		/datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+
+/obj/item/weaponcrafting/gunkit/type5/carbine
+	name = "Type 5/R laser carbine conversion kit (lethal)"
+	desc = "A suitcase containing the cycling assemblies and burst-control components needed to refit a compatible Type 5 laser weapon into a carbine."
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 1.5,
+		/datum/material/silver = SHEET_MATERIAL_AMOUNT,
+	)
+
+/obj/item/weaponcrafting/gunkit/type5/assault
+	name = "Type 5/A assault laser rifle conversion kit (lethal)"
+	desc = "A suitcase containing reinforced emitter rails, hardened furniture, and control hardware needed to refit a compatible Type 5 laser weapon into an assault rifle."
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3.5,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/silver = SHEET_MATERIAL_AMOUNT,
+		/datum/material/titanium = HALF_SHEET_MATERIAL_AMOUNT,
+	)
+
 /obj/item/weaponcrafting/gunkit/temperature
 	name = "temperature gun parts kit (less lethal/very lethal (lizardpeople))"
 	desc = "A suitcase containing the necessary gun parts to transform a standard energy gun into a temperature gun. Fantastic at birthday parties and killing indigenous populations of lizardpeople."

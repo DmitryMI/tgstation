@@ -119,6 +119,64 @@
 	blacklist = laser_blacklist
 	return ..()
 
+/datum/crafting_recipe/type5_laser
+	abstract_type = /datum/crafting_recipe/type5_laser
+	/// Type 5 conversion kits should only accept the core Nanotrasen Type 5 family.
+	var/static/list/type5_blacklist
+	var/static/list/type5_whitelist = list(
+		/obj/item/gun/energy/laser/pistol,
+		/obj/item/gun/energy/laser/carbine,
+		/obj/item/gun/energy/laser/assault,
+	)
+
+/datum/crafting_recipe/type5_laser/New()
+	if(isnull(type5_blacklist))
+		type5_blacklist = subtypesof(/obj/item/gun/energy/laser)
+		for(var/typepath in type5_whitelist)
+			type5_blacklist -= typepath
+	blacklist = typecacheof(type5_blacklist)
+	return ..()
+
+/datum/crafting_recipe/type5_laser/base
+	name = "Type 5 Laser Gun"
+	result = /obj/item/gun/energy/laser
+	reqs = list(
+		/obj/item/gun/energy/laser = 1,
+		/obj/item/weaponcrafting/gunkit/type5 = 1,
+	)
+	time = 10 SECONDS
+	category = CAT_WEAPON_RANGED
+
+/datum/crafting_recipe/type5_laser/pistol
+	name = "Type 5/C Laser Pistol"
+	result = /obj/item/gun/energy/laser/pistol
+	reqs = list(
+		/obj/item/gun/energy/laser = 1,
+		/obj/item/weaponcrafting/gunkit/type5/pistol = 1,
+	)
+	time = 10 SECONDS
+	category = CAT_WEAPON_RANGED
+
+/datum/crafting_recipe/type5_laser/carbine
+	name = "Type 5/R Laser Carbine"
+	result = /obj/item/gun/energy/laser/carbine
+	reqs = list(
+		/obj/item/gun/energy/laser = 1,
+		/obj/item/weaponcrafting/gunkit/type5/carbine = 1,
+	)
+	time = 10 SECONDS
+	category = CAT_WEAPON_RANGED
+
+/datum/crafting_recipe/type5_laser/assault
+	name = "Type 5/A Assault Laser Rifle"
+	result = /obj/item/gun/energy/laser/assault
+	reqs = list(
+		/obj/item/gun/energy/laser = 1,
+		/obj/item/weaponcrafting/gunkit/type5/assault = 1,
+	)
+	time = 10 SECONDS
+	category = CAT_WEAPON_RANGED
+
 /datum/crafting_recipe/laser/xraylaser
 	name = "X-ray Laser Gun"
 	result = /obj/item/gun/energy/laser/xray
