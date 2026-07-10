@@ -21,6 +21,8 @@
 	vent_movement = NONE
 	///Pressure that the pump will reach when on
 	var/target_pressure = ONE_ATMOSPHERE
+	///Maximum pressure this specific pump can be configured to output.
+	var/max_output_pressure = MAX_OUTPUT_PRESSURE
 
 /obj/machinery/atmospherics/components/binary/pump/Initialize(mapload)
 	. = ..()
@@ -42,10 +44,10 @@
 	return CLICK_ACTION_BLOCKING
 
 /obj/machinery/atmospherics/components/binary/pump/click_alt(mob/user)
-	if(target_pressure == MAX_OUTPUT_PRESSURE)
+	if(target_pressure == max_output_pressure)
 		return CLICK_ACTION_BLOCKING
 
-	target_pressure = MAX_OUTPUT_PRESSURE
+	target_pressure = max_output_pressure
 	investigate_log("was set to [target_pressure] kPa by [key_name(user)]", INVESTIGATE_ATMOS)
 	balloon_alert(user, "pressure output set to [target_pressure] kPa")
 	update_appearance(UPDATE_ICON)
@@ -75,7 +77,7 @@
 	var/data = list()
 	data["on"] = on
 	data["pressure"] = round(target_pressure)
-	data["max_pressure"] = round(MAX_OUTPUT_PRESSURE)
+	data["max_pressure"] = round(max_output_pressure)
 	return data
 
 /obj/machinery/atmospherics/components/binary/pump/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -90,13 +92,13 @@
 		if("pressure")
 			var/pressure = params["pressure"]
 			if(pressure == "max")
-				pressure = MAX_OUTPUT_PRESSURE
+				pressure = max_output_pressure
 				. = TRUE
 			else if(text2num(pressure) != null)
 				pressure = text2num(pressure)
 				. = TRUE
 			if(.)
-				target_pressure = clamp(pressure, 0, MAX_OUTPUT_PRESSURE)
+				target_pressure = clamp(pressure, 0, max_output_pressure)
 				investigate_log("was set to [target_pressure] kPa by [key_name(usr)]", INVESTIGATE_ATMOS)
 	update_appearance(UPDATE_ICON)
 
@@ -129,6 +131,9 @@
 /obj/machinery/atmospherics/components/binary/pump/on/layer5
 	piping_layer = 5
 	icon_state = "pump_on_map-5"
+
+/obj/machinery/atmospherics/components/binary/pump/high_pressure
+	max_output_pressure = 46000
 
 /obj/item/circuit_component/atmos_pump
 	display_name = "Atmospheric Binary Pump"
@@ -189,7 +194,9 @@
 	return ..()
 
 /obj/item/circuit_component/atmos_pump/pre_input_received(datum/port/input/port)
-	pressure_value.set_value(clamp(pressure_value.value, 0, MAX_OUTPUT_PRESSURE))
+	if(!connected_pump)
+		return
+	pressure_value.set_value(clamp(pressure_value.value, 0, connected_pump.max_output_pressure))
 
 /obj/item/circuit_component/atmos_pump/proc/handle_pump_activation(datum/source, active)
 	SIGNAL_HANDLER
