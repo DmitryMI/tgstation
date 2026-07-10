@@ -59,6 +59,6 @@ This feature is intended to be upstream-friendly by behaving as a normal space r
 - Publishing papers?
 - ~~No NT BR guns~~
 - No Laser guns
-- Solar tracker looses mode
+- Solar tracker looses mode and solars
 - ~~Kitchen and Dorm double doors are rotated incorrectly~~
 - Expedition Commander is trackable on Crew Monitor

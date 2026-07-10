@@ -226,7 +226,7 @@
 	uniform = /obj/item/clothing/under/rank/medical/doctor
 	suit = /obj/item/clothing/suit/toggle/labcoat/science
 	suit_store = /obj/item/flashlight/pen
-	belt = /obj/item/modular_computer/pda/medical
+	belt = /obj/item/modular_computer/pda/medical/expedition
 	ears = /obj/item/radio/headset/headset_medsci
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	l_hand = /obj/item/storage/medkit/surgery
