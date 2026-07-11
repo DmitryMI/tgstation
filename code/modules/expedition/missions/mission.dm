@@ -35,6 +35,20 @@
 	name = "Operation Broken Chain"
 	briefing = "Central Command received a fragmented distress transmission from a freight caravan servicing regional corporate routes. The feed ended amid weapons fire, and every convoy transponder subsequently went dark. Proceed to the last reported coordinates, search the vessels for survivors, secure their cargo and manifests, and recover navigation records that may identify whoever intercepted the convoy. Preserve any serviceable freighter for return to Nanotrasen control. Expect armed resistance."
 
+/datum/expedition_mission/deep_storage/investigate_construction
+	ruin_type = /datum/map_template/ruin/space/deep_storage
+	weight = 100
+	disclose_location = FALSE
+	name = "Operation Stonework"
+	briefing = "Long-range surveys identified an otherwise unremarkable asteroid surrounded by intermittent construction emissions. No registered installation or mining claim exists at the source. Locate the asteroid, investigate the activity, identify whoever established a presence there, and recover records explaining the site's purpose."
+
+/datum/expedition_mission/hilbertresearchfacility/recover_bluespace_research
+	ruin_type = /datum/map_template/ruin/space/hilbertresearchfacility
+	weight = 100
+	disclose_location = FALSE
+	name = "Operation Afterimage"
+	briefing = "Central Command instruments recorded a localized bluespace ripple outside established transit corridors. The source and nature of the event remain unknown. Locate its origin, investigate any installation or equipment found there, and retrieve research records, experimental devices, and other material of scientific value for Nanotrasen analysis."
+
 /datum/expedition_mission/thederelict/recover_records
 	ruin_type = /datum/map_template/ruin/space/thederelict
 	weight = 50
