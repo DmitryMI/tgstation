@@ -17,9 +17,23 @@
 /datum/expedition_mission/oldstation/recover_survivors
 	ruin_type = /datum/map_template/ruin/space/oldstation
 	weight = 100
-	name = "Silent Station Recovery"
+	name = "Operation Sudden Silence"
 	disclose_location = TRUE
 	briefing = "Shortly before contact was lost, Nanotrasen received a distress burst from a secret deep-space research station. Investigate the silent installation, locate any surviving personnel, and help them salvage the station's remaining assets."
+
+/datum/expedition_mission/bigderelict1/recover_tradepost
+	ruin_type = /datum/map_template/ruin/space/bigderelict1
+	weight = 100
+	disclose_location = TRUE
+	name = "Operation Open Ledger"
+	briefing = "Central Command has recovered the final distress transmission from a regional tradepost that once handled shipments between several Nanotrasen facilities. Board the installation, search for surviving personnel, and recover its cargo manifests and administrative records. Identify and secure any unaccounted shipments before the facility is reopened to corporate salvage teams."
+
+/datum/expedition_mission/caravanambush/recover_convoy
+	ruin_type = /datum/map_template/ruin/space/caravanambush
+	weight = 100
+	disclose_location = TRUE
+	name = "Operation Broken Chain"
+	briefing = "Central Command received a fragmented distress transmission from a freight caravan servicing regional corporate routes. The feed ended amid weapons fire, and every convoy transponder subsequently went dark. Proceed to the last reported coordinates, search the vessels for survivors, secure their cargo and manifests, and recover navigation records that may identify whoever intercepted the convoy. Preserve any serviceable freighter for return to Nanotrasen control. Expect armed resistance."
 
 /datum/expedition_mission/thederelict/recover_records
 	ruin_type = /datum/map_template/ruin/space/thederelict
