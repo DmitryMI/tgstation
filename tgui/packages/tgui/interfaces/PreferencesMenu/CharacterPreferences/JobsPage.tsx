@@ -284,12 +284,13 @@ function Department(props: DepartmentProps) {
   );
 
   return (
-    <Box>
+    <Box style={{'--department-color': department.color} as React.CSSProperties}>
       <Stack fill vertical g={0}>
         {jobsForDepartment.map(([name, job]) => {
           return (
             <JobRow
               className={classes([
+                "PreferencesMenu__Jobs__departments",
                 className,
                 name === department.head && 'head',
               ])}
@@ -327,7 +328,7 @@ function JoblessRoleDropdown(props) {
 
   const selection = options?.find(
     (option) => option.value === selected,
-  )!.displayText;
+  )?.displayText;
 
   return (
     <Box position="absolute" right={0} width="30%">

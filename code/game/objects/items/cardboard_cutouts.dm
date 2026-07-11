@@ -8,6 +8,7 @@
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	item_flags = NO_PIXEL_RANDOM_DROP
+	custom_materials = list(/datum/material/cardboard = SHEET_MATERIAL_AMOUNT * 5)
 	/// If the cutout is pushed over and has to be righted
 	var/pushed_over = FALSE
 	/// If the cutout actually appears as what it portray and not a discolored version
@@ -79,12 +80,11 @@
 	pushed_over = FALSE
 	tacticool = AddComponent(/datum/component/tactical)
 
-/obj/item/cardboard_cutout/attackby(obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
-	if(istype(I, /obj/item/toy/crayon))
-		change_appearance(I, user)
-		return TRUE
-
-	return ..()
+/obj/item/cardboard_cutout/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(!istype(tool, /obj/item/toy/crayon))
+		return NONE
+	change_appearance(tool, user)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/cardboard_cutout/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armour_penetration)
 	. = ..()

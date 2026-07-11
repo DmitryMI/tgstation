@@ -19,6 +19,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
 	integrity_failure = 0.35
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2)
 	/// What material this bed is made of
 	var/build_stack_type = /obj/item/stack/sheet/iron
 	/// How many mats to drop when deconstructed
@@ -127,6 +128,7 @@
 	elevation = 0
 	buckle_sound = SFX_SEATBELT_BUCKLE
 	unbuckle_sound = SFX_SEATBELT_UNBUCKLE
+	custom_materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 2.7, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 1.7)
 	/// The item it spawns when it's folded up.
 	var/foldable_type
 
@@ -253,6 +255,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL // No more excuses, stop getting blood everywhere
+	custom_materials = list(/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 2.7, /datum/material/plastic = SHEET_MATERIAL_AMOUNT * 1.7)
 
 /obj/item/emergency_bed/attackby(obj/item/item, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(istype(item, /obj/item/emergency_bed/silicon))
@@ -314,6 +317,7 @@
 	build_stack_type = /obj/item/stack/sheet/mineral/wood
 	build_stack_amount = 10
 	elevation = 0
+	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 10)
 	var/owned = FALSE
 
 /obj/structure/bed/dogbed/ian
@@ -381,6 +385,7 @@
 	icon_state = "bed_double"
 	build_stack_amount = 4
 	max_buckled_mobs = 2
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 4)
 	/// The mob who buckled to this bed second, to avoid other mobs getting pixel-shifted before he unbuckles.
 	var/mob/living/goldilocks
 

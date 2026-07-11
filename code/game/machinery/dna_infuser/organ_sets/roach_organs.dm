@@ -20,7 +20,7 @@
 	/// Armor type attached to the owner's physiology
 	var/datum/armor/given_armor = /datum/armor/roach_internal_armor
 
-/datum/status_effect/organ_set_bonus/roach/enable_bonus()
+/datum/status_effect/organ_set_bonus/roach/enable_bonus(obj/item/organ/inserted_organ)
 	. = ..()
 	if(!ishuman(owner))
 		return
@@ -28,7 +28,7 @@
 	var/mob/living/carbon/human/human_owner = owner
 	human_owner.physiology.armor = human_owner.physiology.armor.add_other_armor(given_armor)
 
-/datum/status_effect/organ_set_bonus/roach/disable_bonus()
+/datum/status_effect/organ_set_bonus/roach/disable_bonus(obj/item/organ/removed_organ)
 	. = ..()
 	if(!ishuman(owner) || QDELETED(owner))
 		return
@@ -142,13 +142,18 @@
 // Simple overlay so we can add a roach shell to guys with roach hearts
 /datum/bodypart_overlay/simple/roach_shell
 	icon_state = "roach_shell"
-	layers = EXTERNAL_FRONT|EXTERNAL_BEHIND
+	layers = list(
+		EXTERNAL_FRONT = BODY_FRONT_LAYER,
+		EXTERNAL_BEHIND = BODY_BEHIND_LAYER,
+	)
+	draw_on_husks = HUSK_OVERLAY_GRAYSCALE
+	offset_location = ENTIRE_BODY
 
-/datum/bodypart_overlay/simple/roach_shell/get_image(image_layer, obj/item/bodypart/limb)
+/datum/bodypart_overlay/simple/roach_shell/get_image(obj/item/bodypart/limb, layer_index, layer_real)
 	return image(
 		icon = icon,
-		icon_state = "[icon_state]_[mutant_bodyparts_layertext(image_layer)]",
-		layer = image_layer,
+		icon_state = "[icon_state]_[layer_index]",
+		layer = layer_real,
 	)
 
 /// Roach stomach:
