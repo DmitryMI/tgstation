@@ -25,6 +25,8 @@ export function PageMain(props) {
     emergencyAccess,
     importantActionReady,
     sectors,
+    showEmergencyShuttleControls,
+    showStatusDisplayControls,
     shuttleCalled,
     shuttleCalledPreviously,
     shuttleCanEvacOrFailReason,
@@ -42,7 +44,7 @@ export function PageMain(props) {
 
   return (
     <Box>
-      {!syndicate && (
+      {!!showEmergencyShuttleControls && (
         <Section title="Emergency Shuttle">
           {shuttleCalled ? (
             <Button.Confirm
@@ -134,7 +136,7 @@ export function PageMain(props) {
             </Button.Confirm>
           )}
 
-          {!syndicate && (
+          {!!showStatusDisplayControls && (
             <Button
               icon="desktop"
               onClick={() =>

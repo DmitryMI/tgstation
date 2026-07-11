@@ -59,6 +59,8 @@ export type CommsConsoleData = {
   safeCodeDeliveryArea: string;
   safeCodeDeliveryWait: number;
   sectors: string[];
+  showEmergencyShuttleControls: BooleanLike;
+  showStatusDisplayControls: BooleanLike;
   shuttles: Shuttle[];
   shuttleCalled: BooleanLike;
   shuttleCalledPreviously: BooleanLike;

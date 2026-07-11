@@ -38,12 +38,19 @@
 
 /obj/machinery/computer/communications/expedition/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/ui_state)
 	switch (action)
-		if ("callShuttle", "changeSecurityLevel", "makePriorityAnnouncement", "purchaseShuttle", "recallShuttle", "requestNukeCodes", "restoreBackupRoutingData", "sendToOtherSector")
+		if ("callShuttle", "changeSecurityLevel", "makePriorityAnnouncement", "purchaseShuttle", "recallShuttle", "requestNukeCodes", "requestSafeCodes", "restoreBackupRoutingData", "sendToOtherSector", "setStatusMessage", "setStatusPicture", "toggleEmergencyAccess")
 			return TRUE
+		if ("setState")
+			if(!(params["state"] in list("main", "messages")))
+				return TRUE
 	return ..()
 
 /obj/machinery/computer/communications/expedition/ui_data(mob/user)
 	var/list/data = ..()
+	data["canRequestSafeCode"] = FALSE
+	data["safeCodeDeliveryWait"] = 0
+	data["showEmergencyShuttleControls"] = FALSE
+	data["showStatusDisplayControls"] = FALSE
 	if (!data["authenticated"] || data["page"] != "main")
 		return data
 
@@ -64,6 +71,11 @@
 
 /obj/machinery/computer/communications/expedition/can_send_messages_to_other_sectors(mob/user)
 	return FALSE
+
+/obj/machinery/computer/communications/expedition/authenticated_as_non_silicon_captain(mob/user)
+	if(HAS_SILICON_ACCESS(user))
+		return FALSE
+	return authenticated(user) && ACCESS_COMMAND in authorize_access
 
 /obj/machinery/computer/communications/expedition/has_communication()
 	// This console uses its own direct Central Command link rather than station telecommunications.

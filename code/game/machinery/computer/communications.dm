@@ -498,6 +498,8 @@
 		"authenticated" = FALSE,
 		"emagged" = FALSE,
 		"syndicate" = syndicate,
+		"showEmergencyShuttleControls" = !syndicate,
+		"showStatusDisplayControls" = !syndicate,
 	)
 
 	var/ui_state = HAS_SILICON_ACCESS(user) ? cyborg_state : state
