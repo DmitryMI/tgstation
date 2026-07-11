@@ -893,6 +893,8 @@
 	var/list/possible_answers = list()
 	var/answered = FALSE
 	var/message_source = COMM_MESSAGE_SOURCE_MISC
+	/// Whether this is the global round-start Central Command Status Summary.
+	var/is_roundstart_status_summary = FALSE
 	var/datum/callback/answer_callback
 
 /datum/comm_message/New(new_title,new_content,new_possible_answers, new_message_source = COMM_MESSAGE_SOURCE_MISC)

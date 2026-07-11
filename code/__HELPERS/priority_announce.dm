@@ -104,7 +104,7 @@
  * Do not allow player inputted reports to contain advanced HTML.
  * Defaults to FALSE, which means only basic HTML will be rendered.
  */
-/proc/print_command_report(text = "", title = null, announce = TRUE, contains_advanced_html = FALSE)
+/proc/print_command_report(text = "", title = null, announce = TRUE, contains_advanced_html = FALSE, is_roundstart_status_summary = FALSE)
 	if(!title)
 		title = "Classified [command_name()] Update"
 
@@ -120,6 +120,7 @@
 	message.title = title
 	message.content = text
 	message.message_source = COMM_MESSAGE_SOURCE_CENTCOM
+	message.is_roundstart_status_summary = is_roundstart_status_summary
 
 	GLOB.communications_controller.send_message(message, contains_advanced_html = contains_advanced_html)
 

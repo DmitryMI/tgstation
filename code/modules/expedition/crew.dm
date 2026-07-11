@@ -38,8 +38,8 @@
 	name = "expedition research physician sleeper"
 	prompt_name = "an Expedition Research Physician"
 	you_are_text = "You are an Expedition Research Physician."
-	flavour_text = "You serve aboard the Nanotrasen Deep Space Exploration Vessel, which was caught in an ion storm that erased its navigation memory. Your mission is to keep the crew alive, study dangerous finds, and recover GPS tracking devices and bluespace navigation vectors from nearby ruins so the ship can locate Space Station 13, the nearest manned Nanotrasen facility, and request help."
-	important_text = "DO NOT abandon your team and the ship"
+	flavour_text = "You serve aboard a Nanotrasen Deep Space Exploration Vessel on a military-research expedition. An ion storm has temporarily disrupted the vessel's navigation memory. Fulfill the mission report's assigned sector objectives, provide medical support, and assess recovered materials. Recover GPS navigation data to reconstruct the route to Space Station 13, where the expedition will report and integrate with the station crew."
+	important_text = "Complete assigned expedition objectives before proceeding to Space Station 13."
 	outfit = /datum/outfit/job/expedition/research_physician
 	spawner_job_path = /datum/job/expedition_research_physician
 
@@ -47,8 +47,8 @@
 	name = "expedition engineer sleeper"
 	prompt_name = "an Expedition Engineer"
 	you_are_text = "You are an Expedition Engineer."
-	flavour_text = "You serve aboard the Nanotrasen Deep Space Exploration Vessel, which was caught in an ion storm that erased its navigation memory. Keep the ship powered, pressurized, and spaceworthy while the crew searches nearby ruins for GPS tracking devices and bluespace navigation vectors that can guide the vessel to Space Station 13, the nearest manned Nanotrasen facility."
-	important_text = "DO NOT abandon your team and the ship"
+	flavour_text = "You serve aboard a Nanotrasen Deep Space Exploration Vessel on a military-research expedition. An ion storm has temporarily disrupted the vessel's navigation memory. Keep the vessel powered, pressurized, and ready for field operations while the crew fulfills its assigned sector objectives. Support recovery of GPS navigation data so the expedition can reconstruct its route to Space Station 13 after completing its initial mission set."
+	important_text = "Complete assigned expedition objectives before proceeding to Space Station 13."
 	outfit = /datum/outfit/job/expedition/engineer
 	spawner_job_path = /datum/job/expedition_engineer
 
@@ -56,8 +56,8 @@
 	name = "expedition marine sleeper"
 	prompt_name = "an Expedition Marine"
 	you_are_text = "You are an Expedition Marine."
-	flavour_text = "You serve aboard the Nanotrasen Deep Space Exploration Vessel, which was caught in an ion storm that erased its navigation memory. Your duty is to protect the crew from hostile ruins, dangerous anomalies, and any threats to Nanotrasen while the team recovers GPS tracking devices and bluespace navigation vectors needed to reach Space Station 13."
-	important_text = "DO NOT abandon your team and the ship"
+	flavour_text = "You serve aboard a Nanotrasen Deep Space Exploration Vessel on a military-research expedition. An ion storm has temporarily disrupted the vessel's navigation memory. Secure assigned sector objectives, protect the crew and recovered assets, and contain hazards encountered during field operations. Recover GPS navigation data so the expedition can reconstruct its route to Space Station 13 after the initial mission set is complete."
+	important_text = "Complete assigned expedition objectives before proceeding to Space Station 13."
 	outfit = /datum/outfit/job/expedition/marine
 	spawner_job_path = /datum/job/expedition_marine
 
@@ -65,30 +65,30 @@
 	name = "expedition commander sleeper"
 	prompt_name = "an Expedition Commander"
 	you_are_text = "You are the Expedition Commander."
-	flavour_text = "You command the Nanotrasen Deep Space Exploration Vessel, which was caught in an ion storm that erased its navigation memory. Lead your crew through nearby space sectors, investigate ruins and dangerous objects, and coordinate the recovery of GPS tracking devices and bluespace navigation vectors so you can find Space Station 13, the nearest manned Nanotrasen facility, and ask it for help."
-	important_text = "DO NOT abandon your team and the ship"
+	flavour_text = "You command a Nanotrasen Deep Space Exploration Vessel on a military-research expedition. An ion storm has temporarily disrupted the vessel's navigation memory. Direct the crew through the mission report's assigned sector objectives, authorize field operations, and coordinate recovery of GPS navigation data. Once the initial mission set is fulfilled, reconstruct the route to Space Station 13 and deliver the expedition for debriefing and integration."
+	important_text = "Complete assigned expedition objectives before proceeding to Space Station 13."
 	outfit = /datum/outfit/job/expedition/commander
 	spawner_job_path = /datum/job/expedition_commander
 
 /datum/job/expedition_research_physician
 	title = "Expedition Research Physician"
 	policy_index = ROLE_GHOST_ROLE
-	description = "Keep the crew alive, analyze dangerous discoveries, and help recover navigation data from ruins."
+	description = "Provide medical and research support while the expedition fulfills assigned sector objectives."
 
 /datum/job/expedition_engineer
 	title = "Expedition Engineer"
 	policy_index = ROLE_GHOST_ROLE
-	description = "Maintain the vessel and support field operations while the crew searches for navigation data that can lead them to Space Station 13."
+	description = "Maintain the vessel and support field operations through the expedition's assigned objectives."
 
 /datum/job/expedition_marine
 	title = "Expedition Marine"
 	policy_index = ROLE_GHOST_ROLE
-	description = "Protect the crew, secure hostile sites, and make sure recovered navigation data gets the vessel to Space Station 13."
+	description = "Protect the crew, secure field sites, and support completion of assigned expedition objectives."
 
 /datum/job/expedition_commander
 	title = "Expedition Commander"
 	policy_index = ROLE_GHOST_ROLE
-	description = "Lead the expedition, direct ruin exploration, and bring your crew to Space Station 13 for aid."
+	description = "Lead the military-research expedition, fulfill assigned objectives, and rendezvous with Space Station 13."
 
 /obj/item/card/id/advanced/expedition
 	name = "expedition identification card"

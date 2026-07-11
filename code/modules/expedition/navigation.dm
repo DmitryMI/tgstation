@@ -517,6 +517,9 @@
 	late = TRUE
 	var/default_replacement_type = /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition
 	var/bridge_replacement_type = /obj/machinery/computer/shuttle/white_ship/bridge/expedition
+	var/communications_replacement_type = /obj/machinery/computer/communications/expedition
+	/// Vessel name assigned to the Expedition communications console's mission report.
+	var/vessel_name = "Expedition Shuttle"
 	var/bridge_gps_tag_override = null
 
 /obj/effect/mapping_helpers/replace_whiteship_navigation_with_expedition/LateInitialize()
@@ -538,6 +541,15 @@
 			var/obj/machinery/computer/shuttle/white_ship/bridge/expedition/expedition_bridge = replacement
 			expedition_bridge.set_bridge_gps_tag(bridge_gps_tag_override)
 		qdel(console)
+	for(var/obj/structure/frame/computer/frame in range(1, src))
+		if(frame.name != "Broken Communications Console")
+			continue
+		var/obj/machinery/computer/communications/replacement = new communications_replacement_type(frame.loc)
+		replacement.setDir(frame.dir)
+		if(istype(replacement, /obj/machinery/computer/communications/expedition))
+			var/obj/machinery/computer/communications/expedition/expedition_replacement = replacement
+			expedition_replacement.vessel_name = vessel_name
+		qdel(frame)
 	qdel(src)
 
 /obj/effect/mapping_helpers/replace_whiteship_navigation_with_expedition/debug

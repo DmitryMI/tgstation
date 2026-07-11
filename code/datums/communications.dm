@@ -62,6 +62,7 @@ GLOBAL_DATUM_INIT(communications_controller, /datum/communciations_controller, n
 				C.add_message(sending)
 			else //We copy the message for each console, answers and deletions won't be shared
 				var/datum/comm_message/M = new(sending.title, sending.content, sending.possible_answers.Copy(), sending.message_source)
+				M.is_roundstart_status_summary = sending.is_roundstart_status_summary
 				C.add_message(M)
 			if(print)
 				var/obj/item/paper/printed_paper = new /obj/item/paper(C.loc)
@@ -130,7 +131,7 @@ GLOBAL_DATUM_INIT(communications_controller, /datum/communciations_controller, n
 		. += "<hr><h4>Additional Notes: </h4>" + footnote_pile
 
 #ifndef MAP_TEST
-	print_command_report(., "[command_name()] Status Summary", announce = FALSE, contains_advanced_html = TRUE)
+	print_command_report(., "[command_name()] Status Summary", announce = FALSE, contains_advanced_html = TRUE, is_roundstart_status_summary = TRUE)
 	if(greenshift)
 		priority_announce(
 			"Thanks to the tireless efforts of our security and intelligence divisions, \
