@@ -42,6 +42,7 @@
 	)
 	generate_items_inside(items_inside,src)
 
+
 /obj/item/storage/box/chemimp
 	name = "boxed chemical implant kit"
 	desc = "Box of stuff used to implant chemicals."

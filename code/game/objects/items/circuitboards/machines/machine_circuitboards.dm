@@ -922,10 +922,6 @@
 /obj/item/circuitboard/machine/sleeper/syndie
 	build_path = /obj/machinery/sleeper/syndie
 
-/obj/item/circuitboard/machine/sleeper/expedition
-	name = "Expedition Sleeper"
-	build_path = /obj/machinery/sleeper/expedition
-
 /obj/item/circuitboard/machine/sleeper/fullupgrade
 	build_path = /obj/machinery/sleeper/syndie/fullupgrade
 	req_components = list(
