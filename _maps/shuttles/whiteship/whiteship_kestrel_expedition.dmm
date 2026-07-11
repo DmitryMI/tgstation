@@ -4,6 +4,12 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/folder/documents,
+/obj/item/pen,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "as" = (
@@ -457,9 +463,13 @@
 /obj/structure/table,
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/machinery/firealarm/directional/east,
-/obj/machinery/recharger{
-	pixel_y = 4
+/obj/item/folder/blue,
+/obj/item/gps/spaceruin{
+	gpstag = "Kestrel Expedition Commander";
+	pixel_y = 4;
+	pixel_x = 8
 	},
+/obj/item/pen,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
 "it" = (
@@ -1461,11 +1471,6 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/obj/item/gps/spaceruin{
-	gpstag = "Kestrel Expedition Commander";
-	pixel_y = 4;
-	pixel_x = 8
-	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
 "Dd" = (
@@ -1547,8 +1552,16 @@
 /area/shuttle/expedition/cargo)
 "FR" = (
 /obj/structure/table,
+/obj/item/folder/yellow{
+	pixel_y = -2;
+	pixel_x = -6
+	},
+/obj/item/pen{
+	pixel_x = -6;
+	pixel_y = -2
+	},
 /obj/item/radio{
-	pixel_x = -1;
+	pixel_x = 9;
 	pixel_y = 2
 	},
 /turf/open/floor/plating,
@@ -1913,6 +1926,8 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
+/obj/item/folder/white,
+/obj/item/pen,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "NC" = (
@@ -2378,8 +2393,8 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/replace_whiteship_navigation_with_expedition/gps_reader{
-	bridge_gps_tag_override = "Kestrel Expedition Vessel";
-	vessel_name = "Kestrel Expedition Vessel"
+	bridge_gps_tag_override = "Kestrel Deep Space Research Vessel";
+	vessel_name = "Kestrel"
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
