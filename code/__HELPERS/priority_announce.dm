@@ -119,6 +119,7 @@
 	var/datum/comm_message/message = new
 	message.title = title
 	message.content = text
+	message.message_source = COMM_MESSAGE_SOURCE_CENTCOM
 
 	GLOB.communications_controller.send_message(message, contains_advanced_html = contains_advanced_html)
 

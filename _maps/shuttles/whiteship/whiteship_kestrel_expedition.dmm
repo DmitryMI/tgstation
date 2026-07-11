@@ -193,16 +193,6 @@
 /obj/effect/turf_decal/trimline/dark_red/filled/warning/corner,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/armory)
-"dY" = (
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shuttle/expedition/engineering)
 "ea" = (
 /obj/structure/table/glass,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -704,7 +694,8 @@
 /turf/open/floor/iron/cafeteria,
 /area/shuttle/expedition/kitchen)
 "nH" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/yellow/visible/layer2,
+/obj/structure/reagent_dispensers/fueltank/large,
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
 "nJ" = (
@@ -799,7 +790,11 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/spawner/random/armory/laser_gun,
+/obj/item/gun/ballistic/automatic/battle_rifle{
+	pixel_x = 0;
+	pixel_y = 8
+	},
+/obj/item/gun/ballistic/automatic/battle_rifle,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/armory)
 "pZ" = (
@@ -809,11 +804,6 @@
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
-	},
-/obj/item/gun/ballistic/automatic/battle_rifle,
-/obj/item/gun/ballistic/automatic/battle_rifle{
-	pixel_x = 0;
-	pixel_y = 8
 	},
 /obj/structure/rack,
 /turf/open/floor/iron/dark,
@@ -911,7 +901,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -987,6 +977,16 @@
 /obj/item/clothing/gloves/latex/nitrile,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
+"tD" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
 "tF" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -1401,9 +1401,6 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 4
 	},
-/obj/item/gps/spaceruin{
-	gpstag = "Kestrel Expedition Commander"
-	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
 "Cn" = (
@@ -1413,11 +1410,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
-"Co" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/yellow/visible/layer2,
-/obj/structure/reagent_dispensers/fueltank/large,
-/turf/open/floor/plating,
-/area/shuttle/expedition/engineering)
 "Cp" = (
 /obj/machinery/rnd/destructive_analyzer/expeditionary,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -1464,6 +1456,11 @@
 /obj/structure/table,
 /obj/machinery/recharger{
 	pixel_y = 4
+	},
+/obj/item/gps/spaceruin{
+	gpstag = "Kestrel Expedition Commander";
+	pixel_y = 4;
+	pixel_x = 8
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
@@ -1800,6 +1797,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/item/crowbar,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/medbay)
 "Lu" = (
@@ -2636,6 +2634,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
+"ZS" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/plating,
+/area/shuttle/expedition/engineering)
 "ZU" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -3429,7 +3431,7 @@ wn
 (35,1,1) = {"
 II
 hs
-Co
+nH
 Bo
 qr
 JT
@@ -3459,8 +3461,8 @@ FR
 QI
 pK
 ur
-nH
-nH
+ZS
+ZS
 vr
 zV
 Zm
@@ -3480,7 +3482,7 @@ hs
 bT
 fD
 QI
-nH
+ZS
 wW
 Pa
 AU
@@ -3506,8 +3508,8 @@ JT
 KI
 tP
 hE
-dY
 rO
+tD
 WU
 rE
 pZ
