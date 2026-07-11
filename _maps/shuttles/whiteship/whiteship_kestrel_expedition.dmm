@@ -4,11 +4,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 7
-	},
-/obj/item/folder/documents,
+/obj/item/folder/white,
 /obj/item/pen,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
@@ -394,6 +390,16 @@
 /area/shuttle/expedition/engineering)
 "hb" = (
 /obj/structure/table/wood,
+/obj/item/folder/documents{
+	pixel_x = 8
+	},
+/obj/item/pen{
+	pixel_x = 8
+	},
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 4
+	},
 /turf/open/floor/carpet,
 /area/shuttle/expedition/crew)
 "hr" = (
@@ -3068,7 +3074,7 @@ Gy
 qT
 vP
 HO
-Un
+ld
 cy
 cy
 NC
@@ -3091,7 +3097,7 @@ Jd
 Ow
 vP
 HO
-ld
+Un
 sr
 Wn
 UU

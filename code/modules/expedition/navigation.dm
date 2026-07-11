@@ -5,16 +5,20 @@
 	/// Whiteship stationary dock groups that expedition systems may expose when their sectors are unlocked.
 	var/list/potential_destination_groups = list("whiteship_away", "whiteship_home", "whiteship_z4", "whiteship_waystation", "whiteship_lavaland", "whiteship_custom")
 	/// If TRUE, player-facing expedition output uses the z-level's actual configured name.
-	var/use_z_level_real_names = FALSE
+	var/use_z_level_real_names
 	/// Z-levels that this expedition computer may jump to directly.
 	var/list/allowed_z_levels = list()
 	/// Optional override for the shuttle's transit time in deciseconds.
-	var/call_time_override = 10
+	var/call_time_override
 	/// Optional override for the shuttle's ignition time in deciseconds.
-	var/ignition_time_override = 10
-	designate_time = 5
+	var/ignition_time_override
+	designate_time = 0
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/Initialize(mapload)
+	use_z_level_real_names = CONFIG_GET(flag/expedition_use_z_level_real_names)
+	call_time_override = CONFIG_GET(number/expedition_call_time)
+	ignition_time_override = CONFIG_GET(number/expedition_ignition_time)
+	designate_time = CONFIG_GET(number/expedition_designate_time)
 	. = ..()
 	var/obj/docking_port/mobile/current_shuttle = SSshuttle.getShuttle(shuttleId)
 	if(current_shuttle?.z)
@@ -523,6 +527,9 @@
 	var/bridge_gps_tag_override = null
 
 /obj/effect/mapping_helpers/replace_whiteship_navigation_with_expedition/LateInitialize()
+	if(!CONFIG_GET(flag/expedition_enabled))
+		qdel(src)
+		return
 	var/area/target_area = get_area(src)
 	for(var/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/console in target_area)
 		var/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/replacement = new default_replacement_type(console.loc)

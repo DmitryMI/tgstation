@@ -12,7 +12,19 @@
 	/// The sleeper type that replaces this spawner after a ghost claims it.
 	var/unlocked_sleeper_type = /obj/machinery/sleeper/expedition
 
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/Initialize(mapload)
+	if(!CONFIG_GET(flag/expedition_enabled))
+		return INITIALIZE_HINT_QDEL
+	return ..()
+
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/can_ghost_take(mob/dead/observer/user)
+	if(!CONFIG_GET(flag/expedition_enabled))
+		return FALSE
+	return ..()
+
 /obj/effect/mob_spawn/ghost_role/human/usable_sleeper/create(mob/mob_possessor, newname, apply_prefs)
+	if(!CONFIG_GET(flag/expedition_enabled))
+		return CANCEL_SPAWN
 	var/mob/living/carbon/human/spawned_human = ..()
 	if(!istype(spawned_human))
 		return spawned_human
@@ -105,6 +117,57 @@
 		ACCESS_BAR,
 		ACCESS_KITCHEN,
 	)
+
+/datum/id_trim/expedition/New()
+	. = ..()
+	if(istype(src, /datum/id_trim/expedition/commander))
+		return
+	if(CONFIG_GET(flag/expedition_bays_shared_access))
+		access = list(
+			ACCESS_ATMOSPHERICS,
+			ACCESS_ARMORY,
+			ACCESS_BAR,
+			ACCESS_BRIG,
+			ACCESS_BRIG_ENTRANCE,
+			ACCESS_CARGO,
+			ACCESS_CHAPEL_OFFICE,
+			ACCESS_CONSTRUCTION,
+			ACCESS_COURT,
+			ACCESS_CREMATORIUM,
+			ACCESS_ENGINEERING,
+			ACCESS_ENGINE_EQUIP,
+			ACCESS_EVA,
+			ACCESS_EXTERNAL_AIRLOCKS,
+			ACCESS_GATEWAY,
+			ACCESS_HYDROPONICS,
+			ACCESS_JANITOR,
+			ACCESS_KITCHEN,
+			ACCESS_LAWYER,
+			ACCESS_LIBRARY,
+			ACCESS_MAINT_TUNNELS,
+			ACCESS_MEDICAL,
+			ACCESS_MINERAL_STOREROOM,
+			ACCESS_MORGUE,
+			ACCESS_ORDNANCE,
+			ACCESS_ORDNANCE_STORAGE,
+			ACCESS_PARAMEDIC,
+			ACCESS_PHARMACY,
+			ACCESS_PLUMBING,
+			ACCESS_PSYCHOLOGY,
+			ACCESS_RESEARCH,
+			ACCESS_SCIENCE,
+			ACCESS_SECURITY,
+			ACCESS_SERVICE,
+			ACCESS_SHIPPING,
+			ACCESS_SURGERY,
+			ACCESS_TECH_STORAGE,
+			ACCESS_THEATRE,
+			ACCESS_VIROLOGY,
+			ACCESS_WEAPONS,
+			ACCESS_XENOBIOLOGY,
+		)
+	if(CONFIG_GET(flag/expedition_cockpit_all_access))
+		access += ACCESS_COMMAND
 
 /datum/id_trim/expedition/research_physician
 	assignment = "Expedition Research Physician"

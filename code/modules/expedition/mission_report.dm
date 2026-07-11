@@ -64,9 +64,11 @@
 		"The Expeditionary Team may establish contact with non-hostile humanoids encountered during operations. Assistance may be provided to persons in distress when the Expedition Commander determines that doing so benefits the expedition or Nanotrasen interests.",
 		"The Expeditionary Team may use lethal force against any person or entity assessed as hostile or dangerous to Nanotrasen, including threats not presently directed at the vessel or other Nanotrasen assets. However, the mission's research and intelligence value requires that non-lethal neutralization and live capture be prioritized whenever practical.",
 		"Scientific research aboard the Expeditionary Vessel is authorized when lawful in Nanotrasen-controlled space. If a proposed activity is known to be unlawful but may materially benefit expedition operations, the Expedition Commander must contact Central Command for guidance. Unauthorized unlawful research is prohibited.",
+		"The Expeditionary Vessel's scientific systems include an authorized tactical development package. Analysis of recovered materials may unlock improved directed-energy armaments for Expedition security personnel. Such equipment is intended for mission protection and recovery operations; its deployment remains subject to the Expedition Commander's operational judgment.",
 		"After docking and transfer of authority, the Expedition Commander is authorized to brief the Space Station 13 Captain on all Expeditionary operations and findings. Expedition personnel are immune from station discipline for policy-compliant actions performed aboard the vessel before docking.",
 		"The Expedition Commander is responsible for maintaining order aboard the vessel. Executions are prohibited, and lethal force against Expedition personnel must be avoided except where immediately necessary to protect life. Personnel whose conduct cannot be safely controlled should be restrained and delivered to Space Station 13 as prisoners for disposition by the Station Captain.",
 		"The Expeditionary Team may transport hazardous life forms and objects aboard the vessel when operationally justified. Take every possible precaution to prevent their release onto Space Station 13. After docking, custody and final disposition of such materials transfers to the Station Captain.",
+		"Recover humanoid remains from explored sites whenever practical. The Expeditionary Vessel is equipped to transport forensic evidence for later Nanotrasen examination. Place remains in body bags and morgue storage, and take reasonable care to prevent damage during recovery and transport.",
 		"This mission report is classified. Its contents are restricted to Expedition personnel and the Space Station 13 Captain. The Expedition Commander must deliver the report to the Station Captain at the earliest safe opportunity after docking.",
 	)
 	return "<hr><h3>Expedition Policy Clarifications</h3><ol><li>[policy_entries.Join("</li><li>")]</li></ol>"
@@ -74,7 +76,11 @@
 /// Base report generator. Subtypes can replace the selection algorithm without changing the communications console printer.
 /datum/expedition_mission_report_generator
 	/// Maximum number of ruin-specific objectives to include in the report.
-	var/max_objectives = 5
+	var/max_objectives
+
+/datum/expedition_mission_report_generator/New()
+	max_objectives = CONFIG_GET(number/expedition_max_objectives)
+	return ..()
 
 /datum/expedition_mission_report_generator/proc/generate()
 	return new /datum/expedition_mission_report(list())

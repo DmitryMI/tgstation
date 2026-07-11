@@ -1,0 +1,23 @@
+# Expedition module configuration
+
+## Whether Expedition vessel content and Expedition ghost roles are available.
+EXPEDITION_ENABLED 1
+
+## Expedition vessel shuttle ignition and call time, in deciseconds.
+EXPEDITION_IGNITION_TIME 10
+EXPEDITION_CALL_TIME 10
+
+## Expedition navigation destination designation time, in deciseconds.
+EXPEDITION_DESIGNATE_TIME 5
+
+## Display configured z-level names in Expedition navigation instead of sector numbers.
+EXPEDITION_USE_Z_LEVEL_REAL_NAMES 0
+
+## Give all non-Commander Expedition crew equal access to the vessel outside its cockpit.
+EXPEDITION_BAYS_SHARED_ACCESS 0
+
+## Give all Expedition crew access to the cockpit and communications console.
+EXPEDITION_COCKPIT_ALL_ACCESS 0
+
+## Maximum number of ruin objectives included in an Expedition mission report.
+EXPEDITION_MAX_OBJECTIVES 5
