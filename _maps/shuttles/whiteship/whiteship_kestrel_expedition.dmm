@@ -107,7 +107,9 @@
 /obj/effect/turf_decal/trimline/white/filled/line{
 	dir = 6
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/medbay)
 "bx" = (
@@ -691,6 +693,10 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/engineering)
+"mF" = (
+/obj/machinery/smartfridge/organ,
+/turf/open/floor/iron/white,
+/area/shuttle/expedition/medbay)
 "mJ" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/expedition/crew)
@@ -1040,7 +1046,9 @@
 "uz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/smartfridge/organ,
+/obj/machinery/door/airlock/medical{
+	name = "Primary Surgical Theatre"
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "uI" = (
@@ -1699,6 +1707,8 @@
 /obj/effect/spawner/random/food_or_drink/seed,
 /obj/effect/spawner/random/food_or_drink/seed,
 /obj/item/seeds/wheat,
+/obj/item/seeds/tower,
+/obj/item/seeds/tower,
 /turf/open/floor/iron,
 /area/shuttle/expedition/hydroponics)
 "Je" = (
@@ -2227,6 +2237,8 @@
 /obj/effect/spawner/random/food_or_drink/seed,
 /obj/effect/spawner/random/food_or_drink/seed,
 /obj/item/seeds/wheat,
+/obj/item/seeds/tower,
+/obj/item/seeds/tower,
 /turf/open/floor/iron,
 /area/shuttle/expedition/hydroponics)
 "RX" = (
@@ -3076,7 +3088,7 @@ vP
 HO
 ld
 cy
-cy
+mF
 NC
 uz
 cy

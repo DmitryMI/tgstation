@@ -138,14 +138,29 @@
 	return ..()
 
 /datum/crafting_recipe/type5_laser/base
+	abstract_type = /datum/crafting_recipe/type5_laser/base
 	name = "Type 5 Laser Gun"
 	result = /obj/item/gun/energy/laser
-	reqs = list(
-		/obj/item/gun/energy/laser = 1,
-		/obj/item/weaponcrafting/gunkit/type5 = 1,
-	)
 	time = 10 SECONDS
 	category = CAT_WEAPON_RANGED
+
+/datum/crafting_recipe/type5_laser/base/pistol
+	reqs = list(
+		/obj/item/gun/energy/laser/pistol = 1,
+		/obj/item/weaponcrafting/gunkit/type5 = 1,
+	)
+
+/datum/crafting_recipe/type5_laser/base/carbine
+	reqs = list(
+		/obj/item/gun/energy/laser/carbine = 1,
+		/obj/item/weaponcrafting/gunkit/type5 = 1,
+	)
+
+/datum/crafting_recipe/type5_laser/base/assault
+	reqs = list(
+		/obj/item/gun/energy/laser/assault = 1,
+		/obj/item/weaponcrafting/gunkit/type5 = 1,
+	)
 
 /datum/crafting_recipe/type5_laser/pistol
 	name = "Type 5/C Laser Pistol"

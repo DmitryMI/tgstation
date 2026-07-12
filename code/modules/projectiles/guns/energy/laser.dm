@@ -21,17 +21,17 @@
 			/datum/crafting_recipe/laser/ioncarbine,
 		),
 		/obj/item/gun/energy/laser/pistol = list(
-			/datum/crafting_recipe/type5_laser/base,
+			/datum/crafting_recipe/type5_laser/base/pistol,
 			/datum/crafting_recipe/type5_laser/carbine,
 			/datum/crafting_recipe/type5_laser/assault,
 		),
 		/obj/item/gun/energy/laser/carbine = list(
-			/datum/crafting_recipe/type5_laser/base,
+			/datum/crafting_recipe/type5_laser/base/carbine,
 			/datum/crafting_recipe/type5_laser/pistol,
 			/datum/crafting_recipe/type5_laser/assault,
 		),
 		/obj/item/gun/energy/laser/assault = list(
-			/datum/crafting_recipe/type5_laser/base,
+			/datum/crafting_recipe/type5_laser/base/assault,
 			/datum/crafting_recipe/type5_laser/pistol,
 			/datum/crafting_recipe/type5_laser/carbine,
 		),
