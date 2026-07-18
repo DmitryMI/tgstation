@@ -330,6 +330,20 @@
 	invertTimer()
 	mode = SHUTTLE_RECALL
 
+/// Cancels ignition without removing a navigation computer's designated stationary docking port.
+/obj/docking_port/mobile/proc/abort_ignition()
+	if(mode != SHUTTLE_IGNITING)
+		return FALSE
+
+	mode = SHUTTLE_IDLE
+	timer = 0
+	destination = null
+	remove_ripples()
+	if(!QDELETED(assigned_transit) && !assigned_transit.get_docked())
+		qdel(assigned_transit, force = TRUE)
+		assigned_transit = null
+	return TRUE
+
 /obj/docking_port/mobile/proc/enterTransit()
 	if((SSshuttle.lockdown && is_station_level(z)) || !canMove()) //emp went off, no escape
 		mode = SHUTTLE_IDLE

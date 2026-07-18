@@ -38,3 +38,39 @@
 /datum/config_entry/number/expedition_max_objectives
 	default = 5
 	min_val = 0
+
+/// Syndicate Chaser shuttle ignition time in deciseconds.
+/datum/config_entry/number/chaser_ignition_time
+	default = 30
+	min_val = 0
+	integer = FALSE
+
+/// Syndicate Chaser shuttle call time in deciseconds.
+/datum/config_entry/number/chaser_call_time
+	default = 10
+	min_val = 0
+	integer = FALSE
+
+/// Syndicate Chaser navigation destination designation time in deciseconds.
+/datum/config_entry/number/chaser_designate_time
+	default = 5
+	min_val = 0
+	integer = FALSE
+
+/// How long a Chaser pursuit disrupts Expedition travel, in deciseconds.
+/datum/config_entry/number/chaser_hostile_disruption_time
+	default = 900
+	min_val = 0
+	integer = FALSE
+
+/// How long activating the Chaser disruptor prevents the Chaser from travelling again, in deciseconds.
+/datum/config_entry/number/chaser_self_disruption_time
+	default = 4500
+	min_val = 0
+	integer = FALSE
+
+/// Delay between Chaser creation and its warning report, in deciseconds.
+/datum/config_entry/number/chaser_spawn_warning_delay
+	default = 50
+	min_val = 0
+	integer = FALSE

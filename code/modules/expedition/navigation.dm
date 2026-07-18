@@ -2,6 +2,8 @@
 	name = "Expedition Navigation Computer"
 	desc = "Used to designate a precise transit location for an expedition vessel."
 	jump_to_ports = list("whiteship_away" = 1)
+	/// Player-facing vessel name used by Chaser warnings and mission reports.
+	var/vessel_name = "Expedition Shuttle"
 	/// Whiteship stationary dock groups that expedition systems may expose when their sectors are unlocked.
 	var/list/potential_destination_groups = list("whiteship_away", "whiteship_home", "whiteship_z4", "whiteship_waystation", "whiteship_lavaland", "whiteship_custom")
 	/// If TRUE, player-facing expedition output uses the z-level's actual configured name.
@@ -40,6 +42,45 @@
 	if(isnum(ignition_time_override) && ignition_time_override >= 0)
 		current_shuttle.ignitionTime = ignition_time_override
 	return TRUE
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/get_expedition_bridge_console()
+	var/area/console_area = get_area(src)
+	if(!console_area)
+		return null
+	for(var/obj/machinery/computer/shuttle/white_ship/bridge/expedition/bridge_console in console_area)
+		if(bridge_console.shuttleId != shuttleId)
+			continue
+		return bridge_console
+	return null
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/apply_hostile_bluespace_disruption(duration)
+	var/obj/machinery/computer/shuttle/white_ship/bridge/expedition/bridge_console = get_expedition_bridge_console()
+	if(!bridge_console)
+		return FALSE
+
+	var/disruption_duration = max(0, duration)
+	bridge_console.navigation_disrupted_until = max(bridge_console.navigation_disrupted_until, world.time + disruption_duration)
+	var/obj/docking_port/mobile/expedition_shuttle = SSshuttle.getShuttle(shuttleId)
+	expedition_shuttle?.abort_ignition()
+	say("WARNING: Hostile bluespace disruption detected. Navigation travel is blocked for [DisplayTimeText(disruption_duration)].")
+	playsound(src, 'sound/announcer/notice/notice3.ogg', 75, FALSE)
+	return TRUE
+
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/issue_chaser_spawn_warning()
+	say("WARNING: Long-range telemetry has detected a hostile Syndicate pursuit vessel.")
+	playsound(src, 'sound/announcer/alarm/bloblarm.ogg', 75, FALSE)
+
+	var/obj/item/paper/warning_report = new /obj/item/paper(drop_location())
+	warning_report.name = "paper - 'Hostile Pursuit Vessel Warning'"
+	warning_report.add_raw_text({"
+		<center><img src='[SSassets.transport.get_asset_url("nanotrasen-logo")]' width='50%'></center><hr>
+		<center><h2>HOSTILE PURSUIT VESSEL WARNING</h2></center><hr>
+		<p><b>Vessel:</b> [html_encode(vessel_name)]</p>
+		<p>Long-range bluespace telemetry has detected a Syndicate pursuit vessel operating in this region.</p>
+		<p>The hostile vessel may be capable of following this vessel between sectors and disrupting its navigation systems. Maintain combat readiness and prepare an escape vector before contact.</p>
+	"}, advanced_html = TRUE)
+	warning_report.color = "#ffd6d6"
+	warning_report.update_appearance()
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/unlock_z_level(z_level)
 	if(!isnum(z_level) || z_level <= 0)
@@ -400,6 +441,8 @@
 	name = "Expedition Bridge Console"
 	desc = "Used to control an expedition vessel."
 	var/bridge_gps_tag = "Deep Space Research Vessel"
+	/// Absolute world time until which hostile bluespace disruption prevents travel.
+	var/navigation_disrupted_until
 
 /obj/machinery/computer/shuttle/white_ship/bridge/expedition/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
@@ -434,9 +477,19 @@
 
 /obj/machinery/computer/shuttle/white_ship/bridge/expedition/send_shuttle(dest_id, mob/user)
 	var/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/navigation_console = get_expedition_navigation_console()
+	if(world.time < navigation_disrupted_until)
+		say("Unable to depart: hostile bluespace disruption will persist for [DisplayTimeText(navigation_disrupted_until - world.time)].")
+		return "error"
 	if(navigation_console)
 		navigation_console.apply_shuttle_timing_overrides()
 	return ..()
+
+/obj/machinery/computer/shuttle/white_ship/bridge/expedition/ui_data(mob/user)
+	. = ..()
+	if(world.time >= navigation_disrupted_until)
+		return
+	.["locked"] = TRUE
+	.["status"] = "Bluespace Disrupted ([DisplayTimeText(navigation_disrupted_until - world.time)])"
 
 /obj/machinery/computer/shuttle/white_ship/bridge/expedition/get_valid_destinations()
 	var/list/unlocked_destination_groups = get_unlocked_port_destination_groups()
@@ -522,7 +575,7 @@
 	var/default_replacement_type = /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition
 	var/bridge_replacement_type = /obj/machinery/computer/shuttle/white_ship/bridge/expedition
 	var/communications_replacement_type = /obj/machinery/computer/communications/expedition
-	/// Vessel name assigned to the Expedition communications console's mission report.
+	/// Vessel name assigned to Expedition navigation warnings and mission reports.
 	var/vessel_name = "Expedition Shuttle"
 	var/bridge_gps_tag_override = null
 
@@ -536,9 +589,11 @@
 		replacement.setDir(console.dir)
 		replacement.shuttleId = console.shuttleId
 		var/obj/docking_port/mobile/current_shuttle = SSshuttle.getShuttle(replacement.shuttleId)
-		if(current_shuttle?.z && istype(replacement, /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition))
+		if(istype(replacement, /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition))
 			var/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/expedition_replacement = replacement
-			expedition_replacement.unlock_z_level(current_shuttle.z)
+			expedition_replacement.vessel_name = vessel_name
+			if(current_shuttle?.z)
+				expedition_replacement.unlock_z_level(current_shuttle.z)
 		qdel(console)
 	for(var/obj/machinery/computer/shuttle/white_ship/bridge/console in target_area)
 		var/obj/machinery/computer/shuttle/white_ship/bridge/replacement = new bridge_replacement_type(console.loc)

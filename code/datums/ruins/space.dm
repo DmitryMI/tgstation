@@ -302,6 +302,12 @@
 	name = "Space-Ruin Whiteship Dock"
 	description = "An abandoned but functional vessel parked in deep space, ripe for the taking."
 
+/datum/map_template/ruin/space/chaserdock
+	id = "chaserdock"
+	suffix = "chaserdock.dmm"
+	name = "Space-Ruin Chaser Dock"
+	description = "A concealed deep-space staging area reserved for a Syndicate pursuit vessel."
+
 /datum/map_template/ruin/space/cat_experiments
 	id = "meow"
 	suffix = "mrow_thats_right.dmm"

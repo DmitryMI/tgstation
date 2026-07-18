@@ -20,6 +20,8 @@
 	var/list/item_stock = list(UPLINK_SHARED_STOCK_KITS = 1 , UPLINK_SHARED_STOCK_SURPLUS = 1)
 	/// Extra stuff that can be purchased by an uplink, regardless of flag.
 	var/list/extra_purchasable = list()
+	/// Uplink item typepaths that this handler must not offer or purchase.
+	var/list/blacklisted_items = list()
 	/// Objectives that must be completed for traitor greentext. Set by the traitor datum.
 	var/list/primary_objectives
 	/// The role that this uplink handler is associated to.
@@ -57,6 +59,8 @@
 
 /// Checks for uplink flags as well as items restricted to roles and species
 /datum/uplink_handler/proc/check_if_restricted(datum/uplink_item/to_purchase)
+	if(to_purchase.type in blacklisted_items)
+		return FALSE
 	if(!to_purchase.can_be_bought(src))
 		return FALSE
 	if((to_purchase in extra_purchasable))

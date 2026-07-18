@@ -188,6 +188,8 @@
 	var/list/extra_purchasable_stock = list()
 	var/list/extra_purchasable = list()
 	for(var/datum/uplink_item/item as anything in uplink_handler.extra_purchasable)
+		if(!uplink_handler.debug_mode && item.type in uplink_handler.blacklisted_items)
+			continue
 		if(item.stock_key in stock_list)
 			extra_purchasable_stock[REF(item)] = stock_list[item.stock_key]
 		var/atom/actual_item = item.item
@@ -227,6 +229,7 @@
 	data["lockable"] = lockable
 	data["assigned_role"] = uplink_handler.assigned_role
 	data["assigned_species"] = uplink_handler.assigned_species
+	data["blacklisted_items"] = uplink_handler.blacklisted_items
 	data["debug"] = uplink_handler.debug_mode
 	return data
 

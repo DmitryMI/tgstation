@@ -4474,6 +4474,7 @@
 #include "code\modules\events\wizard\summons.dm"
 #include "code\modules\events\wizard\tower_of_babel.dm"
 #include "code\modules\expedition\areas.dm"
+#include "code\modules\expedition\chaser.dm"
 #include "code\modules\expedition\communications.dm"
 #include "code\modules\expedition\crew.dm"
 #include "code\modules\expedition\equipment.dm"

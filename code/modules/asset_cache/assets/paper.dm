@@ -23,4 +23,5 @@
 /datum/asset/simple/logos
 	assets = list(
 		"nanotrasen-logo" = 'icons/ui/logos/nanotrasen-logo.png',
+		"syndicate-logo" = 'icons/stamp_icons/large_stamp-syndicate.png',
 	)

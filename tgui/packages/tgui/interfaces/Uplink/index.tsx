@@ -53,6 +53,7 @@ type UplinkData = {
   uplink_flag: number;
   assigned_role: string;
   assigned_species: string;
+  blacklisted_items: string[];
   debug: BooleanLike;
   extra_purchasable: UplinkItem[];
   extra_purchasable_stock: {
@@ -118,6 +119,7 @@ export class Uplink extends Component<any, UplinkState> {
     const uplinkFlag = data.uplink_flag;
     const uplinkRole = data.assigned_role;
     const uplinkSpecies = data.assigned_species;
+    const blacklistedItems = data.blacklisted_items;
 
     const uplinkData = await fetchServerData;
     uplinkData.items = uplinkData.items.sort((a, b) => {
@@ -132,6 +134,9 @@ export class Uplink extends Component<any, UplinkState> {
 
     const availableCategories: string[] = [];
     uplinkData.items = uplinkData.items.filter((value) => {
+      if (!data.debug && blacklistedItems.includes(value.id)) {
+        return false;
+      }
       if (
         value.restricted_roles.length > 0 &&
         !value.restricted_roles.includes(uplinkRole) &&

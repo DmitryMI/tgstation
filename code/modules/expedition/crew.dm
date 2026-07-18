@@ -382,3 +382,155 @@
 	)
 
 	box = /obj/item/storage/box/survival
+
+/// Syndicate Chaser ghost-role sleepers. These intentionally use the same
+/// usable-sleeper flow as expedition crew, but unlock syndicate sleepers and
+/// combat-oriented outfits when claimed.
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser
+	name = "syndicate chaser sleeper"
+	desc = "A sealed Syndicate sleeper pod with an occupant still inside."
+	icon_state = "sleeper_s"
+	prompt_name = "a Syndicate Chaser crew member"
+	you_are_text = "You are a Syndicate Chaser crew member."
+	flavour_text = "You serve aboard a Syndicate pursuit vessel tasked with intercepting and boarding a Nanotrasen expeditionary vessel."
+	important_text = "Follow your Strike Leader's orders, capture the Expeditionary Vessel, and do not let the target escape."
+	outfit = /datum/outfit/syndicatespace/chaser
+	spawner_job_path = /datum/job/syndicate_chaser_boarder
+	allow_custom_character = ALL
+	role_ban = ROLE_SPACE_SYNDICATE
+	unlocked_sleeper_type = /obj/machinery/sleeper/syndie
+
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/special(mob/living/new_spawn, mob/mob_possessor, apply_prefs)
+	. = ..()
+	new_spawn.grant_language(/datum/language/codespeak, source = LANGUAGE_MIND)
+
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/strike_leader
+	name = "Syndicate Chaser strike leader sleeper"
+	prompt_name = "a Syndicate Chaser Strike Leader"
+	you_are_text = "You are the Strike Leader of a Syndicate Chaser."
+	flavour_text = "You command a hand-picked Syndicate boarding team. Coordinate the assault, seize the Nanotrasen vessel, and ensure the target is delivered intact."
+	important_text = "Lead the Chaser crew and capture the Expeditionary Vessel."
+	outfit = /datum/outfit/syndicatespace/chaser/strike_leader
+	spawner_job_path = /datum/job/syndicate_chaser_strike_leader
+
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/boarder
+	name = "Syndicate Chaser boarder sleeper"
+	prompt_name = "a Syndicate Chaser Boarder"
+	you_are_text = "You are a Boarder aboard a Syndicate Chaser."
+	flavour_text = "You are the assault team's frontline operative. Breach the target, suppress resistance, and secure the Expeditionary Vessel for the Syndicate."
+	important_text = "Board the Expeditionary Vessel and secure its crew and critical systems."
+	outfit = /datum/outfit/syndicatespace/chaser/boarder
+	spawner_job_path = /datum/job/syndicate_chaser_boarder
+
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/breacher
+	name = "Syndicate Chaser breacher sleeper"
+	prompt_name = "a Syndicate Chaser Breacher"
+	you_are_text = "You are a Breacher aboard a Syndicate Chaser."
+	flavour_text = "You are responsible for opening hostile compartments and keeping the boarding party supplied with tools, power, and demolition equipment."
+	important_text = "Break through barriers and keep the boarding route open."
+	outfit = /datum/outfit/syndicatespace/chaser/breacher
+	spawner_job_path = /datum/job/syndicate_chaser_breacher
+
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/extraction_specialist
+	name = "Syndicate Chaser extraction specialist sleeper"
+	prompt_name = "a Syndicate Chaser Extraction Specialist"
+	you_are_text = "You are an Extraction Specialist aboard a Syndicate Chaser."
+	flavour_text = "You keep the boarding team alive and stabilize valuable captives. Recover personnel and assets before the target vessel can break away."
+	important_text = "Treat wounded allies and extract the target's crew and research assets."
+	outfit = /datum/outfit/syndicatespace/chaser/extraction_specialist
+	spawner_job_path = /datum/job/syndicate_chaser_extraction_specialist
+
+/datum/job/syndicate_chaser_strike_leader
+	title = "Syndicate Chaser Strike Leader"
+	policy_index = ROLE_SPACE_SYNDICATE
+	description = "Command the Chaser's boarding operation and capture the Nanotrasen Expeditionary Vessel."
+
+/datum/job/syndicate_chaser_boarder
+	title = "Syndicate Chaser Boarder"
+	policy_index = ROLE_SPACE_SYNDICATE
+	description = "Board the Expeditionary Vessel and secure it for the Syndicate."
+
+/datum/job/syndicate_chaser_breacher
+	title = "Syndicate Chaser Breacher"
+	policy_index = ROLE_SPACE_SYNDICATE
+	description = "Open hostile compartments and support the Chaser boarding team with engineering expertise."
+
+/datum/job/syndicate_chaser_extraction_specialist
+	title = "Syndicate Chaser Extraction Specialist"
+	policy_index = ROLE_SPACE_SYNDICATE
+	description = "Keep the boarding team alive and extract captives and valuable assets."
+
+/datum/outfit/syndicatespace/chaser
+	name = "Syndicate Chaser Crew"
+	box = /obj/item/storage/box/survival/syndie
+	/// Each Chaser crewmember receives the same starting TC as a nuclear operative.
+	var/uplink_telecrystals = 25
+	var/uplink_type = /obj/item/uplink/nuclear/chaser
+
+/datum/outfit/syndicatespace/chaser/post_equip(mob/living/carbon/human/chaser, visuals_only = FALSE)
+	. = ..(chaser)
+	if(visuals_only)
+		return
+	var/obj/item/uplink/uplink = new uplink_type(chaser, chaser.key, uplink_telecrystals)
+	chaser.equip_to_storage(uplink, ITEM_SLOT_BACK, indirect_action = TRUE, del_on_fail = TRUE)
+
+/datum/outfit/syndicatespace/chaser/strike_leader
+	name = "Syndicate Chaser Strike Leader"
+	id = /obj/item/card/id/advanced/black/syndicate_command/captain_id
+	id_trim = /datum/id_trim/chameleon/operative/nuke_leader
+	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
+	head = /obj/item/clothing/head/hats/hos/beret/syndicate
+	glasses = /obj/item/clothing/glasses/thermal/eyepatch
+	ears = /obj/item/radio/headset/syndicate/alt/leader
+	back = /obj/item/storage/backpack/duffelbag/syndie
+	l_hand = /obj/item/melee/energy/sword/saber/red
+	r_hand = /obj/item/gun/ballistic/revolver/mateba
+	r_pocket = /obj/item/melee/baton/telescopic
+	backpack_contents = list(
+		/obj/item/documents/syndicate/red,
+		/obj/item/paper/fluff/ruins/forgottenship/password,
+	)
+
+/datum/outfit/syndicatespace/chaser/boarder
+	name = "Syndicate Chaser Boarder"
+	suit = /obj/item/clothing/suit/armor/vest
+	head = /obj/item/clothing/head/helmet/swat
+	mask = /obj/item/clothing/mask/gas/syndicate
+	back = /obj/item/storage/backpack/duffelbag/syndie
+	r_hand = /obj/item/gun/ballistic/shotgun/bulldog
+	l_hand = /obj/item/knife/combat/survival
+	l_pocket = /obj/item/restraints/handcuffs
+	r_pocket = /obj/item/grenade/flashbang
+	backpack_contents = list(
+		/obj/item/ammo_box/magazine/m12g = 2,
+		/obj/item/grenade/stingbang,
+	)
+
+/datum/outfit/syndicatespace/chaser/breacher
+	name = "Syndicate Chaser Breacher"
+	suit = /obj/item/clothing/suit/armor/vest
+	head = /obj/item/clothing/head/utility/hardhat/welding/up
+	mask = /obj/item/clothing/mask/gas/syndicate
+	glasses = /obj/item/clothing/glasses/meson
+	back = /obj/item/storage/backpack/duffelbag/syndie
+	belt = /obj/item/storage/belt/utility/syndicate
+	r_hand = /obj/item/gun/energy/laser/carbine
+	l_hand = /obj/item/construction/rcd/loaded
+	l_pocket = /obj/item/t_scanner
+	r_pocket = /obj/item/grenade/empgrenade
+	backpack_contents = list(
+		/obj/item/weldingtool/largetank,
+	)
+
+/datum/outfit/syndicatespace/chaser/extraction_specialist
+	name = "Syndicate Chaser Extraction Specialist"
+	suit = /obj/item/clothing/suit/armor/vest
+	head = /obj/item/clothing/head/helmet/swat
+	mask = /obj/item/clothing/mask/gas/syndicate
+	glasses = /obj/item/clothing/glasses/hud/health
+	back = /obj/item/storage/backpack/duffelbag/syndie/med
+	belt = /obj/item/storage/belt/medical/paramedic
+	r_hand = /obj/item/gun/energy/laser/carbine
+	l_hand = /obj/item/storage/medkit/surgery_syndie
+	r_pocket = /obj/item/defibrillator/compact/loaded
+	l_pocket = /obj/item/knife/combat/survival

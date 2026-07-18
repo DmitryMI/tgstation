@@ -18,6 +18,7 @@
 #_maps/RandomRuins/SpaceRuins/botanical_haven.dmm
 #_maps/RandomRuins/SpaceRuins/bus.dmm
 #_maps/RandomRuins/SpaceRuins/caravanambush.dmm
+# _maps/RandomRuins/SpaceRuins/chaserdock.dmm
 #_maps/RandomRuins/SpaceRuins/clericden.dmm
 #_maps/RandomRuins/SpaceRuins/clownplanet.dmm
 #_maps/RandomRuins/SpaceRuins/commsbuoy_lowtech.dmm

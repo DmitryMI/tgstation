@@ -68,6 +68,9 @@
 	///Holds a list of map name strings for the port to pick from
 	var/list/shuttlekeys
 
+/obj/docking_port/stationary/picked/proc/get_weighted_shuttles()
+	return get_deepspace_whiteship_weights_for_map(SSmapping.current_map?.map_name, shuttlekeys)
+
 /proc/get_deepspace_whiteship_spawn_weight_entries()
 	var/static/list/cached_entries
 	var/static/cache_loaded = FALSE
@@ -170,13 +173,58 @@
 
 	return final_weights
 
+/proc/get_chaser_spawn_weights(list/eligible_chasers)
+	var/static/list/cached_weights
+	var/static/cache_loaded = FALSE
+
+	if(!cache_loaded)
+		cache_loaded = TRUE
+		cached_weights = list()
+		var/filename = "[global.config.directory]/chaser_spawn_weights.json"
+		if(fexists(filename))
+			var/raw_json = file2text(filename)
+			var/list/decoded
+			if(raw_json)
+				decoded = safe_json_decode(raw_json)
+			if(islist(decoded))
+				cached_weights = decoded
+			else
+				log_world("Invalid Chaser spawn weights config: [filename] must contain a JSON object.")
+
+	if(!length(cached_weights) || !length(eligible_chasers))
+		return
+
+	var/list/eligible_lookup = list()
+	for(var/chaser_id in eligible_chasers)
+		eligible_lookup[LOWER_TEXT("[chaser_id]")] = chaser_id
+
+	var/list/final_weights = list()
+	var/total_weight = 0
+	for(var/raw_id in cached_weights)
+		var/actual_id = eligible_lookup[LOWER_TEXT("[raw_id]")]
+		if(isnull(actual_id))
+			log_world("Ignoring unknown Chaser shuttle id '[raw_id]' in chaser_spawn_weights.json.")
+			continue
+
+		var/value = cached_weights[raw_id]
+		if(!isnum(value) || value < 0)
+			log_world("Ignoring invalid Chaser spawn weight '[value]' for '[raw_id]'. Expected a non-negative number.")
+			continue
+
+		final_weights[actual_id] = value
+		total_weight += value
+
+	if(total_weight <= 0)
+		return
+	return final_weights
+
 /obj/docking_port/stationary/picked/Initialize(mapload)
 	. = ..()
 	if(!LAZYLEN(shuttlekeys))
 		WARNING("Random docking port [shuttle_id] loaded with no shuttle keys")
 		return
-	var/list/weighted_whiteships = get_deepspace_whiteship_weights_for_map(SSmapping.current_map?.map_name, shuttlekeys)
-	var/selectedid = length(weighted_whiteships) ? pick_weight(weighted_whiteships) : pick(shuttlekeys)
+	var/list/weighted_shuttles = get_weighted_shuttles()
+	var/selectedid = length(weighted_shuttles) ? pick_weight(weighted_shuttles) : pick(shuttlekeys)
 	roundstart_template = SSmapping.shuttle_templates[selectedid]
 
 /obj/docking_port/stationary/picked/whiteship
@@ -202,3 +250,17 @@
 		"whiteship_obelisk",
 		"whiteship_birdshot",
 	)
+
+/// Dedicated starting dock for the Syndicate Chaser.
+/obj/docking_port/stationary/picked/chaser
+	name = "Chaser Staging Area"
+	shuttle_id = "chaser_start"
+	height = 45 // Must remain in sync with chaserdock.dmm.
+	width = 45
+	dheight = 14
+	dwidth = 18
+	dir = SOUTH
+	shuttlekeys = list("whiteship_chaser")
+
+/obj/docking_port/stationary/picked/chaser/get_weighted_shuttles()
+	return get_chaser_spawn_weights(shuttlekeys)

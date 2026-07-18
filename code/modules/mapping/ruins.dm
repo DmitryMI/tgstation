@@ -73,8 +73,9 @@
  * @param mineral_budget The budget to spend on ruins that spawn ore vents. Map templates with vents have that defined by mineral_cost.
  * @param mineral_budget_update What type of ore distribution should spawn from ruins picked by this cave generator? This list is copied from ores_spawned.dm into SSore_generation.ore_vent_minerals.
  * @param ruin_type The type of ruins that are spawning (ZTRAIT_SPACE_RUINS, ZTRAIT_ICE_RUINS, ZTRAIT_LAVA_RUINS, etc.)
+ * @param force_placement Whether to place every supplied template once, ignoring its placement weight.
  */
-/proc/seedRuins(list/z_levels = null, budget = 0, whitelist = list(/area/space), list/potentialRuins, clear_below = FALSE, mineral_budget = 15, mineral_budget_update, ruins_type = ZTRAIT_STATION)
+/proc/seedRuins(list/z_levels = null, budget = 0, whitelist = list(/area/space), list/potentialRuins, clear_below = FALSE, mineral_budget = 15, mineral_budget_update, ruins_type = ZTRAIT_STATION, force_placement = FALSE)
 	if(!z_levels || !z_levels.len)
 		WARNING("No Z levels provided - Not generating ruins")
 		return
@@ -110,6 +111,9 @@
 			R.always_place = !R.unpickable // unpickable ruin means it spawns as a set with another ruin
 
 		if(R.cost > budget || R.mineral_cost > mineral_budget) //Why would you do that
+			continue
+		if(force_placement)
+			forced_ruins[R] = -1
 			continue
 		if(R.always_place)
 			forced_ruins[R] = -1

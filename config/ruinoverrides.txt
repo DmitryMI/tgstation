@@ -16,6 +16,7 @@
 # djstation placement_weight=10 always_place=true
 
 whiteshipdock always_place=true
+chaserdock placement_weight=0
 asteroid5 always_place=true
 asteroid7 always_place=true
 oldstation always_place=true
