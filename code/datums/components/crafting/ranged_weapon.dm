@@ -144,6 +144,11 @@
 	time = 10 SECONDS
 	category = CAT_WEAPON_RANGED
 
+/datum/crafting_recipe/type5_laser/base/New()
+	. = ..()
+	// Each standardization recipe has an exact Type 5 subtype requirement, so it does not need the shared family blacklist.
+	blacklist = null
+
 /datum/crafting_recipe/type5_laser/base/pistol
 	reqs = list(
 		/obj/item/gun/energy/laser/pistol = 1,
