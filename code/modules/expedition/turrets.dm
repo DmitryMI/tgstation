@@ -36,6 +36,10 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	var/base_weapon_cooldown = 1.5 SECONDS
 	/// Installed capacitor tier, cached for inspection and firing-cycle calculations.
 	var/capacitor_tier = 1
+	/// Installed micro-laser tier, cached for inspection and projectile-speed calculations.
+	var/micro_laser_tier = 1
+	/// Multiplier applied to the speed the installed weapon would normally give its projectile.
+	var/turret_projectile_speed_multiplier = 1
 	/// Whether this turret has been permanently authorized.
 	var/faction_configured = FALSE
 	/// Integrity of iron-plated construction.
@@ -65,6 +69,7 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	. = ..()
 	. += span_notice("Its tier [plating_tier] structural plating supports [max_integrity] maximum integrity.")
 	. += span_notice("Its tier [capacitor_tier] capacitor provides a [DisplayTimeText(shot_delay)] firing-cycle cooldown.")
+	. += span_notice("Its tier [micro_laser_tier] micro-laser provides [round(turret_projectile_speed_multiplier * 100)]% projectile speed.")
 
 /obj/machinery/porta_turret/hull_defense/RefreshParts()
 	. = ..()
@@ -81,14 +86,19 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 		return
 
 	capacitor_tier = 1
+	micro_laser_tier = 1
 	var/scanner_tier = 0
 	for(var/datum/stock_part/capacitor/capacitor in component_parts)
 		capacitor_tier = max(capacitor_tier, capacitor.tier)
+	for(var/datum/stock_part/micro_laser/micro_laser in component_parts)
+		micro_laser_tier = max(micro_laser_tier, micro_laser.tier)
 	for(var/datum/stock_part/scanning_module/scanner in component_parts)
 		scanner_tier += scanner.tier
 
 	// Tier 1 preserves the weapon's cooldown; tier 4 halves it.
 	shot_delay = base_weapon_cooldown * (1 - ((capacitor_tier - 1) / 6))
+	// Tier 1 preserves the weapon's projectile speed; tier 4 doubles it.
+	turret_projectile_speed_multiplier = 1 + ((micro_laser_tier - 1) / 3)
 	scan_range = base_scan_range + (scanner_tier * scan_range_per_tier)
 	tracker?.current_range = scan_range
 	tracker?.recalculate_field(full_recalc = TRUE)
@@ -284,7 +294,7 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 		projectile.impacted[WEAKREF(src)] = TRUE
 		projectile.damage *= stored_gun.projectile_damage_multiplier
 		projectile.stamina *= stored_gun.projectile_damage_multiplier
-		projectile.speed *= stored_gun.projectile_speed_multiplier
+		projectile.speed *= stored_gun.projectile_speed_multiplier * turret_projectile_speed_multiplier
 		projectile.wound_bonus += stored_gun.projectile_wound_bonus
 		projectile.exposed_wound_bonus += stored_gun.projectile_wound_bonus
 		var/shot_spread = 0
@@ -350,6 +360,7 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	build_path = /obj/machinery/porta_turret/hull_defense
 	req_components = list(
 		/datum/stock_part/capacitor = 1,
+		/datum/stock_part/micro_laser = 1,
 		/datum/stock_part/scanning_module = 1,
 		/obj/item/gun/energy = 1,
 		/obj/item/stack/sheet = 5,

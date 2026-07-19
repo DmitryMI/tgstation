@@ -63,6 +63,10 @@
 	parent_turret.update_appearance()
 	return ITEM_INTERACT_SUCCESS
 
+/// Tool interactions with a closed turret should operate on the turret, not damage its cosmetic cover.
+/obj/machinery/porta_turret_cover/welder_act(mob/living/user, obj/item/tool)
+	return parent_turret?.welder_act(user, tool)
+
 /obj/machinery/porta_turret_cover/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!tool.GetID())
 		return NONE
