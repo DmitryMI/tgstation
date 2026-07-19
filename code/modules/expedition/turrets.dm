@@ -1,6 +1,9 @@
 #define HULL_TURRET_LETHAL_MODE 1
 #define HULL_TURRET_SHOOT_ANOMALOUS (1<<4)
 #define HULL_TURRET_SHOOT_BORGS (1<<6)
+#define HULL_TURRET_FIRE_DIRECT "direct"
+#define HULL_TURRET_FIRE_PREDICTIVE "predictive"
+#define HULL_TURRET_FIRE_MIXED "mixed"
 
 GLOBAL_LIST_EMPTY(hull_defense_map_consoles)
 GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
@@ -56,6 +59,32 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	var/automatic_fire_until = 0
 	/// Portable turrets rescan for targets every two seconds; maintain fire for that interval.
 	var/automatic_fire_window = 2 SECONDS
+	/// How automatic shots choose between direct and predictive aim. Manual fire is always direct.
+	var/automatic_fire_mode = HULL_TURRET_FIRE_PREDICTIVE
+	/// Firing modes accepted by hull-defense turrets.
+	var/static/list/valid_automatic_fire_modes = list(
+		HULL_TURRET_FIRE_DIRECT,
+		HULL_TURRET_FIRE_PREDICTIVE,
+		HULL_TURRET_FIRE_MIXED,
+	)
+	/// Number of consecutive compatible velocity samples required before leading a target.
+	var/predictive_minimum_samples = 2
+	/// Maximum time into the future for which an interception point may be calculated.
+	var/predictive_max_intercept_time = 2 SECONDS
+	/// A velocity estimate expires after this many observed movement intervals without another move.
+	var/predictive_velocity_stale_multiplier = 1.5
+	/// Last accepted target velocity in tiles per decisecond.
+	var/automatic_target_velocity_x = 0
+	var/automatic_target_velocity_y = 0
+	/// Time of the previous movement signal used to calculate velocity.
+	var/automatic_target_sample_time = 0
+	/// Time and interval of the last accepted target movement.
+	var/automatic_target_last_move_time = 0
+	var/automatic_target_move_interval = 0
+	/// Number of consecutive movement samples compatible with the current trajectory.
+	var/automatic_target_consistent_samples = 0
+	/// Origin retained while tgstation splits one logical diagonal move into two cardinal Move() calls.
+	var/turf/automatic_target_diagonal_origin
 
 /obj/machinery/porta_turret/hull_defense/Initialize(mapload)
 	scan_range = base_scan_range
@@ -70,6 +99,32 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	. += span_notice("Its tier [plating_tier] structural plating supports [max_integrity] maximum integrity.")
 	. += span_notice("Its tier [capacitor_tier] capacitor provides a [DisplayTimeText(shot_delay)] firing-cycle cooldown.")
 	. += span_notice("Its tier [micro_laser_tier] micro-laser provides [round(turret_projectile_speed_multiplier * 100)]% projectile speed.")
+	. += span_notice("Its automatic targeting system is configured for [get_automatic_fire_mode_name()] fire.")
+
+/obj/machinery/porta_turret/hull_defense/proc/get_automatic_fire_mode_name()
+	switch(automatic_fire_mode)
+		if(HULL_TURRET_FIRE_DIRECT)
+			return "direct"
+		if(HULL_TURRET_FIRE_MIXED)
+			return "mixed"
+	return "predictive"
+
+/obj/machinery/porta_turret/hull_defense/proc/set_automatic_fire_mode(new_mode)
+	if(!(new_mode in valid_automatic_fire_modes))
+		return FALSE
+	automatic_fire_mode = new_mode
+	return TRUE
+
+/// Returns whether one automatic projectile should attempt to lead its target.
+/obj/machinery/porta_turret/hull_defense/proc/should_predict_automatic_projectile()
+	if(manual_control)
+		return FALSE
+	switch(automatic_fire_mode)
+		if(HULL_TURRET_FIRE_PREDICTIVE)
+			return TRUE
+		if(HULL_TURRET_FIRE_MIXED)
+			return prob(50)
+	return FALSE
 
 /obj/machinery/porta_turret/hull_defense/RefreshParts()
 	. = ..()
@@ -156,6 +211,19 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 		return "Syndicate"
 	return ..()
 
+/obj/machinery/porta_turret/hull_defense/ui_data(mob/user)
+	. = ..()
+	.["supports_firing_modes"] = TRUE
+	.["firing_mode"] = automatic_fire_mode
+
+/obj/machinery/porta_turret/hull_defense/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	if(action == "firing_mode")
+		var/mob/living/user = ui.user
+		if(!user || locked)
+			return
+		return set_automatic_fire_mode(params["mode"])
+	return ..()
+
 /obj/machinery/porta_turret/hull_defense/configure_faction_from_id(mob/living/user, obj/item/card/id/id)
 	if(faction_configured)
 		return reject_faction_scan(user, "Faction authorization already configured.")
@@ -231,6 +299,8 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 		if(previous_target != target)
 			clear_automatic_fire_target()
 		automatic_fire_target = WEAKREF(target)
+		if(previous_target != target && ismovable(target))
+			RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_automatic_target_moved))
 		automatic_fire_until = world.time + automatic_fire_window
 	return ..()
 
@@ -275,9 +345,125 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 /obj/machinery/porta_turret/hull_defense/proc/clear_automatic_fire_target()
 	if(automatic_fire_timer)
 		deltimer(automatic_fire_timer)
+	var/atom/movable/tracked_target = automatic_fire_target?.resolve()
+	if(tracked_target)
+		UnregisterSignal(tracked_target, COMSIG_MOVABLE_MOVED)
 	automatic_fire_timer = null
 	automatic_fire_target = null
 	automatic_fire_until = 0
+	reset_automatic_target_velocity()
+
+/obj/machinery/porta_turret/hull_defense/proc/reset_automatic_target_velocity(sample_time = 0)
+	automatic_target_velocity_x = 0
+	automatic_target_velocity_y = 0
+	automatic_target_sample_time = sample_time
+	automatic_target_last_move_time = 0
+	automatic_target_move_interval = 0
+	automatic_target_consistent_samples = 0
+	automatic_target_diagonal_origin = null
+
+/obj/machinery/porta_turret/hull_defense/proc/on_automatic_target_moved(atom/movable/moving_target, atom/old_loc, movement_direction, forced, list/old_locs)
+	SIGNAL_HANDLER
+	if(moving_target != automatic_fire_target?.resolve())
+		return
+	var/sample_time = world.time
+	var/turf/old_turf = get_turf(old_loc)
+	var/turf/new_turf = get_turf(moving_target)
+	if(forced || !old_turf || !new_turf || old_turf.z != new_turf.z)
+		reset_automatic_target_velocity(sample_time)
+		return
+	// Diagonal movement is implemented as two cardinal steps during the same
+	// Move() call. Treating those as independent samples creates a zero-time
+	// second sample and consistently under-leads diagonal targets.
+	if(moving_target.moving_diagonally == FIRST_DIAG_STEP)
+		automatic_target_diagonal_origin = old_turf
+		return
+	if(moving_target.moving_diagonally == SECOND_DIAG_STEP && automatic_target_diagonal_origin)
+		old_turf = automatic_target_diagonal_origin
+		automatic_target_diagonal_origin = null
+	else if(automatic_target_diagonal_origin)
+		// The second half was blocked. Discard the incomplete sample rather than
+		// blending it into the target's next successful movement.
+		reset_automatic_target_velocity(sample_time)
+		return
+	if(!automatic_target_sample_time)
+		automatic_target_sample_time = sample_time
+		automatic_target_last_move_time = sample_time
+		return
+	var/sample_interval = sample_time - automatic_target_sample_time
+	automatic_target_sample_time = sample_time
+	if(sample_interval <= 0)
+		reset_automatic_target_velocity(sample_time)
+		return
+	var/displacement_x = new_turf.x - old_turf.x
+	var/displacement_y = new_turf.y - old_turf.y
+	if(!displacement_x && !displacement_y)
+		reset_automatic_target_velocity(sample_time)
+		return
+	if(abs(displacement_x) > 1 || abs(displacement_y) > 1)
+		reset_automatic_target_velocity(sample_time)
+		return
+	var/new_velocity_x = displacement_x / sample_interval
+	var/new_velocity_y = displacement_y / sample_interval
+	if(automatic_target_consistent_samples)
+		var/old_speed = sqrt((automatic_target_velocity_x ** 2) + (automatic_target_velocity_y ** 2))
+		var/new_speed = sqrt((new_velocity_x ** 2) + (new_velocity_y ** 2))
+		var/heading_similarity = old_speed && new_speed ? ((automatic_target_velocity_x * new_velocity_x) + (automatic_target_velocity_y * new_velocity_y)) / (old_speed * new_speed) : 0
+		var/speed_ratio = old_speed ? new_speed / old_speed : 0
+		if(heading_similarity < 0.8 || speed_ratio < 0.5 || speed_ratio > 2)
+			automatic_target_consistent_samples = 0
+	automatic_target_velocity_x = new_velocity_x
+	automatic_target_velocity_y = new_velocity_y
+	automatic_target_move_interval = sample_interval
+	automatic_target_last_move_time = sample_time
+	automatic_target_consistent_samples++
+
+/// Returns an interception angle while preserving projectile.original as the actual target.
+/obj/machinery/porta_turret/hull_defense/proc/get_predictive_fire_angle(atom/target, obj/projectile/projectile, turf/source_turf)
+	if(projectile.hitscan || target != automatic_fire_target?.resolve())
+		return null
+	if(automatic_target_consistent_samples < predictive_minimum_samples || !automatic_target_move_interval)
+		return null
+	var/velocity_age = world.time - automatic_target_last_move_time
+	var/stale_after = max(automatic_target_move_interval * predictive_velocity_stale_multiplier, world.tick_lag * 2)
+	if(velocity_age > stale_after)
+		return null
+	var/turf/target_turf = get_turf(target)
+	if(!target_turf || target_turf.z != source_turf.z || projectile.speed <= 0)
+		return null
+	var/relative_x = target_turf.x - source_turf.x
+	var/relative_y = target_turf.y - source_turf.y
+	var/projectile_speed_squared = projectile.speed ** 2
+	var/velocity_squared = (automatic_target_velocity_x ** 2) + (automatic_target_velocity_y ** 2)
+	var/quadratic_a = velocity_squared - projectile_speed_squared
+	var/quadratic_b = 2 * ((relative_x * automatic_target_velocity_x) + (relative_y * automatic_target_velocity_y))
+	var/quadratic_c = (relative_x ** 2) + (relative_y ** 2)
+	var/intercept_time
+	if(abs(quadratic_a) < 0.0001)
+		if(abs(quadratic_b) < 0.0001)
+			return null
+		intercept_time = -quadratic_c / quadratic_b
+	else
+		var/discriminant = (quadratic_b ** 2) - (4 * quadratic_a * quadratic_c)
+		if(discriminant < 0)
+			return null
+		var/discriminant_root = sqrt(discriminant)
+		var/first_time = (-quadratic_b - discriminant_root) / (2 * quadratic_a)
+		var/second_time = (-quadratic_b + discriminant_root) / (2 * quadratic_a)
+		if(first_time > 0 && second_time > 0)
+			intercept_time = min(first_time, second_time)
+		else
+			intercept_time = max(first_time, second_time)
+	if(!intercept_time || intercept_time <= 0 || intercept_time > predictive_max_intercept_time)
+		return null
+	var/intercept_x = target_turf.x + (automatic_target_velocity_x * intercept_time)
+	var/intercept_y = target_turf.y + (automatic_target_velocity_y * intercept_time)
+	if(intercept_x < 1 || intercept_x > world.maxx || intercept_y < 1 || intercept_y > world.maxy)
+		return null
+	var/turf/intercept_turf = locate(round(intercept_x), round(intercept_y), target_turf.z)
+	if(!intercept_turf || get_dist(source_turf, intercept_turf) > scan_range || !can_see(source_turf, intercept_turf, scan_range))
+		return null
+	return get_angle_raw(source_turf.x, source_turf.y, 0, 0, intercept_x, intercept_y, 0, 0)
 
 /obj/machinery/porta_turret/hull_defense/proc/fire_weapon_round(atom/target)
 	if(QDELETED(target) || !anchored || !powered() || !stored_gun || (machine_stat & BROKEN))
@@ -303,6 +489,10 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 		if(weapon_variance)
 			shot_spread += weapon_randomspread ? rand(-round(weapon_variance / 2), round(weapon_variance / 2)) : round((pellet - ((weapon_pellets + 1) / 2)) * weapon_variance / weapon_pellets)
 		projectile.aim_projectile(target, source_turf, deviation = shot_spread)
+		if(should_predict_automatic_projectile())
+			var/predictive_angle = get_predictive_fire_angle(target, projectile, source_turf)
+			if(!isnull(predictive_angle))
+				projectile.set_angle(predictive_angle + shot_spread)
 		projectile.firer = src
 		projectile.fired_from = src
 		if(ignore_faction)
@@ -431,20 +621,35 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 			return 4
 	return 1
 
-/// Map-ready preset with basic parts, iron plating, an assault Type 5, and Expedition authorization.
+/// Map-only preset with basic parts, iron plating, an assault Type 5, and Expedition authorization.
+/// Its ordinary board deliberately rebuilds into a configurable hull-defense turret.
 /obj/machinery/porta_turret/hull_defense/expedition
 	name = "expedition hull-defense turret"
-	circuit = /obj/item/circuitboard/machine/hull_defense_turret/expedition
+	circuit = /obj/item/circuitboard/machine/hull_defense_turret
 	faction = list(FACTION_EXPEDITION)
 	faction_configured = TRUE
 	on = TRUE
+	/// Energy weapon installed when this map preset initializes.
+	var/map_weapon_type = /obj/item/gun/energy/laser/assault
 
-/obj/item/circuitboard/machine/hull_defense_turret/expedition
-	build_path = /obj/machinery/porta_turret/hull_defense/expedition
-	plating_type = /obj/item/stack/sheet/iron
-	def_components = list(
-		/obj/item/gun/energy = /obj/item/gun/energy/laser/assault,
-	)
+/obj/machinery/porta_turret/hull_defense/expedition/Initialize(mapload)
+	if(ispath(circuit, /obj/item/circuitboard/machine/hull_defense_turret))
+		var/weapon_type = map_weapon_type
+		if(!ispath(weapon_type, /obj/item/gun/energy))
+			stack_trace("[src] at [AREACOORD(src)] has invalid map_weapon_type [weapon_type]; using a Type 5 assault cannon instead.")
+			weapon_type = /obj/item/gun/energy/laser/assault
+		else
+			var/obj/item/gun/energy/weapon_path = weapon_type
+			if(initial(weapon_path.gun_flags) & TURRET_INCOMPATIBLE)
+				stack_trace("[src] at [AREACOORD(src)] has turret-incompatible map_weapon_type [weapon_type]; using a Type 5 assault cannon instead.")
+				weapon_type = /obj/item/gun/energy/laser/assault
+		var/obj/item/circuitboard/machine/hull_defense_turret/ordinary_board = new circuit(src)
+		ordinary_board.plating_type = /obj/item/stack/sheet/iron
+		ordinary_board.def_components = list(
+			/obj/item/gun/energy = weapon_type,
+		)
+		circuit = ordinary_board
+	return ..()
 
 /datum/design/board/hull_defense_turret
 	name = "Hull-Defense Turret Board"
@@ -643,6 +848,11 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 		if(!turret)
 			linked_turrets -= turret_ref
 			continue
+		var/supports_firing_modes = istype(turret, /obj/machinery/porta_turret/hull_defense)
+		var/firing_mode = HULL_TURRET_FIRE_DIRECT
+		if(supports_firing_modes)
+			var/obj/machinery/porta_turret/hull_defense/hull_turret = turret
+			firing_mode = hull_turret.automatic_fire_mode
 		data["turrets"] += list(list(
 			"ref" = REF(turret),
 			"name" = turret.name,
@@ -652,6 +862,8 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 			"clearable" = istype(turret, /obj/machinery/porta_turret/hull_defense) && turret.is_faction_authorized(),
 			"sameZ" = is_turret_on_same_z(turret),
 			"range" = turret.scan_range,
+			"supportsFiringModes" = supports_firing_modes,
+			"firingMode" = firing_mode,
 		))
 	update_preview()
 	return data
@@ -679,6 +891,11 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 				return
 			turret.toggle_on(!turret.on)
 			return TRUE
+		if("firing_mode")
+			if(!istype(turret, /obj/machinery/porta_turret/hull_defense))
+				return
+			var/obj/machinery/porta_turret/hull_defense/mode_turret = turret
+			return mode_turret.set_automatic_fire_mode(params["mode"])
 		if("clear_faction")
 			if(!istype(turret, /obj/machinery/porta_turret/hull_defense))
 				return
@@ -793,3 +1010,6 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 #undef HULL_TURRET_LETHAL_MODE
 #undef HULL_TURRET_SHOOT_ANOMALOUS
 #undef HULL_TURRET_SHOOT_BORGS
+#undef HULL_TURRET_FIRE_DIRECT
+#undef HULL_TURRET_FIRE_PREDICTIVE
+#undef HULL_TURRET_FIRE_MIXED

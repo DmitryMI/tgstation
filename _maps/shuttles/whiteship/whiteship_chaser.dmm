@@ -724,6 +724,13 @@
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/chaser/engineering)
+"Fp" = (
+/obj/structure/table/reinforced/plastitaniumglass,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
 "FE" = (
 /obj/machinery/atmospherics/components/unary/passive_vent/layer2{
 	dir = 8
@@ -1024,6 +1031,7 @@
 /area/shuttle/chaser/engineering)
 "Vj" = (
 /obj/structure/table/reinforced/plastitaniumglass,
+/obj/machinery/microwave,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/bridge)
 "Vs" = (
@@ -1155,7 +1163,7 @@ PV
 PV
 TZ
 TZ
-Vj
+Fp
 pS
 an
 qj

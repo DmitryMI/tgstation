@@ -3,6 +3,25 @@ import { Button, LabeledList, NoticeBox, Section } from 'tgui-core/components';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
+const firingModes = [
+  {
+    id: 'direct',
+    label: 'Direct',
+    tooltip: "Aim at the target's current position",
+  },
+  {
+    id: 'predictive',
+    label: 'Predictive',
+    tooltip: 'Lead consistently moving targets',
+  },
+  {
+    id: 'mixed',
+    label: 'Mixed',
+    tooltip:
+      'Choose direct or predictive aim independently for each projectile',
+  },
+];
+
 export const PortableTurret = (props) => {
   const { act, data } = useBackend();
   const {
@@ -22,9 +41,14 @@ export const PortableTurret = (props) => {
     faction_name,
     supports_faction_configuration,
     faction_configured,
+    supports_firing_modes,
+    firing_mode,
   } = data;
   return (
-    <Window width={340} height={lasertag_turret ? 155 : 337}>
+    <Window
+      width={340}
+      height={lasertag_turret ? 155 : supports_firing_modes ? 370 : 337}
+    >
       <Window.Content>
         <NoticeBox>
           Swipe an ID card to {locked ? 'unlock' : 'lock'} this interface.
@@ -75,6 +99,22 @@ export const PortableTurret = (props) => {
             >
               {faction_name}
             </LabeledList.Item>
+            {!!supports_firing_modes && (
+              <LabeledList.Item label="Fire Mode">
+                {firingModes.map((mode) => (
+                  <Button
+                    key={mode.id}
+                    compact
+                    selected={firing_mode === mode.id}
+                    disabled={locked}
+                    tooltip={mode.tooltip}
+                    onClick={() => act('firing_mode', { mode: mode.id })}
+                  >
+                    {mode.label}
+                  </Button>
+                ))}
+              </LabeledList.Item>
+            )}
           </LabeledList>
         </Section>
         {!lasertag_turret && (

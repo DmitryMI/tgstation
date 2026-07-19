@@ -1,6 +1,7 @@
 import {
   Button,
   ByondUi,
+  LabeledList,
   NoticeBox,
   Section,
   Stack,
@@ -11,6 +12,27 @@ import type { BooleanLike } from 'tgui-core/react';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
+type FiringMode = 'direct' | 'predictive' | 'mixed';
+
+const firingModes: { id: FiringMode; label: string; tooltip: string }[] = [
+  {
+    id: 'direct',
+    label: 'Direct',
+    tooltip: "Aim at the target's current position",
+  },
+  {
+    id: 'predictive',
+    label: 'Predictive',
+    tooltip: 'Lead consistently moving targets',
+  },
+  {
+    id: 'mixed',
+    label: 'Mixed',
+    tooltip:
+      'Choose direct or predictive aim independently for each projectile',
+  },
+];
+
 type Turret = {
   ref: string;
   name: string;
@@ -20,6 +42,8 @@ type Turret = {
   clearable: BooleanLike;
   sameZ: BooleanLike;
   range: number;
+  supportsFiringModes: BooleanLike;
+  firingMode: FiringMode;
 };
 
 type Data = {
@@ -164,6 +188,39 @@ export const HullDefenseControl = () => {
                     </Stack.Item>
                   </Stack>
                 </Stack.Item>
+                {selected && (
+                  <Stack.Item>
+                    <LabeledList>
+                      <LabeledList.Item label="Automatic fire mode">
+                        {selected.supportsFiringModes ? (
+                          firingModes.map((mode) => (
+                            <Button
+                              key={mode.id}
+                              selected={selected.firingMode === mode.id}
+                              tooltip={mode.tooltip}
+                              onClick={() =>
+                                act('firing_mode', {
+                                  ref: selected.ref,
+                                  mode: mode.id,
+                                })
+                              }
+                            >
+                              {mode.label}
+                            </Button>
+                          ))
+                        ) : (
+                          <Button
+                            selected
+                            disabled
+                            tooltip="Legacy turrets use direct fire only"
+                          >
+                            Direct (fixed)
+                          </Button>
+                        )}
+                      </LabeledList.Item>
+                    </LabeledList>
+                  </Stack.Item>
+                )}
                 <Stack.Item grow>
                   {selected && (
                     <ByondUi
