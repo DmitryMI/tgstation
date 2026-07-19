@@ -2,6 +2,8 @@
 	name = "Base Shuttle Template"
 	var/prefix = "_maps/shuttles/"
 	var/suffix
+	/// Optional map path used when a shuttle template's ID differs from its map filename.
+	var/mappath_override
 	/**
 	 * Port ID is the place this template should be docking at, set on '/obj/docking_port/stationary'
 	 * Because getShuttle() compares port_id to shuttle_id to find an already existing shuttle,
@@ -36,7 +38,7 @@
 
 /datum/map_template/shuttle/New()
 	shuttle_id = "[port_id]_[suffix]"
-	mappath = "[prefix][shuttle_id].dmm"
+	mappath = mappath_override || "[prefix][shuttle_id].dmm"
 	. = ..()
 
 /datum/map_template/shuttle/preload_size(path, cache)

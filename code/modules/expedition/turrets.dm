@@ -217,12 +217,17 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	.["firing_mode"] = automatic_fire_mode
 
 /obj/machinery/porta_turret/hull_defense/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	if(action == "firing_mode")
-		var/mob/living/user = ui.user
-		if(!user || locked)
-			return
-		return set_automatic_fire_mode(params["mode"])
-	return ..()
+	if(action != "firing_mode")
+		return ..()
+	if(!isliving(ui.user))
+		return
+	. = ..()
+	if(.)
+		return
+	var/mob/living/user = ui.user
+	if(locked || !can_interact(user))
+		return
+	return set_automatic_fire_mode(params["mode"])
 
 /obj/machinery/porta_turret/hull_defense/configure_faction_from_id(mob/living/user, obj/item/card/id/id)
 	if(faction_configured)
@@ -871,6 +876,8 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 /obj/machinery/computer/hull_defense_control/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
+		return
+	if(!isliving(ui.user))
 		return
 	var/mob/living/user = ui.user
 	var/obj/machinery/porta_turret/turret = locate(params["ref"])

@@ -238,6 +238,15 @@
 /obj/machinery/meter/layer4,
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
+"ez" = (
+/obj/machinery/porta_turret/hull_defense/expedition{
+	name = "Kestrel Aft-Port Laser"
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/armory)
 "eI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/spawner/random/vending/colavend,
@@ -832,19 +841,10 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/armory)
 "qd" = (
-/obj/machinery/door/airlock/external/glass{
-	id_tag = "kestrel_eva_starboard"
-	},
-/obj/machinery/atmos_shield_gen/active{
-	dir = 4
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = whiteship_eva_lockdown
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable/layer1,
-/turf/open/floor/iron/dark,
-/area/shuttle/expedition/cargo)
+/obj/structure/cable,
+/obj/machinery/power/tracker,
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/armory)
 "qi" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -1545,6 +1545,31 @@
 /obj/structure/reagent_dispensers/watertank/high,
 /turf/open/floor/iron,
 /area/shuttle/expedition/hydroponics)
+"Dl" = (
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "kestrel_eva_starboard"
+	},
+/obj/machinery/atmos_shield_gen/active{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = whiteship_eva_lockdown
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable/layer1,
+/obj/docking_port/mobile{
+	callTime = 250;
+	can_move_docking_ports = 1;
+	dir = 2;
+	shuttle_id = "expedition";
+	launch_status = 0;
+	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
+	name = "Kestrel Deep Space Explorer";
+	port_direction = 4;
+	preferred_direction = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/expedition/cargo)
 "Ds" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/brown/warning{
@@ -1782,9 +1807,6 @@
 /obj/effect/spawner/random/food_or_drink/donkpockets,
 /turf/open/floor/carpet,
 /area/shuttle/expedition/crew)
-"Jb" = (
-/turf/open/floor/catwalk_floor/airless,
-/area/shuttle/expedition/medbay)
 "Jd" = (
 /obj/structure/closet/secure_closet/hydroponics,
 /obj/structure/cable,
@@ -1834,40 +1856,12 @@
 "JT" = (
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
-"Kc" = (
-/obj/structure/cable,
-/obj/machinery/power/solar{
-	id = "foreport";
-	name = "Fore-Port Solar Array"
-	},
-/obj/docking_port/mobile{
-	callTime = 250;
-	can_move_docking_ports = 1;
-	dir = 2;
-	shuttle_id = "whiteship";
-	launch_status = 0;
-	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
-	name = "Kestrel Deep Space Explorer";
-	port_direction = 4;
-	preferred_direction = 8
-	},
-/turf/open/floor/catwalk_floor/airless,
-/area/shuttle/expedition/hydroponics)
 "Kd" = (
 /obj/machinery/atmospherics/components/unary/passive_vent/layer2{
 	dir = 8
 	},
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/engineering)
-"Kh" = (
-/obj/machinery/porta_turret/hull_defense/expedition{
-	name = "Kestrel Aft-Port Laser"
-	},
-/obj/effect/mapping_helpers/hull_defense_link{
-	link_id = "kestrel_turrets"
-	},
-/turf/open/floor/catwalk_floor/airless,
-/area/shuttle/expedition/armory)
 "Kp" = (
 /obj/structure/closet,
 /obj/item/storage/box/bodybags{
@@ -2202,11 +2196,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/medbay)
-"Pn" = (
-/obj/structure/cable,
-/obj/machinery/power/tracker,
-/turf/open/floor/catwalk_floor/airless,
-/area/shuttle/expedition/armory)
 "Pv" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Starboard Primary Hallway"
@@ -2282,10 +2271,9 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/crew)
-"Qp" = (
-/obj/structure/cable,
+"Qv" = (
 /turf/open/floor/catwalk_floor/airless,
-/area/shuttle/expedition/hydroponics)
+/area/shuttle/expedition/medbay)
 "Qx" = (
 /obj/machinery/rnd/server/expeditionary,
 /obj/machinery/atmospherics/components/unary/passive_vent{
@@ -2481,6 +2469,10 @@
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
+"Us" = (
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/hydroponics)
 "UD" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger{
@@ -2885,7 +2877,7 @@ iF
 iF
 iF
 Mn
-Jb
+Qv
 iF
 iF
 iF
@@ -2909,7 +2901,7 @@ Tc
 Tc
 cy
 DE
-Jb
+Qv
 iF
 iF
 iF
@@ -3329,7 +3321,7 @@ cy
 ms
 "}
 (21,1,1) = {"
-Kc
+Qk
 qi
 DJ
 DJ
@@ -3375,7 +3367,7 @@ cy
 ms
 "}
 (23,1,1) = {"
-Qp
+Us
 vP
 vP
 Bs
@@ -3490,7 +3482,7 @@ Wm
 Qm
 "}
 (28,1,1) = {"
-qd
+Dl
 Xy
 Lu
 qI
@@ -3784,7 +3776,7 @@ pO
 Iu
 PE
 Zm
-Pn
+qd
 oH
 WP
 "}
@@ -3829,7 +3821,7 @@ iF
 iF
 iF
 iF
-Kh
+ez
 oH
 iF
 iF

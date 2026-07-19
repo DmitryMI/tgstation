@@ -308,6 +308,12 @@
 	name = "Space-Ruin Chaser Dock"
 	description = "A concealed deep-space staging area reserved for a Syndicate pursuit vessel."
 
+/datum/map_template/ruin/space/expeditiondock
+	id = "expeditiondock"
+	suffix = "expeditiondock.dmm"
+	name = "Space-Ruin Expedition Vessel Dock"
+	description = "A deep-space dock reserved for an expedition vessel."
+
 /datum/map_template/ruin/space/cat_experiments
 	id = "meow"
 	suffix = "mrow_thats_right.dmm"

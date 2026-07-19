@@ -1,11 +1,12 @@
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition
 	name = "Expedition Navigation Computer"
 	desc = "Used to designate a precise transit location for an expedition vessel."
-	jump_to_ports = list("whiteship_away" = 1)
+	shuttlePortId = "expedition_custom"
+	jump_to_ports = list("expedition_away" = 1)
 	/// Player-facing vessel name used by Chaser warnings and mission reports.
 	var/vessel_name = "Expedition Shuttle"
-	/// Whiteship stationary dock groups that expedition systems may expose when their sectors are unlocked.
-	var/list/potential_destination_groups = list("whiteship_away", "whiteship_home", "whiteship_z4", "whiteship_waystation", "whiteship_lavaland", "whiteship_custom")
+	/// Expedition stationary dock groups that expedition systems may expose when their sectors are unlocked.
+	var/list/potential_destination_groups = list("expedition_away", "expedition_custom")
 	/// If TRUE, player-facing expedition output uses the z-level's actual configured name.
 	var/use_z_level_real_names
 	/// Z-levels that this expedition computer may jump to directly.

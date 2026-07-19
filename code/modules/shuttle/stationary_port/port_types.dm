@@ -218,6 +218,51 @@
 		return
 	return final_weights
 
+/proc/get_expedition_spawn_weights(list/eligible_vessels)
+	var/static/list/cached_weights
+	var/static/cache_loaded = FALSE
+
+	if(!cache_loaded)
+		cache_loaded = TRUE
+		cached_weights = list()
+		var/filename = "[global.config.directory]/expedition_spawn_weights.json"
+		if(fexists(filename))
+			var/raw_json = file2text(filename)
+			var/list/decoded
+			if(raw_json)
+				decoded = safe_json_decode(raw_json)
+			if(islist(decoded))
+				cached_weights = decoded
+			else
+				log_world("Invalid Expedition vessel spawn weights config: [filename] must contain a JSON object.")
+
+	if(!length(cached_weights) || !length(eligible_vessels))
+		return
+
+	var/list/eligible_lookup = list()
+	for(var/vessel_id in eligible_vessels)
+		eligible_lookup[LOWER_TEXT("[vessel_id]")] = vessel_id
+
+	var/list/final_weights = list()
+	var/total_weight = 0
+	for(var/raw_id in cached_weights)
+		var/actual_id = eligible_lookup[LOWER_TEXT("[raw_id]")]
+		if(isnull(actual_id))
+			log_world("Ignoring unknown Expedition vessel id '[raw_id]' in expedition_spawn_weights.json.")
+			continue
+
+		var/value = cached_weights[raw_id]
+		if(!isnum(value) || value < 0)
+			log_world("Ignoring invalid Expedition vessel spawn weight '[value]' for '[raw_id]'. Expected a non-negative number.")
+			continue
+
+		final_weights[actual_id] = value
+		total_weight += value
+
+	if(total_weight <= 0)
+		return
+	return final_weights
+
 /obj/docking_port/stationary/picked/Initialize(mapload)
 	. = ..()
 	if(!LAZYLEN(shuttlekeys))
@@ -238,7 +283,6 @@
 	shuttlekeys = list(
 		"whiteship_meta",
 		"whiteship_meta_expedition",
-		"whiteship_kestrel_expedition",
 		"whiteship_pubby",
 		"whiteship_box",
 		"whiteship_cere",
@@ -264,3 +308,19 @@
 
 /obj/docking_port/stationary/picked/chaser/get_weighted_shuttles()
 	return get_chaser_spawn_weights(shuttlekeys)
+
+/// Dedicated starting dock for an Expedition vessel.
+/obj/docking_port/stationary/picked/expedition
+	name = "Expedition Vessel Dock"
+	shuttle_id = "expedition_away"
+	// The Kestrel is 42 by 21 with its port at (28, 21). The larger dock
+	// preserves clearance ahead of the vessel for future Expedition templates.
+	width = 50
+	height = 25
+	dwidth = 22
+	dheight = 4
+	dir = SOUTH
+	shuttlekeys = list("expedition_kestrel")
+
+/obj/docking_port/stationary/picked/expedition/get_weighted_shuttles()
+	return get_expedition_spawn_weights(shuttlekeys)
