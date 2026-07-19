@@ -234,6 +234,9 @@
 		var/obj/item/part
 		while(req_components[path] > 0 && (part = look_for(part_list, target_path, ispath(path, /obj/item/stack/ore/bluespace_crystal) ? /obj/item/stack/sheet/bluespace_crystal : null)))
 			part_list -= part
+			if(!circuit.can_accept_frame_component(src, part, path))
+				continue
+			var/part_type = part.type
 			if(istype(part, /obj/item/stack))
 				var/obj/item/stack/S = part
 				var/used_amt = min(round(S.get_amount()), req_components[path])
@@ -241,6 +244,7 @@
 				if(!used_amt || !S.use(used_amt))
 					continue
 				req_components[path] -= used_amt
+				circuit.on_frame_component_added(src, part, path, used_amt, part_type)
 				// No balloon alert here so they can look back and see what they added
 				to_chat(user, span_notice("You add [used_amt] [stack_name] to [src]."))
 				play_sound = TRUE
@@ -253,6 +257,7 @@
 					components += part
 					part.forceMove(src)
 				req_components[path]--
+				circuit.on_frame_component_added(src, part, path, 1, part_type)
 				// No balloon alert here so they can look back and see what they added
 				to_chat(user, span_notice("You add [part] to [src]."))
 				play_sound = TRUE
@@ -323,6 +328,7 @@
  */
 /obj/structure/frame/machine/proc/add_part(mob/living/user, obj/item/tool)
 	PRIVATE_PROC(TRUE)
+	var/rejected_by_circuit = FALSE
 
 	for(var/stock_part_base in req_components)
 		if (req_components[stock_part_base] == 0)
@@ -344,12 +350,17 @@
 			pass() //allow it
 		else if(!istype(tool, stock_part_path))
 			continue
+		if(!circuit.can_accept_frame_component(src, tool, stock_part_base))
+			rejected_by_circuit = TRUE
+			continue
+		var/part_type = tool.type
 
 		if(isstack(tool))
 			var/obj/item/stack/S = tool
 			var/used_amt = min(round(S.get_amount()), req_components[stock_part_path])
 			if(used_amt && S.use(used_amt))
 				req_components[stock_part_path] -= used_amt
+				circuit.on_frame_component_added(src, tool, stock_part_base, used_amt, part_type)
 				// No balloon alert here so they can look back and see what they added
 				to_chat(user, span_notice("You add [tool] to [src]."))
 			return
@@ -382,9 +393,11 @@
 		// No balloon alert here so they can look back and see what they added
 		to_chat(user, span_notice("You add [part_name] to [src]."))
 		req_components[stock_part_base]--
+		circuit.on_frame_component_added(src, tool, stock_part_base, 1, part_type)
 		return TRUE
 
-	balloon_alert(user, "can't add that!")
+	if(!rejected_by_circuit)
+		balloon_alert(user, "can't add that!")
 	return FALSE
 
 /obj/structure/frame/machine/item_interaction(mob/living/user, obj/item/tool, list/modifiers)

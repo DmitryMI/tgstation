@@ -105,6 +105,16 @@ DEFINE_BITFIELD(turret_flags, list(
 	var/datum/action/turret_toggle/toggle_action
 	/// Mob that is remotely controlling the turret
 	var/mob/remote_controller
+	/// Hull-defense console linked to this turret. A turret can only be linked to one console.
+	var/datum/weakref/linked_control_console
+	/// Cursor override to restore after console control ends.
+	var/manual_previous_mouse_override
+	/// View width offset to restore after console control ends.
+	var/manual_previous_view_width
+	/// View height offset to restore after console control ends.
+	var/manual_previous_view_height
+	/// Whether the current manual-control session came from a hull-defense console.
+	var/console_controlled = FALSE
 	/// Proximity tracker used to activate/deactivate the turret's processing.
 	var/datum/proximity_monitor/advanced/turret_tracking/tracker
 	/// While the cooldown is still going on, it cannot be re-enabled.
@@ -142,6 +152,9 @@ DEFINE_BITFIELD(turret_flags, list(
 	AddElement(/datum/element/hostile_machine)
 
 /obj/machinery/porta_turret/Destroy()
+	var/obj/machinery/computer/hull_defense_control/control_console = linked_control_console?.resolve()
+	control_console?.unlink_turret(src)
+	linked_control_console = null
 	QDEL_NULL(tracker)
 	//deletes its own cover with it
 	QDEL_NULL(cover)
@@ -248,6 +261,15 @@ DEFINE_BITFIELD(turret_flags, list(
 		ui = new(user, src, "PortableTurret", name)
 		ui.open()
 
+/obj/machinery/porta_turret/proc/supports_faction_configuration()
+	return FALSE
+
+/obj/machinery/porta_turret/proc/configure_faction_from_id(mob/living/user, obj/item/card/id/id)
+	return FALSE
+
+/obj/machinery/porta_turret/proc/get_faction_display_name()
+	return length(faction) ? jointext(faction, ", ") : "None"
+
 /obj/machinery/porta_turret/ui_data(mob/user)
 	var/list/data = list(
 		"locked" = locked,
@@ -263,6 +285,9 @@ DEFINE_BITFIELD(turret_flags, list(
 		"silicon_user" = FALSE,
 		"allow_manual_control" = FALSE,
 		"lasertag_turret" = istype(src, /obj/machinery/porta_turret/lasertag),
+		"faction_name" = get_faction_display_name(),
+		"supports_faction_configuration" = supports_faction_configuration(),
+		"faction_configured" = is_faction_authorized(),
 	)
 	if(issilicon(user))
 		data["silicon_user"] = TRUE
@@ -276,8 +301,16 @@ DEFINE_BITFIELD(turret_flags, list(
 	. = ..()
 	if(.)
 		return
+	var/mob/living/user = ui.user
 
 	switch(action)
+		if("setfaction")
+			if(!user || locked || !supports_faction_configuration() || is_faction_authorized())
+				return
+			var/obj/item/held_item = user.get_active_held_item()
+			var/obj/item/card/id/id = held_item?.GetID()
+			configure_faction_from_id(user, id)
+			return TRUE
 		if("power")
 			if(anchored)
 				toggle_on(!on)
@@ -455,7 +488,7 @@ DEFINE_BITFIELD(turret_flags, list(
 		if(raised)
 			cover.icon_state = "openTurretCover"
 
-	if(!on || (machine_stat & (NOPOWER|BROKEN)))
+	if(!on || !anchored || (machine_stat & (NOPOWER|BROKEN)))
 		return PROCESS_KILL
 
 	if(manual_control)
@@ -519,6 +552,13 @@ DEFINE_BITFIELD(turret_flags, list(
 			else if(turret_flags & TURRET_FLAG_SHOOT_ANOMALOUS) //non humans who are not simple animals (xenos etc)
 				if(!in_faction(C))
 					targets += C
+
+	// Turrets are strategic threats in their own right. Automatic turrets engage
+	// any visible turret which does not share one of their factions or allies.
+	for(var/obj/machinery/porta_turret/other_turret in view(scan_range, base))
+		if(other_turret == src || in_faction(other_turret))
+			continue
+		targets += other_turret
 
 	for(var/A in GLOB.mechas_list)
 		if((get_dist(A, base) < scan_range) && can_see(base, A, scan_range))
@@ -619,10 +659,10 @@ DEFINE_BITFIELD(turret_flags, list(
 
 	return threatcount
 
-/obj/machinery/porta_turret/proc/in_faction(mob/target)
+/obj/machinery/porta_turret/proc/in_faction(atom/movable/target)
 	return faction_check_atom(target)
 
-/obj/machinery/porta_turret/proc/target(atom/movable/target)
+/obj/machinery/porta_turret/proc/target(atom/target)
 	if(target)
 		popUp() //pop the turret up if it's not already up.
 		setDir(get_dir(base, target))//even if you can't shoot, follow the target
@@ -630,7 +670,7 @@ DEFINE_BITFIELD(turret_flags, list(
 		return 1
 	return
 
-/obj/machinery/porta_turret/proc/shootAt(atom/movable/target)
+/obj/machinery/porta_turret/proc/shootAt(atom/target)
 	if(!raised) //the turret has to be raised in order to fire - makes sense, right?
 		return
 
@@ -730,28 +770,100 @@ DEFINE_BITFIELD(turret_flags, list(
 	remote_controller.reset_perspective(src)
 	remote_controller.click_intercept = src
 	manual_control = TRUE
+	console_controlled = FALSE
 	always_up = TRUE
 	popUp()
+	return TRUE
+
+/// Whether this turret can presently be operated from its linked hull-defense console.
+/obj/machinery/porta_turret/proc/can_accept_console_control(obj/machinery/computer/hull_defense_control/console, mob/living/user, allow_console_switch = FALSE)
+	if(!console || !user?.client || linked_control_console?.resolve() != console)
+		return FALSE
+	if(manual_control || !console.is_turret_on_same_z(src) || !console.can_interact(user) || !powered() || !console.powered())
+		return FALSE
+	if(!anchored || (machine_stat & BROKEN) || (uses_stored && !stored_gun))
+		return FALSE
+	var/obj/machinery/porta_turret/active = console.active_turret?.resolve()
+	return !active || active == src || allow_console_switch
+
+/// Transfers a nearby console user's view and clicks to this turret.
+/obj/machinery/porta_turret/proc/give_console_control(obj/machinery/computer/hull_defense_control/console, mob/living/user)
+	if(!can_accept_console_control(console, user))
+		return FALSE
+	remote_controller = user
+	if(!quit_action)
+		quit_action = new(src)
+	quit_action.Grant(user)
+	manual_previous_view_width = user.client.view_size.width
+	manual_previous_view_height = user.client.view_size.height
+	manual_previous_mouse_override = user.client.mouse_override_icon
+	user.reset_perspective(src)
+	user.click_intercept = src
+	user.remote_control = src
+	user.client.view_size.setTo(console.get_manual_view_offset(src, user))
+	user.client.mouse_override_icon = 'icons/effects/mouse_pointers/mecha_mouse.dmi'
+	user.update_mouse_pointer()
+	manual_control = TRUE
+	console_controlled = TRUE
+	always_up = TRUE
+	INVOKE_ASYNC(src, PROC_REF(popUp))
+	console.on_control_started(src, user)
 	return TRUE
 
 /obj/machinery/porta_turret/proc/remove_control(warning_message = TRUE)
 	if(!manual_control)
 		return FALSE
+	var/obj/machinery/computer/hull_defense_control/control_console = linked_control_console?.resolve()
+	var/was_console_controlled = console_controlled
 	if(remote_controller)
 		if(warning_message)
 			to_chat(remote_controller, span_warning("Your uplink to [src] has been severed!"))
-		quit_action.Remove(remote_controller)
-		toggle_action.Remove(remote_controller)
-		remote_controller.click_intercept = null
+		quit_action?.Remove(remote_controller)
+		toggle_action?.Remove(remote_controller)
+		if(remote_controller.click_intercept == src)
+			remote_controller.click_intercept = null
+		if(was_console_controlled && remote_controller.remote_control == src)
+			remote_controller.remote_control = null
 		remote_controller.reset_perspective()
+		if(was_console_controlled && remote_controller.client)
+			remote_controller.client.view_size.setBoth(manual_previous_view_width, manual_previous_view_height)
+			remote_controller.client.mouse_override_icon = manual_previous_mouse_override
+			remote_controller.update_mouse_pointer()
+	manual_previous_mouse_override = null
+	manual_previous_view_width = null
+	manual_previous_view_height = null
+	console_controlled = FALSE
 	always_up = initial(always_up)
 	manual_control = FALSE
 	remote_controller = null
+	control_console?.on_control_ended(src)
+	check_should_process()
+	if(!always_up && (!on || !LAZYLEN(tracker?.tracking)))
+		INVOKE_ASYNC(src, PROC_REF(popDown))
 	return TRUE
+
+/obj/machinery/porta_turret/relaymove(mob/living/user, direction)
+	if(console_controlled && remote_controller == user)
+		return
+	return ..()
 
 /obj/machinery/porta_turret/proc/InterceptClickOn(mob/living/clicker, params, atom/A)
 	if(!manual_control)
 		return FALSE
+	var/obj/machinery/computer/hull_defense_control/control_console = linked_control_console?.resolve()
+	if(console_controlled)
+		if(!control_console || !control_console.is_active_operator(src, clicker) || !control_console.is_turret_on_same_z(src) || !anchored || (machine_stat & BROKEN) || !powered() || !control_console.powered())
+			remove_control()
+			return FALSE
+		if(istype(A, /atom/movable/screen))
+			return FALSE
+		// Consume invalid world clicks too, so they cannot fall through to the
+		// operator's held item or unarmed interaction at their physical location.
+		if(get_dist(base, A) > scan_range || !can_see(base, A, scan_range))
+			return TRUE
+		log_combat(clicker, A, "fired with manual hull-defense turret control at")
+		target(A)
+		return TRUE
 	if(!can_interact(clicker))
 		remove_control()
 		return FALSE
@@ -790,7 +902,7 @@ DEFINE_BITFIELD(turret_flags, list(
 		return
 	blip.icon_state = new_icon_state
 
-/obj/machinery/porta_turret/syndicate/shootAt(atom/movable/target)
+/obj/machinery/porta_turret/syndicate/shootAt(atom/target)
 	. = ..()
 	if(raised && (obj_flags & EMAGGED || last_fired == world.time))
 		update_turret_minimap_icon("sentry_firing")
@@ -872,7 +984,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	fire = 90
 	acid = 90
 
-/obj/machinery/porta_turret/syndicate/shuttle/target(atom/movable/target)
+/obj/machinery/porta_turret/syndicate/shuttle/target(atom/target)
 	if(target)
 		setDir(get_dir(base, target))//even if you can't shoot, follow the target
 		shootAt(target)

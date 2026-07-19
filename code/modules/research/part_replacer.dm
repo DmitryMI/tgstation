@@ -13,6 +13,9 @@
 /obj/item/storage/part_replacer/interact_with_atom(obj/attacked_object, mob/living/user, list/modifiers)
 	if(user.combat_mode)
 		return ITEM_INTERACT_SKIP_TO_ATTACK
+	if(istype(attacked_object, /obj/machinery/porta_turret_cover))
+		var/obj/machinery/porta_turret_cover/turret_cover = attacked_object
+		attacked_object = turret_cover.parent_turret
 
 	//its very important to NOT block so frames can still interact with it
 	if(!ismachinery(attacked_object) || istype(attacked_object, /obj/machinery/computer))

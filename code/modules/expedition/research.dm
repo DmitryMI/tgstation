@@ -10,6 +10,7 @@
 	hidden_nodes -= TECHWEB_NODE_EXP_LASER_PISTOLS
 	hidden_nodes -= TECHWEB_NODE_EXP_LASER_CARBINES
 	hidden_nodes -= TECHWEB_NODE_EXP_LASER_RIFLES
+	hidden_nodes -= TECHWEB_NODE_EXPEDITION_TURRETS
 
 /proc/get_expeditionary_techweb()
 	var/datum/techweb/expeditionary/web = locate(/datum/techweb/expeditionary) in SSresearch.techwebs

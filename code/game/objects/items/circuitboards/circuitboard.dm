@@ -72,6 +72,19 @@
 /obj/item/circuitboard/proc/completion_requirements(obj/structure/frame/install_frame, mob/living/user)
 	return TRUE
 
+/**
+ * Lets a machine board reject a component which otherwise matches one of its broad required paths.
+ * This is primarily useful for requirements which intentionally accept several sibling item types.
+ * An override returning FALSE is responsible for presenting its own rejection feedback.
+ */
+/obj/item/circuitboard/proc/can_accept_frame_component(obj/structure/frame/machine/install_frame, obj/item/component, required_path)
+	return TRUE
+
+/// Called after a component has successfully been consumed by or transferred into a machine frame.
+/// component_type is captured before stack consumption, since consuming the last item may delete component.
+/obj/item/circuitboard/proc/on_frame_component_added(obj/structure/frame/machine/install_frame, obj/item/component, required_path, amount, component_type)
+	return
+
 // Circuitboard/machine
 /*Common Parts: Parts List: Ignitor, Timer, Infra-red laser, Infra-red sensor, t_scanner, Capacitor, Valve, sensor unit,
 micro-manipulator, console screen, beaker, Microlaser, matter bin, power cells.

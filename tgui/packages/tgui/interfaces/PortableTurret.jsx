@@ -19,9 +19,12 @@ export const PortableTurret = (props) => {
     manual_control,
     allow_manual_control,
     lasertag_turret,
+    faction_name,
+    supports_faction_configuration,
+    faction_configured,
   } = data;
   return (
-    <Window width={310} height={lasertag_turret ? 110 : 292}>
+    <Window width={340} height={lasertag_turret ? 155 : 337}>
       <Window.Content>
         <NoticeBox>
           Swipe an ID card to {locked ? 'unlock' : 'lock'} this interface.
@@ -54,6 +57,23 @@ export const PortableTurret = (props) => {
                 disabled={locked}
                 onClick={() => act('power')}
               />
+            </LabeledList.Item>
+            <LabeledList.Item
+              label="Faction"
+              buttons={
+                !!supports_faction_configuration &&
+                !faction_configured && (
+                  <Button
+                    icon="id-card"
+                    content="Swipe Held ID"
+                    disabled={locked}
+                    tooltip="Hold an Expedition or Syndicate ID in your active hand"
+                    onClick={() => act('setfaction')}
+                  />
+                )
+              }
+            >
+              {faction_name}
             </LabeledList.Item>
           </LabeledList>
         </Section>

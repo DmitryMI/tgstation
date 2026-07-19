@@ -17,6 +17,7 @@
 			/mob/living/carbon,
 			/mob/living/silicon/robot,
 			/mob/living/simple_animal,
+			/obj/machinery/porta_turret,
 			/obj/structure/blob,
 			/obj/vehicle/sealed/mecha,
 		))
@@ -42,6 +43,8 @@
 
 /datum/proximity_monitor/advanced/turret_tracking/proc/start_tracking(atom/movable/thing)
 	if(QDELETED(src) || QDELETED(thing))
+		return
+	if(thing == host)
 		return
 	if(thing.invisibility > SEE_INVISIBLE_LIVING || !is_type_in_typecache(thing, interesting_typecache))
 		return

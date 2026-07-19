@@ -375,6 +375,16 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/cargo)
+"gs" = (
+/obj/structure/cable,
+/obj/machinery/porta_turret/hull_defense/expedition{
+	name = "Kestrel Bow-Starboard Laser"
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/solar)
 "gH" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
@@ -545,6 +555,16 @@
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
+"jU" = (
+/obj/structure/cable,
+/obj/machinery/porta_turret/hull_defense/expedition{
+	name = "Kestrel Bow-Port Laser"
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/solar)
 "jY" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -706,6 +726,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/cargo)
+"ns" = (
+/obj/structure/cable,
+/obj/machinery/porta_turret/hull_defense/expedition{
+	name = "Kestrel Starboard Laser 1"
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/solar)
 "nv" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -830,6 +860,17 @@
 /obj/structure/rack,
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/armory)
+"qd" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/porta_turret/hull_defense/expedition{
+	name = "Kestrel Aft-Starboard Laser"
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/solar)
 "qi" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -1251,6 +1292,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
+"yg" = (
+/obj/structure/cable,
+/obj/machinery/porta_turret/hull_defense/expedition{
+	name = "Kestrel Port Laser 2"
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/solar)
 "yk" = (
 /obj/machinery/rnd/production/techfab/expeditionary,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -1273,6 +1324,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
+"zi" = (
+/obj/structure/cable,
+/obj/machinery/porta_turret/hull_defense/expedition{
+	name = "Kestrel Port Laser 1"
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/solar)
 "zm" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/open/floor/iron/cafeteria,
@@ -1398,6 +1459,15 @@
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/iron,
 /area/shuttle/expedition/hydroponics)
+"BO" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/power/solar{
+	id = "foreport";
+	name = "Fore-Port Solar Array"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/solar)
 "BV" = (
 /obj/machinery/hydroponics/constructable,
 /obj/structure/cable,
@@ -1481,9 +1551,11 @@
 /obj/effect/mapping_helpers/airalarm/all_access,
 /obj/machinery/power/terminal,
 /obj/structure/cable,
-/obj/structure/table,
-/obj/machinery/recharger{
-	pixel_y = 4
+/obj/machinery/computer/hull_defense_control{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets"
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/bridge)
@@ -1511,6 +1583,16 @@
 "DJ" = (
 /turf/open/floor/iron,
 /area/shuttle/expedition/hydroponics)
+"DT" = (
+/obj/structure/cable,
+/obj/machinery/porta_turret/hull_defense/expedition{
+	name = "Kestrel Starboard Laser 2"
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/solar)
 "Eh" = (
 /obj/structure/extinguisher_cabinet/directional/south,
 /obj/structure/closet/secure_closet/engineering_electrical,
@@ -1526,6 +1608,16 @@
 "Eu" = (
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/cargo)
+"EB" = (
+/obj/structure/cable,
+/obj/machinery/porta_turret/hull_defense/expedition{
+	name = "Kestrel Aft-Port Laser"
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/solar)
 "ED" = (
 /obj/structure/chair/office/light,
 /obj/effect/turf_decal/trimline/blue/filled/corner{
@@ -2697,7 +2789,7 @@ iF
 iF
 iF
 iF
-oH
+fq
 mJ
 Qn
 Qn
@@ -2709,7 +2801,7 @@ KL
 Tc
 Tc
 cy
-oH
+fq
 iF
 iF
 iF
@@ -2762,7 +2854,7 @@ fq
 iF
 "}
 (4,1,1) = {"
-fq
+gs
 fq
 mJ
 mJ
@@ -2782,10 +2874,10 @@ ea
 cy
 cy
 fq
-fq
+jU
 "}
 (5,1,1) = {"
-Vo
+fq
 mJ
 mJ
 sX
@@ -2805,7 +2897,7 @@ BW
 it
 cy
 cy
-wn
+fq
 "}
 (6,1,1) = {"
 Vo
@@ -3176,7 +3268,7 @@ cy
 wn
 "}
 (22,1,1) = {"
-wn
+fq
 vP
 vP
 Bs
@@ -3196,10 +3288,10 @@ cy
 cy
 cy
 cy
-wn
+fq
 "}
 (23,1,1) = {"
-wn
+ns
 Qm
 UN
 Eu
@@ -3219,10 +3311,10 @@ Wo
 Wo
 RD
 Qm
-wn
+zi
 "}
 (24,1,1) = {"
-wn
+fq
 XQ
 aV
 sC
@@ -3242,7 +3334,7 @@ cx
 XG
 ve
 XQ
-wn
+fq
 "}
 (25,1,1) = {"
 Qm
@@ -3383,7 +3475,7 @@ Qm
 Qm
 "}
 (31,1,1) = {"
-wn
+fq
 XQ
 aV
 fk
@@ -3403,10 +3495,10 @@ Ab
 OV
 RX
 XQ
-wn
+fq
 "}
 (32,1,1) = {"
-wn
+DT
 Qm
 nj
 Eu
@@ -3426,10 +3518,10 @@ Io
 Nm
 vw
 Qm
-wn
+yg
 "}
 (33,1,1) = {"
-wn
+fq
 hs
 hs
 hs
@@ -3449,7 +3541,7 @@ Zm
 Zm
 Zm
 Zm
-wn
+fq
 "}
 (34,1,1) = {"
 II
@@ -3498,7 +3590,7 @@ Zm
 wn
 "}
 (36,1,1) = {"
-II
+lH
 hs
 hs
 JT
@@ -3518,10 +3610,10 @@ dQ
 GX
 Zm
 Zm
-wn
+fq
 "}
 (37,1,1) = {"
-lH
+qd
 lH
 hs
 hs
@@ -3541,12 +3633,12 @@ GX
 Zm
 Zm
 fq
-fq
+EB
 "}
 (38,1,1) = {"
 iF
 lH
-lH
+BO
 hs
 ey
 JT
@@ -3562,7 +3654,7 @@ pZ
 Hz
 kS
 rE
-fq
+wn
 fq
 iF
 "}
@@ -3585,7 +3677,7 @@ pO
 Iu
 PE
 Zm
-fq
+oH
 iF
 iF
 "}

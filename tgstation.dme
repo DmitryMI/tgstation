@@ -4483,6 +4483,7 @@
 #include "code\modules\expedition\research.dm"
 #include "code\modules\expedition\shuttles.dm"
 #include "code\modules\expedition\sleepers.dm"
+#include "code\modules\expedition\turrets.dm"
 #include "code\modules\expedition\missions\mission.dm"
 #include "code\modules\experisci\destructive_scanner.dm"
 #include "code\modules\experisci\handheld_scanner.dm"

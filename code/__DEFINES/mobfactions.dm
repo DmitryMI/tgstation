@@ -57,6 +57,8 @@
 #define FACTION_MUSHROOM "mushroom"
 /// Nanotrasen private security
 #define FACTION_NANOTRASEN_PRIVATE "nanotrasen_private"
+/// Crew and assets of a Nanotrasen expedition vessel.
+#define FACTION_EXPEDITION "expedition"
 /// Mobs from the Netherworld
 #define FACTION_NETHER "nether"
 /// Mobs spawned by the emagged orion arcade

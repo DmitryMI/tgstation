@@ -11,6 +11,8 @@
 	allow_custom_character = GHOSTROLE_TAKE_PREFS_APPEARANCE
 	/// The sleeper type that replaces this spawner after a ghost claims it.
 	var/unlocked_sleeper_type = /obj/machinery/sleeper/expedition
+	/// Faction assigned to the sleeper's occupant when claimed.
+	var/spawn_faction = FACTION_EXPEDITION
 
 /obj/effect/mob_spawn/ghost_role/human/usable_sleeper/Initialize(mapload)
 	if(!CONFIG_GET(flag/expedition_enabled))
@@ -28,6 +30,7 @@
 	var/mob/living/carbon/human/spawned_human = ..()
 	if(!istype(spawned_human))
 		return spawned_human
+	spawned_human.add_faction(spawn_faction)
 
 	var/turf/spawn_turf = get_turf(src)
 	var/obj/machinery/sleeper/unlocked_sleeper = new unlocked_sleeper_type(spawn_turf)
@@ -388,6 +391,7 @@
 /// combat-oriented outfits when claimed.
 /obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser
 	name = "syndicate chaser sleeper"
+	spawn_faction = ROLE_SYNDICATE
 	desc = "A sealed Syndicate sleeper pod with an occupant still inside."
 	icon_state = "sleeper_s"
 	prompt_name = "a Syndicate Chaser crew member"

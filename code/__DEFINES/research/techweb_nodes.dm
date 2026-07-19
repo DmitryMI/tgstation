@@ -39,6 +39,7 @@
 #define TECHWEB_NODE_EXP_LASER_CARBINES "exp_laser_carbines"
 #define TECHWEB_NODE_EXP_LASER_PISTOLS "exp_laser_pistols"
 #define TECHWEB_NODE_EXP_LASER_RIFLES "exp_laser_rifles"
+#define TECHWEB_NODE_EXPEDITION_TURRETS "expedition_turrets"
 #define TECHWEB_NODE_DONK_PRODUCTS "donk_products"
 #define TECHWEB_NODE_ELECTRIC_WEAPONS "electric_weapons"
 #define TECHWEB_NODE_ENERGY_MANIPULATION "energy_manipulation"
