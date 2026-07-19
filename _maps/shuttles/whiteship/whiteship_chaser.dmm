@@ -1,13 +1,304 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ay" = (
-/turf/open/floor/iron,
+"an" = (
+/obj/structure/table/reinforced/plastitaniumglass,
+/obj/item/crowbar/red,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
+"aR" = (
+/obj/structure/bed/medical/emergency,
 /turf/open/floor/iron/white,
 /area/shuttle/chaser/medbay)
 "aS" = (
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured_edge,
 /area/shuttle/chaser/medbay)
-"bi" = (
+"ba" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
+"bs" = (
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
+"bG" = (
+/obj/machinery/door/airlock/external/ruin,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/chaser/engineering)
+"bQ" = (
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/chaser/engineering)
+"bR" = (
+/obj/structure/bed/medical/emergency,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
+"cw" = (
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
+"cI" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 5
+	},
+/obj/structure/rack,
+/obj/item/gun/ballistic/automatic/l6_saw,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/chaser/armory)
+"cM" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/apc/syndicate_access,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
+"cU" = (
+/obj/machinery/door/airlock/highsecurity/syndicate,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/cargo)
+"cW" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/tank/air/layer4{
+	dir = 8
+	},
+/obj/machinery/light,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/engineering)
+"dk" = (
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/area/shuttle/chaser/medbay)
+"dx" = (
+/obj/machinery/iv_drip,
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
+"dE" = (
+/turf/open/floor/iron,
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
+"dM" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/cargo)
+"eh" = (
+/obj/structure/closet/syndicate/personal,
+/obj/effect/turf_decal/bot_red,
+/obj/effect/turf_decal/stripes/red/line,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/medbay)
+"eG" = (
+/obj/structure/cable,
+/obj/machinery/computer/monitor,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/plating,
+/area/shuttle/chaser/engineering)
+"eJ" = (
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/engineering)
+"ff" = (
+/obj/machinery/porta_turret/syndicate/shuttle{
+	dir = 5
+	},
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/area/shuttle/chaser/cargo)
+"fi" = (
+/obj/machinery/power/tracker,
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/chaser/engineering)
+"fO" = (
+/obj/machinery/door/airlock/external/ruin,
+/obj/structure/cable,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/chaser/engineering)
+"go" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/computer/operating{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/apc/syndicate_access,
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
+"gv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating,
+/area/shuttle/chaser/engineering)
+"gE" = (
+/obj/machinery/recharge_station,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
+"gH" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/apc/syndicate_access,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/engineering)
+"gY" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/medbay)
+"hh" = (
+/obj/effect/turf_decal/loading_area/red,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/chaser/medbay)
+"hj" = (
+/obj/machinery/porta_turret/syndicate/shuttle{
+	dir = 5
+	},
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/area/shuttle/chaser/medbay)
+"hK" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/engineering)
+"if" = (
+/obj/machinery/power/smes/full,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/chaser/engineering)
+"iC" = (
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/armory)
+"jm" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/blue/full,
+/mob/living/basic/bot/medbot/nukie,
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
+"jI" = (
+/obj/structure/closet/syndicate,
+/obj/item/storage/medkit/tactical/premium,
+/obj/item/storage/medkit/tactical,
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
+"jR" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/blue/full,
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
+"kh" = (
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/effect/spawner/surgery_tray/full,
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
+"lb" = (
+/obj/machinery/recharge_station,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
+"lo" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/medbay)
+"lC" = (
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/chaser/medbay)
+"lR" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/machinery/airalarm/directional/east,
+/obj/effect/mapping_helpers/airalarm/all_access,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_edge,
+/area/shuttle/chaser/medbay)
+"mm" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/cargo)
+"mB" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/armory)
+"mE" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 6
+	},
+/obj/structure/rack,
+/obj/item/ammo_box/magazine/m223,
+/obj/item/ammo_box/magazine/m223,
+/obj/item/ammo_box/magazine/m223,
+/obj/item/ammo_box/magazine/m223,
+/obj/item/ammo_box/magazine/m223,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/chaser/armory)
+"mU" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/plating,
+/area/shuttle/chaser/engineering)
+"mW" = (
+/obj/machinery/light,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/cargo)
+"nb" = (
+/obj/machinery/door/poddoor/shutters/syndicate{
+	id = "chaser_eva_port"
+	},
+/obj/machinery/atmos_shield_gen/active{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/medbay)
+"nr" = (
+/obj/machinery/door/airlock/highsecurity/syndicate,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/structure/cable/layer1,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/engineering)
+"nC" = (
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/breacher{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
+"nN" = (
+/obj/structure/cable/layer1,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/shuttle/chaser/engineering)
+"om" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/shuttle/chaser/armory)
+"oE" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
@@ -28,266 +319,11 @@
 /obj/machinery/light,
 /turf/open/floor/iron/white,
 /area/shuttle/chaser/medbay)
-"bG" = (
-/obj/machinery/door/airlock/external/ruin,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/shuttle/chaser/engineering)
-"bQ" = (
-/turf/open/floor/catwalk_floor/airless,
-/area/shuttle/chaser/engineering)
-"cy" = (
-/obj/effect/turf_decal/loading_area/red,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
-"cI" = (
-/obj/effect/turf_decal/siding/thinplating_new/dark{
-	dir = 5
-	},
-/obj/structure/rack,
-/obj/item/gun/ballistic/automatic/l6_saw,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/chaser/armory)
-"cU" = (
-/obj/machinery/door/airlock/highsecurity/syndicate,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
-"cW" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/tank/air/layer4{
-	dir = 8
-	},
-/obj/machinery/light,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/engineering)
-"dk" = (
-/turf/closed/wall/r_wall/plastitanium/syndicate,
-/area/shuttle/chaser/cargo)
-"dV" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/armory)
-"dY" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/iron/white,
-/area/shuttle/chaser/medbay)
-"eh" = (
-/obj/structure/closet/syndicate/personal,
-/obj/effect/turf_decal/bot_red,
-/obj/effect/turf_decal/stripes/red/line,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/medbay)
-"eo" = (
-/obj/machinery/light,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
-"eG" = (
-/obj/structure/cable,
-/obj/machinery/computer/monitor,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/turf/open/floor/plating,
-/area/shuttle/chaser/engineering)
-"eJ" = (
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
-"fi" = (
-/obj/machinery/power/tracker,
-/obj/structure/cable,
-/turf/open/floor/catwalk_floor/airless,
-/area/shuttle/chaser/engineering)
-"fO" = (
-/obj/machinery/door/airlock/external/ruin,
-/obj/structure/cable,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/shuttle/chaser/engineering)
-"gv" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/plating,
-/area/shuttle/chaser/engineering)
-"gE" = (
-/obj/machinery/recharge_station,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
-"gH" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/effect/mapping_helpers/apc/syndicate_access,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/engineering)
-"hh" = (
-/obj/effect/turf_decal/loading_area/red,
-/turf/open/floor/mineral/plastitanium,
-/area/shuttle/chaser/medbay)
-"hj" = (
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
-/area/shuttle/chaser/cargo)
-"hA" = (
-/obj/machinery/door/airlock/highsecurity/syndicate,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/engineering)
-"hK" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
-"hP" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/armory)
-"if" = (
-/obj/machinery/power/smes/full,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/shuttle/chaser/engineering)
-"iZ" = (
-/obj/machinery/door/airlock/highsecurity/syndicate,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/medbay)
-"kA" = (
-/obj/structure/closet/syndicate,
-/obj/item/storage/medkit/tactical/premium,
-/obj/item/storage/medkit/tactical,
-/turf/open/floor/iron/white,
-/area/shuttle/chaser/medbay)
-"kQ" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/bot_red,
-/obj/effect/spawner/random/structure/crate_loot,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
-"kU" = (
+"oP" = (
 /obj/structure/table/reinforced/plastitaniumglass,
-/obj/machinery/light,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
-"lb" = (
-/obj/machinery/recharge_station,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/obj/machinery/light,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
-"lw" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/blue/full,
-/mob/living/basic/bot/medbot/nukie,
-/turf/open/floor/iron/white,
-/area/shuttle/chaser/medbay)
-"lx" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/bed/medical/emergency,
-/turf/open/floor/iron/white,
-/area/shuttle/chaser/medbay)
-"lH" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/medbay)
-"lR" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
-/obj/machinery/airalarm/directional/east,
-/obj/effect/mapping_helpers/airalarm/all_access,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/textured_edge,
-/area/shuttle/chaser/medbay)
-"mz" = (
-/turf/closed/wall/r_wall/plastitanium/syndicate,
-/area/shuttle/chaser/bridge)
-"mE" = (
-/obj/effect/turf_decal/siding/thinplating_new/dark{
-	dir = 6
-	},
-/obj/structure/rack,
-/obj/item/ammo_box/magazine/m223,
-/obj/item/ammo_box/magazine/m223,
-/obj/item/ammo_box/magazine/m223,
-/obj/item/ammo_box/magazine/m223,
-/obj/item/ammo_box/magazine/m223,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/chaser/armory)
-"mG" = (
-/obj/structure/rack,
-/obj/item/gun/ballistic/automatic/m90,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/armory)
-"mH" = (
-/obj/structure/table/reinforced/plastitaniumglass,
-/obj/machinery/recharger{
-	pixel_y = 4
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/armory)
-"mU" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/turf/open/floor/plating,
-/area/shuttle/chaser/engineering)
-"nb" = (
-/obj/machinery/door/poddoor/shutters/syndicate{
-	id = "chaser_eva_port"
-	},
-/obj/machinery/atmos_shield_gen/active{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/medbay)
-"nr" = (
-/obj/machinery/door/airlock/highsecurity/syndicate,
-/obj/effect/mapping_helpers/airlock/autoname,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/obj/structure/cable/layer1,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/item/storage/toolbox/syndicate,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/engineering)
-"nN" = (
-/obj/structure/cable/layer1,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/structure/cable,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/shuttle/chaser/engineering)
-"om" = (
-/obj/effect/turf_decal/siding/thinplating_new/dark,
-/obj/structure/cable,
-/turf/open/floor/mineral/plastitanium/red,
-/area/shuttle/chaser/armory)
-"pw" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
 "pS" = (
 /obj/machinery/computer/shuttle/syndicate/chaser{
 	dir = 4
@@ -305,30 +341,24 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
+/area/shuttle/chaser/armory)
 "qj" = (
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/chaser{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/bridge)
+"qn" = (
+/obj/structure/rack,
+/obj/item/gun/ballistic/automatic/m90,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/armory)
 "qw" = (
 /obj/structure/cable/multilayer/connected,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/shuttle/chaser/engineering)
-"rn" = (
-/obj/machinery/suit_storage_unit/syndicate,
-/obj/effect/turf_decal/bot_red,
-/obj/effect/turf_decal/stripes/red/line{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
 "rw" = (
 /obj/machinery/door/airlock/highsecurity/syndicate,
 /obj/effect/mapping_helpers/airlock/autoname,
@@ -337,12 +367,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
-"rC" = (
-/obj/structure/rack,
-/obj/item/gun/ballistic/automatic/pistol/suppressed,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/armory)
+/area/shuttle/chaser/engineering)
 "rQ" = (
 /obj/effect/turf_decal/syndicateemblem/top/right,
 /obj/effect/turf_decal/siding/thinplating_new/dark{
@@ -357,6 +382,12 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/chaser/armory)
+"sf" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
 "sl" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 10
@@ -378,21 +409,39 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/chaser/armory)
-"sn" = (
-/turf/closed/wall/r_wall/plastitanium/syndicate,
-/area/shuttle/chaser/medbay)
-"sM" = (
-/obj/machinery/porta_turret/syndicate/shuttle{
-	dir = 5
-	},
-/turf/closed/wall/r_wall/plastitanium/syndicate,
-/area/shuttle/chaser/engineering)
 "sN" = (
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/chaser/cargo)
+"sR" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/obj/effect/turf_decal/bot_red,
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/medbay)
+"sV" = (
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/area/shuttle/chaser/engineering)
 "tt" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
+"tD" = (
+/obj/structure/rack,
+/obj/item/gun/ballistic/automatic/pistol/suppressed,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/armory)
+"uf" = (
+/obj/machinery/airalarm/directional/east,
+/obj/effect/mapping_helpers/airalarm/all_access,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/bridge)
 "uh" = (
@@ -408,12 +457,6 @@
 /area/shuttle/chaser/cargo)
 "uv" = (
 /obj/machinery/airalarm/directional/east,
-/turf/open/floor/iron/white,
-/area/shuttle/chaser/medbay)
-"uw" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/shuttle/chaser/medbay)
 "uE" = (
@@ -441,38 +484,26 @@
 "uZ" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/iron/dark,
-/area/shuttle/chaser/medbay)
-"vd" = (
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/medbay)
+/area/shuttle/chaser/bridge)
 "vf" = (
 /obj/structure/cable/multilayer/connected,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/engineering)
-"vl" = (
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/armory)
+"vr" = (
+/obj/effect/turf_decal/tile/blue/full,
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
 "vH" = (
 /obj/effect/turf_decal/syndicateemblem/bottom/middle,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/chaser/armory)
-"vW" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/obj/machinery/light{
+"wo" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
-/turf/open/floor/iron/white,
-/area/shuttle/chaser/medbay)
-"wp" = (
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/shuttle/chaser/engineering)
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/armory)
 "wF" = (
 /obj/effect/turf_decal/syndicateemblem/bottom/right,
 /obj/effect/turf_decal/siding/thinplating_new/dark{
@@ -480,10 +511,6 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/chaser/armory)
-"wG" = (
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/engineering)
 "xu" = (
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured_edge{
@@ -509,28 +536,7 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/bridge)
-"yg" = (
-/obj/machinery/door/airlock/external/ruin,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
-"yL" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/closed/wall/r_wall/plastitanium/syndicate,
-/area/shuttle/chaser/engineering)
-"yQ" = (
-/obj/structure/closet/syndicate/nuclear,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
-"yR" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
-"yS" = (
+"yj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -541,16 +547,45 @@
 /obj/machinery/light,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/armory)
-"zg" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/engineering)
-"zB" = (
+"yo" = (
+/obj/structure/cable/layer1,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/shuttle/chaser/armory)
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/engineering)
+"yL" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/closed/wall/r_wall/plastitanium/syndicate,
+/area/shuttle/chaser/engineering)
+"zb" = (
+/obj/machinery/door/airlock/highsecurity/syndicate,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
+"zg" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/space/basic,
+/area/shuttle/chaser/medbay)
+"zo" = (
+/obj/structure/closet/syndicate/nuclear,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/cargo)
+"zs" = (
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/strike_leader,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
+"zQ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/cargo)
 "zU" = (
 /obj/effect/turf_decal/syndicateemblem/middle/right,
 /obj/effect/turf_decal/siding/thinplating_new/dark{
@@ -561,15 +596,6 @@
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/chaser/armory)
-"Ae" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/blue/full,
-/turf/open/floor/iron/white,
-/area/shuttle/chaser/medbay)
-"Av" = (
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/armory)
 "Ay" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 1
@@ -577,6 +603,21 @@
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/chaser/armory)
+"AO" = (
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium,
+/area/shuttle/chaser/cargo)
+"AP" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/chaser/engineering)
 "AT" = (
 /obj/machinery/door/poddoor/shutters/syndicate{
 	id = "chaser_eva_starboard"
@@ -586,16 +627,23 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/cargo)
-"AY" = (
-/obj/machinery/porta_turret/syndicate/shuttle{
-	dir = 5
-	},
-/turf/closed/wall/r_wall/plastitanium/syndicate,
-/area/shuttle/chaser/bridge)
-"Bc" = (
-/obj/machinery/iv_drip,
+"Ba" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/bed/medical/emergency,
 /turf/open/floor/iron/white,
 /area/shuttle/chaser/medbay)
+"Bl" = (
+/turf/closed/wall/r_wall/plastitanium/syndicate,
+/area/shuttle/chaser/engineering)
+"Bw" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/light,
+/turf/open/floor/plating,
+/area/shuttle/chaser/engineering)
 "BQ" = (
 /obj/machinery/power/shuttle_engine/propulsion{
 	dir = 4
@@ -611,24 +659,41 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/medbay)
-"CI" = (
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
-"Ds" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/obj/effect/turf_decal/bot_red,
-/obj/effect/spawner/random/structure/crate_loot,
+"CD" = (
+/obj/structure/reagent_dispensers/fueltank,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
-"Ec" = (
-/obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/storage/box/lights/tubes,
-/turf/open/floor/iron/dark,
 /area/shuttle/chaser/engineering)
+"CI" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/cargo)
+"Di" = (
+/obj/machinery/door/airlock/highsecurity/syndicate,
+/obj/effect/mapping_helpers/airlock/autoname,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/medbay)
+"Dl" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/structure/table/reinforced/plastitaniumglass,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/armory)
+"Dq" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/medbay)
 "Ef" = (
 /obj/machinery/suit_storage_unit/syndicate,
 /obj/effect/turf_decal/bot_red,
@@ -637,11 +702,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/cargo)
-"Eq" = (
-/obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/crowbar/red,
+"EU" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/bot_red,
+/obj/effect/spawner/random/structure/crate_loot,
 /turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
+/area/shuttle/chaser/cargo)
 "EW" = (
 /obj/structure/tank_dispenser/oxygen,
 /obj/effect/turf_decal/bot_red,
@@ -658,17 +724,6 @@
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/chaser/engineering)
-"Fd" = (
-/obj/structure/bed/medical/emergency,
-/turf/open/floor/iron/white,
-/area/shuttle/chaser/medbay)
-"Fq" = (
-/turf/closed/wall/r_wall/plastitanium/syndicate,
-/area/shuttle/chaser/engineering)
-"FB" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/armory)
 "FE" = (
 /obj/machinery/atmospherics/components/unary/passive_vent/layer2{
 	dir = 8
@@ -679,25 +734,41 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/engineering)
-"HX" = (
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/strike_leader,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
-"Iu" = (
-/obj/machinery/power/apc/auto_name/directional/west,
-/obj/machinery/power/terminal{
+"He" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/obj/effect/turf_decal/bot_red,
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 4
+	},
+/obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/cable,
-/turf/open/floor/mineral/plastitanium,
-/area/shuttle/chaser/medbay)
-"IR" = (
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/extraction_specialist,
 /turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
-"Jf" = (
+/area/shuttle/chaser/cargo)
+"Hf" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/effect/turf_decal/bot_red,
+/obj/effect/spawner/random/structure/crate_loot,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/cargo)
+"Hv" = (
+/obj/structure/cable,
+/obj/structure/table/optable,
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
+"HU" = (
+/obj/structure/bodycontainer/morgue{
+	dir = 2
+	},
+/obj/effect/turf_decal/stripes/red/line,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/cargo)
+"IJ" = (
 /obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/storage/toolbox/syndicate,
+/obj/item/storage/box/lights/tubes,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/engineering)
 "Jj" = (
@@ -715,45 +786,28 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/engineering)
-"Jw" = (
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/engineering)
+"Js" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/shuttle/chaser/armory)
 "JO" = (
 /obj/structure/cable,
 /turf/closed/wall/r_wall/plastitanium/syndicate,
 /area/shuttle/chaser/engineering)
-"JY" = (
-/obj/machinery/power/apc/auto_name/directional/east,
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/machinery/computer/operating{
-	dir = 1
-	},
-/obj/effect/mapping_helpers/apc/syndicate_access,
-/turf/open/floor/iron/white,
-/area/shuttle/chaser/medbay)
-"Lh" = (
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plating,
+"KV" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/iron/dark,
 /area/shuttle/chaser/engineering)
-"Lv" = (
-/obj/machinery/power/apc/auto_name/directional/east,
-/obj/machinery/power/terminal{
-	dir = 4
+"KY" = (
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/extraction_specialist,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
+"Lp" = (
+/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/boarder{
+	dir = 1
 	},
-/obj/structure/cable,
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/apc/syndicate_access,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/bridge)
 "LH" = (
@@ -761,25 +815,22 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/light,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/shuttle/chaser/engineering)
-"LY" = (
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
-/area/shuttle/chaser/medbay)
-"Me" = (
-/obj/structure/cable/layer1,
+"MC" = (
+/obj/machinery/porta_turret/syndicate/shuttle{
+	dir = 5
+	},
+/turf/closed/wall/r_wall/plastitanium/syndicate,
+/area/shuttle/chaser/bridge)
+"MF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/engineering)
-"Mz" = (
-/obj/structure/bodycontainer/morgue{
-	dir = 2
-	},
-/obj/effect/turf_decal/stripes/red/line,
-/turf/open/floor/iron/dark,
+/turf/closed/wall/r_wall/plastitanium/syndicate,
 /area/shuttle/chaser/cargo)
 "MI" = (
 /obj/structure/cable/layer1,
@@ -799,7 +850,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
-/area/shuttle/chaser/medbay)
+/area/shuttle/chaser/cargo)
 "Nj" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 9
@@ -817,15 +868,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor/iron_dark,
-/area/shuttle/chaser/bridge)
-"Nu" = (
-/obj/machinery/suit_storage_unit/syndicate,
-/obj/effect/turf_decal/bot_red,
-/obj/effect/turf_decal/stripes/red/line{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/medbay)
+/area/shuttle/chaser/engineering)
 "Nz" = (
 /obj/machinery/recharge_station,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
@@ -834,22 +877,40 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/bridge)
-"OI" = (
+"Om" = (
+/turf/closed/wall/r_wall/plastitanium/syndicate,
+/area/shuttle/chaser/cargo)
+"OD" = (
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/bot_red,
+/obj/effect/spawner/random/structure/crate_loot,
+/obj/effect/mapping_helpers/apc/syndicate_access,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/cargo)
+"OL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/turf/closed/wall/r_wall/plastitanium/syndicate,
-/area/shuttle/chaser/cargo)
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/shuttle/chaser/bridge)
+"OS" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/armory)
 "OW" = (
 /obj/effect/turf_decal/syndicateemblem/top/middle,
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/chaser/armory)
-"Pj" = (
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
-/area/shuttle/chaser/engineering)
-"Px" = (
-/obj/effect/turf_decal/tile/blue/full,
+"PB" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/chaser/medbay)
 "PH" = (
@@ -868,24 +929,23 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/cargo)
-"PO" = (
-/obj/structure/cable,
-/obj/structure/table/optable,
-/turf/open/floor/iron/white,
-/area/shuttle/chaser/medbay)
 "PV" = (
-/obj/machinery/porta_turret/syndicate/shuttle{
-	dir = 5
-	},
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
-/area/shuttle/chaser/medbay)
+/turf/template_noop,
+/area/template_noop)
 "Qb" = (
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/chaser/engineering)
-"Qe" = (
-/turf/open/floor/mineral/plastitanium,
-/area/shuttle/chaser/medbay)
+"Qo" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/engineering)
+"QH" = (
+/obj/machinery/porta_turret/syndicate/shuttle{
+	dir = 5
+	},
+/turf/closed/wall/r_wall/plastitanium/syndicate,
+/area/shuttle/chaser/engineering)
 "QP" = (
 /obj/effect/turf_decal/syndicateemblem/middle/left,
 /obj/effect/turf_decal/siding/thinplating_new/dark{
@@ -896,12 +956,6 @@
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/chaser/armory)
-"RD" = (
-/obj/machinery/porta_turret/syndicate/shuttle{
-	dir = 5
-	},
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
-/area/shuttle/chaser/cargo)
 "RV" = (
 /obj/structure/closet/syndicate/personal,
 /obj/effect/turf_decal/bot_red,
@@ -910,39 +964,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/cargo)
-"Sh" = (
-/obj/machinery/power/apc/auto_name/directional/east,
-/obj/machinery/power/terminal{
+"Se" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/obj/effect/turf_decal/bot_red,
+/obj/effect/turf_decal/stripes/red/line{
 	dir = 4
 	},
-/obj/structure/cable,
-/obj/effect/turf_decal/bot_red,
-/obj/effect/spawner/random/structure/crate_loot,
-/obj/effect/mapping_helpers/apc/syndicate_access,
 /turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
-"Sn" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/engineering)
-"Ti" = (
-/turf/template_noop,
-/area/template_noop)
-"To" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/shuttle/chaser/engineering)
-"Tr" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/closed/wall/r_wall/plastitanium/syndicate,
 /area/shuttle/chaser/medbay)
-"TF" = (
+"Sh" = (
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/machinery/power/terminal{
 	dir = 4
@@ -957,34 +987,49 @@
 /obj/effect/mapping_helpers/apc/syndicate_access,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/armory)
-"TZ" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
-"Ug" = (
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/breacher{
-	dir = 1
+"Ti" = (
+/obj/structure/table/reinforced/plastitaniumglass,
+/obj/machinery/recharger{
+	pixel_y = 4
 	},
 /turf/open/floor/iron/dark,
+/area/shuttle/chaser/armory)
+"Tr" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/closed/wall/r_wall/plastitanium/syndicate,
+/area/shuttle/chaser/medbay)
+"TG" = (
+/obj/machinery/door/airlock/external/ruin,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/medbay)
+"TO" = (
+/turf/closed/wall/r_wall/plastitanium/syndicate,
+/area/shuttle/chaser/medbay)
+"TZ" = (
+/turf/closed/wall/r_wall/plastitanium/syndicate,
 /area/shuttle/chaser/bridge)
-"Uk" = (
+"UQ" = (
+/obj/effect/turf_decal/loading_area/red,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/cargo)
+"UX" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/engineering)
+"Vj" = (
+/obj/structure/table/reinforced/plastitaniumglass,
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/bridge)
+"Vs" = (
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/cargo)
-"UR" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/obj/machinery/light,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/cargo)
-"Vj" = (
-/obj/structure/table/reinforced/plastitaniumglass,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
 "Vw" = (
 /obj/machinery/airalarm/directional/east,
 /obj/effect/mapping_helpers/airalarm/all_access,
@@ -993,12 +1038,6 @@
 /obj/machinery/light,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/armory)
-"VD" = (
-/obj/effect/mob_spawn/ghost_role/human/usable_sleeper/chaser/boarder{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
 "VI" = (
 /obj/effect/turf_decal/syndicateemblem/bottom/left,
 /obj/effect/turf_decal/siding/thinplating_new/dark{
@@ -1006,25 +1045,19 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/chaser/armory)
-"VL" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/turf/open/space/basic,
-/area/shuttle/chaser/medbay)
-"VS" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/engineering)
-"WI" = (
-/obj/structure/reagent_dispensers/fueltank,
-/obj/machinery/light{
+"VT" = (
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/area/shuttle/chaser/cargo)
+"Wi" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/machinery/light,
 /turf/open/floor/iron/dark,
-/area/shuttle/chaser/engineering)
-"WL" = (
-/obj/structure/cable,
-/turf/open/floor/iron/white,
-/area/shuttle/chaser/medbay)
+/area/shuttle/chaser/cargo)
+"WI" = (
+/turf/open/floor/iron/dark,
+/area/shuttle/chaser/cargo)
 "WM" = (
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/machinery/power/terminal{
@@ -1032,21 +1065,12 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium,
-/area/shuttle/chaser/cargo)
-"WO" = (
-/turf/open/floor/iron/white,
 /area/shuttle/chaser/medbay)
-"Xf" = (
+"WY" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/machinery/light,
 /turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
-"Xs" = (
-/obj/machinery/airalarm/directional/east,
-/obj/effect/mapping_helpers/airalarm/all_access,
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/bridge)
+/area/shuttle/chaser/engineering)
 "Xu" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1062,19 +1086,6 @@
 	},
 /turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
 /area/shuttle/chaser/cargo)
-"XQ" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/structure/table/reinforced/plastitaniumglass,
-/obj/machinery/recharger{
-	pixel_y = 4
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/armory)
 "Yb" = (
 /obj/structure/tank_dispenser/oxygen,
 /obj/effect/turf_decal/bot_red,
@@ -1086,11 +1097,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/cargo)
-"Yy" = (
-/obj/structure/reagent_dispensers/fueltank,
-/obj/machinery/light,
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/engineering)
+"Yp" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/shuttle/chaser/medbay)
 "YG" = (
 /obj/machinery/atmospherics/components/binary/pump/layer4{
 	dir = 8
@@ -1100,17 +1112,8 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/engineering)
-"YJ" = (
-/obj/structure/bed/medical/emergency,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/iron/white,
-/area/shuttle/chaser/medbay)
-"Zi" = (
+"Zd" = (
 /obj/structure/cable,
-/obj/structure/table/reinforced,
-/obj/effect/spawner/surgery_tray/full,
 /turf/open/floor/iron/white,
 /area/shuttle/chaser/medbay)
 "ZO" = (
@@ -1125,148 +1128,137 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/chaser/engineering)
-"ZU" = (
-/obj/machinery/suit_storage_unit/syndicate,
-/obj/effect/turf_decal/bot_red,
-/obj/effect/turf_decal/stripes/red/line{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/shuttle/chaser/medbay)
 
 (1,1,1) = {"
-Ti
-Ti
-Ti
-Ti
-Ti
-AY
-TZ
-TZ
-TZ
-TZ
-TZ
-AY
-Ti
-Ti
-Ti
-Ti
-Ti
+PV
+PV
+PV
+PV
+PV
+MC
+uZ
+uZ
+uZ
+uZ
+uZ
+MC
+PV
+PV
+PV
+PV
+PV
 "}
 (2,1,1) = {"
-Ti
-Ti
-Ti
-Ti
-mz
-mz
+PV
+PV
+PV
+PV
+TZ
+TZ
 Vj
 pS
-Eq
+an
 qj
-kU
-mz
-mz
-Ti
-Ti
-Ti
-Ti
+Vj
+TZ
+TZ
+PV
+PV
+PV
+PV
 "}
 (3,1,1) = {"
-Ti
-Ti
-Ti
-Ti
-TZ
-HX
-Xf
+PV
+PV
+PV
+PV
+uZ
+zs
+bs
 xS
 uP
 xS
-Xf
-Ug
-TZ
-Ti
-Ti
-Ti
-Ti
+bs
+nC
+uZ
+PV
+PV
+PV
+PV
 "}
 (4,1,1) = {"
-Ti
-Ti
-Ti
-Ti
-TZ
-IR
-Xf
+PV
+PV
+PV
+PV
+uZ
+KY
+bs
 uP
 uP
 uP
-Xf
-VD
-TZ
-Ti
-Ti
-Ti
-Ti
+bs
+Lp
+uZ
+PV
+PV
+PV
+PV
 "}
 (5,1,1) = {"
-Ti
-Ti
-hj
-dk
-dk
-dk
-Lv
+PV
+PV
+VT
+Om
+Om
+Om
+cM
 tt
-Nm
-hK
-Xs
-sn
-sn
-sn
-LY
-Ti
-Ti
+OL
+sf
+uf
+TO
+TO
+TO
+dk
+PV
+PV
 "}
 (6,1,1) = {"
-RD
+ff
 Xz
-hj
-rn
+VT
+He
 Ef
+Om
+TZ
+uZ
+zb
+uZ
+TZ
+TO
+Se
+sR
 dk
-mz
-TZ
-rw
-TZ
-mz
-sn
-Nu
-ZU
-LY
 uF
-PV
+hj
 "}
 (7,1,1) = {"
 AT
 xQ
-WM
+AO
 xu
 CI
 RV
-mz
+TZ
 Nz
-Nm
+OL
 lb
-mz
+TZ
 eh
-vd
+gY
 aS
-Iu
+WM
 hh
 nb
 "}
@@ -1275,100 +1267,100 @@ PH
 xQ
 sN
 uh
-qe
+zQ
 Yb
-mz
+TZ
 gE
-Nm
+OL
 gE
-mz
+TZ
 EW
-lH
+lo
 lR
-Qe
+lC
 hh
 Cz
 "}
 (9,1,1) = {"
-RD
-dk
-yR
-dk
-yg
-dk
-mz
-TZ
-rw
-TZ
-mz
-sn
+ff
+Om
+dM
+Om
 MX
-sn
-VL
-sn
-PV
+Om
+TZ
+uZ
+zb
+uZ
+TZ
+TO
+TG
+TO
+zg
+TO
+hj
 "}
 (10,1,1) = {"
-yR
-Mz
-cy
-pw
+dM
+HU
+UQ
+mm
+zQ
+MF
+Dl
 qe
-OI
-XQ
-hP
-zB
-hP
-yS
+Js
+qe
+yj
 Tr
-uw
-lx
-Fd
-YJ
-uZ
+Yp
+Ba
+aR
+bR
+Dq
 "}
 (11,1,1) = {"
-yR
-Mz
-cy
-pw
-eJ
-yR
-mH
-Av
-zB
-Av
-mH
-uZ
-WO
-Ae
-ay
-Bc
-uZ
+dM
+HU
+UQ
+mm
+WI
+dM
+Ti
+iC
+Js
+iC
+Ti
+Dq
+cw
+jR
+dE
+dx
+Dq
 "}
 (12,1,1) = {"
-hj
-hj
-Ds
-pw
-UR
-dk
+VT
+VT
+Hf
+mm
+Wi
+Om
 Nj
 rT
 QP
 VI
 sl
-sn
-vW
-Ae
-bi
-LY
-LY
+TO
+PB
+jR
+oE
+dk
+dk
 "}
 (13,1,1) = {"
-Ti
-hj
-kQ
+PV
+VT
+EU
 CI
 CI
 cU
@@ -1377,85 +1369,85 @@ OW
 xz
 vH
 om
-iZ
-WL
-lw
-Zi
-LY
-Ti
+Di
+Zd
+jm
+kh
+dk
+PV
 "}
 (14,1,1) = {"
-Ti
-yR
-kQ
-eJ
-eo
-dk
+PV
+dM
+EU
+WI
+mW
+Om
 cI
 rQ
 zU
 wF
 mE
-sn
-dY
-Px
-PO
-uZ
-Ti
+TO
+ba
+vr
+Hv
+Dq
+PV
 "}
 (15,1,1) = {"
-Ti
-dk
-Sh
-Uk
-eJ
-yR
-rC
-FB
-zB
-dV
-mG
-uZ
-WO
+PV
+Om
+OD
+Vs
+WI
+dM
+tD
+OS
+Js
+wo
+qn
+Dq
+cw
 uv
-JY
-sn
-Ti
+go
+TO
+PV
 "}
 (16,1,1) = {"
-Fq
-dk
-dk
-hj
-yQ
-hj
-TF
-vl
-zB
-Av
+Bl
+Om
+Om
+VT
+zo
+VT
+Sh
+mB
+Js
+iC
 Vw
-LY
-kA
-LY
-sn
-sn
-Fq
+dk
+jI
+dk
+TO
+TO
+Bl
 "}
 (17,1,1) = {"
 uI
 Fc
 bQ
-Pj
-Pj
-Pj
-Pj
-zg
-hA
-zg
-Pj
-Pj
-Pj
-Pj
+sV
+sV
+sV
+sV
+UX
+rw
+UX
+sV
+sV
+sV
+sV
 bQ
 Fc
 uI
@@ -1465,15 +1457,15 @@ uI
 Fc
 bQ
 fi
-Fq
-WI
-Jw
+Bl
+CD
+eJ
 Ge
-To
-Sn
-Jw
-Yy
-Fq
+Nm
+hK
+eJ
+WY
+Bl
 fi
 bQ
 Fc
@@ -1484,98 +1476,98 @@ uI
 Fc
 Qb
 Fc
-Fq
-Jf
-Jw
-Jw
-To
-Jw
-Jw
-Jf
-Fq
+Bl
+oP
+eJ
+eJ
+Nm
+eJ
+eJ
+oP
+Bl
 Fc
 Qb
 Fc
 uI
 "}
 (20,1,1) = {"
-Fq
-Fq
+Bl
+Bl
 bG
-Fq
-Fq
-Ec
-Jw
-Jw
-To
-Jw
-Jw
-Ec
-Fq
-Fq
+Bl
+Bl
+IJ
+eJ
+eJ
+Nm
+eJ
+eJ
+IJ
+Bl
+Bl
 fO
-Fq
-Fq
+Bl
+Bl
 "}
 (21,1,1) = {"
-Fq
+Bl
 MK
 Xu
 qw
 nr
 pX
 pX
-Me
+yo
 nN
-Me
+yo
 pX
 pX
 nr
 qw
 Xu
 MK
-Fq
+Bl
 "}
 (22,1,1) = {"
-Fq
+Bl
 eG
 gv
 uE
-Fq
+Bl
 gH
-wG
-wG
+Qo
+Qo
 MI
-wG
-wG
+Qo
+Qo
 YG
-Fq
+Bl
 mU
 gv
 ZO
-Fq
+Bl
 "}
 (23,1,1) = {"
-Fq
-Lh
-wp
+Bl
 LH
-Fq
+AP
+Bw
+Bl
 Jr
-VS
-Jw
+KV
+eJ
 vf
-Jw
+eJ
 Jj
 cW
-Fq
-Lh
-wp
+Bl
 LH
-Fq
+AP
+Bw
+Bl
 "}
 (24,1,1) = {"
-Fq
+Bl
 if
 if
 if
@@ -1591,14 +1583,14 @@ JO
 if
 if
 if
-Fq
+Bl
 "}
 (25,1,1) = {"
-sM
+QH
 BQ
 BQ
 BQ
-sM
+QH
 FE
 uI
 uI
@@ -1606,9 +1598,9 @@ uI
 uI
 uI
 bQ
-sM
+QH
 BQ
 BQ
 BQ
-sM
+QH
 "}

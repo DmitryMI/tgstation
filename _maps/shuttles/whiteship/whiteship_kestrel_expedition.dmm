@@ -2144,7 +2144,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/expedition/crew)
 "Qx" = (
-/obj/machinery/rnd/server/master/expeditionary,
+/obj/machinery/rnd/server/expeditionary,
 /obj/machinery/atmospherics/components/unary/passive_vent{
 	dir = 1;
 	name = "server vent"

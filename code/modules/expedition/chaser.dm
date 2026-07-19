@@ -153,7 +153,7 @@
 	var/obj/docking_port/mobile/chaser_shuttle = SSshuttle.getShuttle(shuttleId)
 	var/obj/docking_port/stationary/destination_port = SSshuttle.getDock(dest_id)
 	var/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/expedition_console
-	if(chaser_shuttle?.mode == SHUTTLE_IDLE && destination_port?.z != chaser_shuttle.z)
+	if(chaser_shuttle?.mode == SHUTTLE_IDLE && destination_port)
 		expedition_console = find_expedition_navigation_console(destination_port.z)
 
 	apply_chaser_shuttle_timing_overrides(chaser_shuttle)

@@ -17,7 +17,7 @@
 		web = new /datum/techweb/expeditionary
 	return web
 
-/obj/machinery/rnd/server/master/expeditionary/Initialize(mapload)
+/obj/machinery/rnd/server/expeditionary/Initialize(mapload)
 	stored_research = get_expeditionary_techweb()
 	return ..()
 
