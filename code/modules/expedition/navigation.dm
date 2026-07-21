@@ -54,6 +54,30 @@
 		return bridge_console
 	return null
 
+/// Returns connected players physically aboard this Expedition shuttle.
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/get_expedition_crew()
+	var/obj/docking_port/mobile/expedition_shuttle = SSshuttle.getShuttle(shuttleId)
+	if(!expedition_shuttle)
+		return list()
+
+	var/list/mob/crew = list()
+	for(var/mob/player as anything in GLOB.player_list)
+		if(SSshuttle.get_containing_shuttle(player) == expedition_shuttle)
+			crew += player
+	return crew
+
+/// Delivers a station-style alert, including its sound, to everyone aboard this Expedition shuttle.
+/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/announce_to_expedition_crew(message, title, sound)
+	priority_announce(
+		text = message,
+		title = title,
+		sound = sound,
+		type = ANNOUNCEMENT_TYPE_PRIORITY,
+		has_important_message = TRUE,
+		players = get_expedition_crew(),
+		color_override = "red",
+	)
+
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/apply_hostile_bluespace_disruption(duration)
 	var/obj/machinery/computer/shuttle/white_ship/bridge/expedition/bridge_console = get_expedition_bridge_console()
 	if(!bridge_console)
@@ -63,13 +87,19 @@
 	bridge_console.navigation_disrupted_until = max(bridge_console.navigation_disrupted_until, world.time + disruption_duration)
 	var/obj/docking_port/mobile/expedition_shuttle = SSshuttle.getShuttle(shuttleId)
 	expedition_shuttle?.abort_ignition()
-	say("WARNING: Hostile bluespace disruption detected. Navigation travel is blocked for [DisplayTimeText(disruption_duration)].")
-	playsound(src, 'sound/announcer/notice/notice3.ogg', 75, FALSE)
+	announce_to_expedition_crew(
+		"Hostile bluespace disruption detected. Navigation travel is blocked for [DisplayTimeText(disruption_duration)].",
+		"[vessel_name] Navigation Alert",
+		'sound/announcer/notice/notice3.ogg',
+	)
 	return TRUE
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/expedition/proc/issue_chaser_spawn_warning()
-	say("WARNING: Long-range telemetry has detected a hostile Syndicate pursuit vessel.")
-	playsound(src, 'sound/announcer/alarm/bloblarm.ogg', 75, FALSE)
+	announce_to_expedition_crew(
+		"Long-range telemetry has detected a hostile Syndicate pursuit vessel.",
+		"[vessel_name] Hostile Pursuit Warning",
+		'sound/announcer/alarm/bloblarm.ogg',
+	)
 
 	var/obj/item/paper/warning_report = new /obj/item/paper(drop_location())
 	warning_report.name = "paper - 'Hostile Pursuit Vessel Warning'"

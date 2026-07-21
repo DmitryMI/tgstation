@@ -99,6 +99,12 @@
 	check_poddoors()
 	new_dock.last_dock_time = world.time
 	setDir(new_dock.dir)
+	// Shuttle relocation does not produce turf-entry signals for stationary proximity
+	// monitors. Rebuild turret fields so turrets on either side of the dock can
+	// immediately acquire newly arrived hostile turrets.
+	for(var/obj/machinery/porta_turret/turret as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/porta_turret))
+		if(turret.z == new_dock.z)
+			turret.tracker?.recalculate_field(full_recalc = TRUE)
 
 	// remove any stragglers just in case, and clear the list
 	remove_ripples()

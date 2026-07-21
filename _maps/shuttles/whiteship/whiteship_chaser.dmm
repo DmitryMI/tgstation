@@ -262,6 +262,7 @@
 /obj/machinery/atmos_shield_gen/active{
 	dir = 4
 	},
+/obj/machinery/door/airlock/external/ruin,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/medbay)
 "nr" = (
@@ -629,6 +630,7 @@
 /obj/machinery/atmos_shield_gen/active{
 	dir = 4
 	},
+/obj/machinery/door/airlock/external/ruin,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/cargo)
 "Ba" = (
@@ -661,6 +663,7 @@
 /obj/machinery/atmos_shield_gen/active{
 	dir = 8
 	},
+/obj/machinery/door/airlock/external/ruin,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/medbay)
 "CD" = (
@@ -946,6 +949,7 @@
 /obj/machinery/atmos_shield_gen/active{
 	dir = 8
 	},
+/obj/machinery/door/airlock/external/ruin,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/cargo)
 "PV" = (
@@ -1415,7 +1419,7 @@ Mj
 "}
 (15,1,1) = {"
 QH
-Om
+VT
 OD
 Vs
 WI
@@ -1429,12 +1433,12 @@ Dq
 cw
 uv
 go
-TO
+dk
 Gb
 "}
 (16,1,1) = {"
-Om
-Om
+VT
+VT
 Om
 VT
 zo
@@ -1448,8 +1452,8 @@ dk
 jI
 dk
 TO
-TO
-TO
+dk
+dk
 "}
 (17,1,1) = {"
 uI

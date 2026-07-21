@@ -24,7 +24,7 @@ EXPEDITION_MAX_OBJECTIVES 5
 
 ## Syndicate Chaser shuttle ignition and call time, in deciseconds.
 CHASER_IGNITION_TIME 10
-CHASER_CALL_TIME 30
+CHASER_CALL_TIME 50
 
 ## Syndicate Chaser navigation destination designation time, in deciseconds.
 CHASER_DESIGNATE_TIME 10
