@@ -50,6 +50,8 @@
 		return NONE
 
 	if(parent_turret.anchored)
+		if(!parent_turret.can_unanchor(user))
+			return ITEM_INTERACT_BLOCKING
 		parent_turret.set_anchored(FALSE)
 		to_chat(user, span_notice("You unsecure the exterior bolts on the turret."))
 		parent_turret.SetInvisibility(INVISIBILITY_NONE, id=parent_turret.type, priority=INVISIBILITY_PRIORITY_TURRET_COVER)

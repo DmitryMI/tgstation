@@ -8,7 +8,7 @@ EXPEDITION_IGNITION_TIME 100
 EXPEDITION_CALL_TIME 300
 
 ## Expedition navigation destination designation time, in deciseconds.
-EXPEDITION_DESIGNATE_TIME 5
+EXPEDITION_DESIGNATE_TIME 100
 
 ## Display configured z-level names in Expedition navigation instead of sector numbers.
 EXPEDITION_USE_Z_LEVEL_REAL_NAMES 0
@@ -23,11 +23,11 @@ EXPEDITION_COCKPIT_ALL_ACCESS 0
 EXPEDITION_MAX_OBJECTIVES 5
 
 ## Syndicate Chaser shuttle ignition and call time, in deciseconds.
-CHASER_IGNITION_TIME 100
-CHASER_CALL_TIME 300
+CHASER_IGNITION_TIME 10
+CHASER_CALL_TIME 30
 
 ## Syndicate Chaser navigation destination designation time, in deciseconds.
-CHASER_DESIGNATE_TIME 100
+CHASER_DESIGNATE_TIME 10
 
 ## How long the Chaser's bluespace disruptor blocks Expedition travel, in deciseconds.
 CHASER_HOSTILE_DISRUPTION_TIME 1200

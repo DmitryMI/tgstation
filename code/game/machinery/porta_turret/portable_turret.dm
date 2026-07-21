@@ -404,12 +404,18 @@ DEFINE_BITFIELD(turret_flags, list(
 			cover = new /obj/machinery/porta_turret_cover(loc) //create a new turret. While this is handled in process(), this is to workaround a bug where the turret becomes invisible for a split second
 			cover.parent_turret = src //make the cover's parent src
 	else if(anchored)
+		if(!can_unanchor(user))
+			return ITEM_INTERACT_BLOCKING
 		set_anchored(FALSE)
 		to_chat(user, span_notice("You unsecure the exterior bolts on the turret."))
 		power_change()
 		SetInvisibility(INVISIBILITY_NONE, id=type)
 		qdel(cover) //deletes the cover, and the turret instance itself becomes its own cover.
 	return ITEM_INTERACT_SUCCESS
+
+/// Returns whether this turret may be unanchored with a wrench.
+/obj/machinery/porta_turret/proc/can_unanchor(mob/living/user)
+	return TRUE
 
 /obj/machinery/porta_turret/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!tool.GetID())
@@ -556,9 +562,9 @@ DEFINE_BITFIELD(turret_flags, list(
 	// Turrets are strategic threats in their own right. Automatic turrets engage
 	// any visible turret which does not share one of their factions or allies.
 	for(var/obj/machinery/porta_turret/other_turret in view(scan_range, base))
-		if(other_turret == src || in_faction(other_turret))
+		if(other_turret == src || (other_turret.machine_stat & BROKEN) || in_faction(other_turret))
 			continue
-		targets += other_turret
+		targets += other_turret.get_combat_target()
 
 	for(var/A in GLOB.mechas_list)
 		if((get_dist(A, base) < scan_range) && can_see(base, A, scan_range))
@@ -584,6 +590,12 @@ DEFINE_BITFIELD(turret_flags, list(
 		targets -= M
 		if(target(M))
 			return 1
+
+/// Returns the atom automatic turret fire should aim at when engaging this turret.
+/obj/machinery/porta_turret/proc/get_combat_target()
+	if(!raised && cover && !QDELETED(cover))
+		return cover
+	return src
 
 /obj/machinery/porta_turret/proc/popUp() //pops the turret up
 	if(!anchored)
@@ -710,15 +722,21 @@ DEFINE_BITFIELD(turret_flags, list(
 		A = new lethal_projectile(T)
 		playsound(loc, lethal_projectile_sound, 75, TRUE)
 
+	modify_projectile_damage(A)
 
 	//Shooting Code:
 	A.aim_projectile(target, T)
 	A.firer = src
 	A.fired_from = src
+	A.ignore_friendly_turrets = TRUE
 	if(ignore_faction)
 		APPLY_FACTION_AND_ALLIES_FROM(A, src)
 	A.fire()
 	return A
+
+/// Applies turret-specific damage adjustments before a projectile is fired.
+/obj/machinery/porta_turret/proc/modify_projectile_damage(obj/projectile/projectile)
+	return
 
 /obj/machinery/porta_turret/proc/setState(on, mode, shoot_cyborgs)
 	if(controllock)
@@ -889,6 +907,13 @@ DEFINE_BITFIELD(turret_flags, list(
 	faction = list(ROLE_SYNDICATE)
 	turret_flags = TURRET_FLAG_SHOOT_CRIMINALS | TURRET_FLAG_SHOOT_ANOMALOUS | TURRET_FLAG_SHOOT_BORGS
 	desc = "A ballistic machine gun auto-turret."
+
+/// A non-damaging version for maps that need the turret's normal targeting and projectile interactions.
+/obj/machinery/porta_turret/syndicate/harmless
+
+/obj/machinery/porta_turret/syndicate/harmless/modify_projectile_damage(obj/projectile/projectile)
+	projectile.damage = 0
+	projectile.stamina = 0
 
 /obj/machinery/porta_turret/syndicate/Initialize(mapload)
 	. = ..()

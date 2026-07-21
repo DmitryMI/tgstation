@@ -71,6 +71,8 @@
 	var/list/impacted = list()
 	/// If TRUE, we can hit our firer.
 	var/ignore_source_check = FALSE
+	/// If TRUE, bypass turret bodies and covers sharing a faction or alliance with firer.
+	var/ignore_friendly_turrets = FALSE
 	/// We are flagged PHASING temporarily to not stop moving when we Bump something but want to keep going anyways.
 	var/temporary_unstoppable_movement = FALSE
 
@@ -620,10 +622,23 @@
 
 /// Returns true if the target atom is on our current turf and above the right layer
 /// If direct target is true it's the originally clicked target.
+/obj/projectile/proc/is_friendly_turret_target(atom/target)
+	if(!ignore_friendly_turrets || !firer)
+		return FALSE
+	var/obj/machinery/porta_turret/turret_target
+	if(istype(target, /obj/machinery/porta_turret))
+		turret_target = target
+	else if(istype(target, /obj/machinery/porta_turret_cover))
+		var/obj/machinery/porta_turret_cover/turret_cover = target
+		turret_target = turret_cover.parent_turret
+	return turret_target && firer.faction_check_atom(turret_target)
+
 /obj/projectile/proc/can_hit_target(atom/target, direct_target = FALSE, ignore_loc = FALSE, cross_failed = FALSE)
 	if(QDELETED(target) || impacted[target.weak_reference])
 		return FALSE
 	if(!ignore_loc && (loc != target.loc) && !(can_hit_turfs && direct_target && loc == target))
+		return FALSE
+	if(is_friendly_turret_target(target))
 		return FALSE
 	// if pass_flags match, pass through entirely - unless direct target is set.
 	if((target.pass_flags_self & pass_flags) && !direct_target)
@@ -711,7 +726,7 @@
  * Used to not even attempt to Bump() or fail to Cross() anything we already hit.
  */
 /obj/projectile/CanPassThrough(atom/blocker, movement_dir, blocker_opinion)
-	return impacted[blocker.weak_reference] || ..()
+	return impacted[blocker.weak_reference] || is_friendly_turret_target(blocker) || ..()
 
 /**
  * Projectile moved:

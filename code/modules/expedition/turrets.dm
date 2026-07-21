@@ -15,10 +15,12 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	circuit = /obj/item/circuitboard/machine/hull_defense_turret
 	installation = null
 	uses_stored = TRUE
-	locked = FALSE
+	locked = TRUE
 	mode = HULL_TURRET_LETHAL_MODE
 	on = FALSE
 	turret_flags = HULL_TURRET_SHOOT_ANOMALOUS | HULL_TURRET_SHOOT_BORGS
+	/// Hull-defense turrets remain repairable until they are nearly destroyed.
+	integrity_failure = 0.1
 	/// Base automatic/manual sight radius before scanning-module bonuses.
 	var/base_scan_range = 7
 	/// Tiles contributed by each scanning-module tier.
@@ -333,6 +335,10 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 		return FALSE
 	if(get_dist(base, target) > scan_range || !can_see(base, target, scan_range))
 		return FALSE
+	if(istype(target, /obj/machinery/porta_turret))
+		var/obj/machinery/porta_turret/turret_target = target
+		if(turret_target.machine_stat & BROKEN)
+			return FALSE
 	if(ismovable(target))
 		var/atom/movable/movable_target = target
 		if(in_faction(movable_target))
@@ -485,6 +491,7 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 		projectile.impacted[WEAKREF(src)] = TRUE
 		projectile.damage *= stored_gun.projectile_damage_multiplier
 		projectile.stamina *= stored_gun.projectile_damage_multiplier
+		modify_projectile_damage(projectile)
 		projectile.speed *= stored_gun.projectile_speed_multiplier * turret_projectile_speed_multiplier
 		projectile.wound_bonus += stored_gun.projectile_wound_bonus
 		projectile.exposed_wound_bonus += stored_gun.projectile_wound_bonus
@@ -500,6 +507,7 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 				projectile.set_angle(predictive_angle + shot_spread)
 		projectile.firer = src
 		projectile.fired_from = src
+		projectile.ignore_friendly_turrets = TRUE
 		if(ignore_faction)
 			APPLY_FACTION_AND_ALLIES_FROM(projectile, src)
 		projectile.fire()
@@ -520,6 +528,8 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	if(raising)
 		balloon_alert(user, "turret is moving")
 		return ITEM_INTERACT_BLOCKING
+	if(anchored && !can_unanchor(user))
+		return ITEM_INTERACT_BLOCKING
 	if(anchored)
 		remove_control(FALSE)
 		if(on)
@@ -527,6 +537,12 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 		else if(raised)
 			popDown()
 	return ..()
+
+/obj/machinery/porta_turret/hull_defense/can_unanchor(mob/living/user)
+	if(locked)
+		balloon_alert(user, "controls locked")
+		return FALSE
+	return TRUE
 
 /obj/machinery/porta_turret/hull_defense/welder_act(mob/living/user, obj/item/tool)
 	if(user.combat_mode)
@@ -655,6 +671,13 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 		)
 		circuit = ordinary_board
 	return ..()
+
+/// A non-damaging expedition turret for maps that need normal targeting and projectile interactions.
+/obj/machinery/porta_turret/hull_defense/expedition/harmless
+
+/obj/machinery/porta_turret/hull_defense/expedition/harmless/modify_projectile_damage(obj/projectile/projectile)
+	projectile.damage = 0
+	projectile.stamina = 0
 
 /datum/design/board/hull_defense_turret
 	name = "Hull-Defense Turret Board"

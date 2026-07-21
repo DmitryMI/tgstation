@@ -105,10 +105,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/engineering)
 "ff" = (
-/obj/machinery/porta_turret/syndicate/shuttle{
-	dir = 5
-	},
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
+/turf/open/floor/catwalk_floor/iron_dark/airless,
 /area/shuttle/chaser/cargo)
 "fi" = (
 /obj/machinery/power/tracker,
@@ -161,11 +158,8 @@
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/chaser/medbay)
 "hj" = (
-/obj/machinery/porta_turret/syndicate/shuttle{
-	dir = 5
-	},
-/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
-/area/shuttle/chaser/medbay)
+/turf/open/space/basic,
+/area/space)
 "hK" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -368,6 +362,9 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/engineering)
+"rE" = (
+/turf/open/floor/catwalk_floor/iron_dark/airless,
+/area/shuttle/chaser/engineering)
 "rQ" = (
 /obj/effect/turf_decal/syndicateemblem/top/right,
 /obj/effect/turf_decal/siding/thinplating_new/dark{
@@ -455,6 +452,10 @@
 	dir = 1
 	},
 /area/shuttle/chaser/cargo)
+"ur" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/open/floor/catwalk_floor/iron_dark/airless,
+/area/shuttle/chaser/bridge)
 "uv" = (
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/white,
@@ -498,6 +499,9 @@
 /obj/structure/cable,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/chaser/armory)
+"wm" = (
+/turf/open/floor/catwalk_floor/iron_dark/airless,
+/area/shuttle/chaser/bridge)
 "wo" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -557,7 +561,7 @@
 "yL" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/closed/wall/r_wall/plastitanium/syndicate,
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
 /area/shuttle/chaser/engineering)
 "zb" = (
 /obj/machinery/door/airlock/highsecurity/syndicate,
@@ -735,8 +739,12 @@
 /obj/machinery/atmospherics/components/unary/passive_vent/layer2{
 	dir = 8
 	},
-/turf/open/floor/catwalk_floor/airless,
+/turf/open/floor/catwalk_floor/iron_dark/airless,
 /area/shuttle/chaser/engineering)
+"Gb" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/open/floor/catwalk_floor/iron_dark/airless,
+/area/shuttle/chaser/medbay)
 "Ge" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark,
@@ -801,7 +809,7 @@
 /area/shuttle/chaser/armory)
 "JO" = (
 /obj/structure/cable,
-/turf/closed/wall/r_wall/plastitanium/syndicate,
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
 /area/shuttle/chaser/engineering)
 "KV" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
@@ -827,11 +835,11 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/chaser/engineering)
+"Mj" = (
+/turf/open/floor/catwalk_floor/iron_dark/airless,
+/area/shuttle/chaser/medbay)
 "MC" = (
-/obj/machinery/porta_turret/syndicate/shuttle{
-	dir = 5
-	},
-/turf/closed/wall/r_wall/plastitanium/syndicate,
+/turf/closed/wall/r_wall/plastitanium/syndicate/nodiagonal,
 /area/shuttle/chaser/bridge)
 "MF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -884,6 +892,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/bridge)
+"NB" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/open/floor/catwalk_floor/iron_dark/airless,
+/area/shuttle/chaser/engineering)
 "Om" = (
 /turf/closed/wall/r_wall/plastitanium/syndicate,
 /area/shuttle/chaser/cargo)
@@ -948,11 +960,9 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/chaser/engineering)
 "QH" = (
-/obj/machinery/porta_turret/syndicate/shuttle{
-	dir = 5
-	},
-/turf/closed/wall/r_wall/plastitanium/syndicate,
-/area/shuttle/chaser/engineering)
+/obj/machinery/porta_turret/syndicate,
+/turf/open/floor/catwalk_floor/iron_dark/airless,
+/area/shuttle/chaser/cargo)
 "QP" = (
 /obj/effect/turf_decal/syndicateemblem/middle/left,
 /obj/effect/turf_decal/siding/thinplating_new/dark{
@@ -1141,8 +1151,8 @@
 PV
 PV
 PV
-PV
-PV
+ur
+wm
 MC
 uZ
 uZ
@@ -1150,8 +1160,8 @@ uZ
 uZ
 uZ
 MC
-PV
-PV
+wm
+ur
 PV
 PV
 PV
@@ -1160,17 +1170,17 @@ PV
 PV
 PV
 PV
-PV
-TZ
-TZ
+wm
+MC
+MC
 Fp
 pS
 an
 qj
 Vj
-TZ
-TZ
-PV
+MC
+MC
+wm
 PV
 PV
 PV
@@ -1214,8 +1224,8 @@ PV
 PV
 "}
 (5,1,1) = {"
-PV
-PV
+QH
+ff
 VT
 Om
 Om
@@ -1229,11 +1239,11 @@ TO
 TO
 TO
 dk
-PV
-PV
+Mj
+Gb
 "}
 (6,1,1) = {"
-ff
+VT
 Xz
 VT
 He
@@ -1249,7 +1259,7 @@ Se
 sR
 dk
 uF
-hj
+dk
 "}
 (7,1,1) = {"
 AT
@@ -1290,7 +1300,7 @@ hh
 Cz
 "}
 (9,1,1) = {"
-ff
+VT
 Om
 dM
 Om
@@ -1306,7 +1316,7 @@ TG
 TO
 zg
 TO
-hj
+dk
 "}
 (10,1,1) = {"
 dM
@@ -1366,7 +1376,7 @@ dk
 dk
 "}
 (13,1,1) = {"
-PV
+QH
 VT
 EU
 CI
@@ -1382,10 +1392,10 @@ Zd
 jm
 kh
 dk
-PV
+Gb
 "}
 (14,1,1) = {"
-PV
+ff
 dM
 EU
 WI
@@ -1401,10 +1411,10 @@ ba
 vr
 Hv
 Dq
-PV
+Mj
 "}
 (15,1,1) = {"
-PV
+QH
 Om
 OD
 Vs
@@ -1420,10 +1430,10 @@ cw
 uv
 go
 TO
-PV
+Gb
 "}
 (16,1,1) = {"
-Bl
+Om
 Om
 Om
 VT
@@ -1439,7 +1449,7 @@ jI
 dk
 TO
 TO
-Bl
+TO
 "}
 (17,1,1) = {"
 uI
@@ -1594,21 +1604,40 @@ if
 Bl
 "}
 (25,1,1) = {"
-QH
+sV
 BQ
 BQ
 BQ
-QH
+sV
 FE
 uI
 uI
 uI
 uI
 uI
-bQ
-QH
+rE
+sV
 BQ
 BQ
 BQ
-QH
+sV
+"}
+(26,1,1) = {"
+NB
+hj
+hj
+hj
+hj
+NB
+hj
+hj
+hj
+hj
+hj
+NB
+hj
+hj
+hj
+hj
+NB
 "}
