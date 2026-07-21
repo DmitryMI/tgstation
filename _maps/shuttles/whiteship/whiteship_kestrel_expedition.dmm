@@ -15,6 +15,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
+"ay" = (
+/obj/structure/cable,
+/obj/machinery/power/solar{
+	id = "foreport";
+	name = "Fore-Port Solar Array"
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/crew)
 "aB" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/stingbangs{
@@ -176,6 +184,17 @@
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
+"dx" = (
+/obj/structure/cable,
+/obj/machinery/porta_turret/hull_defense/expedition{
+	name = "Kestrel Port Laser 1"
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets";
+	link_insertion_index = 11
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/medbay)
 "dI" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/suit_storage_unit/open,
@@ -240,10 +259,11 @@
 /area/shuttle/expedition/engineering)
 "ez" = (
 /obj/machinery/porta_turret/hull_defense/expedition{
-	name = "Kestrel Aft-Port Laser"
+	name = "Kestrel Aft-Port Laser 2"
 	},
 /obj/effect/mapping_helpers/hull_defense_link{
-	link_id = "kestrel_turrets"
+	link_id = "kestrel_turrets";
+	link_insertion_index = 7
 	},
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/armory)
@@ -1005,7 +1025,8 @@
 	name = "Kestrel Port Laser 2"
 	},
 /obj/effect/mapping_helpers/hull_defense_link{
-	link_id = "kestrel_turrets"
+	link_id = "kestrel_turrets";
+	link_insertion_index = 10
 	},
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/cargo)
@@ -1128,6 +1149,17 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/shuttle/expedition/engineering)
+"vt" = (
+/obj/structure/cable,
+/obj/machinery/porta_turret/hull_defense/expedition{
+	name = "Kestrel Starboard Laser 3"
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets";
+	link_insertion_index = 4
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/cargo)
 "vw" = (
 /obj/effect/turf_decal/trimline/dark_red/filled/warning{
 	dir = 6
@@ -1204,7 +1236,6 @@
 /area/shuttle/expedition/engineering)
 "wH" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
-/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "wR" = (
@@ -1221,7 +1252,8 @@
 	name = "Kestrel Bow-Starboard Laser 1"
 	},
 /obj/effect/mapping_helpers/hull_defense_link{
-	link_id = "kestrel_turrets"
+	link_id = "kestrel_turrets";
+	link_insertion_index = 14
 	},
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/crew)
@@ -1324,7 +1356,8 @@
 	name = "Kestrel Bow-Starboard Laser 2"
 	},
 /obj/effect/mapping_helpers/hull_defense_link{
-	link_id = "kestrel_turrets"
+	link_id = "kestrel_turrets";
+	link_insertion_index = 1
 	},
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/crew)
@@ -1630,20 +1663,21 @@
 	name = "Kestrel Starboard Laser 1"
 	},
 /obj/effect/mapping_helpers/hull_defense_link{
-	link_id = "kestrel_turrets"
+	link_id = "kestrel_turrets";
+	link_insertion_index = 2
 	},
 /turf/open/floor/catwalk_floor/airless,
-/area/shuttle/expedition/cargo)
+/area/shuttle/expedition/kitchen)
 "Fx" = (
-/obj/structure/cable,
 /obj/machinery/porta_turret/hull_defense/expedition{
-	name = "Kestrel Port Laser 1"
+	name = "Kestrel Aft-Starboard Laser 2"
 	},
 /obj/effect/mapping_helpers/hull_defense_link{
-	link_id = "kestrel_turrets"
+	link_id = "kestrel_turrets";
+	link_insertion_index = 6
 	},
 /turf/open/floor/catwalk_floor/airless,
-/area/shuttle/expedition/cargo)
+/area/shuttle/expedition/engineering)
 "FB" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/carpet,
@@ -1713,10 +1747,11 @@
 /area/shuttle/expedition/cargo)
 "GG" = (
 /obj/machinery/porta_turret/hull_defense/expedition{
-	name = "Kestrel Aft-Starboard Laser"
+	name = "Kestrel Aft-Starboard Laser 1"
 	},
 /obj/effect/mapping_helpers/hull_defense_link{
-	link_id = "kestrel_turrets"
+	link_id = "kestrel_turrets";
+	link_insertion_index = 5
 	},
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/engineering)
@@ -1880,6 +1915,7 @@
 "Kz" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/light,
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
 "KF" = (
@@ -2020,7 +2056,8 @@
 	name = "Kestrel Bow-Port Laser 1"
 	},
 /obj/effect/mapping_helpers/hull_defense_link{
-	link_id = "kestrel_turrets"
+	link_id = "kestrel_turrets";
+	link_insertion_index = 13
 	},
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/medbay)
@@ -2154,6 +2191,17 @@
 /obj/effect/spawner/random/entertainment/deck,
 /turf/open/floor/carpet,
 /area/shuttle/expedition/crew)
+"OT" = (
+/obj/structure/cable,
+/obj/machinery/porta_turret/hull_defense/expedition{
+	name = "Kestrel Port Laser 3"
+	},
+/obj/effect/mapping_helpers/hull_defense_link{
+	link_id = "kestrel_turrets";
+	link_insertion_index = 9
+	},
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/cargo)
 "OU" = (
 /obj/machinery/chem_mass_spec,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -2574,7 +2622,8 @@
 	name = "Kestrel Starboard Laser 2"
 	},
 /obj/effect/mapping_helpers/hull_defense_link{
-	link_id = "kestrel_turrets"
+	link_id = "kestrel_turrets";
+	link_insertion_index = 3
 	},
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/cargo)
@@ -2670,10 +2719,11 @@
 /area/shuttle/expedition/cargo)
 "WP" = (
 /obj/machinery/porta_turret/hull_defense/expedition{
-	name = "Kestrel Aft-Starboard Laser"
+	name = "Kestrel Aft-Port Laser 1"
 	},
 /obj/effect/mapping_helpers/hull_defense_link{
-	link_id = "kestrel_turrets"
+	link_id = "kestrel_turrets";
+	link_insertion_index = 8
 	},
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/armory)
@@ -2712,7 +2762,8 @@
 	name = "Kestrel Bow-Port Laser 2"
 	},
 /obj/effect/mapping_helpers/hull_defense_link{
-	link_id = "kestrel_turrets"
+	link_id = "kestrel_turrets";
+	link_insertion_index = 12
 	},
 /turf/open/floor/catwalk_floor/airless,
 /area/shuttle/expedition/medbay)
@@ -2848,6 +2899,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/expedition/medbay)
+"ZF" = (
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor/airless,
+/area/shuttle/expedition/kitchen)
 "ZS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
@@ -3137,7 +3192,7 @@ cy
 ms
 "}
 (13,1,1) = {"
-Vo
+ay
 mJ
 Je
 xa
@@ -3160,7 +3215,7 @@ cy
 ms
 "}
 (14,1,1) = {"
-lk
+ZF
 lr
 lr
 wd
@@ -3180,10 +3235,10 @@ cy
 cy
 cy
 cy
-ms
+DE
 "}
 (15,1,1) = {"
-lk
+Fk
 lr
 aG
 Su
@@ -3203,10 +3258,10 @@ wg
 el
 KR
 cy
-ms
+dx
 "}
 (16,1,1) = {"
-lk
+ZF
 nJ
 TT
 SG
@@ -3226,7 +3281,7 @@ cy
 qw
 lG
 jI
-ms
+DE
 "}
 (17,1,1) = {"
 lk
@@ -3390,7 +3445,7 @@ cy
 DE
 "}
 (24,1,1) = {"
-Fk
+Wi
 Qm
 UN
 Eu
@@ -3410,7 +3465,7 @@ Wo
 Wo
 RD
 Qm
-Fx
+tg
 "}
 (25,1,1) = {"
 gs
@@ -3597,7 +3652,7 @@ XQ
 gs
 "}
 (33,1,1) = {"
-Wi
+vt
 Qm
 nj
 Eu
@@ -3617,7 +3672,7 @@ Io
 Nm
 vw
 Qm
-tg
+OT
 "}
 (34,1,1) = {"
 LZ
@@ -3807,7 +3862,7 @@ iF
 iF
 iF
 ET
-GG
+Fx
 iF
 iF
 iF

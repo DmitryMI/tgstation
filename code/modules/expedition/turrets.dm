@@ -7,6 +7,7 @@
 
 GLOBAL_LIST_EMPTY(hull_defense_map_consoles)
 GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
+GLOBAL_LIST_EMPTY(hull_defense_map_turret_indices)
 
 /// Frame-built defensive turret for Expedition and Syndicate vessels.
 /obj/machinery/porta_turret/hull_defense
@@ -692,6 +693,8 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	desc = "Links and remotely operates defensive turrets."
 	circuit = /obj/item/circuitboard/computer/hull_defense_control
 	var/list/linked_turrets = list()
+	/// Mapper-defined order indexes for currently linked turrets.
+	var/list/mapped_turret_indices = list()
 	/// Turret selected for preview in the console UI.
 	var/datum/weakref/selected_turret
 	/// Turret currently under manual control.
@@ -777,13 +780,21 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	if(length(available) < 2)
 		return FALSE
 	var/current_index = available.Find(current)
+	var/step = direction < 0 ? -1 : 1
 	for(var/offset in 1 to length(available) - 1)
-		var/candidate_index = 1 + ((current_index - 1 + (offset * direction) + (length(available) * 2)) % length(available))
+		var/candidate_index = current_index + (offset * step)
+		if(candidate_index < 1)
+			candidate_index += length(available)
+		else if(candidate_index > length(available))
+			candidate_index -= length(available)
 		var/obj/machinery/porta_turret/candidate = available[candidate_index]
 		if(!candidate.can_accept_console_control(src, user, allow_console_switch = TRUE))
 			continue
-		current.remove_control(FALSE)
-		return candidate.give_console_control(src, user)
+		var/previous_view_width = current.manual_previous_view_width
+		var/previous_view_height = current.manual_previous_view_height
+		var/previous_mouse_override = current.manual_previous_mouse_override
+		current.remove_control(FALSE, preserve_view_state = TRUE)
+		return candidate.give_console_control(src, user, previous_view_width, previous_view_height, previous_mouse_override, preserve_view_state = TRUE)
 	return FALSE
 
 /obj/machinery/computer/hull_defense_control/proc/unlink_turret(obj/machinery/porta_turret/turret)
@@ -792,6 +803,7 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	if(turret.manual_control && turret.linked_control_console?.resolve() == src)
 		turret.remove_control(FALSE)
 	linked_turrets -= WEAKREF(turret)
+	mapped_turret_indices[REF(turret)] = null
 	if(turret.linked_control_console?.resolve() == src)
 		turret.linked_control_console = null
 	if(selected_turret?.resolve() == turret)
@@ -801,16 +813,70 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 		cam_screen?.show_camera_static()
 	return TRUE
 
-/obj/machinery/computer/hull_defense_control/proc/link_turret(obj/machinery/porta_turret/turret)
+/obj/machinery/computer/hull_defense_control/proc/link_turret(obj/machinery/porta_turret/turret, insertion_index = 0)
 	if(!turret)
 		return FALSE
 	var/obj/machinery/computer/hull_defense_control/old_console = turret.linked_control_console?.resolve()
 	if(old_console && old_console != src)
 		return FALSE
+	var/datum/weakref/turret_ref = WEAKREF(turret)
+	if(turret_ref in linked_turrets)
+		return TRUE
 	turret.linked_control_console = WEAKREF(src)
-	linked_turrets |= WEAKREF(turret)
+	if(insertion_index > 0)
+		linked_turrets.Insert(clamp(insertion_index, 1, length(linked_turrets) + 1), turret_ref)
+	else
+		linked_turrets += turret_ref
 	if(!selected_turret)
-		selected_turret = WEAKREF(turret)
+		selected_turret = turret_ref
+	return TRUE
+
+/// Links a map-defined turret and applies its stable mapper-defined order.
+/obj/machinery/computer/hull_defense_control/proc/link_map_turret(obj/machinery/porta_turret/turret, map_insertion_index)
+	if(!link_turret(turret))
+		return FALSE
+	mapped_turret_indices[REF(turret)] = map_insertion_index
+	reorder_mapped_turrets()
+	return TRUE
+
+/// Sorts mapped turrets by their explicit position, independently of map initialization order.
+/obj/machinery/computer/hull_defense_control/proc/reorder_mapped_turrets()
+	var/list/ordered_mapped_turrets = list()
+	var/list/unordered_turrets = list()
+	for(var/datum/weakref/turret_ref in linked_turrets)
+		var/obj/machinery/porta_turret/turret = turret_ref.resolve()
+		if(!turret)
+			continue
+		var/map_insertion_index = mapped_turret_indices[REF(turret)]
+		if(!isnum(map_insertion_index) || map_insertion_index <= 0)
+			unordered_turrets += turret_ref
+			continue
+		var/insert_at = 1
+		for(var/datum/weakref/ordered_ref in ordered_mapped_turrets)
+			var/obj/machinery/porta_turret/ordered_turret = ordered_ref.resolve()
+			if(mapped_turret_indices[REF(ordered_turret)] <= map_insertion_index)
+				insert_at += 1
+		ordered_mapped_turrets.Insert(insert_at, turret_ref)
+	linked_turrets = ordered_mapped_turrets + unordered_turrets
+
+/// Moves a linked turret one place in the console's control and preview order.
+/obj/machinery/computer/hull_defense_control/proc/move_linked_turret(obj/machinery/porta_turret/turret, direction)
+	if(!turret)
+		return FALSE
+	var/turret_index
+	for(var/index in 1 to length(linked_turrets))
+		var/datum/weakref/turret_ref = linked_turrets[index]
+		if(turret_ref.resolve() == turret)
+			turret_index = index
+			break
+	if(!turret_index)
+		return FALSE
+	var/new_index = clamp(turret_index + direction, 1, length(linked_turrets))
+	if(new_index == turret_index)
+		return FALSE
+	var/datum/weakref/turret_ref = linked_turrets[turret_index]
+	linked_turrets.Cut(turret_index, turret_index + 1)
+	linked_turrets.Insert(new_index, turret_ref)
 	return TRUE
 
 /obj/machinery/computer/hull_defense_control/proc/update_preview()
@@ -936,6 +1002,10 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 			return TRUE
 		if("unlink")
 			return unlink_turret(turret)
+		if("move_up")
+			return move_linked_turret(turret, -1)
+		if("move_down")
+			return move_linked_turret(turret, 1)
 
 /obj/machinery/computer/hull_defense_control/multitool_act(mob/living/user, obj/item/multitool/tool)
 	if(istype(tool.buffer, /obj/machinery/porta_turret))
@@ -953,6 +1023,8 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	icon_state = "airalarm_link_helper"
 	late = TRUE
 	var/link_id = ""
+	/// One-based linked-turret position. Zero appends in map initialization order.
+	var/link_insertion_index = 0
 
 /obj/effect/mapping_helpers/hull_defense_link/LateInitialize()
 	if(!length(link_id))
@@ -976,10 +1048,18 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 	if(!turrets)
 		turrets = list()
 		GLOB.hull_defense_map_turrets[link_id] = turrets
-	turrets |= WEAKREF(turret)
+	var/list/turret_indices = GLOB.hull_defense_map_turret_indices[link_id]
+	if(!turret_indices)
+		turret_indices = list()
+		GLOB.hull_defense_map_turret_indices[link_id] = turret_indices
+	var/datum/weakref/turret_ref = WEAKREF(turret)
+	if(turret_ref in turrets)
+		return
+	turrets += turret_ref
+	turret_indices[REF(turret)] = link_insertion_index
 	var/datum/weakref/console_ref = GLOB.hull_defense_map_consoles[link_id]
 	var/obj/machinery/computer/hull_defense_control/console = console_ref?.resolve()
-	if(console && !console.link_turret(turret))
+	if(console && !console.link_map_turret(turret, link_insertion_index))
 		log_mapping("[src] could not link [turret] at [AREACOORD(turret)] to [console].")
 
 /obj/effect/mapping_helpers/hull_defense_link/proc/register_map_console(obj/machinery/computer/hull_defense_control/console)
@@ -989,9 +1069,10 @@ GLOBAL_LIST_EMPTY(hull_defense_map_turrets)
 		log_mapping("[src] found multiple hull-defense consoles using link_id '[link_id]'.")
 		return
 	GLOB.hull_defense_map_consoles[link_id] = WEAKREF(console)
+	var/list/turret_indices = GLOB.hull_defense_map_turret_indices[link_id]
 	for(var/datum/weakref/turret_ref in GLOB.hull_defense_map_turrets[link_id])
 		var/obj/machinery/porta_turret/turret = turret_ref.resolve()
-		if(turret && !console.link_turret(turret))
+		if(turret && !console.link_map_turret(turret, turret_indices?[REF(turret)]))
 			log_mapping("[src] could not link [turret] at [AREACOORD(turret)] to [console].")
 
 /datum/action/hull_defense_cycle

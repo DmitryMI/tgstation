@@ -614,6 +614,10 @@ DEFINE_BITFIELD(turret_flags, list(
 		cover.icon_state = "openTurretCover"
 	raised = 1
 	layer = MOB_LAYER
+	// Control can end while the opening animation sleeps. Re-evaluate whether the
+	// turret should remain exposed once the animation has actually completed.
+	if(!always_up && (!on || !LAZYLEN(tracker?.tracking)))
+		INVOKE_ASYNC(src, PROC_REF(popDown))
 
 /obj/machinery/porta_turret/proc/popDown() //pops the turret down
 	if(raising || !raised)
@@ -805,16 +809,21 @@ DEFINE_BITFIELD(turret_flags, list(
 	return !active || active == src || allow_console_switch
 
 /// Transfers a nearby console user's view and clicks to this turret.
-/obj/machinery/porta_turret/proc/give_console_control(obj/machinery/computer/hull_defense_control/console, mob/living/user)
+/obj/machinery/porta_turret/proc/give_console_control(obj/machinery/computer/hull_defense_control/console, mob/living/user, previous_view_width, previous_view_height, previous_mouse_override, preserve_view_state = FALSE)
 	if(!can_accept_console_control(console, user))
 		return FALSE
 	remote_controller = user
 	if(!quit_action)
 		quit_action = new(src)
 	quit_action.Grant(user)
-	manual_previous_view_width = user.client.view_size.width
-	manual_previous_view_height = user.client.view_size.height
-	manual_previous_mouse_override = user.client.mouse_override_icon
+	if(preserve_view_state)
+		manual_previous_view_width = previous_view_width
+		manual_previous_view_height = previous_view_height
+		manual_previous_mouse_override = previous_mouse_override
+	else
+		manual_previous_view_width = user.client.view_size.width
+		manual_previous_view_height = user.client.view_size.height
+		manual_previous_mouse_override = user.client.mouse_override_icon
 	user.reset_perspective(src)
 	user.click_intercept = src
 	user.remote_control = src
@@ -828,7 +837,7 @@ DEFINE_BITFIELD(turret_flags, list(
 	console.on_control_started(src, user)
 	return TRUE
 
-/obj/machinery/porta_turret/proc/remove_control(warning_message = TRUE)
+/obj/machinery/porta_turret/proc/remove_control(warning_message = TRUE, preserve_view_state = FALSE)
 	if(!manual_control)
 		return FALSE
 	var/obj/machinery/computer/hull_defense_control/control_console = linked_control_console?.resolve()
@@ -842,8 +851,9 @@ DEFINE_BITFIELD(turret_flags, list(
 			remote_controller.click_intercept = null
 		if(was_console_controlled && remote_controller.remote_control == src)
 			remote_controller.remote_control = null
-		remote_controller.reset_perspective()
-		if(was_console_controlled && remote_controller.client)
+		if(!preserve_view_state)
+			remote_controller.reset_perspective()
+		if(was_console_controlled && remote_controller.client && !preserve_view_state)
 			remote_controller.client.view_size.setBoth(manual_previous_view_width, manual_previous_view_height)
 			remote_controller.client.mouse_override_icon = manual_previous_mouse_override
 			remote_controller.update_mouse_pointer()

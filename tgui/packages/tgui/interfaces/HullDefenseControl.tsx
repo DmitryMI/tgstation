@@ -76,7 +76,7 @@ export const HullDefenseControl = () => {
             <Section fill scrollable title="Linked Turrets">
               {turrets.length ? (
                 <Table>
-                  {turrets.map((turret) => (
+                  {turrets.map((turret, index) => (
                     <Table.Row key={turret.ref} className="candystripe">
                       <Table.Cell>
                         <Button
@@ -91,6 +91,24 @@ export const HullDefenseControl = () => {
                         {turret.powered ? 'Online' : 'Offline'}
                       </Table.Cell>
                       <Table.Cell collapsing>{turret.range} tiles</Table.Cell>
+                      <Table.Cell collapsing>
+                        <Button
+                          icon="arrow-up"
+                          disabled={index === 0}
+                          tooltip="Move turret earlier in the control order"
+                          onClick={() => act('move_up', { ref: turret.ref })}
+                        />
+                      </Table.Cell>
+                      <Table.Cell collapsing>
+                        <Button
+                          icon="arrow-down"
+                          disabled={index === turrets.length - 1}
+                          tooltip="Move turret later in the control order"
+                          onClick={() =>
+                            act('move_down', { ref: turret.ref })
+                          }
+                        />
+                      </Table.Cell>
                     </Table.Row>
                   ))}
                 </Table>
